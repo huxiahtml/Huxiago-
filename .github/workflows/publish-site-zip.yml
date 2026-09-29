@@ -1,0 +1,35 @@
+name: Publish HUXIAGO site ZIP
+
+on:
+  push:
+    branches: [main]
+    paths: [updates/site.zip]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: huxiago-site-upload
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Validate and unpack complete site
+        run: python3 .github/scripts/publish_site_zip.py updates/site.zip
+      - name: Commit website files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No site changes to publish"
+          else
+            git commit -m "Publish complete HUXIAGO site from ZIP"
+            git push
+          fi
