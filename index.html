@@ -1079,7 +1079,30 @@ html[lang="zh-Hans"] body.visual-v7 *::after{
 .visual-v7 .cover .hux-cover-topbar .kicker strong{font-size:1rem;line-height:1.2}
 .visual-v7 .cover .hux-cover-topbar .kicker span{display:block;flex:0 0 auto;min-width:0;max-width:100%;overflow:visible;white-space:normal;overflow-wrap:anywhere;font-size:.75rem;line-height:1.3}
 .visual-v7 .cover .hux-cover-topbar .hux-language-bar{margin-left:auto;flex:0 0 auto}
-</style><meta name="huxiago-release" content="master-v69-20261016"></head><body class="visual-v7"><div id="hux-loading" role="status" aria-live="polite"><div class="loading-wordmark" role="img" aria-label="HUXIAGO"><span class="logo-letter" aria-hidden="true">H</span><span class="logo-letter" aria-hidden="true">U</span><span class="logo-letter" aria-hidden="true">X</span><span class="logo-letter" aria-hidden="true">I</span><span class="logo-letter" aria-hidden="true">A</span><span class="logo-letter" aria-hidden="true">G</span><span class="logo-letter" aria-hidden="true">O</span></div><small>曼谷口袋名單，準備出發</small><span class="loading-bar" aria-hidden="true"></span></div><aside class="desktop-rail" aria-label="HUXIAGO 章節導覽">
+</style><meta name="huxiago-release" content="mobile-effects-v73-20261017"><style id="hux-esim-motion-only-20261016">
+/* Touch-only attention cue. No changes to the original visual design or mouse interactions. */
+@media (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference){
+ .visual-v7 .cover .acquire-button{position:relative;isolation:isolate}
+ .visual-v7 .deal-yellow.hux-mobile-cue-active,
+ .visual-v7 .cover .acquire-button.hux-mobile-cue-active{animation:huxMobilePressBounce 3s ease-in-out infinite;transform-origin:center center}
+ .visual-v7 .deal-yellow>.hux-mobile-shine,
+ .visual-v7 .cover .acquire-button>span.hux-mobile-shine{position:absolute;inset:0;z-index:4;display:block;margin:0;padding:0;border:0;border-radius:inherit;overflow:hidden;pointer-events:none;opacity:0}
+ .visual-v7 .deal-yellow.hux-mobile-cue-active>.hux-mobile-shine,
+ .visual-v7 .cover .acquire-button.hux-mobile-cue-active>span.hux-mobile-shine{opacity:1}
+ .visual-v7 .hux-mobile-shine::after{content:"";position:absolute;inset:-45% auto -45% -55%;width:45%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28) 22%,rgba(255,255,255,.92) 50%,rgba(255,255,255,.28) 78%,transparent);opacity:0;transform:translateX(0) rotate(20deg);pointer-events:none}
+ .visual-v7 .hux-mobile-cue-active>.hux-mobile-shine::after{animation:huxMobilePressShine 3s ease-in-out infinite}
+ @supports ((mask-composite:exclude) or (-webkit-mask-composite:xor)){
+  .visual-v7 .hux-mobile-shine::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.3) 42%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.3) 58%,transparent 70%);background-size:250% 100%;background-position:220% 0;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none}
+  .visual-v7 .hux-mobile-cue-active>.hux-mobile-shine::before{animation:huxMobileBorderShine 3s ease-in-out infinite}
+ }
+ .visual-v7 .hux-mobile-cue-held,
+ .visual-v7 .hux-mobile-cue-held>.hux-mobile-shine::after,
+ .visual-v7 .hux-mobile-cue-held>.hux-mobile-shine::before{animation-play-state:paused!important}
+}
+@keyframes huxMobilePressBounce{0%,30%,100%{transform:translateY(0) scale(1)}5%{transform:translateY(4px) scale(.985)}12%{transform:translateY(-8px) scale(1.008)}19%{transform:translateY(2px) scale(.997)}25%{transform:translateY(-2px) scale(1)}}
+@keyframes huxMobilePressShine{0%,8%{opacity:0;transform:translateX(0) rotate(20deg)}12%{opacity:1}32%,100%{opacity:0;transform:translateX(500%) rotate(20deg)}}
+@keyframes huxMobileBorderShine{0%,8%{opacity:0;background-position:220% 0}12%{opacity:.75}32%,100%{opacity:0;background-position:-120% 0}}
+</style></head><body class="visual-v7"><div id="hux-loading" role="status" aria-live="polite"><div class="loading-wordmark" role="img" aria-label="HUXIAGO"><span class="logo-letter" aria-hidden="true">H</span><span class="logo-letter" aria-hidden="true">U</span><span class="logo-letter" aria-hidden="true">X</span><span class="logo-letter" aria-hidden="true">I</span><span class="logo-letter" aria-hidden="true">A</span><span class="logo-letter" aria-hidden="true">G</span><span class="logo-letter" aria-hidden="true">O</span></div><small>曼谷口袋名單，準備出發</small><span class="loading-bar" aria-hidden="true"></span></div><aside class="desktop-rail" aria-label="HUXIAGO 章節導覽">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>曼谷口袋名單 · Ep.01</small></span></a>
   <p class="rail-note">台灣丈夫 x 泰國妻子<br>跟著小胡跟 Kik，探索最在地的曼谷風景。</p>
   <nav class="rail-links" aria-label="頁面章節">
@@ -1994,6 +2017,34 @@ else document.querySelectorAll('.reel-figure').forEach(load);
 })();
 
 </script>
-</body></html>
+<script id="hux-mobile-cta-motion-20261017">
+(()=>{
+ const touch=window.matchMedia('(hover: none) and (pointer: coarse)');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const targets=[...document.querySelectorAll('.cover .acquire-button,.deal-yellow')];
+ const visible=new Map(targets.map(element=>[element,!('IntersectionObserver'in window)]));
+ function sync(){
+  for(const element of targets){
+   const active=touch.matches&&!reduce.matches&&!document.hidden&&visible.get(element);
+   if(active&&!element.querySelector('.hux-mobile-shine')){
+    const shine=document.createElement('span');shine.className='hux-mobile-shine';shine.setAttribute('aria-hidden','true');element.append(shine);
+   }
+   element.classList.toggle('hux-mobile-cue-active',Boolean(active));
+  }
+ }
+ if('IntersectionObserver'in window){
+  const observer=new IntersectionObserver(entries=>{for(const entry of entries)visible.set(entry.target,entry.isIntersecting&&entry.intersectionRatio>=.25);sync();},{threshold:[0,.25]});
+  targets.forEach(element=>observer.observe(element));
+ }
+ for(const element of targets){
+  element.addEventListener('pointerdown',()=>element.classList.add('hux-mobile-cue-held'),{passive:true});
+  for(const event of ['pointerup','pointercancel','pointerleave'])element.addEventListener(event,()=>element.classList.remove('hux-mobile-cue-held'),{passive:true});
+ }
+ document.addEventListener('visibilitychange',sync);
+ for(const query of [touch,reduce]){if(query.addEventListener)query.addEventListener('change',sync);else query.addListener(sync);}
+ sync();
+})();
+</script></body></html>
+
 
 
