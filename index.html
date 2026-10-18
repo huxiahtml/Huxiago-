@@ -1917,12 +1917,62 @@ else document.querySelectorAll('.reel-figure').forEach(load);
       track('outbound_click',common);
     }
   },true);
-  document.addEventListener('toggle',event=>{
-    const card=event.target;
-    if(card instanceof Element&&card.matches('details.card[id^="spot-"]')&&card.open){
-      track('guide_open',{place_name:cleanText(card.querySelector('.head h3')),place_id:card.id});
+  // EP.01 place funnel v1. Capture canonical names before the language controller runs.
+  const places=new Map([...document.querySelectorAll('details.card[id^="spot-"]')].map(card=>[
+    card.id,{card,parameters:Object.freeze({place_id:card.id,place_name:cleanText(card.querySelector('.head h3')),episode:'EP.01',position:Number(card.id.slice(5))}),
+      paragraphs:[...card.querySelectorAll('.body p')].filter(p=>cleanText(p).length>=30),since:null,viewed:false}
+  ]));
+  document.addEventListener('click',event=>{
+    const target=event.target instanceof Element?event.target:event.target?.parentElement;
+    if(!target)return;
+    const toc=target.closest('.toc a[href^="#spot-"]');
+    if(toc){
+      const place=places.get(toc.getAttribute('href').slice(1));
+      if(place)track('toc_item_click',place.parameters);
+      return;
     }
+    const summary=target.closest('details.card > summary');
+    const place=places.get(summary?.parentElement.id);
+    if(!place||target.closest('a,button,input,select,textarea'))return;
+    const opening=!place.card.open||place.card.__huxClosing;
+    // The existing summary handler performs the animation. TOC/programmatic opens
+    // never enter this path; closing and native toggle notifications do not count.
+    setTimeout(()=>{
+      if(opening&&place.card.open&&!place.card.__huxClosing)track('place_card_open',place.parameters);
+    },0);
   },true);
+  // A content view is a reading opportunity: >=50% of a text paragraph visible
+  // continuously for 1 second in the foreground, once per place per page load.
+  // Clip to the card too, so its opening animation cannot count hidden content.
+  const contentVisible=place=>{
+    if(document.visibilityState!=='visible'||!place.card.open||place.card.__huxClosing||place.card.__huxAnimation)return false;
+    const bounds=place.card.getBoundingClientRect();
+    return place.paragraphs.some(p=>{
+      const rect=p.getBoundingClientRect();
+      const height=Math.max(0,Math.min(rect.bottom,bounds.bottom,innerHeight)-Math.max(rect.top,bounds.top,0));
+      const width=Math.max(0,Math.min(rect.right,bounds.right,innerWidth)-Math.max(rect.left,bounds.left,0));
+      return rect.height>0&&rect.width>0&&height*width>=rect.height*rect.width*.5;
+    });
+  };
+  const checkReading=()=>{
+    const now=performance.now();
+    for(const place of places.values()){
+      if(place.viewed)continue;
+      if(!contentVisible(place)){place.since=null;continue;}
+      if(place.since===null)place.since=now;
+      if(now-place.since>=1000){place.viewed=true;track('place_content_view',place.parameters);}
+    }
+  };
+  document.addEventListener('visibilitychange',()=>{
+    for(const place of places.values())place.since=null;
+  });
+  document.addEventListener('toggle',event=>{
+    const place=places.get(event.target?.id);
+    if(place)place.since=null;
+  },true);
+  window.addEventListener('scroll',checkReading,{passive:true});
+  window.addEventListener('resize',checkReading,{passive:true});
+  setInterval(checkReading,250);
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{
       for(const entry of entries){
