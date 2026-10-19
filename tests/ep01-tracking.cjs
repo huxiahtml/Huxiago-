@@ -110,8 +110,22 @@ const results=[];
   const pip=page.locator('#spot-5 .reel-pip-launch').first();
   if(await pip.count()){
    await pip.click();assert.equal(await page.locator('.hux-reel-pip iframe').count(),1);
+   const opened=(await events()).find(e=>e.name==='reel_open'&&e.reel_action==='inline_pip');
+   assert.equal(opened.place_id,'spot-5');assert.equal(opened.episode,'EP.01');assert.equal(opened.place_name,expected[4]);
    await page.keyboard.press('Escape');assert.equal(await page.locator('.hux-reel-pip').count(),0);
   }
+  const mapLinks=page.locator('details.card[id^="spot-"] a[href*="google.com/maps"],details.card[id^="spot-"] a[href*="maps.app.goo.gl"]');
+  const mapCount=await mapLinks.count();assert.ok(mapCount>=10);
+  await page.evaluate(()=>document.addEventListener('click',e=>{if(e.target.closest?.('a[href*="google.com/maps"],a[href*="maps.app.goo.gl"],a.reel-origin,[data-share]')){e.preventDefault();e.stopPropagation();}},true));
+  for(let i=0;i<mapCount;i++)await mapLinks.nth(i).evaluate(a=>a.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
+  const mapEvents=(await events()).filter(e=>e.name==='map_click');
+  assert.equal(mapEvents.length,mapCount);
+  for(const e of mapEvents){assert.match(e.place_id,/^spot-\d+$/);assert.equal(e.place_name,expected[e.position-1]);assert.equal(e.episode,'EP.01');}
+  await page.locator('[data-share]').first().evaluate(b=>b.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
+  assert.equal((await events()).find(e=>e.name==='share').episode,'EP.01');
+  await page.locator('#spot-1 .reel-origin').first().evaluate(a=>a.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
+  const original=(await events()).find(e=>e.name==='reel_open'&&e.reel_action==='original_link');
+  assert.equal(original.place_id,'spot-1');assert.equal(original.place_name,expected[0]);assert.equal(original.episode,'EP.01');
   assert.ok(await page.locator('[data-get-guide]').first().getAttribute('href'));
   assert.deepEqual(errors,[]);
   await context.close();

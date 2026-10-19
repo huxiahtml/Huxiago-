@@ -1853,7 +1853,7 @@ else document.querySelectorAll('.reel-figure').forEach(load);
   const cleanText=value=>String(typeof value==='string'?value:(value?.getAttribute?.('aria-label')||value?.textContent||'')).replace(/\s+/g,' ').trim().slice(0,100);
   const track=(eventName,parameters={})=>{
     if(!/^[a-z][a-z0-9_]{0,39}$/.test(eventName))return;
-    const payload=Object.fromEntries(Object.entries({item_id:'huxiago_vol01',...parameters}).filter(([,value])=>value!==''&&value!=null));
+    const payload=Object.fromEntries(Object.entries({item_id:'huxiago_vol01',episode:'EP.01',...parameters}).filter(([,value])=>value!==''&&value!=null));
     try{if(hasGa4&&typeof window.gtag==='function')window.gtag('event',eventName,{...payload,send_to:ga4MeasurementId})}catch(error){}
     try{
       if(hasClarity&&typeof window.clarity==='function'){
@@ -1868,7 +1868,10 @@ else document.querySelectorAll('.reel-figure').forEach(load);
     get clarityScriptStatus(){return scriptStatus.clarity}
   });
   if(!hasGa4&&!hasClarity)return;
-  const placeName=element=>cleanText(element.closest('details.card')?.querySelector('.head h3'));
+  const placeContext=element=>{
+    const card=element.closest('details.card[id^="spot-"]');
+    return card?places.get(card.id)?.parameters||{}:{};
+  };
   const placement=element=>{
     if(element.closest('.share-fab'))return 'floating_share';
     if(element.matches('.rail-acquire')||element.closest('.pocket-rail'))return 'quick_nav';
@@ -1898,11 +1901,19 @@ else document.querySelectorAll('.reel-figure').forEach(load);
       track('share',{method:shareButton.getAttribute('data-share')||'unknown',action:'click',content_type:'guide',cta_location:placement(shareButton)});
       return;
     }
+    const reelButton=target.closest('.reel-pip-launch,.clip-pip');
+    if(reelButton){
+      const figure=reelButton.closest('figure.reel-figure');
+      const reelTitle=cleanText(figure?.querySelector('figcaption'));
+      if(figure)track('reel_open',{...placeContext(reelButton),reel_title:reelTitle,platform:figure.dataset.kind==='youtube'?'youtube':'instagram',reel_action:'inline_pip'});
+      else track('video_pip_open',{...placeContext(reelButton),video_title:cleanText(reelButton.closest('.clip')?.querySelector('h4')),action:'click'});
+      return;
+    }
     const anchor=target.closest('a[href]');
     if(!anchor||anchor.matches('[aria-disabled="true"],.ticket-disabled'))return;
     const url=getUrl(anchor);
     if(!url||!/^https?:$/.test(url.protocol))return;
-    const common={cta_location:placement(anchor),link_text:cleanText(anchor),link_url:safeUrl(url),link_domain:url.hostname,place_name:placeName(anchor)};
+    const common={cta_location:placement(anchor),link_text:cleanText(anchor),link_url:safeUrl(url),link_domain:url.hostname,...placeContext(anchor)};
     if(anchor.matches('[data-get-guide]')){
       track('guide_download',{...common,item_name:'HUXIAGO Vol.01 HTML',download_stage:'click',file_name:anchor.getAttribute('download')||url.pathname.split('/').pop(),file_extension:'html'});
     }else if(anchor.matches('.ticket-cta')){
@@ -1910,7 +1921,7 @@ else document.querySelectorAll('.reel-figure').forEach(load);
     }else if(isMap(url)){
       track('map_click',common);
     }else if(anchor.matches('.reel-origin')||anchor.closest('.hux-reel-pip-head')){
-      track('reel_open',{...common,platform:platform(url),reel_title:cleanText(anchor.closest('figure')?.querySelector('figcaption'))});
+      track('reel_open',{...common,platform:platform(url),reel_title:cleanText(anchor.closest('figure')?.querySelector('figcaption')),reel_action:'original_link'});
     }else if(platform(url)){
       track('social_click',{...common,platform:platform(url)});
     }else if(url.origin!==location.origin){
