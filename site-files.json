@@ -5,8 +5,8 @@
       "sha256": "cc369a5928dfa2c041be71c9cc99dec5b470591e46a9e03530b26e3c9112ca51"
     },
     "index.html": {
-      "bytes": 487691,
-      "sha256": "6345c62d4fb8257268a8e1d02f484fac8b4fa9a3ae4ff7c307ba5e8962d092cd"
+      "bytes": 495772,
+      "sha256": "5aca0a9a1b82902bca7831ce2de68706908ab00ccf8bd06fcff2f6b10a988091"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -451,6 +451,18 @@
     "media/huxiago-title-clean.svg": {
       "bytes": 40287,
       "sha256": "cadefce59427725958ec5ff34b268b85a7aa3ec4d1c1c82a35865e4c786c079b"
+    },
+    "media/huxiago-title-zh-tw.svg": {
+      "bytes": 19841,
+      "sha256": "61c1fbd790e72eeaab60d9cad1587eae76179f0d9496819bca2e415a5010d7a6"
+    },
+    "media/huxiago-title-zh-cn.svg": {
+      "bytes": 19031,
+      "sha256": "d3ee896536b070042da4a0b4949137735410b84de8100368fed381f417d98b48"
+    },
+    "media/huxiago-title-en.svg": {
+      "bytes": 11693,
+      "sha256": "53eed9f4f33543ae1e24337fe16ca9c4c8538b575d2b399125d26a750f1dfc6c"
     }
   }
 }
