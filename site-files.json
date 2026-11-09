@@ -5,8 +5,8 @@
       "sha256": "3d648dfdc127ab23aab267b3bb0bd2d2be93e37486f3a4b68959ff2c4143751b"
     },
     "index.html": {
-      "bytes": 503477,
-      "sha256": "20c61c99190534feba791926523db7f600694df706ea1700665f6da586acb786"
+      "bytes": 504027,
+      "sha256": "b5d4bcb20f35e3f67df377b92419caff4288ea02ab5b7df800097d2467353e7c"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -703,6 +703,14 @@
     "media/ep01-12-05.webp": {
       "bytes": 153070,
       "sha256": "75aa2d26ceb68b8444bbc73af888cd5064130e91a0302a833d9791f1dcfa48a4"
+    },
+    "HUXIAGO_Bangkok_EP01_zh-Hans.html": {
+      "bytes": 6835607,
+      "sha256": "d2b8e2c187a5d3cd84624f82af86a69cb439ced032f5f18ff806a5e8902afc02"
+    },
+    "HUXIAGO_Bangkok_EP01_en.html": {
+      "bytes": 6824501,
+      "sha256": "60fe2da017c54c13edfe9117c1084835e2e0e4783bd3c67c51ccf4176ce7226b"
     }
   }
 }
