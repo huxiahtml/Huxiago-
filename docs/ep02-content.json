@@ -310,5 +310,34 @@
       "餐厅优惠",
       "Dining deal"
     ]
+  },
+  "layout": {
+    "zh-Hant": {
+      "hero_badge": "{count} 個曼谷靈感",
+      "picker": [
+        "選擇指南",
+        "目前"
+      ],
+      "filter": "依情境篩選目錄",
+      "about_follow": "想看泰國第一手消息和 HUXIAGO 新指南？點擊下方按鈕、追蹤胡搞夏搞，我們雲端相見。"
+    },
+    "zh-Hans": {
+      "hero_badge": "{count} 个曼谷灵感",
+      "picker": [
+        "选择指南",
+        "当前"
+      ],
+      "filter": "按场景筛选目录",
+      "about_follow": "想看泰国第一手消息和 HUXIAGO 新指南？点击下方按钮、追踪胡搞夏搞，我们云端相见。"
+    },
+    "en": {
+      "hero_badge": "{count} Bangkok ideas",
+      "picker": [
+        "Choose an issue",
+        "Current"
+      ],
+      "filter": "Filter the contents by category",
+      "about_follow": "For first-hand stories from Thailand and new HUXIAGO guides, follow us using the buttons below. See you online!"
+    }
   }
 }

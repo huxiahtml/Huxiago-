@@ -31,7 +31,8 @@
       "查看泰國 eSIM・全方案",
       "查看泰国 eSIM・全方案",
       "Explore Thailand eSIM plans"
-    ]
+    ],
+    "category": "phone"
   },
   "kushiro": {
     "id": "ep02-kushiro-offer",
@@ -70,6 +71,43 @@
       "看 Kushiro 預約方案",
       "查看 Kushiro 预约方案",
       "View Kushiro booking options"
+    ],
+    "category": "dining"
+  },
+  "transport": {
+    "category": "taxi",
+    "label": [
+      "交通優惠",
+      "交通优惠",
+      "Transport deals"
+    ],
+    "name": [
+      "曼谷移動",
+      "曼谷出行",
+      "Getting around Bangkok"
+    ],
+    "badge": [
+      "即將推出",
+      "即将推出",
+      "Coming soon"
+    ]
+  },
+  "dining-experiences": {
+    "category": "dining",
+    "label": [
+      "吃喝玩樂",
+      "吃喝玩乐",
+      "Food & experiences"
+    ],
+    "name": [
+      "餐廳・體驗",
+      "餐厅・体验",
+      "Dining & experiences"
+    ],
+    "badge": [
+      "即將推出",
+      "即将推出",
+      "Coming soon"
     ]
   }
 }

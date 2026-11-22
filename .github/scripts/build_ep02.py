@@ -10,7 +10,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CSS = ROOT / "ep02/guide.css"
 LOCALES = ("zh-Hant", "zh-Hans", "en")
-LABELS = ("繁體中文", "简体中文", "English")
 TITLE_ART = {"zh-Hant": "zh-tw", "zh-Hans": "zh-cn", "en": "en"}
 
 
@@ -31,21 +30,43 @@ def gallery(assets, index):
     return '<div class="gallery">' + "".join(figures) + '</div>'
 
 
+TICKET_ICONS = {
+    "phone": '<rect x="6" y="2.7" width="12" height="18.6" rx="3.2" fill="#fffaf0"/>'
+             '<path d="M10 6h4m-3 12h2"/><path d="M9.6 12.1a3.8 3.8 0 0 1 4.8 0m-3.3 1.8a1.5 1.5 0 0 1 1.8 0"/>',
+    "dining": '<path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/>'
+              '<path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/>',
+    "taxi": '<path d="m5 11 1.5-4A2 2 0 0 1 8.4 6h7.2a2 2 0 0 1 1.9 1l1.5 4M10 6V3.5h4V6" fill="#fffaf0"/>'
+            '<rect x="3.5" y="10" width="17" height="8" rx="3" fill="#fffaf0"/>'
+            '<path d="M6 18v2m12-2v2M7 14h1m8 0h1"/>',
+}
+
+
+def ticket_icon(category):
+    return (f'<span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" '
+            f'fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
+            f'stroke-linejoin="round">{TICKET_ICONS[category]}</svg></span>')
+
+
 def deal_cards(deals, index):
     cards = []
-    for n, (key, offer) in enumerate(deals.items(), 1):
-        color = "deal-yellow" if key == "esim" else "deal-pink"
+    for key, offer in deals.items():
+        active = "url" in offer
+        attribute = "data-shared-deal" if active else "data-upcoming-deal"
         terms = f'<p><small>{escape(offer["terms"][index])}</small></p>' if "terms" in offer else ""
-        title = f'<p><strong>{escape(offer["title"][index])}</strong></p>' if key != "esim" else ""
-        cards.append(
-            f'<article class="deal-ticket {color}" data-shared-deal="{key}" translate="no">'
-            f'<div class="ticket-top"><span class="ticket-no">#{n:02}</span>'
-            f'<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
-            f'<h3>{escape(offer["name"][index])}</h3><div class="ticket-value">{escape(offer["badge"][index])}</div>'
-            f'{title}<p>{escape(offer["body"][index])}</p>{terms}'
+        title = f'<p><strong>{escape(offer["title"][index])}</strong></p>' if key == "kushiro" else ""
+        body = f'<p>{escape(offer["body"][index])}</p>' if active else ""
+        cta = (
             f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{offer["id"]}" '
             f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
-            '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
+            if active else ""
+        )
+        value_class = "ticket-value" if active else "ticket-value ticket-status"
+        cards.append(
+            f'<article class="deal-ticket deal-yellow" {attribute}="{key}" translate="no">'
+            f'<div class="ticket-top">{ticket_icon(offer["category"])}'
+            f'<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
+            f'<h3>{escape(offer["name"][index])}</h3><div class="{value_class}">{escape(offer["badge"][index])}</div>'
+            f'{title}{body}{terms}{cta}<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
         )
     return "".join(cards)
 
@@ -61,48 +82,109 @@ def update_ep01(source, deals, online, lang):
 root=document.documentElement;let locale;
 function sync(){const next=root.lang;const tpl=document.getElementById('shared-deals-'+next);
 if(!tpl||locale===next)return;locale=next;
-cards.querySelectorAll('[data-shared-deal]').forEach(card=>card.remove());
+cards.querySelectorAll('article.deal-ticket').forEach(card=>card.remove());
 cards.prepend(tpl.content.cloneNode(true));}
 sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang']});})();</script>"""
         cards = '<div id="hux-shared-deals" style="display:contents" translate="no">' + cards + templates + '</div>' + switcher
+    ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
+    source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
+    source = source.replace("</head>", f'<style id="hux-shared-ticket-icons">{ticket_css}</style></head>', 1)
     block = start + cards + end
+    # Migrate the original EP.01 placeholders into the cross-issue catalog.
+    legacy = r'(?:<article class="deal-ticket deal-(?:pink|blue) ticket-coming[^"]*">(?:(?!</article>).)*?</article>\s*)*'
     if start in source:
-        return re.sub(re.escape(start) + ".*?" + re.escape(end), lambda _: block, source, count=1, flags=re.S)
+        return re.sub(re.escape(start) + ".*?" + re.escape(end) + legacy,
+                      lambda _: block, source, count=1, flags=re.S)
     pattern = r'<article class="deal-ticket deal-yellow[^"]*">[^<]*(?:(?!</article>).)*?</article>'
-    updated, count = re.subn(pattern, lambda _: block, source, count=1, flags=re.S)
+    updated, count = re.subn(pattern + legacy, lambda _: block, source, count=1, flags=re.S)
     if count != 1 or "esimconnect.com.tw" not in source:
         raise ValueError("EP.01 eSIM ticket template missing")
     return updated
 
 
-def render(data, deals, stories, galleries, lang, offline, css):
+def extract(source, pattern):
+    match = re.search(pattern, source, re.S)
+    if not match:
+        raise ValueError(f"EP.01 template component missing: {pattern}")
+    return match[0]
+
+
+def script(source, id):
+    return extract(source, rf'<script id="{id}">.*?</script>')
+
+
+def issue_shell(donor, localized, lang, labels, count, offline, legacy_download):
+    download = f"HUXIAGO_Bangkok_EP02_{lang}.html"
+    rail_pattern = r'<aside class="desktop-rail"[^>]*>.*?</aside>'
+    rail = extract(localized, rail_pattern)
+    if not offline:
+        # Use EP.01 web navigation order and its starting state, with localized labels.
+        links = {href: label for href, label in re.findall(
+            r'<a href="#([^"]+)"><span>\d+</span>(.*?)</a>', rail)}
+        web_rail = extract(donor, rail_pattern)
+        nav = extract(web_rail, r'<nav class="rail-links"[^>]*>.*?</nav>')
+        localized_nav = extract(rail, r'<nav class="rail-links"[^>]*>.*?</nav>')
+        nav = re.sub(r'(<a href="#([^"]+)"><span>\d+</span>).*?(</a>)',
+                     lambda m: m[1] + links[m[2]] + m[3], nav)
+        rail = rail.replace(localized_nav, localized_nav.split(">", 1)[0] + ">" + nav.split(">", 1)[1])
+    rail = rail.replace("Ep.01", "Ep.02").replace(">12 ", f">{count} ")
+    cover = extract(localized, r'<header class="cover"[^>]*>.*?</header>').replace("Ep.01", "Ep.02")
+    title_src = data_uri(ROOT / f"media/huxiago-title-{TITLE_ART[lang]}.svg", "image/svg+xml")
+    hero_src = data_uri(ROOT / "media/ea863e999767b920.webp", "image/webp")
+    cover = re.sub(r'(<img class="cover-title-art") [^>]*src="[^"]+"',
+                   lambda m: f'{m[1]} src="{title_src}"', cover, count=1)
+    cover = re.sub(r'(<div class="hero"><img [^>]*src=")[^"]+("[^>]*><span>)[^<]+',
+                   lambda m: f'{m[1]}{hero_src}{m[2]}{escape(labels["hero_badge"].format(count=count))}',
+                   cover, count=1)
+    cover = re.sub(r'(<span class="cover-title-sub">)[^<]+',
+                   lambda m: m[1] + escape(labels["bangkok"]), cover, count=1)
+    if not offline:
+        language = extract(donor, r'<div class="hux-language-bar">.*?</div></div>')
+        language = re.sub(r'(data-hux-lang="([^"]+)"[^>]+aria-pressed=")(?:true|false)',
+                          lambda m: m[1] + str(m[2] == lang).lower(), language)
+        kicker = extract(cover, r'<p class="kicker">.*?</p>')
+        cover = cover.replace(kicker, f'<div class="hux-cover-topbar">{kicker}{language}</div>', 1)
+        picker = extract(donor, r'<span class="episode-picker"[^>]*>.*?</a></span></span>')
+        picker = picker.replace('Ep.01 <svg', 'Ep.02 <svg', 1)
+        picker = re.sub(r' aria-label="[^"]+"', "", picker, count=1)
+        menu_title, current = map(escape, labels["picker"])
+        ep01 = f'<a class="episode-upcoming" href="index.html?lang={lang}"><span><b>Ep.01</b></span></a>'
+        active = f'<span class="episode-current"><span><b>Ep.02</b></span><em>{current}</em></span>'
+        picker = re.sub(r'(<span id="episode-menu"[^>]*>).*?</a></span></span>',
+                        lambda m: f'{m[1]}<span class="episode-menu-title">{menu_title}</span>{ep01}{active}</span></span>',
+                        picker, flags=re.S)
+        cover = cover.replace('<span class="vol">Ep.02</span>', picker, 1)
+    rail = rail.replace(f'href="" download="{legacy_download}"', f'href="{download}" download="{download}"')
+    cover = cover.replace(f'href="" download="{legacy_download}"', f'href="{download}" download="{download}"')
+    mobile_nav = extract(localized, r'<nav [^>]*class="pocket-nav"[^>]*>.*?</nav>')
+    about = extract(localized, r'<section class="about-huxia"[^>]*>.*?</section>')
+    about = re.sub(r'<p>[^<]*Ep\.02[^<]*</p>', lambda _: f'<p>{escape(labels["about_follow"])}</p>', about)
+    footer_link = extract(localized, r'<a class="hux-back-top"[^>]*>.*?</a>')
+    return rail, cover, mobile_nav, about, footer_link
+
+
+def render(data, deals, stories, galleries, lang, offline, donor, localized, legacy_download):
     t = data["locales"][lang]
     ix = LOCALES.index(lang)
-    title_asset = TITLE_ART[lang]
-    logo = data_uri(ROOT / f"media/huxiago-title-{title_asset}.svg", "image/svg+xml")
-    hero = data_uri(ROOT / "media/ea863e999767b920.webp", "image/webp")
-    download = f"HUXIAGO_Bangkok_EP02_{lang}.html"
-    controls = ""
-    episode = '<span class="vol">Ep.02</span>'
-    acquire = ""
-    if not offline:
-        buttons = "".join(
-            f'<button type="button" data-hux-lang="{code}" lang="{code}" aria-label="{label}" '
-            f'aria-pressed="{str(code == lang).lower()}">{short}</button>'
-            for code, label, short in zip(LOCALES, LABELS, ("繁", "简", "EN"))
-        )
-        controls = f'<div class="hux-language-bar"><div class="hux-language-switch" role="group" aria-label="Language">{buttons}</div></div>'
-        episode = f"""<span class="episode-picker">
-<button class="vol episode-trigger" type="button" aria-expanded="false" aria-controls="episode-menu">Ep.02
-<svg aria-hidden="true" class="episode-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</button><span id="episode-menu" class="episode-menu" hidden>
-<a class="episode-upcoming" href="index.html?lang={lang}">{escape(t[7])}</a>
-<span class="episode-current"><b>Ep.02</b><em>{escape(t[6])}</em></span>
-</span></span>"""
-        acquire = f"""<div class="acquire-guide">
-<a class="acquire-button" href="{download}" download="{download}">
-<span class="acquire-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg></span>
-<span>{escape(t[4])}<small>{escape(t[14])}</small></span><span class="acquire-arrow" aria-hidden="true">↗</span></a></div>"""
+    labels = {**data["layout"][lang], "bangkok": data["labels"]["bangkok"][ix]}
+    rail, cover, mobile_nav, about, back_top = issue_shell(
+        donor, localized, lang, labels, len(data["stops"]), offline, legacy_download)
+    css_source = localized if offline else donor
+    css = "\n".join(re.findall(r"<style\b[^>]*>(.*?)</style>", css_source, re.S | re.I))
+    css += "\n" + CSS.read_text(encoding="utf-8-sig")
+    css = "\n".join(line.rstrip() for line in css.splitlines())
+    share = script(localized, "v10-share-and-details-script").replace("Ep.01", "Ep.02")
+    canonical = json.dumps(f"https://huxiago.com/ep02-{lang}.html")
+    share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {canonical};", share, count=1)
+    scripts = "\n".join((
+        share,
+        script(localized, "v12-share-positioning"),
+        script(donor, "v15-rail-navigation"),
+        script(localized, "v16-get-guide-script").replace(legacy_download, f"HUXIAGO_Bangkok_EP02_{lang}.html"),
+        script(donor, "v17-details-motion"),
+        script(donor, "v22-draggable-share"),
+        "" if offline else script(donor, "episode-picker-script"),
+    ))
     category = data["categories"]
     toc = []
     stops = []
@@ -146,6 +228,18 @@ def render(data, deals, stories, galleries, lang, offline, css):
         f'<button type="button" data-filter="{escape(label, quote=True)}" aria-pressed="{str(n == 0).lower()}">{escape(label)}</button>'
         for n, label in enumerate(filter_names)
     )
+    deal_swipe = extract(localized, r'<p class="deal-swipe"[^>]*>.*?</p>')
+    section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
+    deals_section = f"""
+<section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
+<p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
+<div class="deal-track">{deal_cards(deals, ix)}</div>{deal_swipe}</section>"""
+    toc_section = f"""
+<nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
+<h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>
+<div class="toc-filters" aria-label="{escape(labels["filter"], quote=True)}">{filters}</div>
+<div class="toc-list">{"".join(toc)}</div></nav>"""
+    sections = toc_section + deals_section if offline else deals_section + toc_section
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -156,27 +250,15 @@ def render(data, deals, stories, galleries, lang, offline, css):
 <style>{css}</style>
 </head>
 <body class="visual-v7">
+{rail}
 <div class="wrap">
-<header class="cover" id="top">
-<div aria-hidden="true" class="hero-doodles"><span class="doodle d-star">✦</span><span class="doodle d-flower">✿</span><span class="doodle d-sun">☀</span><span class="doodle d-plane">➜</span><span class="doodle d-spark">✧</span></div>
-<div class="hux-cover-topbar"><p class="kicker"><strong>HUXIAGO</strong><span>BKK GUIDE</span></p>{controls}</div>
-<h1 class="cover-title" aria-label="{escape(t[0], quote=True)} EP.02"><img class="cover-title-art" src="{logo}" alt="" aria-hidden="true" decoding="async">
-<span class="cover-title-meta"><span class="cover-title-sub">{escape(data["labels"]["bangkok"][ix])}</span>{episode}</span></h1>
-{acquire}
-<div class="hero"><img fetchpriority="high" decoding="async" alt="Zev &amp; Kik" src="{hero}"><span>{escape(t[5] if offline else t[6])}</span></div>
-<p class="byline">by 胡搞夏搞 Zev and Kik · @huxia.thai</p>
-<div aria-hidden="true" class="travel-stamp">BANGKOK / 2026</div></header>
-<nav class="pocket-nav" aria-label="{escape(data["labels"]["toc"][ix], quote=True)}"><a href="#deals">{escape(t[3])}</a><a href="#toc">{escape(data["labels"]["toc"][ix])}</a><a href="#spots">{escape(t[2])}</a></nav>
+{cover}
+{mobile_nav}
 <p class="intro">{escape(t[1])}</p>
-<section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
-<p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-<div class="deal-track">
-{deal_cards(deals, ix)}
-</div></section>
-<nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
-<h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>
-<div class="toc-filters">{filters}</div><div class="toc-list">{"".join(toc)}</div></nav>
-<section aria-labelledby="spots"><h2 id="spots" class="sec-title">{escape(t[15])}</h2>{"".join(stops)}</section>
+{sections}
+<section aria-labelledby="spots">{section_head}{"".join(stops)}</section>
+{about}
+{back_top}
 <footer class="footer">HUXIAGO Ep.02 · {escape(t[14] if offline else t[18])}</footer>
 </div>
 <script>
@@ -184,27 +266,20 @@ const buttons = [...document.querySelectorAll('[data-filter]')];
 const rows = [...document.querySelectorAll('.toc-item')];
 buttons.forEach((button, index) => button.addEventListener('click', () => {{
   buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  rows.forEach(row => {{ row.style.display = index === 0 || row.dataset.category === button.dataset.filter ? '' : 'none'; }});
-}}));
-rows.forEach(row => row.addEventListener('click', () => {{
-  document.querySelector(row.getAttribute('href')).open = true;
+  rows.forEach(row => {{ row.hidden = index !== 0 && row.dataset.category !== button.dataset.filter; }});
 }}));
 document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventListener('click', () => {{
   location.href = 'ep02-' + button.dataset.huxLang + '.html' + location.hash;
 }}));
-const menu = document.getElementById('episode-menu');
-const trigger = document.querySelector('.episode-trigger');
-trigger?.addEventListener('click', () => {{
-  menu.hidden = !menu.hidden;
-  trigger.setAttribute('aria-expanded', String(!menu.hidden));
-}});
-trigger?.addEventListener('keydown', event => {{
-  if (event.key === 'Escape') {{ menu.hidden = true; trigger.setAttribute('aria-expanded','false'); }}
-}});
+</script>
+{scripts}
+<script>
+document.getElementById('about').before(document.getElementById('share-strip'));
 </script>
 </body>
 </html>
 """
+
 
 
 def build():
@@ -218,9 +293,6 @@ def build():
     index_path = ROOT / "index.html"
     index_original = index_path.read_bytes()
     donor = index_original.decode("utf-8")
-    css = "\n".join(re.findall(r"<style\b[^>]*>(.*?)</style>", donor, re.S | re.I))
-    css += "\n" + CSS.read_text(encoding="utf-8-sig")
-    css = "\n".join(line.rstrip() for line in css.splitlines())
     outputs = {"index.html": update_ep01(donor, deals, True, "zh-Hant").encode("utf-8")}
     ep01_files = {
         "zh-Hant": next(ROOT.glob("HUXIAGO_*_vol01.html")).name,
@@ -232,9 +304,12 @@ def build():
         if lang != "zh-Hant":
             source = source.replace("\r\n", "\n")
         outputs[name] = update_ep01(source, deals, False, lang).encode("utf-8")
-    for lang in LOCALES:
+    for lang, legacy_download in ep01_files.items():
+        localized = outputs[legacy_download].decode("utf-8")
         for offline, name in ((False, f"ep02-{lang}.html"), (True, f"HUXIAGO_Bangkok_EP02_{lang}.html")):
-            outputs[name] = render(data, deals, stories, galleries, lang, offline, css).encode("utf-8")
+            outputs[name] = render(
+                data, deals, stories, galleries, lang, offline, outputs["index.html"].decode("utf-8"),
+                localized, legacy_download).encode("utf-8")
     manifest_path = ROOT / "site-files.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     for name, raw in outputs.items():
