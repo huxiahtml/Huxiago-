@@ -53,27 +53,23 @@
       "小胡带路・餐厅优惠",
       "Xiao Hu’s dining deal"
     ],
-    "title": [
-      "在曼谷留一餐給 Omakase",
-      "在曼谷留一餐给 Omakase",
-      "Save one Bangkok meal for omakase"
-    ],
     "body": [
-      "如果你問我，來曼谷有一餐想吃好一點，該怎麼排？我會先把 Kushiro 放進口袋。坐到板前，把這一餐交給師傅安排，一道一道慢慢吃。這次先收好預約入口，8 折為待確認的審稿優惠。想帶另一半或朋友去，先看 TableCheck 有哪些時段和方案，再決定哪天去。",
-      "如果你问我，来曼谷有一餐想吃好一点，该怎么安排？我会先把 Kushiro 加进口袋名单。坐到板前，把这一餐交给师傅安排，一道一道慢慢吃。这次先收好预约入口，8 折为待确认的审稿优惠。想带另一半或朋友去，先看 TableCheck 有哪些时段和方案，再决定哪天去。",
-      "If you ask me where I’d set aside one meal in Bangkok, I’d put Kushiro on the list. Sit at the counter and let the chef decide what comes next. I’ve saved the booking link here; the 20% discount is a review draft pending confirmation. If you’re bringing someone, check the available times and menus on TableCheck before choosing a day."
+      "來曼谷，我想留一餐給板前 Omakase。",
+      "来曼谷，我想留一餐给板前 Omakase。",
+      "I’d save one Bangkok meal for omakase at the counter."
     ],
     "terms": [
-      "折扣、適用方案、期限、兌換方式及其他限制均待商家確認。",
-      "折扣、适用方案、期限、兑换方式及其他限制均待商家确认。",
-      "The discount, eligible menus, dates, redemption terms and any additional restrictions are pending merchant confirmation."
+      "折扣與適用條件待商家確認。",
+      "折扣和适用条件待商家确认。",
+      "Discount and terms pending merchant confirmation."
     ],
     "cta": [
       "TableCheck 訂位",
       "TableCheck 订位",
       "Book on TableCheck"
     ],
-    "category": "dining"
+    "category": "dining",
+    "ticket_name": "Kushiro Omakase"
   },
   "transport": {
     "category": "taxi",

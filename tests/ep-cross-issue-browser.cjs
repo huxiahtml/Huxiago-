@@ -61,7 +61,7 @@ async function verifyPreviews(page, lang) {
   const label = {'zh-Hant':'即將推出','zh-Hans':'即将推出',en:'Coming soon'}[lang];
   assert(previews.every(x=>x.icon && x.label===label && x.height>0 && x.height<80 && !x.insideTrack && !x.hasAction), JSON.stringify({lang,previews}));
 }
-const widths = [390, 647, 768, 979, 980, 1440];
+const widths = [390, 647, 768, 979, 980, 1200, 1440];
 
 (async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
 const b=await chromium.launch({executablePath:process.env.HUX_CHROME_BIN,headless:true});
@@ -95,6 +95,12 @@ for(const width of widths){
   const [booking, map] = await p.locator('[data-shared-deal="kushiro"] .ticket-actions a').evaluateAll(links =>
     links.map(el=>{const box=el.getBoundingClientRect();return {top:box.top,left:box.left,right:box.right};}));
   assert(booking.right <= map.left && booking.top === map.top, 'map sits beside booking at width '+width);
+  if(width>=1200){
+    const [ticket, preview] = await p.locator('[data-shared-deal="kushiro"], .deal-preview.deal-pink').evaluateAll(nodes =>
+      nodes.map(node=>{const r=node.getBoundingClientRect();return {x:r.x,top:r.top,right:r.right,width:r.width};}));
+    assert(preview.x-ticket.right>=12 && Math.abs(ticket.top-preview.top)<2 && Math.abs(ticket.width-preview.width)<2,
+      'desktop restores the three original ticket-width columns');
+  }
   assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), 'page overflows at width '+width);
 }
 assert.deepEqual(await ticketStyles(p),tickets);

@@ -41,7 +41,23 @@
   text-decoration: none;
 }
 .visual-v7 .ticket-map:hover { background: #fff2b5; }
-.visual-v7 .ticket-address { font-size: 12px; }
+.visual-v7 [data-shared-deal="kushiro"] .ticket-value {
+  font-size: clamp(42px, 13vw, 68px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+.visual-v7 .deal-yellow[data-shared-deal="kushiro"] p {
+  margin: 8px 0 0;
+}
+.visual-v7 .deal-yellow[data-shared-deal="kushiro"] :is(.ticket-terms, .ticket-address) {
+  color: #29231d !important;
+  font-size: 12px;
+  font-weight: 650;
+}
+.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-address { margin-bottom: 14px; }
+.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-map {
+  border-radius: 999px;
+}
 .visual-v7 .place-locations {
   display: grid;
   gap: 10px;
@@ -102,4 +118,32 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
     grid-auto-columns: auto;
   }
   .visual-v7 .deal-swipe { display: none; }
+}
+
+/* The original desktop offer section reserved three ticket-width columns. */
+@media (min-width: 1200px) {
+  .visual-v7 .deal-layout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 14px;
+    margin: 14px 8px 0 2px;
+  }
+  .visual-v7 .deal-track {
+    grid-column: span 2;
+    margin: 0;
+    padding: 2px 0 8px;
+  }
+  .visual-v7 .deal-previews {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin: 2px 0 0;
+  }
+  .visual-v7 .deal-preview {
+    height: 72px;
+    padding-inline: 14px;
+    border-width: 1.5px;
+    border-radius: 15px;
+    box-shadow: 5px 6px 0 #2d2926;
+  }
 }

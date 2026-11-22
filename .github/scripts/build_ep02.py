@@ -107,7 +107,7 @@ def deal_content(deals, locations, index):
     previews = []
     for key, offer in deals.items():
         icon = ticket_icon(offer["category"])
-        name = escape(offer["name"][index])
+        name = escape(offer.get("ticket_name", offer["name"][index]))
         badge = escape(offer["badge"][index])
         if "url" not in offer:
             previews.append(
@@ -115,19 +115,18 @@ def deal_content(deals, locations, index):
                 f'{icon}<span><strong>{name}</strong><small>{badge}</small></span></li>'
             )
             continue
-        terms = f'<p><small>{escape(offer["terms"][index])}</small></p>' if "terms" in offer else ""
-        title = f'<p><strong>{escape(offer["title"][index])}</strong></p>' if key == "kushiro" else ""
+        terms = f'<p class="ticket-terms">{escape(offer["terms"][index])}</p>' if "terms" in offer else ""
         actions = deal_actions(offer, locations, index)
         cards.append(
             f'<article class="deal-ticket deal-yellow" data-shared-deal="{key}" translate="no">'
             f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
-            f'<h3>{name}</h3><div class="ticket-value">{badge}</div>{title}<p>{escape(offer["body"][index])}</p>{terms}'
+            f'<h3>{name}</h3><div class="ticket-value">{badge}</div><p>{escape(offer["body"][index])}</p>{terms}'
             f'{actions}'
             '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
         )
     upcoming = '<ul class="deal-previews" role="list">' + "".join(previews) + '</ul>' if previews else ""
-    return (f'<div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
-            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>{upcoming}')
+    return (f'<div class="deal-layout"><div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
+            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>{upcoming}</div>')
 
 
 def update_ep01(source, deals, locations, online, lang):
