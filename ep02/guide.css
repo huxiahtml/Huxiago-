@@ -1,0 +1,6 @@
+/* EP.02 content exceptions layered over the production EP.01 stylesheet. */
+.visual-v7 .ep02-text-thumb{display:grid;place-items:center;flex:none;background:#d5eff5;color:#233945;font-weight:800;font-size:1.2rem}
+.ep02-deal-photo{margin:8px 0 10px}
+.ep02-deal-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.ep02-deal-photo figcaption{font-size:13px;margin-top:4px}
+.visual-v7 .episode-upcoming{text-decoration:none}

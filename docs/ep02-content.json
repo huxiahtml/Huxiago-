@@ -1,0 +1,307 @@
+{
+  "locales": {
+    "zh-Hant": [
+      "曼谷口袋名單",
+      "六站先收入記事本，從一盤現炒打拋飯，到傍晚穿過曼谷的運河。",
+      "站點",
+      "優惠",
+      "下載離線版",
+      "離線版",
+      "審稿版",
+      "回到 EP.01",
+      "開啟 Google 地圖",
+      "查閱路線與班次",
+      "查看飯店官網",
+      "8 折",
+      "查看 TableCheck 預約",
+      "優惠條件與期限待確認，請核對預約頁顯示的方案。",
+      "離線可讀全篇；地圖與預約連結需要網路。",
+      "曼谷沿線",
+      "由西往東 · 節錄碼頭",
+      "實用資訊",
+      "到店與票價請以現場或業者公布為準。"
+    ],
+    "zh-Hans": [
+      "曼谷口袋名单",
+      "六站先收入记事本，从一盘现炒打抛饭，到傍晚穿过曼谷的运河。",
+      "站点",
+      "优惠",
+      "下载离线版",
+      "离线版",
+      "审稿版",
+      "返回 EP.01",
+      "打开 Google 地图",
+      "查看路线与班次",
+      "查看酒店官网",
+      "8 折",
+      "查看 TableCheck 预约",
+      "优惠条件与期限待确认，请核对预约页面显示的方案。",
+      "离线可阅读全文；地图与预约链接需要网络。",
+      "曼谷沿线",
+      "由西向东 · 部分码头",
+      "实用信息",
+      "到店与票价请以现场或商家公布为准。"
+    ],
+    "en": [
+      "Bangkok Pocket Guide",
+      "Six stops to keep close, from wok-fried pad kra pao to an evening crossing on Bangkok’s canal.",
+      "Stops",
+      "Deals",
+      "Download offline guide",
+      "Offline edition",
+      "Review edition",
+      "Back to EP.01",
+      "Open Google Maps",
+      "Check route and departures",
+      "Visit the hotel website",
+      "20% off",
+      "View booking on TableCheck",
+      "Offer terms and dates are pending confirmation. Check the package shown on the booking page.",
+      "Read the full guide offline. Maps and booking links need an internet connection.",
+      "Across Bangkok",
+      "West to east · selected piers",
+      "Good to know",
+      "Check current prices and opening details with each operator or venue."
+    ]
+  },
+  "offer": {
+    "name": "Kushiro Omakase & Japanese Dining",
+    "url": "https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago"
+  },
+  "stops": [
+    {
+      "id": "silq",
+      "label": "02",
+      "name": "SILQ Hotel & Residence Bangkok",
+      "action": 10,
+      "url": "https://www.silqhotel.com/",
+      "copy": [
+        [
+          "在 Phrom Phong 留一晚",
+          "Chiffon Studio 的寬敞房間、早餐和私人湯屋，是小胡這趟合作入住最有印象的體驗。",
+          "飯店位於 Sukhumvit Soi 24。房價依日期及方案而異，湯屋另向飯店確認。"
+        ],
+        [
+          "在 Phrom Phong 留一晚",
+          "Chiffon Studio 的宽敞房间、早餐和私人汤屋，是小胡这次合作入住最有印象的体验。",
+          "酒店位于 Sukhumvit Soi 24。房价依日期和方案而异，汤屋请另向酒店确认。"
+        ],
+        [
+          "A night in Phrom Phong",
+          "The spacious Chiffon Studio, breakfast and private onsen stood out during Xiao Hu’s hosted stay.",
+          "The hotel is on Sukhumvit Soi 24. Rates vary by date and package. Ask the hotel about private onsen access."
+        ]
+      ]
+    },
+    {
+      "id": "gan-da",
+      "label": "03",
+      "name": "Gan Da · กานดาอาหารตามสั่ง",
+      "action": 8,
+      "url": "https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7",
+      "copy": [
+        [
+          "一盤現炒打拋飯",
+          "小胡常點的是打拋豬肉末飯加半熟蛋。兩人一起吃，可以再分一碗冬蔭功。",
+          "店在 Central Lat Phrao 一帶。想吃得清淡一點，點餐時先說辣度；食材賣完可能提前收攤。"
+        ],
+        [
+          "一盘现炒打抛饭",
+          "小胡常点的是打抛猪肉末饭加溏心煎蛋。两人一起吃，可以再分一碗冬阴功。",
+          "餐厅在 Central Lat Phrao 一带。点餐时可以先说明能接受的辣度；食材卖完可能提前收摊。"
+        ],
+        [
+          "Pad kra pao straight from the wok",
+          "Xiao Hu often orders minced pork pad kra pao over rice with a runny fried egg. If there are two of you, consider sharing a bowl of tom yum.",
+          "Look near Central Lat Phrao. Ask for your preferred spice level when ordering. The kitchen may close early if it sells out."
+        ]
+      ]
+    },
+    {
+      "id": "hani-spa",
+      "label": "04",
+      "name": "Hani Spa · Branch 2",
+      "action": 8,
+      "url": "https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20Lat%20Phrao%20Bangkok",
+      "copy": [
+        [
+          "走累了，留一小時按摩",
+          "小胡與 Kik 的體驗以二店為主。泰式按摩和足部按摩都可作為短休息，入場前可以先說希望的力道。",
+          "原文由 MRT Phahon Yothin 一帶走到 Lat Phrao Soi 1。請選二店，並向店家確認療程、價格和預約時段。"
+        ],
+        [
+          "走累了，留一小时按摩",
+          "小胡和 Kik 的体验以二店为主。泰式按摩和足部按摩都适合短暂休息，开始前可以先说明想要的力度。",
+          "原文从 MRT Phahon Yothin 一带走到 Lat Phrao Soi 1。请选择二店，并向店家确认疗程、价格和预约时段。"
+        ],
+        [
+          "An hour off your feet",
+          "Xiao Hu and Kik visited Branch 2. Thai massage and foot massage both make for a short break. Tell the therapist what pressure you prefer.",
+          "The source approaches Lat Phrao Soi 1 from MRT Phahon Yothin. Select Branch 2 and confirm the treatment, price and appointment directly."
+        ]
+      ]
+    },
+    {
+      "id": "chowchercof",
+      "label": "05",
+      "name": "Chowchercof Cafe",
+      "action": 8,
+      "url": "https://goo.gl/maps/jAHvcV3BWatrrB6L6",
+      "copy": [
+        [
+          "蓮花池旁吃一口椰香蛋糕",
+          "小胡常點 Coco Ball 椰子香蘭葉蛋糕，也推薦有蝶豆花的抹茶慕斯。可以留點時間看看池景。",
+          "原文建議從 MRT Lat Phrao 步行。出發前可先確認營業時間與當天甜點。"
+        ],
+        [
+          "莲花池旁吃一口椰香蛋糕",
+          "小胡常点 Coco Ball 椰子香兰叶蛋糕，也推荐带蝶豆花的抹茶慕斯。可以留点时间看看池景。",
+          "原文建议从 MRT Lat Phrao 步行。出发前可先确认营业时间和当天甜点。"
+        ],
+        [
+          "Cake by a lotus pond",
+          "Xiao Hu’s usual is the Coco Ball coconut pandan cake. The matcha and butterfly pea mousse is another pick. Leave yourself a moment to enjoy the pond.",
+          "The source suggests walking from MRT Lat Phrao. Check opening hours and dessert availability before you go."
+        ]
+      ]
+    },
+    {
+      "id": "bang-sue-junction",
+      "label": "06",
+      "name": "Bang Sue Junction",
+      "action": 8,
+      "url": "https://www.google.com/maps/search/?api=1&query=Bang%20Sue%20Junction%20Red%20Building%20Chatuchak",
+      "copy": [
+        [
+          "洽圖洽紅樓裡挖寶",
+          "小胡在低樓層逛古董，再往上找古著、黑膠和小吃。店鋪各有節奏，想逛的店可以先排。",
+          "原文從 MRT Kamphaeng Phet 出站步行。購物與小吃可先準備一些泰銖現金。"
+        ],
+        [
+          "洽图洽红楼里挖宝",
+          "小胡在低楼层逛古董，再往上找古着、黑胶和小吃。各家店营业时间不同，可以先逛最想去的店。",
+          "原文从 MRT Kamphaeng Phet 出站步行。购物和小吃可先准备一些泰铢现金。"
+        ],
+        [
+          "Vintage finds in the Red Building",
+          "Xiao Hu browsed antiques on the lower floors, then went upstairs for vintage clothes, records and snacks. Individual shops keep their own hours.",
+          "The source walks from MRT Kamphaeng Phet. A little cash is handy for secondhand shops and snacks."
+        ]
+      ]
+    },
+    {
+      "id": "saen-saep",
+      "label": "07",
+      "name": "Khlong Saen Saep Express Boat",
+      "action": 9,
+      "url": "https://www.saensaebcanal.com/",
+      "copy": [
+        [
+          "從水門一路往東",
+          "小胡和 Kik 16:48 從 Pratunam 上船，17:38 抵達 The Mall Bangkapi。這次東行搭了 50 分鐘，傍晚通勤時段人潮較多。",
+          "票價依距離和當期公告而變動。小胡這趟用泰銖現金在船上付費。看演唱會可以考慮搭船去程，先安排好散場交通。"
+        ],
+        [
+          "从水门一路往东",
+          "小胡和 Kik 16:48 从 Pratunam 上船，17:38 到达 The Mall Bangkapi。这次东行坐了 50 分钟，傍晚通勤时段人比较多。",
+          "票价随距离和当期公告而变动。小胡这次在船上用泰铢现金付款。看演唱会可以考虑坐船前往，先安排好散场交通。"
+        ],
+        [
+          "Eastbound from Pratunam",
+          "Xiao Hu and Kik boarded at 16:48 and reached The Mall Bangkapi at 17:38. Their eastbound ride took 50 minutes and got crowded around rush hour.",
+          "Fares depend on distance and current notices. Xiao Hu paid in baht on board. If you take the boat to a concert, arrange a way back before you leave."
+        ]
+      ]
+    }
+  ],
+  "piers": [
+    "Saphan Hua Chang",
+    "Pratunam",
+    "Asoke-Petchaburi",
+    "Soi Thonglor",
+    "Mahadthai",
+    "The Mall Bangkapi"
+  ],
+  "photos": {
+    "hani-spa": {
+      "file": "hani-spa-seating.webp",
+      "captions": [
+        "Hani Spa 的足部按摩座位",
+        "Hani Spa 的足部按摩座位",
+        "Foot massage seating at Hani Spa"
+      ]
+    },
+    "kushiro": {
+      "file": "kushiro-sushi.webp",
+      "captions": [
+        "Kushiro 的壽司餐點",
+        "Kushiro 的寿司餐品",
+        "Sushi served at Kushiro"
+      ]
+    }
+  },
+  "categories": {
+    "silq": [
+      "住宿",
+      "住宿",
+      "Stay"
+    ],
+    "gan-da": [
+      "街頭美食",
+      "街头美食",
+      "Street food"
+    ],
+    "hani-spa": [
+      "按摩放鬆",
+      "按摩放松",
+      "Wellness"
+    ],
+    "chowchercof": [
+      "咖啡甜點",
+      "咖啡甜点",
+      "Coffee & desserts"
+    ],
+    "bang-sue-junction": [
+      "逛街",
+      "逛街",
+      "Shopping"
+    ],
+    "saen-saep": [
+      "交通",
+      "交通",
+      "Transport"
+    ]
+  },
+  "labels": {
+    "toc": [
+      "本期目錄",
+      "本期目录",
+      "In this guide"
+    ],
+    "open": [
+      "查看介紹",
+      "查看介绍",
+      "Read more"
+    ],
+    "all": [
+      "全部",
+      "全部",
+      "All"
+    ],
+    "bangkok": [
+      "曼谷篇",
+      "曼谷篇",
+      "Bangkok"
+    ],
+    "deal_line": [
+      "先把好康收進口袋",
+      "先把优惠收进口袋",
+      "Pocket these deals"
+    ],
+    "food_deal": [
+      "餐廳優惠",
+      "餐厅优惠",
+      "Dining deal"
+    ]
+  }
+}
