@@ -47,58 +47,71 @@ def ticket_icon(category):
             f'stroke-linejoin="round">{TICKET_ICONS[category]}</svg></span>')
 
 
-def deal_cards(deals, index):
+TRACK_LABELS = ("優惠票券", "优惠票券", "Offer tickets")
+SWIPE_LABELS = ("左右滑動收好康  →", "左右滑动收好康  →", "Swipe for more offers →")
+PREVIEW_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
+
+
+def deal_content(deals, index):
     cards = []
+    previews = []
     for key, offer in deals.items():
-        active = "url" in offer
-        attribute = "data-shared-deal" if active else "data-upcoming-deal"
+        icon = ticket_icon(offer["category"])
+        name = escape(offer["name"][index])
+        badge = escape(offer["badge"][index])
+        if "url" not in offer:
+            previews.append(
+                f'<li class="deal-preview {PREVIEW_COLORS[key]}" data-upcoming-deal="{key}">'
+                f'{icon}<span><strong>{name}</strong><small>{badge}</small></span></li>'
+            )
+            continue
         terms = f'<p><small>{escape(offer["terms"][index])}</small></p>' if "terms" in offer else ""
         title = f'<p><strong>{escape(offer["title"][index])}</strong></p>' if key == "kushiro" else ""
-        body = f'<p>{escape(offer["body"][index])}</p>' if active else ""
-        cta = (
+        cards.append(
+            f'<article class="deal-ticket deal-yellow" data-shared-deal="{key}" translate="no">'
+            f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
+            f'<h3>{name}</h3><div class="ticket-value">{badge}</div>{title}<p>{escape(offer["body"][index])}</p>{terms}'
             f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{offer["id"]}" '
             f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
-            if active else ""
+            '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
         )
-        value_class = "ticket-value" if active else "ticket-value ticket-status"
-        cards.append(
-            f'<article class="deal-ticket deal-yellow" {attribute}="{key}" translate="no">'
-            f'<div class="ticket-top">{ticket_icon(offer["category"])}'
-            f'<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
-            f'<h3>{escape(offer["name"][index])}</h3><div class="{value_class}">{escape(offer["badge"][index])}</div>'
-            f'{title}{body}{terms}{cta}<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
-        )
-    return "".join(cards)
+    upcoming = '<ul class="deal-previews" role="list">' + "".join(previews) + '</ul>' if previews else ""
+    return (f'<div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
+            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>{upcoming}')
 
 
 def update_ep01(source, deals, online, lang):
     start = "<!--hux-shared-deals:start-->"
     end = "<!--hux-shared-deals:end-->"
-    cards = deal_cards(deals, LOCALES.index(lang))
+    content = deal_content(deals, LOCALES.index(lang))
     if online:
-        templates = "".join(f'<template id="shared-deals-{code}">{deal_cards(deals, i)}</template>'
+        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, i)}</template>'
                             for i, code in enumerate(LOCALES))
-        switcher = """<script>(()=>{const cards=document.getElementById('hux-shared-deals'),
-root=document.documentElement;let locale;
+        switcher = """<script>(()=>{const deals=document.getElementById('hux-shared-deals'),
+root=document.documentElement;let locale=deals.dataset.locale;
 function sync(){const next=root.lang;const tpl=document.getElementById('shared-deals-'+next);
 if(!tpl||locale===next)return;locale=next;
-cards.querySelectorAll('article.deal-ticket').forEach(card=>card.remove());
-cards.prepend(tpl.content.cloneNode(true));}
+deals.replaceChildren(tpl.content.cloneNode(true));}
 sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang']});})();</script>"""
-        cards = '<div id="hux-shared-deals" style="display:contents" translate="no">' + cards + templates + '</div>' + switcher
+        content = (f'<div id="hux-shared-deals" data-locale="{lang}" translate="no">{content}</div>'
+                   + templates + switcher)
     ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
     source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
     source = source.replace("</head>", f'<style id="hux-shared-ticket-icons">{ticket_css}</style></head>', 1)
-    block = start + cards + end
-    # Migrate the original EP.01 placeholders into the cross-issue catalog.
-    legacy = r'(?:<article class="deal-ticket deal-(?:pink|blue) ticket-coming[^"]*">(?:(?!</article>).)*?</article>\s*)*'
-    if start in source:
-        return re.sub(re.escape(start) + ".*?" + re.escape(end) + legacy,
-                      lambda _: block, source, count=1, flags=re.S)
-    pattern = r'<article class="deal-ticket deal-yellow[^"]*">[^<]*(?:(?!</article>).)*?</article>'
-    updated, count = re.subn(pattern + legacy, lambda _: block, source, count=1, flags=re.S)
+    block = start + content + end
+    # Accept the original EP.01 track, the former ticket-only marker, and the full managed block.
+    track = r'<div\b[^>]*\bclass="deal-track"[^>]*>'
+    swipe = r'<p class="deal-swipe"[^>]*>.*?</p>'
+    managed = re.escape(start) + ".*?" + re.escape(end)
+    if start not in source:
+        pattern = track + ".*?" + swipe
+    elif re.search(track + re.escape(start), source):
+        pattern = track + managed + ".*?" + swipe
+    else:
+        pattern = managed
+    updated, count = re.subn(pattern, lambda _: block, source, count=1, flags=re.S)
     if count != 1 or "esimconnect.com.tw" not in source:
-        raise ValueError("EP.01 eSIM ticket template missing")
+        raise ValueError("EP.01 deals template missing")
     return updated
 
 
@@ -228,12 +241,11 @@ def render(data, deals, stories, galleries, lang, offline, donor, localized, leg
         f'<button type="button" data-filter="{escape(label, quote=True)}" aria-pressed="{str(n == 0).lower()}">{escape(label)}</button>'
         for n, label in enumerate(filter_names)
     )
-    deal_swipe = extract(localized, r'<p class="deal-swipe"[^>]*>.*?</p>')
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-<div class="deal-track">{deal_cards(deals, ix)}</div>{deal_swipe}</section>"""
+{deal_content(deals, ix)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>

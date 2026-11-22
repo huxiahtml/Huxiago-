@@ -22,7 +22,24 @@ const ticketStyles = page => page.locator('#deals .deal-track article').evaluate
   icon: card.querySelector('.ticket-icon svg')?.innerHTML,
   hasAction: Boolean(card.querySelector('.ticket-cta')),
 })));
-const widths = [390, 768, 979, 980, 1440];
+const previewStyles = page => page.locator('#deals .deal-previews li').evaluateAll(previews => previews.map(preview => ({
+  key: preview.dataset.upcomingDeal,
+  palette: preview.classList.contains('deal-pink') ? 'pink' : preview.classList.contains('deal-blue') ? 'blue' : null,
+  color: getComputedStyle(preview).backgroundColor,
+  height: preview.getBoundingClientRect().height,
+  icon: preview.querySelector('.ticket-icon svg')?.innerHTML,
+  insideTrack: Boolean(preview.closest('.deal-track')),
+  label: preview.querySelector('small')?.textContent,
+  hasAction: Boolean(preview.querySelector('a, button')),
+})));
+async function verifyPreviews(page, lang) {
+  const previews = await previewStyles(page);
+  assert.deepEqual(previews.map(x=>[x.key,x.palette]), [['transport','pink'],['dining-experiences','blue']]);
+  assert.equal(new Set(previews.map(x=>x.color)).size, 2);
+  const label = {'zh-Hant':'即將推出','zh-Hans':'即将推出',en:'Coming soon'}[lang];
+  assert(previews.every(x=>x.icon && x.label===label && x.height>0 && x.height<80 && !x.insideTrack && !x.hasAction), JSON.stringify({lang,previews}));
+}
+const widths = [390, 647, 768, 979, 980, 1440];
 
 (async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
 const b=await chromium.launch({executablePath:process.env.HUX_CHROME_BIN,headless:true});
@@ -34,12 +51,12 @@ await p.waitForFunction(l=>document.documentElement.lang===l,lang);
 await p.waitForFunction(l=>document.querySelector('#deals [data-shared-deal="kushiro"]').textContent.includes(l==='en'?'View Kushiro':l==='zh-Hans'?'查看 Kushiro':'看 Kushiro'),lang);
 await affirm(p,lang);assert.equal(await p.locator('details.card').count(),12);
 const tickets = await ticketStyles(p);
-assert.deepEqual(tickets.map(x=>x.key), ['esim','kushiro','transport','dining-experiences']);
-assert.deepEqual(tickets.map(x=>x.hasAction), [true,true,false,false]);
+assert.deepEqual(tickets.map(x=>x.key), ['esim','kushiro']);
+assert.deepEqual(tickets.map(x=>x.hasAction), [true,true]);
 assert(tickets.every(x=>x.icon && x.color==='rgb(251, 121, 46)'));
-assert.equal(new Set(tickets.map(x=>x.icon)).size, 3);
+assert.equal(new Set(tickets.map(x=>x.icon)).size, 2);
 const reference = new Map();
-for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));}
+for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));await verifyPreviews(p,lang);}
 await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click();
 await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);
@@ -52,6 +69,7 @@ assert.equal(await p.locator('#hani-spa .gallery figure').count(),3);
 for(const width of widths){
   await p.setViewportSize({width,height:900});
   assert.deepEqual(await railLayout(p), reference.get(width));
+  await verifyPreviews(p,lang);
   assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), 'page overflows at width '+width);
 }
 assert.deepEqual(await ticketStyles(p),tickets);
@@ -69,9 +87,10 @@ const c=await b.newContext({offline:true,viewport:{width:1440,height:900}});cons
 for(const name of [lang==='zh-Hant'?fs.readdirSync(root).find(n=>n.endsWith('vol01.html')):'HUXIAGO_Bangkok_EP01_'+lang+'.html',file]){
 await q.goto(pathToFileURL(path.join(root,name)).href);await affirm(q,lang);
 assert.deepEqual(await ticketStyles(q),tickets);
+await verifyPreviews(q,lang);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
 if(name===file){await q.locator('#hani-spa summary').click();assert(await q.locator('#hani-spa figure img').first().evaluate(async el=>{await el.decode();return el.naturalWidth>0}));}
 }await c.close();
-}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: matching rail and mobile layout, rail navigation and share, shared orange tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, transport story, two-way locale navigation, downloads and responsive widths verified.');
+}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: matching rail and mobile layout, rail navigation and share, shared orange tickets and compact pink/blue previews, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, transport story, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});
