@@ -44,5 +44,135 @@
       "布帘分隔的按摩床",
       "A massage bed behind a curtain"
     ]
+  ],
+  "silq": [
+    [
+      "silq-room.webp",
+      "Chiffon Studio 的客廳與休息區",
+      "Chiffon Studio 的客厅和休息区",
+      "The Chiffon Studio living area"
+    ],
+    [
+      "silq-vanity.webp",
+      "步入式衣帽間的靠窗梳妝台",
+      "步入式衣帽间的靠窗梳妆台",
+      "The window-side vanity in the walk-in closet"
+    ],
+    [
+      "silq-onsen.webp",
+      "THE QLUB 私人湯屋的浴池",
+      "THE QLUB 私人温泉的浴池",
+      "Baths at THE QLUB’s private onsen"
+    ],
+    [
+      "silq-meal.webp",
+      "小胡在房內用餐",
+      "小胡在客房用餐",
+      "Xiao Hu dining in the room"
+    ]
+  ],
+  "gan-da": [
+    [
+      "gan-da-kra-pao.webp",
+      "打拋豬肉末飯加荷包蛋",
+      "打抛猪肉末饭配煎蛋",
+      "Minced pork pad kra pao with a fried egg"
+    ],
+    [
+      "gan-da-canopy.webp",
+      "找店時留意有遮棚的入口",
+      "找店时留意有棚子的入口",
+      "Look for the canopy at the entrance"
+    ],
+    [
+      "gan-da-tom-yum.webp",
+      "可以兩人分著吃的冬蔭功蝦湯",
+      "适合两人分享的冬阴功虾汤",
+      "Tom yum shrimp soup to share"
+    ],
+    [
+      "gan-da-meal.webp",
+      "打拋飯、海鮮炒飯與冬蔭功",
+      "打抛饭、海鲜炒饭和冬阴功",
+      "Pad kra pao, seafood fried rice and tom yum"
+    ]
+  ],
+  "chowchercof": [
+    [
+      "chowchercof-facade.webp",
+      "Lat Phrao 16 巷內的白色雙層店面",
+      "Lat Phrao 16 巷里的白色两层店面",
+      "The white two-storey café in Lat Phrao Soi 16"
+    ],
+    [
+      "chowchercof-coco-ball.webp",
+      "靠窗桌上的椰子造型 Coco Ball",
+      "靠窗桌上的椰子造型 Coco Ball",
+      "The coconut-shaped Coco Ball by the window"
+    ],
+    [
+      "chowchercof-drinks.webp",
+      "靠窗桌上的泰奶與漸層抹茶",
+      "靠窗桌上的泰奶和渐层抹茶",
+      "Thai milk tea and layered matcha by the window"
+    ],
+    [
+      "chowchercof-garden.webp",
+      "庭園裡的戶外座位",
+      "庭院里的户外座位",
+      "Outdoor seating in the garden"
+    ]
+  ],
+  "bang-sue-junction": [
+    [
+      "bang-sue-junction-red-building.webp",
+      "洽圖洽紅樓的傍晚外觀",
+      "洽图洽红楼的傍晚外观",
+      "Bang Sue Junction’s Red Building at dusk"
+    ],
+    [
+      "bang-sue-junction-antiques.webp",
+      "古董店陳列的雕像和擺飾",
+      "古董店陈列的雕像和摆饰",
+      "Statues and ornaments in an antique shop"
+    ],
+    [
+      "bang-sue-junction-vintage.webp",
+      "古著店吊掛的二手衣服",
+      "复古服装店里挂着的二手衣服",
+      "Racks of secondhand clothes"
+    ],
+    [
+      "bang-sue-junction-egg-waffle.webp",
+      "五樓攤位的雞蛋仔",
+      "五楼摊位的鸡蛋仔",
+      "An egg waffle from the fifth-floor stall"
+    ]
+  ],
+  "saen-saep": [
+    [
+      "saen-saep-canal.webp",
+      "從橋上俯瞰盛桑運河與快船",
+      "从桥上俯瞰盛桑运河和快船",
+      "A canal boat on Khlong Saen Saep, seen from above"
+    ],
+    [
+      "saen-saep-pier.webp",
+      "碼頭旁停靠的運河快船",
+      "码头旁停靠的运河快船",
+      "An express boat pulled up to the pier"
+    ],
+    [
+      "saen-saep-fare.webp",
+      "小胡這趟在船上用泰銖現金付費",
+      "小胡这次在船上用泰铢现金付费",
+      "Xiao Hu paid the boat fare in cash on board"
+    ],
+    [
+      "saen-saep-onboard.webp",
+      "Kik 在快船上看運河風景",
+      "Kik 在快船上看运河风景",
+      "Kik looks out over the canal from the boat"
+    ]
   ]
 }

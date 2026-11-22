@@ -74,6 +74,28 @@ async function verifyPlaceholders(page) {
     cards.every(card => Math.abs(card.width-first.width)<=1 && Math.abs(card.height-first.height)<=1),
     'All four tickets share the same dimensions');
 }
+const galleryCounts = {
+  kushiro: 4, silq: 4, 'gan-da': 4, 'hani-spa': 3,
+  chowchercof: 4, 'bang-sue-junction': 4, 'saen-saep': 4,
+};
+async function verifyEp02Galleries(page) {
+  for (const [id, count] of Object.entries(galleryCounts)) {
+    const stop = page.locator('#' + id);
+    await stop.evaluate(details => { details.open = true; });
+    const images = stop.locator('.gallery figure img');
+    assert.equal(await images.count(), count, id + ' gallery photo count');
+    const complete = await images.evaluateAll(async items => {
+      return Promise.all(items.map(async img => {
+        img.loading = 'eager';
+        await img.decode();
+        const caption = img.closest('figure').querySelector('figcaption')?.textContent.trim();
+        return img.naturalWidth > 0 && img.src.startsWith('data:image/webp;') && caption && img.alt === caption;
+      }));
+    });
+    assert(complete.every(Boolean), id + ' photos, captions and alt text');
+    await stop.evaluate(details => { details.open = false; });
+  }
+}
 const widths = [390, 647, 768, 979, 980, 1200, 1440];
 
 (async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
@@ -96,11 +118,9 @@ await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click(
 await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
 assert.equal(await p.locator('#saen-saep .story-heading').count(),5);
+await verifyEp02Galleries(p);
 await p.locator('#kushiro summary').click();
-assert.equal(await p.locator('#kushiro .gallery figure').count(),4);
 assert(await p.locator('#kushiro .gallery').evaluate(el=>el.scrollWidth>el.clientWidth));
-await p.locator('#hani-spa summary').click();
-assert.equal(await p.locator('#hani-spa .gallery figure').count(),3);
 for(const width of widths){
   await p.setViewportSize({width,height:900});
   assert.deepEqual(await railLayout(p), reference.get(width));
@@ -128,7 +148,7 @@ assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q,lang);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
-if(name===file){await q.locator('#hani-spa summary').click();assert(await q.locator('#hani-spa figure img').first().evaluate(async el=>{await el.decode();return el.naturalWidth>0}));}
+if(name===file)await verifyEp02Galleries(q);
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station and coupon map links, matching rail and mobile layout, rail navigation and share, shared orange tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, transport story, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});
