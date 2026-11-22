@@ -2,7 +2,7 @@
   "locales": {
     "zh-Hant": [
       "曼谷口袋名單",
-      "六站先收入記事本，從一盤現炒打拋飯，到傍晚穿過曼谷的運河。",
+      "從板前壽司、現炒打拋飯，到傍晚穿過曼谷的運河。把下一趟想吃、想逛、想走的路收進口袋。",
       "站點",
       "優惠",
       "下載離線版",
@@ -23,7 +23,7 @@
     ],
     "zh-Hans": [
       "曼谷口袋名单",
-      "六站先收入记事本，从一盘现炒打抛饭，到傍晚穿过曼谷的运河。",
+      "从板前寿司、现炒打抛饭，到傍晚穿过曼谷的运河。把下一趟想吃、想逛、想走的路收进口袋。",
       "站点",
       "优惠",
       "下载离线版",
@@ -44,7 +44,7 @@
     ],
     "en": [
       "Bangkok Pocket Guide",
-      "Six stops to keep close, from wok-fried pad kra pao to an evening crossing on Bangkok’s canal.",
+      "From counter sushi and wok-fried pad kra pao to an evening ride on Bangkok’s canal. Save the places you want to eat, browse and explore on your next trip.",
       "Stops",
       "Deals",
       "Download offline guide",
@@ -64,11 +64,31 @@
       "Check current prices and opening details with each operator or venue."
     ]
   },
-  "offer": {
-    "name": "Kushiro Omakase & Japanese Dining",
-    "url": "https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago"
-  },
   "stops": [
+    {
+      "id": "kushiro",
+      "label": "01",
+      "name": "Kushiro Omakase & Japanese Dining",
+      "action": 12,
+      "url": "https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago",
+      "copy": [
+        [
+          "在曼谷留一餐給 Omakase",
+          "如果有一餐想慢慢吃，我會把 Kushiro 放進口袋。",
+          "先在 TableCheck 看時段、適用套餐和優惠條件，確認總價及取消規則再訂。"
+        ],
+        [
+          "在曼谷留一餐给 Omakase",
+          "如果有一餐想慢慢吃，我会把 Kushiro 加进口袋名单。",
+          "先在 TableCheck 看时段、适用套餐和优惠条件，确认总价及取消规则再订。"
+        ],
+        [
+          "Save one meal for omakase",
+          "If I wanted a meal to slow down over, I’d put Kushiro on the list.",
+          "Check seatings, applicable menus, offer terms, total price and cancellation rules on TableCheck before booking."
+        ]
+      ]
+    },
     {
       "id": "silq",
       "label": "02",
@@ -222,24 +242,6 @@
     "Mahadthai",
     "The Mall Bangkapi"
   ],
-  "photos": {
-    "hani-spa": {
-      "file": "hani-spa-seating.webp",
-      "captions": [
-        "Hani Spa 的足部按摩座位",
-        "Hani Spa 的足部按摩座位",
-        "Foot massage seating at Hani Spa"
-      ]
-    },
-    "kushiro": {
-      "file": "kushiro-sushi.webp",
-      "captions": [
-        "Kushiro 的壽司餐點",
-        "Kushiro 的寿司餐品",
-        "Sushi served at Kushiro"
-      ]
-    }
-  },
   "categories": {
     "silq": [
       "住宿",
@@ -270,6 +272,11 @@
       "交通",
       "交通",
       "Transport"
+    ],
+    "kushiro": [
+      "曼谷餐廳",
+      "曼谷餐厅",
+      "Dining"
     ]
   },
   "labels": {
