@@ -1,0 +1,78 @@
+{
+  "kushiro": [
+    {
+      "address": "Ratchada Soi 32, Chan Kasem, Chatuchak, Bangkok",
+      "url": "https://www.google.com/maps/search/?api=1&query=Kushiro%20Omakase%20and%20Japanese%20Dining%20Bangkok&query_place_id=ChIJK047Zr6d4jARTwoNhkIzsiA",
+      "source": "https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago"
+    }
+  ],
+  "silq": [
+    {
+      "address": "41 Sukhumvit 24 (Soi Kasem), Khlong Tan, Khlong Toei, Bangkok 10110",
+      "url": "https://maps.app.goo.gl/HhuE7xH75XE3i8hUA",
+      "source": "https://www.silqhotel.com/"
+    }
+  ],
+  "gan-da": [
+    {
+      "address": "Central Lat Phrao area, Chatuchak, Bangkok",
+      "url": "https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7",
+      "source": "https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7"
+    }
+  ],
+  "hani-spa": [
+    {
+      "address": "Lat Phrao Soi 1 entrance, near MRT Phahon Yothin, Chatuchak, Bangkok",
+      "url": "https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2%202%20Lat%20Phrao%20Soi%201%20Bangkok",
+      "source": "EP.02 Drive station 04"
+    }
+  ],
+  "chowchercof": [
+    {
+      "address": "66/11 Lat Phrao Soi 16, Chom Phon, Chatuchak, Bangkok 10900",
+      "url": "https://goo.gl/maps/jAHvcV3BWatrrB6L6",
+      "source": "https://www.chowchercof.com/"
+    }
+  ],
+  "bang-sue-junction": [
+    {
+      "address": "511 Kamphaeng Phet 2 Road, Chatuchak, Bangkok 10900",
+      "url": "https://www.google.com/maps/search/?api=1&query=Bangsue%20Junction%20Red%20Building%20511%20Kamphaeng%20Phet%202%20Road%20Chatuchak%20Bangkok",
+      "source": "https://metro.bemplc.co.th/Line-Maps?Line=1&Station=12&lang=en"
+    }
+  ],
+  "saen-saep": [
+    {
+      "address": "Pratunam Pier, Chaloem Lok Bridge, Ratchadamri Road, Bangkok",
+      "url": "https://www.google.com/maps/search/?api=1&query=Pratunam%20Pier%20%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%95%E0%B8%B9%E0%B8%99%E0%B9%89%E0%B8%B3%20Khlong%20Saen%20Saep%20Bangkok",
+      "source": "https://md.go.th/wp-content/uploads/2021/11/description_Saen_Saep_port63.pdf",
+      "labels": [
+        "上船｜水門碼頭",
+        "上船｜水门码头",
+        "Boarding · Pratunam Pier"
+      ]
+    },
+    {
+      "address": "The Mall Bangkapi Pier, behind The Mall Bangkapi, Lat Phrao Road, Bangkok",
+      "url": "https://www.google.com/maps/search/?api=1&query=The%20Mall%20Bangkapi%20Pier%20%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B0%E0%B8%9B%E0%B8%B4%20Bangkok",
+      "source": "https://md.go.th/wp-content/uploads/2021/11/description_Saen_Saep_port63.pdf",
+      "labels": [
+        "下船｜The Mall Bangkapi 碼頭",
+        "下船｜The Mall Bangkapi 码头",
+        "Arrival · The Mall Bangkapi Pier"
+      ]
+    }
+  ],
+  "muvmi-ari": [
+    {
+      "address": "BTS Ari Exit 4, La Villa Ari, Phahonyothin Road, Bangkok",
+      "url": "https://www.google.com/maps/search/?api=1&query=La%20Villa%20Ari%20BTS%20Ari%20Exit%204%20Bangkok",
+      "source": "https://sca.depa.or.th/wp-content/uploads/2022/09/10.00-%E0%B8%99.21-02BC19_MuvMi_compressed.pdf",
+      "labels": [
+        "上車點範例｜BTS Ari 4 號出口",
+        "上车点示例｜BTS Ari 4 号出口",
+        "Pickup example · BTS Ari Exit 4"
+      ]
+    }
+  ]
+}

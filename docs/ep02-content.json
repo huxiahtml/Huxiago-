@@ -117,8 +117,6 @@
       "id": "gan-da",
       "label": "03",
       "name": "Gan Da · กานดาอาหารตามสั่ง",
-      "action": 8,
-      "url": "https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7",
       "copy": [
         [
           "一盤現炒打拋飯",
@@ -141,8 +139,6 @@
       "id": "hani-spa",
       "label": "04",
       "name": "Hani Spa · Branch 2",
-      "action": 8,
-      "url": "https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20Lat%20Phrao%20Bangkok",
       "copy": [
         [
           "走累了，留一小時按摩",
@@ -165,8 +161,6 @@
       "id": "chowchercof",
       "label": "05",
       "name": "Chowchercof Cafe",
-      "action": 8,
-      "url": "https://goo.gl/maps/jAHvcV3BWatrrB6L6",
       "copy": [
         [
           "蓮花池旁吃一口椰香蛋糕",
@@ -189,8 +183,6 @@
       "id": "bang-sue-junction",
       "label": "06",
       "name": "Bang Sue Junction",
-      "action": 8,
-      "url": "https://www.google.com/maps/search/?api=1&query=Bang%20Sue%20Junction%20Red%20Building%20Chatuchak",
       "copy": [
         [
           "洽圖洽紅樓裡挖寶",

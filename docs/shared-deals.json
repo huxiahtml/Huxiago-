@@ -36,6 +36,7 @@
   },
   "kushiro": {
     "id": "ep02-kushiro-offer",
+    "location": "kushiro",
     "name": [
       "Kushiro Omakase & Japanese Dining",
       "Kushiro Omakase & Japanese Dining",
@@ -68,9 +69,9 @@
       "Eligible menus, dates and redemption terms are pending confirmation. Check the booking page for details."
     ],
     "cta": [
-      "看 Kushiro 預約方案",
-      "查看 Kushiro 预约方案",
-      "View Kushiro booking options"
+      "TableCheck 訂位",
+      "TableCheck 订位",
+      "Book on TableCheck"
     ],
     "category": "dining"
   },

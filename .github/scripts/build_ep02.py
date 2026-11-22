@@ -52,7 +52,57 @@ SWIPE_LABELS = ("左右滑動收好康  →", "左右滑动收好康  →", "Swi
 PREVIEW_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
 
 
-def deal_content(deals, index):
+def map_link(place, index, css_class="btn map-link"):
+    label = place["labels"][index] if "labels" in place else "Google Maps"
+    return (f'<a class="{css_class}" href="{escape(place["url"], quote=True)}" '
+            f'target="_blank" rel="noopener noreferrer">↗ {escape(label)}</a>')
+
+
+def location_block(places, index, action=""):
+    items = "".join(
+        f'<li><span class="location-address">{escape(place["address"])}</span>'
+        f'<div class="place-actions">{map_link(place, index)}{action}</div></li>'
+        for place in places
+    )
+    return f'<ul class="place-locations" role="list">{items}</ul>'
+
+
+def deal_actions(offer, locations, index):
+    primary = (
+        f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{offer["id"]}" '
+        f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
+    )
+    if "location" not in offer:
+        return f'<div class="ticket-actions">{primary}</div>'
+    place, = locations[offer["location"]]
+    address = f'<p class="ticket-address">{escape(place["address"])}</p>'
+    return f'{address}<div class="ticket-actions">{primary}{map_link(place, index, "map-link ticket-map")}</div>'
+
+
+def add_ep01_locations(source, locations, lang, online):
+    start, end = "<!--hux-muvmi-map:start-->", "<!--hux-muvmi-map:end-->"
+    place, = locations["muvmi-ari"]
+    index = LOCALES.index(lang)
+    if online:
+        # EP.01 switches language in place. Use its existing locale selectors.
+        labels = "".join(f'<span class="location-label" lang="{code}">↗ {escape(label)}</span>'
+                         for code, label in zip(LOCALES, place["labels"]))
+        link = f'<a class="btn map-link" href="{escape(place["url"], quote=True)}" target="_blank" rel="noopener noreferrer">{labels}</a>'
+        pins = (f'<ul class="place-locations" role="list" translate="no"><li><span class="location-address">'
+                f'{escape(place["address"])}</span>{link}</li></ul>')
+    else:
+        pins = location_block([place], index)
+    block = start + pins + end
+    if start in source:
+        return re.sub(re.escape(start) + ".*?" + re.escape(end), lambda _: block, source, count=1, flags=re.S)
+    pattern = r'(<details class="card" id="spot-6">(?:(?!</details>).)*?)(</div></details>)'
+    updated, count = re.subn(pattern, lambda m: m[1] + block + m[2], source, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError("EP.01 MuvMi card missing")
+    return updated
+
+
+def deal_content(deals, locations, index):
     cards = []
     previews = []
     for key, offer in deals.items():
@@ -67,12 +117,12 @@ def deal_content(deals, index):
             continue
         terms = f'<p><small>{escape(offer["terms"][index])}</small></p>' if "terms" in offer else ""
         title = f'<p><strong>{escape(offer["title"][index])}</strong></p>' if key == "kushiro" else ""
+        actions = deal_actions(offer, locations, index)
         cards.append(
             f'<article class="deal-ticket deal-yellow" data-shared-deal="{key}" translate="no">'
             f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
             f'<h3>{name}</h3><div class="ticket-value">{badge}</div>{title}<p>{escape(offer["body"][index])}</p>{terms}'
-            f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{offer["id"]}" '
-            f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
+            f'{actions}'
             '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
         )
     upcoming = '<ul class="deal-previews" role="list">' + "".join(previews) + '</ul>' if previews else ""
@@ -80,12 +130,12 @@ def deal_content(deals, index):
             f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>{upcoming}')
 
 
-def update_ep01(source, deals, online, lang):
+def update_ep01(source, deals, locations, online, lang):
     start = "<!--hux-shared-deals:start-->"
     end = "<!--hux-shared-deals:end-->"
-    content = deal_content(deals, LOCALES.index(lang))
+    content = deal_content(deals, locations, LOCALES.index(lang))
     if online:
-        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, i)}</template>'
+        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, locations, i)}</template>'
                             for i, code in enumerate(LOCALES))
         switcher = """<script>(()=>{const deals=document.getElementById('hux-shared-deals'),
 root=document.documentElement;let locale=deals.dataset.locale;
@@ -112,7 +162,7 @@ sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:
     updated, count = re.subn(pattern, lambda _: block, source, count=1, flags=re.S)
     if count != 1 or "esimconnect.com.tw" not in source:
         raise ValueError("EP.01 deals template missing")
-    return updated
+    return add_ep01_locations(updated, locations, lang, online)
 
 
 def extract(source, pattern):
@@ -176,7 +226,7 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     return rail, cover, mobile_nav, about, footer_link
 
 
-def render(data, deals, stories, galleries, lang, offline, donor, localized, legacy_download):
+def render(data, deals, stories, galleries, locations, lang, offline, donor, localized, legacy_download):
     t = data["locales"][lang]
     ix = LOCALES.index(lang)
     labels = {**data["layout"][lang], "bangkok": data["labels"]["bangkok"][ix]}
@@ -226,13 +276,20 @@ def render(data, deals, stories, galleries, lang, offline, donor, localized, leg
             f'<span class="toc-item-side"><span class="toc-item-tag">{cat}</span>'
             f'<span class="toc-item-action">{escape(data["labels"]["open"][ix])} →</span></span></a>'
         )
+        action = ""
+        if "url" in s:
+            action = (f'<a class="btn" href="{escape(s["url"], quote=True)}" target="_blank" '
+                      f'rel="noopener noreferrer">↗ {escape(t[s["action"]])}</a>')
+        places = locations[s["id"]]
+        maps = location_block(places, ix, action if len(places) == 1 else "")
+        route_action = action if len(places) > 1 else ""
         stops.append(
             f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
             f'<span class="head"><small>{s["label"]} · {cat}</small><h3>{name}</h3><p>{title}</p></span>'
             f'<span aria-hidden="true" class="chev">⌄</span></summary>'
             f'<div class="body">{media}<div class="story-copy">{story}{route}</div>'
             f'<div class="info"><b>{escape(t[17])}</b>{detail}</div>'
-            f'<a class="btn" href="{escape(s["url"], quote=True)}" target="_blank" rel="noopener noreferrer">↗ {escape(t[s["action"]])}</a>'
+            f'{maps}{route_action}'
             f'</div></details>'
         )
     all_label = data["labels"]["all"][ix]
@@ -245,7 +302,7 @@ def render(data, deals, stories, galleries, lang, offline, donor, localized, leg
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-{deal_content(deals, ix)}</section>"""
+{deal_content(deals, locations, ix)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>
@@ -298,14 +355,14 @@ def build():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail if outputs differ from the source data.")
     args = parser.parse_args()
-    data, deals, stories, galleries = (
+    data, deals, stories, galleries, locations = (
         json.loads((ROOT / "docs" / name).read_text(encoding="utf-8-sig"))
-        for name in ("ep02-content.json", "shared-deals.json", "ep02-stories.json", "ep02-galleries.json")
+        for name in ("ep02-content.json", "shared-deals.json", "ep02-stories.json", "ep02-galleries.json", "guide-locations.json")
     )
     index_path = ROOT / "index.html"
     index_original = index_path.read_bytes()
     donor = index_original.decode("utf-8")
-    outputs = {"index.html": update_ep01(donor, deals, True, "zh-Hant").encode("utf-8")}
+    outputs = {"index.html": update_ep01(donor, deals, locations, True, "zh-Hant").encode("utf-8")}
     ep01_files = {
         "zh-Hant": next(ROOT.glob("HUXIAGO_*_vol01.html")).name,
         "zh-Hans": "HUXIAGO_Bangkok_EP01_zh-Hans.html",
@@ -315,12 +372,12 @@ def build():
         source = (ROOT / name).read_bytes().decode("utf-8")
         if lang != "zh-Hant":
             source = source.replace("\r\n", "\n")
-        outputs[name] = update_ep01(source, deals, False, lang).encode("utf-8")
+        outputs[name] = update_ep01(source, deals, locations, False, lang).encode("utf-8")
     for lang, legacy_download in ep01_files.items():
         localized = outputs[legacy_download].decode("utf-8")
         for offline, name in ((False, f"ep02-{lang}.html"), (True, f"HUXIAGO_Bangkok_EP02_{lang}.html")):
             outputs[name] = render(
-                data, deals, stories, galleries, lang, offline, outputs["index.html"].decode("utf-8"),
+                data, deals, stories, galleries, locations, lang, offline, outputs["index.html"].decode("utf-8"),
                 localized, legacy_download).encode("utf-8")
     manifest_path = ROOT / "site-files.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))

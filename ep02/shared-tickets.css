@@ -14,7 +14,56 @@
 .visual-v7 .ticket-icon svg { display: block; width: 23px; height: 23px; }
 
 .visual-v7 .deal-ticket[data-shared-deal] .ticket-dots { margin-top: auto; }
-.visual-v7 .deal-ticket[data-shared-deal] .ticket-cta { margin-top: 0; }
+.visual-v7 .ticket-actions {
+  order: 2;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+.visual-v7 .ticket-actions .ticket-cta {
+  order: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  margin-top: 0;
+}
+.visual-v7 .ticket-map {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 8px;
+  border: 1.5px solid #245a46;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #245a46;
+  font-size: 12px;
+  font-weight: 850;
+  text-decoration: none;
+}
+.visual-v7 .ticket-map:hover { background: #fff2b5; }
+.visual-v7 .ticket-address { font-size: 12px; }
+.visual-v7 .place-locations {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+}
+.visual-v7 .location-address {
+  display: block;
+  font-size: .875rem;
+  overflow-wrap: anywhere;
+}
+.visual-v7 .place-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.visual-v7 .location-label { display: none; }
+html[lang="zh-Hant"] .location-label[lang="zh-Hant"],
+html[lang="zh-Hans"] .location-label[lang="zh-Hans"],
+html[lang="en"] .location-label[lang="en"] { display: inline; }
 .visual-v7 .deal-ticket[data-shared-deal] p:last-of-type { margin-bottom: 17px; }
 
 .visual-v7 .deal-previews {
