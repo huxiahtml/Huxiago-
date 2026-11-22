@@ -82,68 +82,49 @@ html[lang="zh-Hans"] .location-label[lang="zh-Hans"],
 html[lang="en"] .location-label[lang="en"] { display: inline; }
 .visual-v7 .deal-ticket[data-shared-deal] p:last-of-type { margin-bottom: 17px; }
 
-.visual-v7 .deal-previews {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-  gap: 8px;
-  margin: 12px 2px 0;
-  padding: 0;
-  list-style: none;
-}
-.visual-v7 .deal-preview {
+.visual-v7 .deal-ticket.ticket-coming {
   display: flex;
-  align-items: center;
-  gap: 9px;
-  min-width: 0;
-  padding: 7px 10px;
-  border: 1px solid #2d2926;
-  border-radius: 10px;
-  color: #2d2926;
-  font-size: 13px;
-  line-height: 1.35;
+  flex-direction: column;
 }
-.visual-v7 .deal-preview .ticket-icon {
-  width: 26px;
-  height: 26px;
-  background: #fffaf0;
+.visual-v7 .ticket-coming .ticket-icon {
+  background: #2d2926;
+  color: #fffaf0;
+  border-color: #2d2926;
   box-shadow: none;
 }
-.visual-v7 .deal-preview .ticket-icon svg { width: 17px; height: 17px; }
-.visual-v7 .deal-preview small { display: block; font-size: 11px; }
+.visual-v7 .ticket-coming .ticket-icon [fill="#fffaf0"] { fill: #2d2926; }
+.visual-v7 .ticket-coming .ticket-value {
+  margin-block: auto;
+  max-width: 8ch;
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.04;
+}
 
 @media (min-width: 980px) {
   .visual-v7 .deal-track {
     grid-auto-flow: row;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-columns: auto;
+    grid-auto-rows: 1fr;
   }
   .visual-v7 .deal-swipe { display: none; }
 }
 
-/* The original desktop offer section reserved three ticket-width columns. */
-@media (min-width: 1200px) {
-  .visual-v7 .deal-layout {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: start;
-    gap: 14px;
-    margin: 14px 8px 0 2px;
-  }
+@media (min-width: 1400px) {
   .visual-v7 .deal-track {
-    grid-column: span 2;
-    margin: 0;
-    padding: 2px 0 8px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  .visual-v7 .deal-previews {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
-    margin: 2px 0 0;
+  .visual-v7 .deal-yellow .ticket-eyebrow { font-size: 12px !important; padding-inline: 6px; }
+  .visual-v7 [data-shared-deal="kushiro"] .ticket-value { font-size: 58px; }
+  .visual-v7 [data-shared-deal="kushiro"] .ticket-actions {
+    gap: 6px;
   }
-  .visual-v7 .deal-preview {
-    height: 72px;
-    padding-inline: 14px;
-    border-width: 1.5px;
-    border-radius: 15px;
-    box-shadow: 5px 6px 0 #2d2926;
+  .visual-v7 [data-shared-deal="kushiro"] .ticket-cta {
+    padding-inline: 8px;
+    font-size: 12px !important;
+  }
+  .visual-v7 [data-shared-deal="kushiro"] .ticket-map {
+    padding-inline: 6px;
+    font-size: 11px;
   }
 }

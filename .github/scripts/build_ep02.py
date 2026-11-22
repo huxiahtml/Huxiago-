@@ -49,7 +49,7 @@ def ticket_icon(category):
 
 TRACK_LABELS = ("優惠票券", "优惠票券", "Offer tickets")
 SWIPE_LABELS = ("左右滑動收好康  →", "左右滑动收好康  →", "Swipe for more offers →")
-PREVIEW_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
+UPCOMING_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
 
 
 def map_link(place, index, css_class="btn map-link"):
@@ -104,29 +104,30 @@ def add_ep01_locations(source, locations, lang, online):
 
 def deal_content(deals, locations, index):
     cards = []
-    previews = []
     for key, offer in deals.items():
         icon = ticket_icon(offer["category"])
         name = escape(offer.get("ticket_name", offer["name"][index]))
         badge = escape(offer["badge"][index])
+        label = escape(offer["label"][index])
         if "url" not in offer:
-            previews.append(
-                f'<li class="deal-preview {PREVIEW_COLORS[key]}" data-upcoming-deal="{key}">'
-                f'{icon}<span><strong>{name}</strong><small>{badge}</small></span></li>'
+            cards.append(
+                f'<article class="deal-ticket {UPCOMING_COLORS[key]} ticket-coming" data-upcoming-deal="{key}">'
+                f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{label}</span></div>'
+                f'<h3>{name}</h3><div class="ticket-value">{badge}</div>'
+                '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
             )
             continue
         terms = f'<p class="ticket-terms">{escape(offer["terms"][index])}</p>' if "terms" in offer else ""
         actions = deal_actions(offer, locations, index)
         cards.append(
             f'<article class="deal-ticket deal-yellow" data-shared-deal="{key}" translate="no">'
-            f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{escape(offer["label"][index])}</span></div>'
+            f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{label}</span></div>'
             f'<h3>{name}</h3><div class="ticket-value">{badge}</div><p>{escape(offer["body"][index])}</p>{terms}'
             f'{actions}'
             '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
         )
-    upcoming = '<ul class="deal-previews" role="list">' + "".join(previews) + '</ul>' if previews else ""
-    return (f'<div class="deal-layout"><div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
-            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>{upcoming}</div>')
+    return (f'<div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
+            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>')
 
 
 def update_ep01(source, deals, locations, online, lang):
