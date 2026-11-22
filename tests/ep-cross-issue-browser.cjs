@@ -26,7 +26,20 @@ async function verifyMaps(page, issue) {
   assert.equal(await page.locator('#kushiro .place-actions a[href*="tablecheck.com"]').getAttribute('href'), links[1]);
   assert.equal(await page.locator('#silq .place-actions a[href="https://www.silqhotel.com/"]').count(), 1);
 }
-const affirm=async(page,locale)=>{const cards=page.locator('#deals [data-shared-deal]'); assert.equal(await cards.count(),2);assert.deepEqual(await cards.locator('.ticket-cta').evaluateAll(a=>a.map(x=>x.getAttribute('href'))),links);assert((await cards.nth(1).innerText()).includes(locale==='en'?'20% off':'8 折'))};
+const affirm=async(page,locale)=>{const cards=page.locator('#deals [data-shared-deal]'); assert.equal(await cards.count(),2);assert.deepEqual(await cards.locator('.ticket-cta[data-cta-id]').evaluateAll(a=>a.map(x=>x.getAttribute('href'))),links);assert((await cards.nth(1).innerText()).includes(locale==='en'?'20% off':'8 折'))};
+async function verifySharedOfferStyle(page, lang) {
+  const expected = {'zh-Hant':'餐廳優惠', 'zh-Hans':'餐厅优惠', en:'Dining deal'};
+  const kushiro = page.locator('#deals [data-shared-deal="kushiro"]');
+  assert.equal(await kushiro.locator('.ticket-eyebrow').textContent(), expected[lang]);
+  const styles = await page.locator('#deals [data-shared-deal]').evaluateAll(cards => {
+    const rules = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'color', 'backgroundColor', 'textShadow'];
+    return cards.map(card => ['h3', '.ticket-value', '.ticket-eyebrow', '.ticket-cta'].map(sel => {
+      const style = getComputedStyle(card.querySelector(sel));
+      return rules.map(rule => style[rule]);
+    }));
+  });
+  assert.deepEqual(styles[0], styles[1], 'Kushiro uses the eSIM active ticket typography and palette');
+}
 const railLayout = page => page.evaluate(() => {
   const rail = document.querySelector('.desktop-rail');
   return {
@@ -78,7 +91,7 @@ assert.deepEqual(tickets.map(x=>x.hasAction), [true,true]);
 assert(tickets.every(x=>x.icon && x.color==='rgb(251, 121, 46)'));
 assert.equal(new Set(tickets.map(x=>x.icon)).size, 2);
 const reference = new Map();
-for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));await verifyPlaceholders(p);}
+for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));await verifyPlaceholders(p);await verifySharedOfferStyle(p,lang);}
 await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click();
 await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
@@ -91,7 +104,7 @@ assert.equal(await p.locator('#hani-spa .gallery figure').count(),3);
 for(const width of widths){
   await p.setViewportSize({width,height:900});
   assert.deepEqual(await railLayout(p), reference.get(width));
-  await verifyPlaceholders(p);
+  await verifyPlaceholders(p);await verifySharedOfferStyle(p,lang);
   const [booking, map] = await p.locator('[data-shared-deal="kushiro"] .ticket-actions a').evaluateAll(links =>
     links.map(el=>{const box=el.getBoundingClientRect();return {top:box.top,left:box.left,right:box.right};}));
   assert(booking.right <= map.left && booking.top === map.top, 'map sits beside booking at width '+width);
@@ -112,7 +125,7 @@ const c=await b.newContext({offline:true,viewport:{width:1440,height:900}});cons
 for(const name of [lang==='zh-Hant'?fs.readdirSync(root).find(n=>n.endsWith('vol01.html')):'HUXIAGO_Bangkok_EP01_'+lang+'.html',file]){
 await q.goto(pathToFileURL(path.join(root,name)).href);await affirm(q,lang);await verifyMaps(q,name===file?2:1);
 assert.deepEqual(await ticketStyles(q),tickets);
-await verifyPlaceholders(q);
+await verifyPlaceholders(q);await verifySharedOfferStyle(q,lang);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
 if(name===file){await q.locator('#hani-spa summary').click();assert(await q.locator('#hani-spa figure img').first().evaluate(async el=>{await el.decode();return el.naturalWidth>0}));}

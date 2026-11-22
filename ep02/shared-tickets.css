@@ -27,37 +27,14 @@
   width: auto;
   margin-top: 0;
 }
-.visual-v7 .ticket-map {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-  padding: 8px;
-  border: 1.5px solid #245a46;
-  border-radius: 12px;
-  background: #fffaf0;
-  color: #245a46;
-  font-size: 12px;
-  font-weight: 850;
-  text-decoration: none;
+/* Side-by-side actions use the same button treatment and share the available width. */
+.visual-v7 .ticket-actions { min-height: 62px; }
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-cta {
+  flex: 3 1 0;
+  padding-inline: 7px;
 }
-.visual-v7 .ticket-map:hover { background: #fff2b5; }
-.visual-v7 [data-shared-deal="kushiro"] .ticket-value {
-  font-size: clamp(42px, 13vw, 68px);
-  line-height: 1.05;
-  white-space: nowrap;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] p {
-  margin: 8px 0 0;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] :is(.ticket-terms, .ticket-address) {
-  color: #29231d !important;
-  font-size: 12px;
-  font-weight: 650;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-address { margin-bottom: 14px; }
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-map {
-  border-radius: 999px;
-}
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-cta::after { display: none; }
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-map { flex-grow: 2; }
 .visual-v7 .place-locations {
   display: grid;
   gap: 10px;
@@ -115,16 +92,4 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .visual-v7 .deal-yellow .ticket-eyebrow { font-size: 12px !important; padding-inline: 6px; }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-value { font-size: 58px; }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-actions {
-    gap: 6px;
-  }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-cta {
-    padding-inline: 8px;
-    font-size: 12px !important;
-  }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-map {
-    padding-inline: 6px;
-    font-size: 11px;
-  }
 }

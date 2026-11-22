@@ -1248,37 +1248,14 @@ html[lang="zh-Hans"] body.visual-v7 *::after{
   width: auto;
   margin-top: 0;
 }
-.visual-v7 .ticket-map {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-  padding: 8px;
-  border: 1.5px solid #245a46;
-  border-radius: 12px;
-  background: #fffaf0;
-  color: #245a46;
-  font-size: 12px;
-  font-weight: 850;
-  text-decoration: none;
+/* Side-by-side actions use the same button treatment and share the available width. */
+.visual-v7 .ticket-actions { min-height: 62px; }
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-cta {
+  flex: 3 1 0;
+  padding-inline: 7px;
 }
-.visual-v7 .ticket-map:hover { background: #fff2b5; }
-.visual-v7 [data-shared-deal="kushiro"] .ticket-value {
-  font-size: clamp(42px, 13vw, 68px);
-  line-height: 1.05;
-  white-space: nowrap;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] p {
-  margin: 8px 0 0;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] :is(.ticket-terms, .ticket-address) {
-  color: #29231d !important;
-  font-size: 12px;
-  font-weight: 650;
-}
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-address { margin-bottom: 14px; }
-.visual-v7 .deal-yellow[data-shared-deal="kushiro"] .ticket-map {
-  border-radius: 999px;
-}
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-cta::after { display: none; }
+.visual-v7 .ticket-actions:has(.ticket-map) .ticket-map { flex-grow: 2; }
 .visual-v7 .place-locations {
   display: grid;
   gap: 10px;
@@ -1336,18 +1313,6 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .visual-v7 .deal-yellow .ticket-eyebrow { font-size: 12px !important; padding-inline: 6px; }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-value { font-size: 58px; }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-actions {
-    gap: 6px;
-  }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-cta {
-    padding-inline: 8px;
-    font-size: 12px !important;
-  }
-  .visual-v7 [data-shared-deal="kushiro"] .ticket-map {
-    padding-inline: 6px;
-    font-size: 11px;
-  }
 }
 
 /* EP.02 content exceptions layered over the production EP.01 stylesheet. */
@@ -1385,7 +1350,7 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">Pocket these deals</h2>
-<div class="deal-track" aria-label="Offer tickets"><article class="deal-ticket deal-yellow" data-shared-deal="esim" translate="no"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.7" width="12" height="18.6" rx="3.2" fill="#fffaf0"/><path d="M10 6h4m-3 12h2"/><path d="M9.6 12.1a3.8 3.8 0 0 1 4.8 0m-3.3 1.8a1.5 1.5 0 0 1 1.8 0"/></svg></span><span class="ticket-eyebrow">HUXIAGO’s pick</span></div><h3>Thailand eSIM</h3><div class="ticket-value">5% off</div><p>Plans with unlimited True 4G data start at NT$99, with a stable, low-latency connection for services such as ChatGPT. Over 800 plans were sold in six months. The exclusive HUXIAGO 5% discount is applied automatically at checkout.</p><div class="ticket-actions"><a class="ticket-cta" href="https://esimconnect.com.tw/#/access/esimbuy?region=泰國&amp;referencecode=HUXIAGO" data-cta-id="huxiago-esim" target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">Explore Thailand eSIM plans</span></a></div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-yellow" data-shared-deal="kushiro" translate="no"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/><path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/></svg></span><span class="ticket-eyebrow">Xiao Hu’s dining deal</span></div><h3>Kushiro Omakase</h3><div class="ticket-value">20% off</div><p>I’d save one Bangkok meal for omakase at the counter.</p><p class="ticket-terms">Discount and terms pending merchant confirmation.</p><p class="ticket-address">Ratchada Soi 32, Chan Kasem, Chatuchak, Bangkok</p><div class="ticket-actions"><a class="ticket-cta" href="https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago" data-cta-id="ep02-kushiro-offer" target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">Book on TableCheck</span></a><a class="map-link ticket-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kushiro%20Omakase%20and%20Japanese%20Dining%20Bangkok&amp;query_place_id=ChIJK047Zr6d4jARTwoNhkIzsiA" target="_blank" rel="noopener noreferrer">↗ Google Maps</a></div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-pink ticket-coming" data-upcoming-deal="transport"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m5 11 1.5-4A2 2 0 0 1 8.4 6h7.2a2 2 0 0 1 1.9 1l1.5 4M10 6V3.5h4V6" fill="#fffaf0"/><rect x="3.5" y="10" width="17" height="8" rx="3" fill="#fffaf0"/><path d="M6 18v2m12-2v2M7 14h1m8 0h1"/></svg></span><span class="ticket-eyebrow">Transport deals</span></div><h3>Getting around Bangkok</h3><div class="ticket-value">COMING SOON</div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-blue ticket-coming" data-upcoming-deal="dining-experiences"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/><path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/></svg></span><span class="ticket-eyebrow">Food &amp; experiences</span></div><h3>Dining &amp; experiences</h3><div class="ticket-value">COMING SOON</div><div aria-hidden="true" class="ticket-dots">• • •</div></article></div><p class="deal-swipe">Swipe for more offers →</p></section>
+<div class="deal-track" aria-label="Offer tickets"><article class="deal-ticket deal-yellow" data-shared-deal="esim" translate="no"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.7" width="12" height="18.6" rx="3.2" fill="#fffaf0"/><path d="M10 6h4m-3 12h2"/><path d="M9.6 12.1a3.8 3.8 0 0 1 4.8 0m-3.3 1.8a1.5 1.5 0 0 1 1.8 0"/></svg></span><span class="ticket-eyebrow">HUXIAGO’s pick</span></div><h3>Thailand eSIM</h3><div class="ticket-value">5% off</div><p>Plans with unlimited True 4G data start at NT$99, with a stable, low-latency connection for services such as ChatGPT. Over 800 plans were sold in six months. The exclusive HUXIAGO 5% discount is applied automatically at checkout.</p><div class="ticket-actions"><a class="ticket-cta" href="https://esimconnect.com.tw/#/access/esimbuy?region=泰國&amp;referencecode=HUXIAGO" data-cta-id="huxiago-esim" target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">Explore Thailand eSIM plans</span></a></div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-yellow" data-shared-deal="kushiro" translate="no"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/><path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/></svg></span><span class="ticket-eyebrow">Dining deal</span></div><h3>Kushiro Omakase</h3><div class="ticket-value">20% off</div><p>I’d save one Bangkok meal for omakase at the counter.</p><p class="ticket-terms">Discount and terms pending merchant confirmation.</p><p class="ticket-address">Ratchada Soi 32, Chan Kasem, Chatuchak, Bangkok</p><div class="ticket-actions"><a class="ticket-cta" href="https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago" data-cta-id="ep02-kushiro-offer" target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">Book on TableCheck</span></a><a class="ticket-cta map-link ticket-map" href="https://www.google.com/maps/search/?api=1&amp;query=Kushiro%20Omakase%20and%20Japanese%20Dining%20Bangkok&amp;query_place_id=ChIJK047Zr6d4jARTwoNhkIzsiA" target="_blank" rel="noopener noreferrer">Google Maps</a></div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-pink ticket-coming" data-upcoming-deal="transport"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m5 11 1.5-4A2 2 0 0 1 8.4 6h7.2a2 2 0 0 1 1.9 1l1.5 4M10 6V3.5h4V6" fill="#fffaf0"/><rect x="3.5" y="10" width="17" height="8" rx="3" fill="#fffaf0"/><path d="M6 18v2m12-2v2M7 14h1m8 0h1"/></svg></span><span class="ticket-eyebrow">Transport deals</span></div><h3>Getting around Bangkok</h3><div class="ticket-value">COMING SOON</div><div aria-hidden="true" class="ticket-dots">• • •</div></article><article class="deal-ticket deal-blue ticket-coming" data-upcoming-deal="dining-experiences"><div class="ticket-top"><span class="ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/><path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/></svg></span><span class="ticket-eyebrow">Food &amp; experiences</span></div><h3>Dining &amp; experiences</h3><div class="ticket-value">COMING SOON</div><div aria-hidden="true" class="ticket-dots">• • •</div></article></div><p class="deal-swipe">Swipe for more offers →</p></section>
 <nav aria-label="In this guide" class="toc" id="toc">
 <h2 class="sec-title">In this guide</h2>
 <div class="toc-filters" aria-label="Filter the contents by category"><button type="button" data-filter="All" aria-pressed="true">All</button><button type="button" data-filter="Dining" aria-pressed="false">Dining</button><button type="button" data-filter="Stay" aria-pressed="false">Stay</button><button type="button" data-filter="Street food" aria-pressed="false">Street food</button><button type="button" data-filter="Wellness" aria-pressed="false">Wellness</button><button type="button" data-filter="Coffee &amp; desserts" aria-pressed="false">Coffee &amp; desserts</button><button type="button" data-filter="Shopping" aria-pressed="false">Shopping</button><button type="button" data-filter="Transport" aria-pressed="false">Transport</button></div>

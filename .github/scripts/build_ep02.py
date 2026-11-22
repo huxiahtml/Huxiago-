@@ -55,7 +55,7 @@ UPCOMING_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
 def map_link(place, index, css_class="btn map-link"):
     label = place["labels"][index] if "labels" in place else "Google Maps"
     return (f'<a class="{css_class}" href="{escape(place["url"], quote=True)}" '
-            f'target="_blank" rel="noopener noreferrer">↗ {escape(label)}</a>')
+            f'target="_blank" rel="noopener noreferrer">{escape(label) if "ticket-cta" in css_class else "↗ " + escape(label)}</a>')
 
 
 def location_block(places, index, action=""):
@@ -76,7 +76,7 @@ def deal_actions(offer, locations, index):
         return f'<div class="ticket-actions">{primary}</div>'
     place, = locations[offer["location"]]
     address = f'<p class="ticket-address">{escape(place["address"])}</p>'
-    return f'{address}<div class="ticket-actions">{primary}{map_link(place, index, "map-link ticket-map")}</div>'
+    return f'{address}<div class="ticket-actions">{primary}{map_link(place, index, "ticket-cta map-link ticket-map")}</div>'
 
 
 def add_ep01_locations(source, locations, lang, online):
