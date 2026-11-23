@@ -35,6 +35,8 @@ TICKET_ICONS = {
              '<path d="M10 6h4m-3 12h2"/><path d="M9.6 12.1a3.8 3.8 0 0 1 4.8 0m-3.3 1.8a1.5 1.5 0 0 1 1.8 0"/>',
     "dining": '<path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/>'
               '<path d="M18 20V4c-3 1-4.5 4-4.5 7.5V13H18" fill="#fffaf0"/>',
+    "hotel": '<path d="M4 12V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M8 12V9h4v3m0 0V9h4v3M3 18v2m18-2v2"/>'
+             '<rect x="2.5" y="12" width="19" height="6" rx="2"/>',
     "taxi": '<path d="m5 11 1.5-4A2 2 0 0 1 8.4 6h7.2a2 2 0 0 1 1.9 1l1.5 4M10 6V3.5h4V6" fill="#fffaf0"/>'
             '<rect x="3.5" y="10" width="17" height="8" rx="3" fill="#fffaf0"/>'
             '<path d="M6 18v2m12-2v2M7 14h1m8 0h1"/>',
@@ -52,10 +54,10 @@ SWIPE_LABELS = ("左右滑動收好康  →", "左右滑动收好康  →", "Swi
 UPCOMING_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
 
 
-def map_link(place, index, css_class="btn map-link"):
+def map_link(place, index):
     label = place["labels"][index] if "labels" in place else "Google Maps"
-    return (f'<a class="{css_class}" href="{escape(place["url"], quote=True)}" '
-            f'target="_blank" rel="noopener noreferrer">{escape(label) if "ticket-cta" in css_class else "↗ " + escape(label)}</a>')
+    return (f'<a class="btn map-link" href="{escape(place["url"], quote=True)}" '
+            f'target="_blank" rel="noopener noreferrer">↗ {escape(label)}</a>')
 
 
 def location_block(places, index, action=""):
@@ -65,18 +67,6 @@ def location_block(places, index, action=""):
         for place in places
     )
     return f'<ul class="place-locations" role="list">{items}</ul>'
-
-
-def deal_actions(offer, locations, index):
-    primary = (
-        f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{offer["id"]}" '
-        f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
-    )
-    if "location" not in offer:
-        return f'<div class="ticket-actions">{primary}</div>'
-    place, = locations[offer["location"]]
-    address = f'<p class="ticket-address">{escape(place["address"])}</p>'
-    return f'{address}<div class="ticket-actions">{primary}{map_link(place, index, "ticket-cta map-link ticket-map")}</div>'
 
 
 def add_ep01_locations(source, locations, lang, online):
@@ -102,7 +92,7 @@ def add_ep01_locations(source, locations, lang, online):
     return updated
 
 
-def deal_content(deals, locations, index):
+def deal_content(deals, index):
     cards = []
     for key, offer in deals.items():
         icon = ticket_icon(offer["category"])
@@ -117,25 +107,32 @@ def deal_content(deals, locations, index):
                 '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
             )
             continue
-        terms = f'<p class="ticket-terms">{escape(offer["terms"][index])}</p>' if "terms" in offer else ""
-        actions = deal_actions(offer, locations, index)
-        cards.append(
-            f'<article class="deal-ticket deal-yellow" data-shared-deal="{key}" translate="no">'
-            f'<div class="ticket-top">{icon}<span class="ticket-eyebrow">{label}</span></div>'
-            f'<h3>{name}</h3><div class="ticket-value">{badge}</div><p>{escape(offer["body"][index])}</p>{terms}'
-            f'{actions}'
-            '<div aria-hidden="true" class="ticket-dots">• • •</div></article>'
+        if "photo" in offer:
+            src = data_uri(ROOT / "ep02" / offer["photo"], "image/webp")
+            middle = f'<div class="ticket-photo"><img src="{src}" alt="" loading="lazy" decoding="async"></div>'
+        else:
+            middle = f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
+        code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""
+        primary = (
+            f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{escape(offer["id"])}" '
+            f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
         )
-    return (f'<div class="deal-track" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
+        cards.append(
+            f'<article class="deal-ticket ticket-feature" data-shared-deal="{key}" translate="no">'
+            f'<div class="ticket-top">{icon}<h3>{name}</h3></div>{middle}'
+            f'<div class="ticket-discount"><div class="ticket-value">{badge}</div>{code}</div>'
+            f'{primary}</article>'
+        )
+    return (f'<div class="deal-track" role="region" tabindex="0" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
             f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>')
 
 
 def update_ep01(source, deals, locations, online, lang):
     start = "<!--hux-shared-deals:start-->"
     end = "<!--hux-shared-deals:end-->"
-    content = deal_content(deals, locations, LOCALES.index(lang))
+    content = deal_content(deals, LOCALES.index(lang))
     if online:
-        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, locations, i)}</template>'
+        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, i)}</template>'
                             for i, code in enumerate(LOCALES))
         switcher = """<script>(()=>{const deals=document.getElementById('hux-shared-deals'),
 root=document.documentElement;let locale=deals.dataset.locale;
@@ -334,7 +331,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-{deal_content(deals, locations, ix)}</section>"""
+{deal_content(deals, ix)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>

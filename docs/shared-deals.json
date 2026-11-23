@@ -69,7 +69,37 @@
       "Book on TableCheck"
     ],
     "category": "dining",
-    "ticket_name": "Kushiro Omakase"
+    "ticket_name": "Kushiro Omakase",
+    "photo": "kushiro-sushi.webp"
+  },
+  "silq": {
+    "id": "ep02-silq-offer",
+    "location": "silq",
+    "name": [
+      "SILQ Hotel & Residence Bangkok",
+      "SILQ Hotel & Residence Bangkok",
+      "SILQ Hotel & Residence Bangkok"
+    ],
+    "ticket_name": "SILQ Hotel",
+    "url": "https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI",
+    "badge": [
+      "9 折",
+      "9 折",
+      "10% off"
+    ],
+    "label": [
+      "住宿優惠",
+      "住宿优惠",
+      "Stay deal"
+    ],
+    "cta": [
+      "九折訂房",
+      "九折订房",
+      "Book with 10% off"
+    ],
+    "category": "hotel",
+    "code": "HUXIATHAI",
+    "photo": "silq-room.webp"
   },
   "transport": {
     "category": "taxi",
