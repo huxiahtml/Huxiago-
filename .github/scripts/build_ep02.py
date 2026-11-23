@@ -280,6 +280,9 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         if "url" in s:
             action = (f'<a class="btn" href="{escape(s["url"], quote=True)}" target="_blank" '
                       f'rel="noopener noreferrer">↗ {escape(t[s["action"]])}</a>')
+        for related in s.get("related", []):
+            action += (f'<a class="btn" href="{escape(related["url"], quote=True)}" target="_blank" '
+                       f'rel="noopener noreferrer">↗ {escape(related["labels"][ix])}</a>')
         places = locations[s["id"]]
         maps = location_block(places, ix, action if len(places) == 1 else "")
         route_action = action if len(places) > 1 else ""

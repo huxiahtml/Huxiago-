@@ -25,6 +25,9 @@ async function verifyMaps(page, issue) {
   }
   assert.equal(await page.locator('#kushiro .place-actions a[href*="tablecheck.com"]').getAttribute('href'), links[1]);
   assert.equal(await page.locator('#silq .place-actions a[href="https://www.silqhotel.com/"]').count(), 1);
+  assert.equal(await page.locator('#kushiro .place-actions a[href="https://www.instagram.com/p/DdYtIjNJEow/"]').count(), 1);
+  assert.equal(await page.locator('#silq .place-actions a[href="https://www.instagram.com/reel/DfIXxHiTF4C/"]').count(), 1);
+  assert.match(await page.locator('#silq .story-copy').textContent(), /2027.*HUXIATHAI|HUXIATHAI.*2027/);
 }
 const affirm=async(page,locale)=>{const cards=page.locator('#deals [data-shared-deal]'); assert.equal(await cards.count(),2);assert.deepEqual(await cards.locator('.ticket-cta[data-cta-id]').evaluateAll(a=>a.map(x=>x.getAttribute('href'))),links);assert((await cards.nth(1).innerText()).includes(locale==='en'?'20% off':'8 折'))};
 async function verifySharedOfferStyle(page, lang) {
@@ -75,8 +78,8 @@ async function verifyPlaceholders(page) {
     'All four tickets share the same dimensions');
 }
 const galleryCounts = {
-  kushiro: 4, silq: 4, 'gan-da': 4, 'hani-spa': 3,
-  chowchercof: 4, 'bang-sue-junction': 4, 'saen-saep': 4,
+  kushiro: 6, silq: 5, 'gan-da': 5, 'hani-spa': 4,
+  chowchercof: 5, 'bang-sue-junction': 5, 'saen-saep': 5,
 };
 async function verifyEp02Galleries(page) {
   for (const [id, count] of Object.entries(galleryCounts)) {

@@ -23,6 +23,18 @@
       "桌上的一份料理",
       "桌上的一份料理",
       "A course on the table at Kushiro"
+    ],
+    [
+      "kushiro-welcome.webp",
+      "彩繪高腳杯和無酒精迎賓飲品",
+      "彩绘高脚杯和无酒精迎宾饮品",
+      "A decorated glass and a welcome mocktail"
+    ],
+    [
+      "kushiro-uni-toast.webp",
+      "海膽鮪魚愛心吐司",
+      "海胆金枪鱼爱心吐司",
+      "Heart-shaped toast with sea urchin and tuna"
     ]
   ],
   "hani-spa": [
@@ -43,6 +55,12 @@
       "布簾分隔的按摩床",
       "布帘分隔的按摩床",
       "A massage bed behind a curtain"
+    ],
+    [
+      "hani-spa-menu.webp",
+      "二店拍攝的按摩價目表，價格以店家為準",
+      "二店拍摄的按摩价目表，价格以门店为准",
+      "The price list photographed at Branch 2. Check current rates with the spa."
     ]
   ],
   "silq": [
@@ -69,6 +87,12 @@
       "小胡在房內用餐",
       "小胡在客房用餐",
       "Xiao Hu dining in the room"
+    ],
+    [
+      "silq-breakfast.webp",
+      "SILQ 的自助早餐",
+      "SILQ 的自助早餐",
+      "The breakfast buffet at SILQ"
     ]
   ],
   "gan-da": [
@@ -95,6 +119,12 @@
       "打拋飯、海鮮炒飯與冬蔭功",
       "打抛饭、海鲜炒饭和冬阴功",
       "Pad kra pao, seafood fried rice and tom yum"
+    ],
+    [
+      "gan-da-banner.webp",
+      "到店時留意門前的綠色布條",
+      "到店时留意门前的绿色横幅",
+      "Look for the green banner out front"
     ]
   ],
   "chowchercof": [
@@ -121,6 +151,12 @@
       "庭園裡的戶外座位",
       "庭院里的户外座位",
       "Outdoor seating in the garden"
+    ],
+    [
+      "chowchercof-pond.webp",
+      "蓮花池畔的室內座位",
+      "莲花池边的室内座位",
+      "Indoor seating beside the lotus pond"
     ]
   ],
   "bang-sue-junction": [
@@ -147,6 +183,12 @@
       "五樓攤位的雞蛋仔",
       "五楼摊位的鸡蛋仔",
       "An egg waffle from the fifth-floor stall"
+    ],
+    [
+      "bang-sue-junction-records.webp",
+      "三樓 Mono Loop 的黑膠唱片",
+      "三楼 Mono Loop 的黑胶唱片",
+      "Vinyl records at Mono Loop on the third floor"
     ]
   ],
   "saen-saep": [
@@ -173,6 +215,12 @@
       "Kik 在快船上看運河風景",
       "Kik 在快船上看运河风景",
       "Kik looks out over the canal from the boat"
+    ],
+    [
+      "saen-saep-passing-boat.webp",
+      "沿途遇到往反方向行駛的快船",
+      "沿途遇到向反方向行驶的快船",
+      "An express boat passing in the opposite direction"
     ]
   ]
 }
