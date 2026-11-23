@@ -159,7 +159,8 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   text-shadow: none;
 }
 
-.visual-v7 [data-shared-deal="esim"] .ticket-value {
+.visual-v7 [data-shared-deal="esim"] .ticket-value,
+.visual-v7 [data-shared-deal="kushiro"] .ticket-value {
   color: #fff9ee;
   text-shadow: 2px 3px 0 var(--ticket-ink);
 }

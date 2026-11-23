@@ -68,6 +68,7 @@ async function verifySharedOfferStyle(page) {
         amount: [value.fontFamily,value.fontSize,value.fontWeight],
         textColor: getComputedStyle(action.querySelector('.ticket-cta-label')).color,
         discountColor: value.color,
+        discountShadow: value.textShadow,
         stroke: value.webkitTextStrokeWidth,
         labelBorder: getComputedStyle(action.querySelector('.ticket-cta-label')).borderTopWidth,
         background: style.backgroundColor,
@@ -80,7 +81,9 @@ async function verifySharedOfferStyle(page) {
       };
     });
   });
-  assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(9, 59, 43)', 'rgb(236, 88, 0)']);
+  assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(255, 249, 238)', 'rgb(236, 88, 0)']);
+  assert.notEqual(styles[0].discountShadow, 'none');
+  assert.equal(styles[1].discountShadow, styles[0].discountShadow);
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
     assert.equal(style.textColor, 'rgb(255, 255, 255)');
