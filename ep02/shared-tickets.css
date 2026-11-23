@@ -175,8 +175,8 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   border: 0;
   border-top: 2px dashed #fff4d5;
   border-radius: 0;
-  background: #fb792e radial-gradient(ellipse at 80% -75%, #ffca7866, transparent 69%);
-  color: #fff;
+  background: #fb792e linear-gradient(149deg, transparent 31%, #ffd18559 52%, transparent 73%);
+  color: #fff9ee;
   text-shadow: 0 1px 2px #762d12, 0 1px 3px #762d12;
   font-size: 15px;
   line-height: 1.25;
