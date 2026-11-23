@@ -4,3 +4,36 @@
 .ep02-deal-photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .ep02-deal-photo figcaption{font-size:13px;margin-top:4px}
 .visual-v7 .episode-upcoming{text-decoration:none}
+
+.story-copy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+  overflow-wrap: anywhere;
+}
+
+.story-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: .85rem 0;
+  font-size: .875rem;
+  line-height: 1.45;
+}
+
+.story-table th,
+.story-table td {
+  padding: .45em .5em;
+  border: 1px solid #847969;
+  overflow-wrap: anywhere;
+  text-align: left;
+  vertical-align: top;
+}
+
+.story-table th:first-child {
+  width: 39%;
+}
+
+.story-table thead {
+  background: #fff2bd;
+}

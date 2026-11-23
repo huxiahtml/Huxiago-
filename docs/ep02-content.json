@@ -13,7 +13,7 @@
       "查閱路線與班次",
       "帶入九折碼查房價",
       "8 折",
-      "12／15／17 道套餐的優惠日期待確認，請核對訂位頁。",
+      "TableCheck 訂位",
       "優惠條件與期限待確認，請核對預約頁顯示的方案。",
       "離線可讀全篇；地圖與預約連結需要網路。",
       "曼谷沿線",
@@ -34,7 +34,7 @@
       "查看路线与班次",
       "带入九折码查房价",
       "8 折",
-      "12／15／17 道套餐的优惠日期待确认，请核对预订页。",
+      "TableCheck 订位",
       "优惠条件与期限待确认，请核对预约页面显示的方案。",
       "离线可阅读全文；地图与预约链接需要网络。",
       "曼谷沿线",
@@ -55,7 +55,7 @@
       "Check route and departures",
       "Check rates with 10% off",
       "20% off",
-      "Offer dates for the 12-, 15- and 17-course menus are pending confirmation. Check TableCheck.",
+      "Book on TableCheck",
       "Offer terms and dates are pending confirmation. Check the package shown on the booking page.",
       "Read the full guide offline. Maps and booking links need an internet connection.",
       "Across Bangkok",
@@ -87,16 +87,6 @@
           "Kik and I have been twice, and both times we ordered the 15-course Premium menu. Watching the chef work was part of the meal. The heart-shaped uni and tuna toast is what I still think about.",
           "The restaurant is on Ratchada 32. I’d take a taxi from central Bangkok. Check seating, the full price and change policies on TableCheck, and mention any dietary restrictions when booking."
         ]
-      ],
-      "related": [
-        {
-          "url": "https://www.instagram.com/p/DdYtIjNJEow/",
-          "labels": [
-            "Kushiro 回訪｜Instagram",
-            "Kushiro 回访｜Instagram",
-            "Our return visit on Instagram"
-          ]
-        }
       ]
     },
     {
@@ -121,16 +111,6 @@
           "The spacious Chiffon Studio, breakfast and private onsen stood out during Xiao Hu’s hosted stay.",
           "The hotel is on Sukhumvit Soi 24. Rates vary by date and package. Ask the hotel about private onsen access."
         ]
-      ],
-      "related": [
-        {
-          "url": "https://www.instagram.com/reel/DfIXxHiTF4C/",
-          "labels": [
-            "SILQ 入住心得｜Instagram",
-            "SILQ 入住体验｜Instagram",
-            "Our SILQ stay on Instagram"
-          ]
-        }
       ]
     },
     {
@@ -245,14 +225,6 @@
         ]
       ]
     }
-  ],
-  "piers": [
-    "Saphan Hua Chang",
-    "Pratunam",
-    "Asoke-Petchaburi",
-    "Soi Thonglor",
-    "Mahadthai",
-    "The Mall Bangkapi"
   ],
   "categories": {
     "silq": [

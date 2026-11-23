@@ -1,381 +1,1263 @@
 {
+  "kushiro": [
+    [
+      [
+        "曼谷必吃高 CP 值日式料理",
+        [
+          "15 道特級 Omakase，優惠價 2,000 泰銖（未含服務費與稅）",
+          "直接給四字結論：「相見恨晚」。",
+          "過去一年，我跟 Kik 來 Kushiro Omakase 吃過兩次，這兩次都選了 15 道特級套餐。若要在台灣、香港的市中心，找到同樣價位、水準的無菜單料理，可說是難如登天。我們整理這篇時，Kushiro Omakase 在 Google 地圖累積近 2,000 則評論，評分高達 4.9 分。也難怪，我們每次拜訪時，都有這麼多人從世界各地慕名而來。"
+        ]
+      ],
+      [
+        "坐吧台前，師傅在眼前細心雕琢每道菜",
+        [
+          "我們每次都選吧台座位。師傅在面前現切魚貨、捏握壽司，再一貫貫遞過來；吃完一道，才接著享用下一道。整餐的節奏很舒服，可以靜靜欣賞細膩的料理手藝、拍照打卡或留念，也能和旅伴邊吃邊聊天。",
+          "如果你還沒吃過 Omakase 無菜單料理，這裡很適合當作你的初體驗。菜色隨季節調整，你吃到的餐點，大概和我們那天的不完全相同，這也是無菜單料理有趣的地方。"
+        ]
+      ],
+      [
+        "從 DIY 彩繪玻璃杯，到海膽鮪魚愛心吐司",
+        [
+          "一入座，迎賓飲品就儀式感滿分。店員先遞上高腳杯和色彩繽紛的麥克筆，讓我們在杯子上寫字、畫圖自由發揮，像我就寫上「胡搞夏搞」社群帳號，接著倒入桃紅色、酸酸甜甜的無酒精 mocktail。就算是隨手畫幾筆，拍起照來也很有紀念感。",
+          "我們吃過的菜色裡，有清爽的沖繩醋漬海藻、做成小甜筒的鮟鱇魚肝醬、松露茶碗蒸，以及一道又一道的新鮮握壽司——我特別喜歡鮪魚中腹。吃了幾道生魚料理後，再來一份松露口味的日式烏龍冷麵，味覺層次相當豐富。",
+          "最讓人印象深刻的，還是海膽鮪魚愛心吐司。酥脆的心形小吐司作為載體，一邊放上海膽、一邊鋪上鮪魚泥，上桌時，還伴隨乾冰泡泡，神秘又華麗地登場。我也喜歡鮮味十足的清澈魚湯和鰻魚手卷。最後再以甜點收尾，先來份像海綿蛋糕的玉子燒，最後還有起司蛋糕。"
+        ]
+      ],
+      [
+        "四款套餐怎麼選？超推 15 道特級套餐",
+        [
+          "點擊下方 TableCheck 訂位連結，即可享有以下套餐優惠：",
+          {
+            "table": [
+              [
+                "套餐",
+                "原價",
+                "特別優惠價"
+              ],
+              [
+                "基本套餐 12 Original Course",
+                "1,500 泰銖",
+                "1,200 泰銖"
+              ],
+              [
+                "特級套餐 15 Premium Course",
+                "2,500 泰銖",
+                "2,000 泰銖"
+              ],
+              [
+                "頂級套餐 17 Luxury Course",
+                "4,500 泰銖",
+                "3,600 泰銖"
+              ],
+              [
+                "無限續點特級套餐 Unlimited Omakase 15 Premium",
+                "2,999 泰銖",
+                "2,499 泰銖"
+              ]
+            ]
+          },
+          "上表前三款套餐的訂位優惠價為 8 折。我們兩次吃的都是 15 道的特級套餐。如果你第一次來，想完整體驗從迎賓飲品、前菜、握壽司⋯⋯到甜點的流程，我們最推薦這個選項。",
+          "如果想大吃特吃，也可以選擇 2026 年 11月全新推出的 Unlimited Omakase 15 Premium 方案：15 道的特級套餐，在 90 分鐘內，指定餐點皆可無限續點。原本 15 道的特級套餐，只要加價 499 泰銖即可升級，本方案目前只於午餐時段開放。",
+          "**價格尚未包含服務費與稅金。**實際付款金額及可預訂方案，請以結帳頁為準。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**地址：**Kushiro Omakase and Japanese Dining，Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900。",
+          "**交通：**餐廳不在捷運站旁，從曼谷市區前往，建議直接叫車或搭計程車。",
+          "訂位連結：[點這裡前往 Kushiro Omakase 的 TableCheck 訂位頁](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago)，請確認所選日期及套餐是否適用 8 折。",
+          "用餐時段：12:30、14:30、17:30、19:30。想看師傅在面前製作料理，請選吧台座位；Unlimited 無限續點方案，目前只開放 12:30、14:30 的午餐時段。",
+          "訂位及用餐提醒：用餐當天，請提前 10 分鐘抵達。訂位付款後不提供退款；若要更改日期或時段，須提前至少 24 小時與店家聯繫。",
+          "**飲食特殊需求：**若有過敏、忌口，或不吃生食的需求，請於訂位時先行告知店家，確認能否安排適合的餐點。"
+        ]
+      ]
+    ],
+    [
+      [
+        "曼谷必吃高 CP 值日式料理",
+        [
+          "15 道特级 Omakase，优惠价 2,000 泰铢（未含服务费与税）",
+          "直接给四字结论：「相见恨晚」。",
+          "过去一年，我跟 Kik 来 Kushiro Omakase 吃过两次，这两次都选了 15 道特级套餐。若要在台湾、香港的市中心，找到同样价位、水准的无菜单料理，可说是难如登天。我们整理这篇时，Kushiro Omakase 在 Google 地图累积近 2,000 则评论，评分高达 4.9 分。也难怪，我们每次拜访时，都有这麽多人从世界各地慕名而来。"
+        ]
+      ],
+      [
+        "坐吧台前，师傅在眼前细心雕琢每道菜",
+        [
+          "我们每次都选吧台座位。师傅在面前现切鱼货、捏握寿司，再一贯贯递过来；吃完一道，才接着享用下一道。整餐的节奏很舒服，可以静静欣赏细腻的料理手艺、拍照打卡或留念，也能和旅伴边吃边聊天。",
+          "如果你还没吃过 Omakase 无菜单料理，这里很适合当作你的初体验。菜色随季节调整，你吃到的餐点，大概和我们那天的不完全相同，这也是无菜单料理有趣的地方。"
+        ]
+      ],
+      [
+        "从 DIY 彩绘玻璃杯，到海胆鲔鱼爱心吐司",
+        [
+          "一入座，迎宾饮品就仪式感满分。店员先递上高脚杯和色彩缤纷的麦克笔，让我们在杯子上写字、画图自由发挥，像我就写上「胡搞夏搞」社群帐号，接着倒入桃红色、酸酸甜甜的无酒精 mocktail。就算是随手画几笔，拍起照来也很有纪念感。",
+          "我们吃过的菜色里，有清爽的冲绳醋渍海藻、做成小甜筒的鮟鱇鱼肝酱、松露茶碗蒸，以及一道又一道的新鲜握寿司——我特别喜欢鲔鱼中腹。吃了几道生鱼料理後，再来一份松露口味的日式乌龙冷面，味觉层次相当丰富。",
+          "最让人印象深刻的，还是海胆鲔鱼爱心吐司。酥脆的心形小吐司作为载体，一边放上海胆、一边铺上鲔鱼泥，上桌时，还伴随乾冰泡泡，神秘又华丽地登场。我也喜欢鲜味十足的清澈鱼汤和鳗鱼手卷。最後再以甜点收尾，先来份像海绵蛋糕的玉子烧，最後还有起司蛋糕。"
+        ]
+      ],
+      [
+        "四款套餐怎麽选？超推 15 道特级套餐",
+        [
+          "点击下方 TableCheck 订位连结，即可享有以下套餐优惠：",
+          {
+            "table": [
+              [
+                "套餐",
+                "原价",
+                "特别优惠价"
+              ],
+              [
+                "基本套餐 12 Original Course",
+                "1,500 泰铢",
+                "1,200 泰铢"
+              ],
+              [
+                "特级套餐 15 Premium Course",
+                "2,500 泰铢",
+                "2,000 泰铢"
+              ],
+              [
+                "顶级套餐 17 Luxury Course",
+                "4,500 泰铢",
+                "3,600 泰铢"
+              ],
+              [
+                "无限续点特级套餐 Unlimited Omakase 15 Premium",
+                "2,999 泰铢",
+                "2,499 泰铢"
+              ]
+            ]
+          },
+          "上表前三款套餐的订位优惠价为 8 折。我们两次吃的都是 15 道的特级套餐。如果你第一次来，想完整体验从迎宾饮品、前菜、握寿司⋯⋯到甜点的流程，我们最推荐这个选项。",
+          "如果想大吃特吃，也可以选择 2026 年 11月全新推出的 Unlimited Omakase 15 Premium 方案：15 道的特级套餐，在 90 分钟内，指定餐点皆可无限续点。原本 15 道的特级套餐，只要加价 499 泰铢即可升级，本方案目前只於午餐时段开放。",
+          "**价格尚未包含服务费与税金。**实际付款金额及可预订方案，请以结帐页为准。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**地址：**Kushiro Omakase and Japanese Dining，Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900。",
+          "**交通：**餐厅不在捷运站旁，从曼谷市区前往，建议直接叫车或搭计程车。",
+          "订位连结：[点这里前往 Kushiro Omakase 的 TableCheck 订位页](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago)，请确认所选日期及套餐是否适用 8 折。",
+          "用餐时段：12:30、14:30、17:30、19:30。想看师傅在面前制作料理，请选吧台座位；Unlimited 无限续点方案，目前只开放 12:30、14:30 的午餐时段。",
+          "订位及用餐提醒：用餐当天，请提前 10 分钟抵达。订位付款後不提供退款；若要更改日期或时段，须提前至少 24 小时与店家联系。",
+          "**饮食特殊需求：**若有过敏、忌口，或不吃生食的需求，请於订位时先行告知店家，确认能否安排适合的餐点。"
+        ]
+      ]
+    ],
+    [
+      [
+        "Bangkok omakase that’s worth every baht",
+        [
+          "A 15-course premium omakase for THB 2,000 before service and tax",
+          "My verdict is simple: I wish I’d found it sooner.",
+          "Kik and I ate at Kushiro Omakase twice in the past year, and we chose the 15-course Premium menu both times. Finding omakase of this quality at the same price in central areas in Taiwan or Hong Kong would be a tall order. When we put this guide together, Kushiro had a 4.9 rating and nearly 2,000 reviews on Google Maps. On both visits we saw diners who had come from all over the world."
+        ]
+      ],
+      [
+        "At the counter, watch the chef make each course",
+        [
+          "We picked counter seats both times. The chef slices fish and shapes nigiri right in front of you, serving each piece in turn. The meal moves at an easy pace. You can watch the chef work, take a few photos or chat with whoever’s sitting alongside you.",
+          "If you’ve never tried omakase, this is a good place to start. The menu follows the seasons, so your meal may look different from ours. That’s part of the fun."
+        ]
+      ],
+      [
+        "From decorating our glasses to heart-shaped uni and tuna toast",
+        [
+          "The welcome drink was an occasion in itself. Staff handed us stemmed glasses and a set of colourful markers to draw on them. I wrote the name of our social account on mine. Then came the sweet-tart pink mocktail. A couple of quick doodles made for a fun keepsake photo.",
+          "We had tangy Okinawan seaweed, monkfish liver pâté in a tiny cone, truffle chawanmushi and piece after piece of fresh nigiri. The medium-fatty tuna was my favourite. After a few courses of raw fish, chilled truffle udon brought a welcome change in texture and flavour.",
+          "What stuck with me most was the crisp, heart-shaped toast topped with sea urchin on one side and minced tuna on the other, served with bubbles and a swirl of dry ice. I also loved the clear fish broth and the eel hand roll. Dessert began with a tamagoyaki that ate like sponge cake and ended with cheesecake."
+        ]
+      ],
+      [
+        "Four menus to choose from. I’d start with the 15-course Premium",
+        [
+          "The TableCheck booking link below lists the following promotional prices:",
+          {
+            "table": [
+              [
+                "Menu",
+                "Regular price",
+                "Special price"
+              ],
+              [
+                "12 Original Course",
+                "THB 1,500",
+                "THB 1,200"
+              ],
+              [
+                "15 Premium Course",
+                "THB 2,500",
+                "THB 2,000"
+              ],
+              [
+                "17 Luxury Course",
+                "THB 4,500",
+                "THB 3,600"
+              ],
+              [
+                "Unlimited Omakase 15 Premium",
+                "THB 2,999",
+                "THB 2,499"
+              ]
+            ]
+          },
+          "Three menus are 20% off at the listed prices. Both times we had the 15-course Premium. It’s my pick for a first visit if you want the whole experience, from the welcome drink and starters through nigiri and dessert.",
+          "If you’re particularly hungry, the Unlimited Omakase 15 Premium menu introduced in November 2026 lets you reorder selected dishes within 90 minutes. The upgrade from the regular 15-course menu is THB 499 at the listed promotional prices. This option is currently offered at lunch only.",
+          "**Prices exclude service and tax.** Check the final total and the menus available for your date at checkout."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**Address:** Kushiro Omakase and Japanese Dining, Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900.",
+          "**Getting there:** The restaurant isn’t close to a rail station. Take a taxi or book a ride from central Bangkok.",
+          "**Reservations:** [Book through TableCheck](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago) and check whether the 20% promotion applies to your selected menu and date.",
+          "**Seatings:** 12:30, 14:30, 17:30 and 19:30. Choose the counter to watch the chef work. The unlimited menu is offered only at 12:30 and 14:30.",
+          "**Before you go:** Please arrive 10 minutes early. Paid reservations are non-refundable. Contact the restaurant at least 24 hours in advance if you need to change the date or seating.",
+          "**Dietary requests:** If you have allergies, avoid certain ingredients or don’t eat raw food, let the restaurant know when you book so it can confirm what it can prepare."
+        ]
+      ]
+    ]
+  ],
   "silq": [
     [
       [
-        "來曼谷也可以把行程留白",
-        "平常我和 Kik 住飯店，早上出門，晚上才回去睡覺。這次在 SILQ 住三天兩夜，我們反而想把行程排少一點。Sukhumvit 24 就在 EM District 旁，想逛 Emporium、EmQuartier 或 EmSphere，走出去就好。逛完再回房間休息，也不會覺得一整天都在趕路。"
+        "內行人的飯店渡假耍廢首選",
+        [
+          "歐美、中東商務客為主的頂級住宿",
+          "你是不是也這樣？在曼谷住飯店，通常是早上出門旅遊，晚上才回來睡覺。但這次我和 Kik 住進 SILQ 時，第一個念頭竟然是：可不可以不要排行程，整天待在飯店？",
+          "SILQ Hotel & Residence 就在 BTS Phrom Phong 澎蓬站的 EM District 旁，由 Emporium、EmQuartier、EmSphere 三間百貨構成的精華的曼谷購物區。我們安排了三天兩夜的 staycation，結果活動範圍根本沒離開飯店幾步。",
+          "入住之後，體會到在飯店耍廢的快樂：房間超寬敞、早餐悠哉慢慢吃，還能預約時間泡私人湯屋。明明住在黃金地段，我們卻把大部分時間留給了飯店。"
+        ]
       ],
       [
-        "從步入式衣帽間到自助早餐",
-        "我們住的是附陽台的 56 平方公尺 Chiffon Studio。Kik 最喜歡靠窗的梳妝台，我喜歡房內有沙發、廚房和洗衣機，住起來像一間小公寓。早餐除了泰式和西式料理，還有印度、中式、日式和韓式選擇。我特別愛現做鬆餅，那兩天吃完早餐都沒再吃午餐。"
+        "56 平方公尺大房間，衣帽間最驚喜",
+        [
+          "我們住的是附陽台的 Chiffon Studio。房間除了雙人大床，還有沙發區、餐桌，完整的廚房、嵌入式大冰箱、微波爐和洗衣機；浴室乾濕分離，寬敞浴缸。入住這裡絕不只是「回房間睡覺」，可以舒服自在地享受生活。",
+          "Kik 最喜歡的是大到很浮誇的 步入式衣帽間（walk-in closet）。走進去，正前方是面窗的梳妝台，陽光會直接灑進來；左右兩側則是完整的衣櫃，整個區域都是整理衣服、化妝和換裝的空間。在寸土寸金的市中心，很少有機會用到這麼寬敞的衣帽間。",
+          "我愛上的原因，是它像一戶舒服的公寓。想工作可以坐在桌邊，想讀本書也有角落可以靜靜閱讀，累了就窩在沙發或床上。這是我們住進去後，想整天待在房間的原因。"
+        ]
       ],
       [
-        "泡湯和訂房怎麼安排",
-        "我會留一個小時給私人湯屋，輪流泡熱池、冷池，再坐一下桑拿。想泡湯可以向 THE QLUB 詢問，原文記錄飯店建議至少提前五天預約。想比較房價，可以同時看 36 平方公尺的 Tussah Studio 和我們住的 Chiffon。價格隨入住日期和退訂條件變動。飯店提供了這次的住宿、早餐、餐飲額度和湯屋。"
+        "吃早餐大滿足，連兩天都沒吃午餐",
+        [
+          "兩天的早餐選擇比預期多很多。除了泰式和西式，也有印度、中式、日式和韓式餐點，還能點現做的蛋料理與鬆餅。我自己特別喜歡鬆餅，搭配的果醬、糖漿任拿。",
+          "我們每天早餐都吃得很滿足，連續兩天都沒有再吃午餐。第二天晚上，還直接打給櫃檯點餐直送房間（room service），兩個人點了打拋豬、泰式煎蛋、椰奶雞湯和冰淇淋。打拋豬辣得夠勁，口味道地，用餐後不用整理，也不用回家，原地繼續耍廢。"
+        ]
       ],
       [
-        "讀者九折碼和房價參考",
-        "點下方按鈕，SILQ 官方訂房頁會自動帶入 HUXIATHAI。合作原稿標示優惠至 2027 年 2 月 28 日，符合條件的房價可打九折。雙人含早餐的查價例，Tussah Studio 每晚由 THB 5,010 降至 THB 4,509，附陽台的 Chiffon Studio 由 THB 5,689 降至 THB 5,120。這兩筆均為當時的預付、不可退方案，適用性和總價以官網結帳為準。私人湯屋另向 THE QLUB 詢問。"
+        "留一小時給私人湯屋鬆一下",
+        [
+          "我們還體驗了一小時的私人湯屋，輪流泡熱池、冷池，也用了桑拿三溫暖。對我來說，這是整趟 staycation 飯店渡假的亮點之一，讓人徹底放鬆。",
+          "私人湯屋通常不包含在訂房方案。如果你有興趣，可以直接聯繫飯店內的 THE QLUB 預約（官方 LINE @theqlub）。飯店官方建議至少提前 5 天預約，才能保留時段。"
+        ]
+      ],
+      [
+        "市中心的正中心，逛街超方便",
+        [
+          "飯店位於 Sukhumvit 24 巷。從這裡步行到 Emporium、EmQuartier、EmSphere 三大商場，大約是 10 分鐘，BTS Phrom Phong 澎蓬站也能輕鬆步行抵達。",
+          "如果不想在大太陽下走路，飯店有提供前往 Emporium Tower 的免費接駁車。接駁車表定每日 08:00–22:00、約每小時整點從飯店出發。我們有在門口看過接駁車，但沒有搭乘過；實際班次和回程上車點，請於出發前向櫃台確認。"
+        ]
+      ],
+      [
+        "讀者獨享！官網訂房九折優惠",
+        [
+          "若有預算考量，推薦基本款 Tussah Studio；上方分享的入住心得則是 Chiffon Studio。下方為輸入獨家 9 折優惠碼【HUXIATHAI】後的含早餐參考價格。依合作原稿，優惠至 2027 年 2 月 28 日，使用下方官方訂房入口可自動帶入代碼，適用方案依訂房頁為準。",
+          {
+            "table": [
+              [
+                "房型",
+                "面積",
+                "每晚原價",
+                "9 折優惠價"
+              ],
+              [
+                "Tussah Studio",
+                "36 平方公尺",
+                "THB 5,010",
+                "THB 4,509"
+              ],
+              [
+                "Chiffon Studio（附陽台）",
+                "56 平方公尺",
+                "THB 5,689",
+                "THB 5,120"
+              ]
+            ]
+          },
+          "以上價格都是「Last Minute Offer－含早餐」方案，須於預訂時付款且不可退款。房價會隨日期與空房狀況變動，最後應付金額以官網結帳頁為準。",
+          "一晚 4,000 泰銖上下，就能在曼谷市中心住進這等級的五星級飯店，真心覺得很值得。尤其我們住的 Chiffon Studio 空間寬敞、視野開闊，早餐和待在飯店裡的時間也真的非常享受。如果來曼谷想安排一兩晚好好放鬆，真的可以考慮住這裡。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**飯店名稱：**SILQ Hotel & Residence Bangkok",
+          "**地址：**41 Sukhumvit 24，Phrom Phong，Bangkok",
+          "**交通：**步行可達 BTS Phrom Phong 澎蓬站；Emporium、EmQuartier、EmSphere 約 7–14 分鐘",
+          "**免費接駁車：**前往 Emporium Tower；表定每日 08:00–22:00、約每小時整點從飯店出發，實際班次請向櫃台確認",
+          "**私人湯屋預約：**至少提前 5 天聯繫 THE QLUB，電話 02-407-1066 或 LINE @theqlub",
+          "訂房 9 折優惠：下方連結會帶入全大寫折扣碼【HUXIATHAI】，選擇入住日期後，請確認所選方案已成功套用折扣。",
+          "[帶入九折碼查房價](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          "本篇為飯店合作入住體驗。飯店提供我們住宿、早餐、餐飲額度與一小時私人湯屋；住宿與餐飲心得及評價，來自我和 Kik 的實際體驗。"
+        ]
       ]
     ],
     [
       [
-        "来曼谷也可以把行程留白",
-        "平时我和 Kik 住酒店，早上出门，晚上才回去睡觉。这次在 SILQ 住三天两夜，我们反而想把行程排少一点。Sukhumvit 24 就在 EM District 旁，想逛 Emporium、EmQuartier 或 EmSphere，走出去就好。逛完再回房间休息，也不会觉得一整天都在赶路。"
+        "内行人的饭店渡假耍废首选",
+        [
+          "欧美、中东商务客为主的顶级住宿",
+          "你是不是也这样？在曼谷住饭店，通常是早上出门旅游，晚上才回来睡觉。但这次我和 Kik 住进 SILQ 时，第一个念头竟然是：可不可以不要排行程，整天待在饭店？",
+          "SILQ Hotel & Residence 就在 BTS Phrom Phong 澎蓬站的 EM District 旁，由 Emporium、EmQuartier、EmSphere 三间百货构成的精华的曼谷购物区。我们安排了三天两夜的 staycation，结果活动范围根本没离开饭店几步。",
+          "入住之後，体会到在饭店耍废的快乐：房间超宽敞、早餐悠哉慢慢吃，还能预约时间泡私人汤屋。明明住在黄金地段，我们却把大部分时间留给了饭店。"
+        ]
       ],
       [
-        "从步入式衣帽间到自助早餐",
-        "我们住的是带阳台的 56 平方米 Chiffon Studio。Kik 最喜欢靠窗的梳妆台，我喜欢房内有沙发、厨房和洗衣机，住起来像一间小公寓。早餐除了泰式和西式料理，还有印度、中式、日式和韩式选择。我特别爱现做松饼，那两天吃完早餐都没再吃午餐。"
+        "56 平方公尺大房间，衣帽间最惊喜",
+        [
+          "我们住的是附阳台的 Chiffon Studio。房间除了双人大床，还有沙发区、餐桌，完整的厨房、嵌入式大冰箱、微波炉和洗衣机；浴室乾湿分离，宽敞浴缸。入住这里绝不只是「回房间睡觉」，可以舒服自在地享受生活。",
+          "Kik 最喜欢的是大到很浮夸的 步入式衣帽间（walk-in closet）。走进去，正前方是面窗的梳妆台，阳光会直接洒进来；左右两侧则是完整的衣柜，整个区域都是整理衣服、化妆和换装的空间。在寸土寸金的市中心，很少有机会用到这麽宽敞的衣帽间。",
+          "我爱上的原因，是它像一户舒服的公寓。想工作可以坐在桌边，想读本书也有角落可以静静阅读，累了就窝在沙发或床上。这是我们住进去後，想整天待在房间的原因。"
+        ]
       ],
       [
-        "泡汤和订房怎么安排",
-        "我会留一个小时给私人汤屋，轮流泡热池、冷池，再坐一会儿桑拿。想泡汤可以向 THE QLUB 询问，原文记录酒店建议至少提前五天预约。想比较房价，可以同时看 36 平方米的 Tussah Studio 和我们住的 Chiffon。价格随入住日期和退订条件变化。酒店提供了这次的住宿、早餐、餐饮额度和汤屋。"
+        "吃早餐大满足，连两天都没吃午餐",
+        [
+          "两天的早餐选择比预期多很多。除了泰式和西式，也有印度、中式、日式和韩式餐点，还能点现做的蛋料理与松饼。我自己特别喜欢松饼，搭配的果酱、糖浆任拿。",
+          "我们每天早餐都吃得很满足，连续两天都没有再吃午餐。第二天晚上，还直接打给柜台点餐直送房间（room service），两个人点了打抛猪、泰式煎蛋、椰奶鸡汤和冰淇淋。打抛猪辣得够劲，口味道地，用餐後不用整理，也不用回家，原地继续耍废。"
+        ]
       ],
       [
-        "读者九折码和房价参考",
-        "点击下方按钮，SILQ 官方预订页会自动带入 HUXIATHAI。合作原稿注明优惠至 2027 年 2 月 28 日，符合条件的房价可打九折。双人含早餐的查价示例，Tussah Studio 每晚从 THB 5,010 降至 THB 4,509，带阳台的 Chiffon Studio 从 THB 5,689 降至 THB 5,120。这两笔均为当时的预付、不可退款方案，适用性和总价以官网结账为准。私人温泉请另向 THE QLUB 查询。"
+        "留一小时给私人汤屋松一下",
+        [
+          "我们还体验了一小时的私人汤屋，轮流泡热池、冷池，也用了桑拿三温暖。对我来说，这是整趟 staycation 饭店渡假的亮点之一，让人彻底放松。",
+          "私人汤屋通常不包含在订房方案。如果你有兴趣，可以直接联系饭店内的 THE QLUB 预约（官方 LINE @theqlub）。饭店官方建议至少提前 5 天预约，才能保留时段。"
+        ]
+      ],
+      [
+        "市中心的正中心，逛街超方便",
+        [
+          "饭店位於 Sukhumvit 24 巷。从这里步行到 Emporium、EmQuartier、EmSphere 三大商场，大约是 10 分钟，BTS Phrom Phong 澎蓬站也能轻松步行抵达。",
+          "如果不想在大太阳下走路，饭店有提供前往 Emporium Tower 的免费接驳车。接驳车表定每日 08:00–22:00、约每小时整点从饭店出发。我们有在门口看过接驳车，但没有搭乘过；实际班次和回程上车点，请於出发前向柜台确认。"
+        ]
+      ],
+      [
+        "读者独享！官网订房九折优惠",
+        [
+          "若有预算考量，推荐基本款 Tussah Studio；上方分享的入住心得则是 Chiffon Studio。下方为输入独家 9 折优惠码【HUXIATHAI】後的含早餐参考价格。依合作原稿，优惠至 2027 年 2 月 28 日，使用下方官方订房入口可自动带入代码，适用方案依订房页为准。",
+          {
+            "table": [
+              [
+                "房型",
+                "面积",
+                "每晚原价",
+                "9 折优惠价"
+              ],
+              [
+                "Tussah Studio",
+                "36 平方公尺",
+                "THB 5,010",
+                "THB 4,509"
+              ],
+              [
+                "Chiffon Studio（附阳台）",
+                "56 平方公尺",
+                "THB 5,689",
+                "THB 5,120"
+              ]
+            ]
+          },
+          "以上价格都是「Last Minute Offer－含早餐」方案，须於预订时付款且不可退款。房价会随日期与空房状况变动，最後应付金额以官网结帐页为准。",
+          "一晚 4,000 泰铢上下，就能在曼谷市中心住进这等级的五星级饭店，真心觉得很值得。尤其我们住的 Chiffon Studio 空间宽敞、视野开阔，早餐和待在饭店里的时间也真的非常享受。如果来曼谷想安排一两晚好好放松，真的可以考虑住这里。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**饭店名称：**SILQ Hotel & Residence Bangkok",
+          "**地址：**41 Sukhumvit 24，Phrom Phong，Bangkok",
+          "**交通：**步行可达 BTS Phrom Phong 澎蓬站；Emporium、EmQuartier、EmSphere 约 7–14 分钟",
+          "**免费接驳车：**前往 Emporium Tower；表定每日 08:00–22:00、约每小时整点从饭店出发，实际班次请向柜台确认",
+          "**私人汤屋预约：**至少提前 5 天联系 THE QLUB，电话 02-407-1066 或 LINE @theqlub",
+          "订房 9 折优惠：下方连结会带入全大写折扣码【HUXIATHAI】，选择入住日期後，请确认所选方案已成功套用折扣。",
+          "[带入九折码查房价](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          "本篇为饭店合作入住体验。饭店提供我们住宿、早餐、餐饮额度与一小时私人汤屋；住宿与餐饮心得及评价，来自我和 Kik 的实际体验。"
+        ]
       ]
     ],
     [
       [
-        "Leave a little room in your Bangkok itinerary",
-        "Kik and I usually head out in the morning and return to our hotel to sleep. On our two-night stay at SILQ, we wanted to leave more of the day free. It’s on Sukhumvit 24 by the EM District, so Emporium, EmQuartier and EmSphere are easy to work into a walk before heading back for a break."
+        "Where I’d go for a proper Bangkok staycation",
+        [
+          "An upscale stay popular with business travellers from Europe, the Americas and the Middle East",
+          "Do you usually head out early and return to your Bangkok hotel just to sleep? When Kik and I checked into SILQ, our first thought was different: could we clear the schedule and spend all day here?",
+          "SILQ is next to Bangkok’s EM District by BTS Phrom Phong, with Emporium, EmQuartier and EmSphere all within easy reach. We booked a two-night staycation and barely ventured farther than the hotel.",
+          "We discovered how much fun it can be to do very little. The room was spacious, we took our time at breakfast, and we could book a slot in the private onsen. Even in this central neighbourhood, we spent most of our time at the hotel."
+        ]
       ],
       [
-        "From the walk-in closet to the breakfast buffet",
-        "We stayed in a 56-square-metre Chiffon Studio with a balcony. Kik loved the window-side vanity. I liked having a sofa, kitchen and washing machine of our own. The breakfast buffet covered Thai, Western, Indian, Chinese, Japanese and Korean dishes. Fresh waffles were my pick. Both mornings we ate enough to skip lunch."
+        "A 56-square-metre room and a surprisingly generous walk-in closet",
+        [
+          "We stayed in a Chiffon Studio with a balcony. Alongside the double bed were a sofa, dining table, full kitchen, large built-in fridge, microwave and washing machine. The bathroom separated the wet and dry areas and had a roomy bathtub. This felt like somewhere we could happily spend the day.",
+          "Kik loved the enormous walk-in closet. The vanity faces a window, letting in the daylight, with wardrobes on both sides. There’s space to dress, do your makeup and get your clothes organised. It’s rare to get a dressing area this roomy in the heart of a city.",
+          "I liked that the studio felt like a comfortable apartment. There’s a table to work at, a spot to read, and a sofa or bed to sink into. It’s why we kept wanting to stay in."
+        ]
       ],
       [
-        "Allow an hour for the onsen",
-        "I’d set aside an hour for the private hot and cold pools and sauna. Ask THE QLUB about booking. The original account records the hotel’s advice to reserve at least five days ahead. For rooms, compare the 36-square-metre Tussah Studio with the Chiffon we tried. Rates vary by date and cancellation terms. The hotel provided our stay, breakfast, dining credit and a private onsen session."
+        "Breakfast was so good we skipped lunch twice",
+        [
+          "The buffet had a lot more choice than we expected. Along with Thai and Western dishes there were Indian, Chinese, Japanese and Korean options, plus eggs and waffles made to order. The waffles, with a choice of jams and syrups, were my favourite.",
+          "On both days we ate enough at breakfast to skip lunch. On our second evening we called the front desk and had pad kra pao with pork, a Thai omelette, coconut chicken soup and ice cream delivered to the room. The pad kra pao had a proper kick, and afterwards we could put our feet up without leaving the room or doing the dishes."
+        ]
       ],
       [
-        "Reader promo code and sample rates",
-        "The button below opens SILQ’s booking engine with HUXIATHAI already applied. The partnership brief lists 10% off eligible bookings through 28 February 2027. Sample nightly rates with breakfast for two were THB 4,509 down from 5,010 for Tussah Studio and THB 5,120 down from 5,689 for Chiffon Studio with a balcony. These were prepaid, non-refundable quotes. Confirm eligibility and the total at checkout, and ask THE QLUB separately about the private onsen."
+        "Set aside an hour for the private onsen",
+        [
+          "We booked an hour at the private onsen, alternating between the hot and cold pools and spending time in the sauna. It was one of the highlights of our staycation and a good way to unwind.",
+          "The private onsen usually isn’t included in the room rate. Contact the hotel’s THE QLUB on LINE at @theqlub to book. The hotel recommends reserving at least five days ahead to secure a time."
+        ]
+      ],
+      [
+        "An easy base for shopping in the city centre",
+        [
+          "The hotel is on Sukhumvit Soi 24. It’s about a 10-minute walk to Emporium, EmQuartier and EmSphere, and BTS Phrom Phong is also within easy walking distance.",
+          "If you’d rather avoid the midday heat, the hotel offers a free shuttle to Emporium Tower. It’s scheduled daily from 08:00 to 22:00 and is due to leave from the hotel around the top of each hour. We saw it at the entrance but didn’t ride it. Ask reception to confirm the schedule and where to catch the return shuttle."
+        ]
+      ],
+      [
+        "Reader offer: 10% off eligible direct bookings",
+        [
+          "For a smaller budget I’d look at the entry-level Tussah Studio. The stay I’ve described above was in the Chiffon Studio. The sample rates below include breakfast and reflect the HUXIATHAI promotion. The partnership offer lists 10% off eligible direct bookings through 28 February 2027. The booking button below passes the code to SILQ.",
+          {
+            "table": [
+              [
+                "Room type",
+                "Size",
+                "Regular nightly rate",
+                "10% off"
+              ],
+              [
+                "Tussah Studio",
+                "36 m²",
+                "THB 5,010",
+                "THB 4,509"
+              ],
+              [
+                "Chiffon Studio (with balcony)",
+                "56 m²",
+                "THB 5,689",
+                "THB 5,120"
+              ]
+            ]
+          },
+          "These examples are from the prepaid, non-refundable Last Minute Offer with breakfast. Rates depend on dates and availability. The hotel’s checkout page shows the final price.",
+          "For a nightly quote in the THB 4,000 range, this felt like good value for a five-star stay in the city centre. We particularly enjoyed the space, the view and the breakfasts in our Chiffon Studio. Consider it if you’d like to slow down for a night or two in Bangkok."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**Hotel:** SILQ Hotel & Residence Bangkok.",
+          "**Address:** 41 Sukhumvit 24, Phrom Phong, Bangkok.",
+          "**Getting there:** Walk from BTS Phrom Phong. Emporium, EmQuartier and EmSphere are about 7–14 minutes away on foot.",
+          "**Free shuttle:** To Emporium Tower, scheduled daily from 08:00 to 22:00, with departures from the hotel around the top of each hour. Confirm with reception.",
+          "**Private onsen:** Contact THE QLUB at least five days ahead on 02-407-1066 or on LINE, @theqlub.",
+          "**Booking offer:** The official booking link carries HUXIATHAI. Choose your dates and verify that the 10% discount applies to the room and rate you select.",
+          "[Check rates with HUXIATHAI](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          "This was a hosted stay. The hotel provided accommodation, breakfast, a dining credit and one hour in the private onsen. What I’ve written reflects Kik’s and my own experience."
+        ]
       ]
     ]
   ],
   "gan-da": [
     [
       [
-        "泰國人的一人份熱炒",
-        "泰國人吃打拋飯，常去的是อาหารตามสั่ง，意思就是「照你點的做」。我跟 Kik 常去的 Gan Da 在 Central Lat Phrao 前面。它有地圖定位，但走到附近要找有遮棚的半開放小店。桌子不多，也有不少人買了就帶走。"
+        "銅板價美味！現做打拋飯、冬蔭功",
+        [
+          "泰國人天天吃打拋飯，都去哪裡？",
+          "來泰國玩，想吃一盤現炒的打拋豬飯，不用特別找打拋飯專賣店。在曼谷街頭，有一種很常見的餐廳，叫做 อาหารตามสั่ง（Aharn Tam Sang），大概能翻譯成「照你點的做」。打拋飯、炒飯、炒粿條這裡都有，想吃什麼泰式料理就下單，師傅直接在廚房開始快炒。",
+          "如果要跟台灣朋友解釋，我會說它就像熱炒店的料理方式，但是是麵店的一人份份量：菜色通常是大火現炒、熱騰騰上桌，但你不用揪一桌人分菜。一個人點一盤餐點，吃飽就走。這絕對是來泰國值得體驗的日常吃法。"
+        ]
       ],
       [
-        "我每次都想加一顆半熟蛋",
-        "這家的打拋豬炒得比較濕潤，拌進半熟蛋黃很下飯。原文記下我們點的一份約 65 泰銖。一般辣度對台灣朋友可能已經很辣，點餐時可以先說能吃多辣，也可以換雞肉、海鮮或脆皮豬。Kik 常點的是海鮮炒飯。"
+        "有地圖定位，但超難找的隱藏餐廳",
+        [
+          "我跟 Kik 常吃的這家叫 กานดาอาหารตามสั่ง，就在 Central Lat Phrao 商場旁邊。它有 Google 地圖定位，現場是有鐵皮屋遮棚、沒有冷氣的半開放式小店，桌子只有幾張，很多客人都買外帶，或直接叫外送。如果你一直在找有招牌的店面，一定會錯過它。",
+          "我們每週都會來報到，有時候一星期還吃好幾次。這裡不是那種上相好拍、環境舒適的地方，我們想吃一頓道地、好吃又划算的日常泰式料理時，一定會想到它。如果有人想體驗泰國在地人平常都怎麼吃，我也會帶他來這裡。"
+        ]
       ],
       [
-        "兩人來，多叫一碗冬蔭功",
-        "各點一盤飯，再分一碗酸辣蝦湯，是我們會帶朋友試的吃法。上次打拋豬加蛋、海鮮炒飯、冬蔭功三道一共 205 泰銖。老闆說可以口頭點餐，也能給店員看照片。想吃晚餐，我會早一點去，賣完就可能收攤。"
+        "我們最常點：打拋豬加半熟荷包蛋",
+        [
+          "我最愛的組合是打拋豬肉末飯，加一顆半熟荷包蛋。豬肉末和打拋葉、蒜末、辣椒一起炒，香辣夠味，醬汁濃稠濕潤，不是乾炒的路線。把半熟蛋黃拌進飯裡，味道更香，超級下飯。",
+          "這樣一份大約是 65 泰銖。如果能吃辣，我會選一般辣度，吃起來非常過癮，但泰國的一般辣，對台灣人來說可能已經是中辣、大辣。微辣、不吃辣，點餐時記得先講清楚。因為是現點現做，荷包蛋也能選全熟或半熟。",
+          "這裡的打拋不只有豬肉末，也有海鮮、豬肉片、雞肉等選擇，甚至還有脆皮豬。這也是 Aharn Tam Sang 有趣的地方：同樣想吃打拋飯，肉類、辣度和蛋都可以依自己的喜好客製化調整。"
+        ]
       ],
       [
-        "不會泰文，照著照片點",
-        "在 Central Lat Phrao 側門附近，找水果攤和綠色布條。到店可以指著照片，或把泰文品名給店員看。打拋豬肉末飯加半熟蛋是 ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม，海鮮炒飯是 ข้าวผัดทะเล，冬蔭功蝦湯是 ต้มยำกุ้ง。店約 09:30 開始營業，每月 1 日、16 日公休。要吃晚餐我會盡量 17:00 左右到，賣完就可能收攤。"
+        "兩個人來，推薦多點一碗冬蔭功",
+        [
+          "如果一個人來，一盤打拋飯加蛋就很滿足。兩個人以上，我推薦各點一份自己想吃的飯，再加一碗湯品一起分。",
+          "冬蔭功酸辣蝦湯，是酸、辣、香、鮮都很滿分的泰式口味，非常重口味，拿來配飯很適合。一碗只要 80 泰銖，裡面竟然有 8 隻蝦子，讓人印象深刻。店裡也有泰式壽喜燒，滿滿的蔬菜和冬粉，想嚐嚐看這款泰國才吃得到的料理，可以來這裡試試看。",
+          "Kik 則喜歡這裡的炒飯，尤其是海鮮炒飯（魷魚＋蝦子）。她也會點 Pad Phrik Gaeng，也就是用泰式紅咖哩醬和香料拌炒的豬肉片，再搭配白飯吃。這些餐點都是現點現做，師傅用大火、鐵鑊猛炒，端上桌時熱騰騰、香噴噴。",
+          "有一次我們點了打拋豬加蛋、海鮮炒飯和冬蔭功，三道菜總共只要 205 泰銖，你看這個價格是不是非常親民？"
+        ]
+      ],
+      [
+        "不會泰文怎麼點餐？HUXIAGO 幫幫你",
+        [
+          "菜色和客製化選擇很多，所以通常沒有一份讓你逐項勾選的完整菜單，在地人通常會把想吃的料理寫下來交給店家。不過不用因為不會寫泰文就放棄，因為有我們！外國客人可以直接用口頭點餐，直接拿上方圖集的料理照片給他看。老闆和店員都非常親切，一定會熱心幫助你的。",
+          "**點餐時可出示的泰文名稱：**打拋豬肉末飯加半熟蛋：ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม。海鮮炒飯：ข้าวผัดทะเล。冬蔭功蝦湯：ต้มยำกุ้ง。",
+          "店裡座位不多，環境及座位簡樸，也沒有冷氣，這裡適合想吃一頓簡單的泰式現炒，並且可以接受半開放式用餐環境的人。老闆說食材賣完就會提早收攤，如果要來吃晚餐，強烈建議盡量在下午五點左右抵達，拖到太晚才來可能會撲空。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**Google 地圖店名：**[กานดาอาหารตามสั่ง](https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7)。店在 Central Lat Phrao 側門前方，留意有遮棚的半開放式小店，店門口通常有間水果攤。",
+          "**營業時間：**約早上 9:30 開始營業，食材賣完可能提早收攤。",
+          "**公休日：**每天營業，除了每月 1 日、16 日兩天公休。",
+          "**點餐提醒：**不會寫泰文，可以用料理照片口頭點餐；辣度調整務必先說。"
+        ]
       ]
     ],
     [
       [
-        "泰国人的一人份现炒",
-        "泰国人吃打抛饭，常去的是อาหารตามสั่ง，意思是「照你点的做」。我和 Kik 常去的 Gan Da 在 Central Lat Phrao 前面。它有地图定位，但走到附近要找有棚子的半开放小店。桌子不多，也有不少人买了就带走。"
+        "铜板价美味！现做打抛饭、冬荫功",
+        [
+          "泰国人天天吃打抛饭，都去哪里？",
+          "来泰国玩，想吃一盘现炒的打抛猪饭，不用特别找打抛饭专卖店。在曼谷街头，有一种很常见的餐厅，叫做 อาหารตามสั่ง（Aharn Tam Sang），大概能翻译成「照你点的做」。打抛饭、炒饭、炒粿条这里都有，想吃什麽泰式料理就下单，师傅直接在厨房开始快炒。",
+          "如果要跟台湾朋友解释，我会说它就像热炒店的料理方式，但是是面店的一人份份量：菜色通常是大火现炒、热腾腾上桌，但你不用揪一桌人分菜。一个人点一盘餐点，吃饱就走。这绝对是来泰国值得体验的日常吃法。"
+        ]
       ],
       [
-        "我每次都想加一颗溏心煎蛋",
-        "这家的打抛猪炒得比较湿润，拌进溏心蛋黄很下饭。原文记录我们点的一份约 65 泰铢。普通辣度对一些游客可能已经很辣，点餐时可以先说能吃多辣，也可以换鸡肉、海鲜或脆皮猪。Kik 常点的是海鲜炒饭。"
+        "有地图定位，但超难找的隐藏餐厅",
+        [
+          "我跟 Kik 常吃的这家叫 กานดาอาหารตามสั่ง，就在 Central Lat Phrao 商场旁边。它有 Google 地图定位，现场是有铁皮屋遮棚、没有冷气的半开放式小店，桌子只有几张，很多客人都买外带，或直接叫外送。如果你一直在找有招牌的店面，一定会错过它。",
+          "我们每周都会来报到，有时候一星期还吃好几次。这里不是那种上相好拍、环境舒适的地方，我们想吃一顿道地、好吃又划算的日常泰式料理时，一定会想到它。如果有人想体验泰国在地人平常都怎麽吃，我也会带他来这里。"
+        ]
       ],
       [
-        "两个人来，多点一碗冬阴功",
-        "各点一盘饭，再分一碗酸辣虾汤，是我们会带朋友试的吃法。上次打抛猪加蛋、海鲜炒饭、冬阴功三道一共 205 泰铢。老板说可以口头点餐，也能给店员看照片。想吃晚餐，我会早一点去，卖完就可能打烊。"
+        "我们最常点：打抛猪加半熟荷包蛋",
+        [
+          "我最爱的组合是打抛猪肉末饭，加一颗半熟荷包蛋。猪肉末和打抛叶、蒜末、辣椒一起炒，香辣够味，酱汁浓稠湿润，不是乾炒的路线。把半熟蛋黄拌进饭里，味道更香，超级下饭。",
+          "这样一份大约是 65 泰铢。如果能吃辣，我会选一般辣度，吃起来非常过瘾，但泰国的一般辣，对台湾人来说可能已经是中辣、大辣。微辣、不吃辣，点餐时记得先讲清楚。因为是现点现做，荷包蛋也能选全熟或半熟。",
+          "这里的打抛不只有猪肉末，也有海鲜、猪肉片、鸡肉等选择，甚至还有脆皮猪。这也是 Aharn Tam Sang 有趣的地方：同样想吃打抛饭，肉类、辣度和蛋都可以依自己的喜好客制化调整。"
+        ]
       ],
       [
-        "不会泰文，照着照片点",
-        "在 Central Lat Phrao 侧门附近，找水果摊和绿色横幅。到店可以指着照片，或把泰文菜名给店员看。打抛猪肉末饭配溏心煎蛋是 ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม，海鲜炒饭是 ข้าวผัดทะเล，冬阴功虾汤是 ต้มยำกุ้ง。餐厅约 09:30 开始营业，每月 1 日、16 日休息。想吃晚餐我会尽量在 17:00 左右到，卖完就可能打烊。"
+        "两个人来，推荐多点一碗冬荫功",
+        [
+          "如果一个人来，一盘打抛饭加蛋就很满足。两个人以上，我推荐各点一份自己想吃的饭，再加一碗汤品一起分。",
+          "冬荫功酸辣虾汤，是酸、辣、香、鲜都很满分的泰式口味，非常重口味，拿来配饭很适合。一碗只要 80 泰铢，里面竟然有 8 只虾子，让人印象深刻。店里也有泰式寿喜烧，满满的蔬菜和冬粉，想嚐嚐看这款泰国才吃得到的料理，可以来这里试试看。",
+          "Kik 则喜欢这里的炒饭，尤其是海鲜炒饭（鱿鱼＋虾子）。她也会点 Pad Phrik Gaeng，也就是用泰式红咖哩酱和香料拌炒的猪肉片，再搭配白饭吃。这些餐点都是现点现做，师傅用大火、铁镬猛炒，端上桌时热腾腾、香喷喷。",
+          "有一次我们点了打抛猪加蛋、海鲜炒饭和冬荫功，三道菜总共只要 205 泰铢，你看这个价格是不是非常亲民？"
+        ]
+      ],
+      [
+        "不会泰文怎麽点餐？HUXIAGO 帮帮你",
+        [
+          "菜色和客制化选择很多，所以通常没有一份让你逐项勾选的完整菜单，在地人通常会把想吃的料理写下来交给店家。不过不用因为不会写泰文就放弃，因为有我们！外国客人可以直接用口头点餐，直接拿上方图集的料理照片给他看。老板和店员都非常亲切，一定会热心帮助你的。",
+          "**点餐时可出示的泰文名称：**打抛猪肉末饭加半熟蛋：ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม。海鲜炒饭：ข้าวผัดทะเล。冬荫功虾汤：ต้มยำกุ้ง。",
+          "店里座位不多，环境及座位简朴，也没有冷气，这里适合想吃一顿简单的泰式现炒，并且可以接受半开放式用餐环境的人。老板说食材卖完就会提早收摊，如果要来吃晚餐，强烈建议尽量在下午五点左右抵达，拖到太晚才来可能会扑空。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**Google 地图店名：**[กานดาอาหารตามสั่ง](https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7)。店在 Central Lat Phrao 侧门前方，留意有遮棚的半开放式小店，店门口通常有间水果摊。",
+          "**营业时间：**约早上 9:30 开始营业，食材卖完可能提早收摊。",
+          "**公休日：**每天营业，除了每月 1 日、16 日两天公休。",
+          "**点餐提醒：**不会写泰文，可以用料理照片口头点餐；辣度调整务必先说。"
+        ]
       ]
     ],
     [
       [
-        "A Thai stir-fry made to order",
-        "For pad kra pao, locals often go to an aharn tam sang shop. It means the kitchen cooks what you order. Gan Da, where Kik and I eat regularly, is in front of Central Lat Phrao. Use the map pin, then look for a little open-sided stall under a canopy. There are only a few tables, and plenty of customers take their meals away."
+        "Wok-fresh pad kra pao and tom yum on a small budget",
+        [
+          "Where do Thai people go for their everyday pad kra pao?",
+          "You don’t have to look for a restaurant that specialises in pad kra pao. In Bangkok you’ll see small places called อาหารตามสั่ง (aharn tam sang), which roughly means “cooked to order.” Order pad kra pao, fried rice or stir-fried rice noodles, and the cook starts up the wok.",
+          "To friends back in Taiwan, I describe it as the cooking of a stir-fry restaurant served in the single portions you’d get at a noodle shop. The food comes to the table hot from the wok, and you don’t need a whole group to share it. One plate is a meal. It’s an everyday part of eating in Thailand that’s worth trying."
+        ]
       ],
       [
-        "My usual order comes with a runny egg",
-        "The minced pork here comes with plenty of sauce. Stirring the runny yolk into the rice is my favourite part. Our source notes about 65 baht for that order. Ask for less chilli if you need it. Chicken, seafood and crispy pork are options, and seafood fried rice is one of Kik’s favourites."
+        "A hidden restaurant, even with a map pin",
+        [
+          "Kik and I go to กานดาอาหารตามสั่ง beside Central Lat Phrao. It’s on Google Maps, but on the ground you’re looking for a little open-sided stall under a metal awning, with a few tables and no air conditioning. Many people get takeaway or order delivery. Look for the stall and you’ll find it.",
+          "We’re there every week, sometimes several times. It’s a simple place, and we go when we want good, affordable everyday Thai food. This is where I’d take someone who wants to see how locals actually eat."
+        ]
+      ],
+      [
+        "Our usual order: minced pork and a soft fried egg",
+        [
+          "My favourite is minced pork pad kra pao over rice with a fried egg and a runny yolk. The pork is stir-fried with holy basil, garlic and chilli, with a thick, savoury sauce. Stir the yolk through the rice for an even richer bite.",
+          "A plate like this was around THB 65. I like the standard spice level, but it can be quite hot if you’re used to food in Taiwan. Ask up front if you want it mild or without chilli. You can also ask for the egg runny or cooked through.",
+          "You can have pad kra pao with seafood, sliced pork, chicken or crispy pork. That’s the nice part of aharn tam sang: pick your protein, spice level and how you’d like your egg."
+        ]
       ],
       [
         "If there are two of you, share a tom yum",
-        "I’d order a plate each and split a bowl of hot and sour shrimp soup. On one visit, pork pad kra pao with egg, seafood fried rice and tom yum came to 205 baht. The owner said you can order aloud or show a photo. I’d go early for dinner, because the stall may close when it sells out."
+        [
+          "When I go alone, one plate of pad kra pao and an egg is plenty. With two or more people, I’d each order a rice dish and share a bowl of soup.",
+          "The prawn tom yum is sour, spicy, fragrant and full of flavour, especially with rice. Our THB 80 bowl came with eight prawns. The stall also serves Thai suki, a dish with plenty of vegetables and glass noodles, if you want to try something different.",
+          "Kik likes the fried rice, especially the seafood version with squid and prawns. She also orders pad phrik gaeng, sliced pork stir-fried with red curry paste and spices and served with plain rice. Everything is cooked to order in a hot iron wok and arrives steaming.",
+          "Once we ordered pork pad kra pao with an egg, seafood fried rice and tom yum for THB 205 altogether. It’s hard to beat that for a meal for two."
+        ]
       ],
       [
-        "Use the photos or show the Thai names",
-        "Look near the Central Lat Phrao side entrance for a fruit stall and a green banner. Point to a photo or show these Thai names: minced pork pad kra pao with a runny fried egg (ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม), seafood fried rice (ข้าวผัดทะเล), or prawn tom yum (ต้มยำกุ้ง). The stall opens around 09:30 and closes on the 1st and 16th of the month. I’d get there around 17:00 for dinner, before the kitchen sells out."
+        "Ordering without speaking Thai",
+        [
+          "There are so many dishes and variations that you may not see a full checklist-style menu. Locals often write down what they want. You can order aloud or show the friendly staff a photo from the gallery above.",
+          "**Thai names to show the staff:** Minced pork pad kra pao with a runny fried egg: ข้าวกะเพราหมูสับ ไข่ดาวแบบไข่แดงเยิ้ม. Seafood fried rice: ข้าวผัดทะเล. Prawn tom yum: ต้มยำกุ้ง.",
+          "There are few seats, simple furnishings and no air conditioning. It suits anyone who’s happy to eat a quick stir-fry in an open-sided stall. The owner told us they close when they run out of food. I’d aim to get there around 17:00 for dinner so you don’t miss out."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**Google Maps:** [กานดาอาหารตามสั่ง](https://maps.app.goo.gl/UrdKZJ3tfLRKj3cp7). Look by the side entrance of Central Lat Phrao for a little open-sided stall under an awning, usually with a fruit stand out front.",
+          "**Hours:** Opens around 09:30. The kitchen may close early if it sells out.",
+          "**Days off:** Closed on the 1st and 16th of each month.",
+          "**Ordering:** Show a dish photo or order aloud. Mention your preferred spice level before they start cooking."
+        ]
       ]
     ]
   ],
   "hani-spa": [
     [
       [
-        "Kik 先找到這一間二店",
-        "逛完洽圖洽走累了，我會把 Hani Spa 二店排進行程。Kik 原本是為了肩頸和背部去試，後來才帶我來。二店就在 Union Mall 旁，木質調的接待區很亮，進門先喝冰飲，做完再喝熱木橘茶。"
+        "大公開！回訪Ｎ次的平價按摩",
+        [
+          "精品按摩的氛圍，在地按摩的價格",
+          "在曼谷市中心，想找一間口碑好的按摩 SPA 往往要上千泰銖。但這間質感按摩店，不只有溫馨的氛圍、親切的服務，還有堪稱精品 SPA 的質感，攤開價目表，許多療程竟然只要 300 泰銖起跳。即使你不在洽圖洽附近，Hani Spa 也絕對值得特地跑一趟。",
+          "Hani Spa 有兩間分店。我們都是去洽圖洽公園側、Union Mall 旁的二店，以下體驗都是來自這裡。我們整理這篇時，兩間店在 Google 地圖都是 4.9 分，合計有 1,071 則評論。我們也實際回訪過，才放心推薦給大家。"
+        ]
       ],
       [
-        "一小時泰式按摩怎麼按",
-        "我們一起做過 60 分鐘的傳統泰式按摩。二樓用布簾隔開，兩人同行可以問能否拉開中間的簾子。按摩師先用溫熱濕布擦腳，再開始按。力道可以事先說，我和 Kik 都喜歡不用咬牙忍痛的那種。"
+        "local 按摩價格，空間卻質感滿分",
+        [
+          "這間店最早是 Kik 發現的。她因為肩頸酸痛和背痛來按摩舒緩，一按就驚為天人。加上價格合理，馬上帶我一起來。我們兩人已經回訪超過五次。",
+          "我們喜歡二店明亮、簡潔的木質調設計。從店門外就看到接待區，整體很溫馨舒適。傳統泰式按摩一小時 300 泰銖、兩小時 600 泰銖，如果想試比較深層的按摩，Deep Tissue Massage 兩小時的價格是 950 泰銖。"
+        ]
       ],
       [
-        "足部、肩頸和深層要分開選",
-        "我帶朋友來做過一小時足部按摩。原文價目表上，泰式、足部和 Posture Rescue 各是 60 分鐘 300 泰銖；Deep Tissue 的 60／90／120 分鐘分別是 550／750／950 泰銖。這是當次價目表，約之前再問二店。搭 MRT 到 Phahon Yothin 後，往 Lat Phrao Soi 1 和 Union Mall 一帶走。"
+        "泰式按摩，我們夫妻倆一起按過",
+        [
+          "我和 Kik 一起做過 60 分鐘的傳統泰式按摩。二樓的按摩床位雖然不是獨立包廂，但有用布簾隔開，兩個人一起來，可以把中間的布簾拉開，一起在同一個空間。",
+          "躺下後，按摩師先用溫熱的濕布替我們擦腳，再開始按摩。力道適中，按得很舒服，兩個人都按到快睡著了。Kik 比較怕那種大力按、會痛的手法，她會一再回訪，就是因為師傅力道控制得恰到好處。如果你對力道有偏好，也可以直接告訴按摩師。"
+        ]
       ],
       [
-        "從 5 號出口去二店",
-        "搭 MRT 到 Phahon Yothin，從 5 號出口步行到 Union Mall 旁的二店。原稿列每天 11:00 至隔日 00:00，最後可預約時間請向店家確認。可以打 064-989-2559，或用同一個號碼加 LINE、WhatsApp。直接到店可能需要等候，我會先約時間。"
+        "肩頸、深層按摩，帶朋友足部按摩",
+        [
+          "除了泰式按摩，Kik 還按過專門針對頸部、肩膀的 Posture Rescue Massage，當時價格為 60 分鐘 300 泰銖，也做過另一種 Deep Tissue Massage。Deep Tissue Massage 價位分別是 60／90／120 分鐘，550／750／950 泰銖。",
+          "上次還帶台灣創作者 「超強系列」 來，我們兩個坐在隔壁，一起按一小時足部按摩。他對泰國很熟，常常來、也會說泰文，結果按完超滿意、大力稱讚這間店。足部按摩在價目表上叫 Reflexology Massage，一小時同樣是 300 泰銖。"
+        ]
+      ],
+      [
+        "從冰飲到熱茶，讓人愛上的小細節",
+        [
+          "在曼谷的大熱天走進店裡，冷氣撲面而來，還有一杯冰涼的迎賓飲品，整個人感到沁涼無比。按摩結束後，店家改成端上熱木橘茶，外加鳳梨卷小點心，非常搭的組合。鳳梨卷的風味和甜度，跟台灣的鳳梨酥有異曲同工之妙。",
+          "招待的飲食雖然談不上高級，但我很喜歡它讓我感到從進門到離開，都有被呵護和照料到感覺。Hani Spa 值得推薦的原因不只是價格，而是隨著在地人視角，踏進寶藏般的質感按摩 SPA，好好享受旅程中的放鬆時刻。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "我們去的分店：[Hani Spa – Branch 2](https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2%202%20Lat%20Phrao%20Soi%201%20Bangkok)，位於 Union Mall 商場旁。可搭 MRT 到 Phahon Yothin 站 5 號出口出站，步行前往。",
+          "營業時間：每天 11:00–隔日 00:00。請向店家確認最後可預約時段。",
+          "預約方式：強烈建議提前預約，直接到店可能需要等候，預約可直接致電 064-989-2559，或用同個號碼加 LINE 或 WhatsApp 預約。",
+          "**價格參考：**傳統泰式按摩、足部按摩及 Posture Rescue Massage，60 分鐘都是 300 泰銖；Deep Tissue Massage 60 分鐘 550 泰銖。截稿時另有 Deep Tissue＋Hot Stone Compress，60 分鐘 600 泰銖的促銷方案，優惠是否仍適用，預約時記得先確認。",
+          "另一間分店：Hani Spa – Branch 1 在 Central Ladprao 商場旁的 The One Park。我們還沒去過，以上親身體驗及營業時間皆以二店為準。"
+        ]
       ]
     ],
     [
       [
-        "Kik 先找到这家二店",
-        "逛完洽图洽走累了，我会把 Hani Spa 二店排进行程。Kik 原本是为了肩颈和背部去试，后来才带我来。二店就在 Union Mall 旁，木质调的接待区很明亮，进门先喝冰饮，做完再喝热木橘茶。"
+        "大公开！回访Ｎ次的平价按摩",
+        [
+          "精品按摩的氛围，在地按摩的价格",
+          "在曼谷市中心，想找一间口碑好的按摩 SPA 往往要上千泰铢。但这间质感按摩店，不只有温馨的氛围、亲切的服务，还有堪称精品 SPA 的质感，摊开价目表，许多疗程竟然只要 300 泰铢起跳。即使你不在洽图洽附近，Hani Spa 也绝对值得特地跑一趟。",
+          "Hani Spa 有两间分店。我们都是去洽图洽公园侧、Union Mall 旁的二店，以下体验都是来自这里。我们整理这篇时，两间店在 Google 地图都是 4.9 分，合计有 1,071 则评论。我们也实际回访过，才放心推荐给大家。"
+        ]
       ],
       [
-        "一小时泰式按摩怎么按",
-        "我们一起做过 60 分钟的传统泰式按摩。二楼用布帘隔开，两人同行可以问能否拉开中间的帘子。按摩师先用温热湿布擦脚，再开始按。力度可以提前说，我和 Kik 都喜欢不用咬牙忍痛的那种。"
+        "local 按摩价格，空间却质感满分",
+        [
+          "这间店最早是 Kik 发现的。她因为肩颈酸痛和背痛来按摩舒缓，一按就惊为天人。加上价格合理，马上带我一起来。我们两人已经回访超过五次。",
+          "我们喜欢二店明亮、简洁的木质调设计。从店门外就看到接待区，整体很温馨舒适。传统泰式按摩一小时 300 泰铢、两小时 600 泰铢，如果想试比较深层的按摩，Deep Tissue Massage 两小时的价格是 950 泰铢。"
+        ]
       ],
       [
-        "足部、肩颈和深层要分开选",
-        "我带朋友来做过一小时足部按摩。原文价目表上，泰式、足部和 Posture Rescue 各是 60 分钟 300 泰铢；Deep Tissue 的 60／90／120 分钟分别是 550／750／950 泰铢。这是当次价目表，预约前再问二店。搭 MRT 到 Phahon Yothin 后，往 Lat Phrao Soi 1 和 Union Mall 一带走。"
+        "泰式按摩，我们夫妻俩一起按过",
+        [
+          "我和 Kik 一起做过 60 分钟的传统泰式按摩。二楼的按摩床位虽然不是独立包厢，但有用布帘隔开，两个人一起来，可以把中间的布帘拉开，一起在同一个空间。",
+          "躺下後，按摩师先用温热的湿布替我们擦脚，再开始按摩。力道适中，按得很舒服，两个人都按到快睡着了。Kik 比较怕那种大力按、会痛的手法，她会一再回访，就是因为师傅力道控制得恰到好处。如果你对力道有偏好，也可以直接告诉按摩师。"
+        ]
       ],
       [
-        "从 5 号出口去二店",
-        "坐 MRT 到 Phahon Yothin，从 5 号出口步行到 Union Mall 旁的二店。原稿注明每天 11:00 至次日 00:00，最晚可预约时间请向门店确认。可以打 064-989-2559，或用同一号码加 LINE、WhatsApp。直接到店可能需要等候，我会提前预约。"
+        "肩颈、深层按摩，带朋友足部按摩",
+        [
+          "除了泰式按摩，Kik 还按过专门针对颈部、肩膀的 Posture Rescue Massage，当时价格为 60 分钟 300 泰铢，也做过另一种 Deep Tissue Massage。Deep Tissue Massage 价位分别是 60／90／120 分钟，550／750／950 泰铢。",
+          "上次还带台湾创作者 「超强系列」 来，我们两个坐在隔壁，一起按一小时足部按摩。他对泰国很熟，常常来、也会说泰文，结果按完超满意、大力称赞这间店。足部按摩在价目表上叫 Reflexology Massage，一小时同样是 300 泰铢。"
+        ]
+      ],
+      [
+        "从冰饮到热茶，让人爱上的小细节",
+        [
+          "在曼谷的大热天走进店里，冷气扑面而来，还有一杯冰凉的迎宾饮品，整个人感到沁凉无比。按摩结束後，店家改成端上热木橘茶，外加凤梨卷小点心，非常搭的组合。凤梨卷的风味和甜度，跟台湾的凤梨酥有异曲同工之妙。",
+          "招待的饮食虽然谈不上高级，但我很喜欢它让我感到从进门到离开，都有被呵护和照料到感觉。Hani Spa 值得推荐的原因不只是价格，而是随着在地人视角，踏进宝藏般的质感按摩 SPA，好好享受旅程中的放松时刻。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "我们去的分店：[Hani Spa – Branch 2](https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2%202%20Lat%20Phrao%20Soi%201%20Bangkok)，位於 Union Mall 商场旁。可搭 MRT 到 Phahon Yothin 站 5 号出口出站，步行前往。",
+          "营业时间：每天 11:00–隔日 00:00。请向店家确认最後可预约时段。",
+          "预约方式：强烈建议提前预约，直接到店可能需要等候，预约可直接致电 064-989-2559，或用同个号码加 LINE 或 WhatsApp 预约。",
+          "**价格参考：**传统泰式按摩、足部按摩及 Posture Rescue Massage，60 分钟都是 300 泰铢；Deep Tissue Massage 60 分钟 550 泰铢。截稿时另有 Deep Tissue＋Hot Stone Compress，60 分钟 600 泰铢的促销方案，优惠是否仍适用，预约时记得先确认。",
+          "另一间分店：Hani Spa – Branch 1 在 Central Ladprao 商场旁的 The One Park。我们还没去过，以上亲身体验及营业时间皆以二店为准。"
+        ]
       ]
     ],
     [
       [
-        "Kik found Branch 2 first",
-        "After a long walk around Chatuchak, I’d make time for Hani Spa Branch 2. Kik found it while looking for a shoulder and back massage and later took me along. This branch is near Union Mall. We started with a chilled welcome drink and finished with warm bael tea."
+        "The affordable massage place we keep going back to",
+        [
+          "Boutique-spa atmosphere at neighbourhood prices",
+          "A well-regarded spa in central Bangkok can cost thousands of baht. Hani Spa feels like a boutique spa, with a warm space and friendly service, yet plenty of treatments start at just THB 300. I’d make the trip even if you’re staying elsewhere in Bangkok.",
+          "Hani Spa has two branches. We go to Branch 2, near Chatuchak Park and next to Union Mall, and that’s the branch in this guide. When we wrote this, both branches had 4.9-star Google Maps ratings and 1,071 reviews between them. We felt comfortable recommending it from our own visits."
+        ]
       ],
       [
-        "What our hour of Thai massage felt like",
-        "We tried the 60-minute traditional massage together. Upstairs, curtains divide the treatment spaces. If you’re coming as a pair, ask whether the curtain between you can stay open. The therapist started with a warm cloth for our feet. Tell them how much pressure you like before they start."
+        "Neighbourhood prices, a lovely space",
+        [
+          "Kik found the spa first when she wanted some relief for a sore neck, shoulders and back. She liked the massage and the prices so much that she brought me along. We’ve been back more than five times.",
+          "We like the light, simple wood interior at Branch 2. You can see the welcoming reception area from outside. A traditional Thai massage was THB 300 for an hour or THB 600 for two. A two-hour deep-tissue massage was THB 950."
+        ]
       ],
       [
-        "Choose foot, shoulder or deep-tissue massage",
-        "I’ve also taken a friend for a one-hour foot massage. Our visit’s menu listed Thai, foot and Posture Rescue massages at 300 baht for 60 minutes each. Deep Tissue was 550, 750 or 950 baht for 60, 90 or 120 minutes. Confirm current prices with Branch 2. From MRT Phahon Yothin, head towards Lat Phrao Soi 1 near Union Mall."
+        "What our Thai massage was like",
+        [
+          "We tried a 60-minute traditional Thai massage together. The beds upstairs are separated by curtains. If two of you come together, you can ask to leave the middle curtain open and share the space.",
+          "The therapists started by wiping our feet with warm, damp cloths. The pressure was just right and we both nearly drifted off. Kik doesn’t like massages that hurt, and the way the therapists adjusted their pressure is why she keeps going back. Let yours know if you’d like more or less pressure."
+        ]
       ],
       [
-        "Use Exit 5 for Branch 2",
-        "Take MRT Phahon Yothin Exit 5 for the branch by Union Mall. The listed hours are 11:00 to midnight daily. Ask the branch about its last appointment. Call 064-989-2559 or use the same number on LINE or WhatsApp. Walk-ins can mean a wait, so I’d book ahead."
+        "Neck and shoulders, deep tissue and a foot massage with a friend",
+        [
+          "Kik also tried Posture Rescue Massage for the neck and shoulders, which was THB 300 for 60 minutes, and a separate Deep Tissue Massage. The listed deep-tissue prices were THB 550, 750 or 950 for 60, 90 or 120 minutes.",
+          "I once brought the Taiwanese creator behind “超強系列” for an hour of foot massage. We sat side by side. He knows Thailand well, visits often and speaks Thai, and he came away full of praise for the place. The menu calls it Reflexology Massage, also THB 300 for an hour."
+        ]
+      ],
+      [
+        "The little things, from a cold drink to hot tea",
+        [
+          "After the heat outside, walking into air conditioning and being offered a cold welcome drink feels wonderful. After the massage they brought hot bael tea and little pineapple rolls. The flavour and sweetness reminded me of Taiwanese pineapple cakes.",
+          "It’s a simple gesture, but it made me feel looked after from the moment I walked in. I recommend Hani Spa for that as much as for the price. It’s the kind of neighbourhood find where you can set aside an hour and relax in the middle of a trip."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**The branch we visited:** [Hani Spa – Branch 2](https://www.google.com/maps/search/?api=1&query=Hani%20Spa%20Branch%202%20%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2%202%20Lat%20Phrao%20Soi%201%20Bangkok), beside Union Mall. Take Exit 5 at MRT Phahon Yothin and walk from there.",
+          "**Hours:** Daily from 11:00 to midnight. Ask about the last appointment.",
+          "**Booking:** Reserve ahead to avoid a wait. Call 064-989-2559 or add the same number on LINE or WhatsApp.",
+          "**Sample prices:** Traditional Thai, reflexology and Posture Rescue were THB 300 for 60 minutes. Deep tissue was THB 550 for 60 minutes. At the time of writing, a 60-minute deep-tissue massage with a hot-stone compress was THB 600. Check whether it is still offered when you book.",
+          "**Other branch:** Branch 1 is at The One Park next to Central Ladprao. We haven’t been there. The experience and hours above refer to Branch 2."
+        ]
       ]
     ]
   ],
   "chowchercof": [
     [
       [
-        "逛完洽圖洽，坐到蓮花池旁",
-        "Chowchercof 藏在 Lat Phrao 16 巷裡。走到白色雙層建築前，我會先看招牌上的泰文字母 ฌ。進去後我最喜歡找正對蓮花池的靠窗座位。上次蓮花沒開，坐著看池水和綠意，還是很舒服。"
+        "美感滿分的難忘午茶時光",
+        [
+          "全場顧客 8 成女生的小天地？",
+          "**蓮花池景觀、椰子香蘭葉甜點、高水準抹茶，飲品最便宜 100 泰銖有找。**如果你曼谷旅遊，想找間靜謐、好拍的景觀咖啡廳，我會帶你來這裡。這裡尤其受到在地女生的喜愛，每天的下午茶時段，往往都被來拍照打卡、吃下午茶的姐妹們攻佔。"
+        ]
       ],
       [
-        "我們幾乎每次都點 Coco Ball",
-        "椰子造型的 Coco Ball 切開是濕潤的香蘭葉蛋糕和椰肉內餡。我和 Kik 幾乎每次都點。想喝茶可以看看三色的 Matcha Mousse Butterfly Pea。原文記下那次基本款泰奶不到 100 泰銖，冰沙就算請店家少糖，我還是覺得偏甜。"
+        "巷子裡的小咖啡店，別有洞天",
+        [
+          "Chowchercof 隱身在 Lat Phrao 16 巷裡。白色雙層建築，搭配原木色門窗，從踏進門口前就很好拍。走進店裡，還能看到一大片的蓮花池。我最喜歡室內正對蓮花池的靠窗座位，坐下來喝口飲料，開闊的景色就馬上讓人靜下心來。",
+          "上次拜訪時蓮花還沒開，但看著平靜的池水和周圍的綠意，還是覺得很放鬆。這間咖啡廳其實離我們家不遠，是個放鬆和辦公的好空間。如果朋友在曼谷想找一間冷氣涼爽、又很有特色的咖啡廳，我一定會推薦這裡。",
+          "建築物上的發光招牌，採用泰文字母 ฌ 的造型設計，杯子上的 Logo 也看得到。從建築、招牌，到池邊座位，都有值得慢慢欣賞的小細節，這裡的泰式設計的美學，值得細品。"
+        ]
       ],
       [
-        "怎麼走、怎麼點餐",
-        "原文從 MRT Lat Phrao 站 2 號出口出來，走進 Lat Phrao 16 巷約 100 公尺。到店後可以掃桌上的 QR Code 看泰文和英文菜單，離開再結帳。菜單也有早午餐、義大利麵和泰式料理。出發前再看當天的營業資訊。"
+        "幾乎每次來都吃的 Coco Ball",
+        [
+          "我跟 Kik 幾乎每次必點 Coco Ball 椰子香蘭葉蛋糕，也是我最想推薦你試的甜點。外型仿造椰子，濕潤的香蘭葉蛋糕體和椰肉內餡，甜度適中、南洋味十足。這裡的椰子和香蘭葉甜點都很道地美味——對我們來說，甜點好吃，也是除了美景以外一再回訪的原因。",
+          "飲料我們會推薦 Matcha Mousse Butterfly Pea，超美的三色漸層，抹茶和椰子水香氣濃郁。想找基本款，菜單上也有不到 100 泰銖的飲品，例如泰式奶茶、泰式紅茶。另外，泰奶也可以做成冰沙，味道非常不錯，不過上次點了少糖還是覺得偏甜，接近台灣的全糖甜度。"
+        ]
       ],
       [
-        "什麼時候去、怎麼結帳",
-        "店家官網列每日 08:30–19:30，廚房 19:00 打烊。掃桌上 QR Code 就能點餐，也可以到櫃檯看附照片的紙本菜單。離開前到櫃檯結帳，可以用泰國 QR Code、現金、信用卡或簽帳卡。"
+        "想吃正餐，這裡也有很多選擇",
+        [
+          "這裡不只有咖啡、抹茶和甜點。菜單上還有義大利麵、早午餐和泰式料理，不少正餐只要一百多泰銖、不到兩百泰銖。選項比一般只賣飲料、甜點的咖啡廳多，不過我們一直還沒機會試。"
+        ]
+      ],
+      [
+        "掃 QR Code 點餐，離開前結帳",
+        [
+          "每張桌上都有桌號和 QR Code，手機掃描後可以看泰文及英文菜單，選好餐點後自行下單，通常不久後店員就會把餐點送到座位。櫃檯處也有附圖片的實體菜單可供翻閱。",
+          "離開前，再到櫃檯結帳即可。我們平常用泰國 QR Code 掃碼轉帳，店家也接受現金、信用卡和簽帳卡。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**Google 地圖店名：**[Chowchercof（ฌอเฌอคอฟ）Lat Phrao 16 主店](https://goo.gl/maps/jAHvcV3BWatrrB6L6)。",
+          "**交通方式：**搭 MRT 至 Lat Phrao 站，從 2 號出口步行前往；店面位於 Lat Phrao 16 巷口往內約 100 公尺。",
+          "**營業時間：**每天 08:30–19:30，廚房 19:00 打烊。",
+          "**點餐提醒：**掃桌上 QR Code 用手機下單，離開前結帳，價格與供應品項以現場菜單為準。"
+        ]
       ]
     ],
     [
       [
-        "逛完洽图洽，坐到莲花池旁",
-        "Chowchercof 藏在 Lat Phrao 16 巷里。走到白色双层建筑前，我会先看招牌上的泰文字母 ฌ。进去后我最喜欢找正对莲花池的靠窗座位。上次莲花没开，坐着看池水和绿意，还是很舒服。"
+        "美感满分的难忘午茶时光",
+        [
+          "全场顾客 8 成女生的小天地？",
+          "**莲花池景观、椰子香兰叶甜点、高水准抹茶，饮品最便宜 100 泰铢有找。**如果你曼谷旅游，想找间静谧、好拍的景观咖啡厅，我会带你来这里。这里尤其受到在地女生的喜爱，每天的下午茶时段，往往都被来拍照打卡、吃下午茶的姐妹们攻占。"
+        ]
       ],
       [
-        "我们几乎每次都点 Coco Ball",
-        "椰子造型的 Coco Ball 切开是湿润的香兰叶蛋糕和椰肉内馅。我和 Kik 几乎每次都点。想喝茶可以看看三色的 Matcha Mousse Butterfly Pea。原文记录那次基本款泰奶不到 100 泰铢，冰沙就算请店家少糖，我还是觉得偏甜。"
+        "巷子里的小咖啡店，别有洞天",
+        [
+          "Chowchercof 隐身在 Lat Phrao 16 巷里。白色双层建筑，搭配原木色门窗，从踏进门口前就很好拍。走进店里，还能看到一大片的莲花池。我最喜欢室内正对莲花池的靠窗座位，坐下来喝口饮料，开阔的景色就马上让人静下心来。",
+          "上次拜访时莲花还没开，但看着平静的池水和周围的绿意，还是觉得很放松。这间咖啡厅其实离我们家不远，是个放松和办公的好空间。如果朋友在曼谷想找一间冷气凉爽、又很有特色的咖啡厅，我一定会推荐这里。",
+          "建筑物上的发光招牌，采用泰文字母 ฌ 的造型设计，杯子上的 Logo 也看得到。从建筑、招牌，到池边座位，都有值得慢慢欣赏的小细节，这里的泰式设计的美学，值得细品。"
+        ]
       ],
       [
-        "怎么走、怎么点餐",
-        "原文从 MRT Lat Phrao 站 2 号出口出来，走进 Lat Phrao 16 巷约 100 米。到店后可以扫桌上的二维码看泰文和英文菜单，离开再结账。菜单也有早午餐、意大利面和泰式料理。出发前再看当天营业信息。"
+        "几乎每次来都吃的 Coco Ball",
+        [
+          "我跟 Kik 几乎每次必点 Coco Ball 椰子香兰叶蛋糕，也是我最想推荐你试的甜点。外型仿造椰子，湿润的香兰叶蛋糕体和椰肉内馅，甜度适中、南洋味十足。这里的椰子和香兰叶甜点都很道地美味——对我们来说，甜点好吃，也是除了美景以外一再回访的原因。",
+          "饮料我们会推荐 Matcha Mousse Butterfly Pea，超美的三色渐层，抹茶和椰子水香气浓郁。想找基本款，菜单上也有不到 100 泰铢的饮品，例如泰式奶茶、泰式红茶。另外，泰奶也可以做成冰沙，味道非常不错，不过上次点了少糖还是觉得偏甜，接近台湾的全糖甜度。"
+        ]
       ],
       [
-        "什么时候去、怎么结账",
-        "商家官网注明每天 08:30–19:30，厨房 19:00 停止营业。扫桌上的二维码就能点餐，也可以去柜台看带照片的纸质菜单。离开前在柜台结账，可用泰国二维码、现金、信用卡或借记卡。"
+        "想吃正餐，这里也有很多选择",
+        [
+          "这里不只有咖啡、抹茶和甜点。菜单上还有义大利面、早午餐和泰式料理，不少正餐只要一百多泰铢、不到两百泰铢。选项比一般只卖饮料、甜点的咖啡厅多，不过我们一直还没机会试。"
+        ]
+      ],
+      [
+        "扫 QR Code 点餐，离开前结帐",
+        [
+          "每张桌上都有桌号和 QR Code，手机扫描後可以看泰文及英文菜单，选好餐点後自行下单，通常不久後店员就会把餐点送到座位。柜台处也有附图片的实体菜单可供翻阅。",
+          "离开前，再到柜台结帐即可。我们平常用泰国 QR Code 扫码转帐，店家也接受现金、信用卡和签帐卡。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**Google 地图店名：**[Chowchercof（ฌอเฌอคอฟ）Lat Phrao 16 主店](https://goo.gl/maps/jAHvcV3BWatrrB6L6)。",
+          "**交通方式：**搭 MRT 至 Lat Phrao 站，从 2 号出口步行前往；店面位於 Lat Phrao 16 巷口往内约 100 公尺。",
+          "**营业时间：**每天 08:30–19:30，厨房 19:00 打烊。",
+          "**点餐提醒：**扫桌上 QR Code 用手机下单，离开前结帐，价格与供应品项以现场菜单为准。"
+        ]
       ]
     ],
     [
       [
-        "After Chatuchak, grab a seat by the pond",
-        "Chowchercof is tucked into Lat Phrao Soi 16. On the two-storey white building, look for the Thai letter ฌ on the sign. I like the window seats facing the lotus pond. The flowers weren’t out on our last visit, but the view of the water and greenery was still worth a seat."
+        "A lovely place to linger over afternoon tea",
+        [
+          "Is it just me, or are eight out of ten guests women?",
+          "**A lotus pond, coconut and pandan desserts, good matcha and drinks starting below THB 100.** This is where I’d take you for a quiet Bangkok café with a view. It’s especially popular with local women, and groups of friends often fill it in the afternoon to take photos and have tea."
+        ]
       ],
       [
-        "We nearly always order the Coco Ball",
-        "Cut into the coconut-shaped Coco Ball and you get moist pandan cake and a coconut filling. Kik and I order one almost every visit. I also like the three-layer matcha and butterfly pea drink. Our original notes put basic Thai milk tea under 100 baht that day. Even with less sugar, I found the blended version quite sweet."
+        "A little café hidden down a side street",
+        [
+          "Chowchercof is tucked away on Lat Phrao Soi 16. The two-storey white building and natural wood doors and windows are lovely from the moment you arrive. Inside, there’s a broad lotus pond. My favourite spot is a window seat directly facing the water. The open view makes me slow down with the first sip.",
+          "The lotuses hadn’t flowered on our last visit, but the still water and surrounding greenery were just as relaxing. It’s near our home, so it’s an easy place to unwind or get some work done. I’d recommend it to friends looking for a cool, comfortable café with character.",
+          "The illuminated sign is shaped around the Thai letter ฌ, which appears on the cups too. From the architecture and signage to the seats by the pond, there are plenty of details to notice in the Thai design."
+        ]
       ],
       [
-        "Getting there and ordering",
-        "Our route was from MRT Lat Phrao Exit 2, about 100 metres into Lat Phrao Soi 16. Scan the table QR code for the Thai and English menu, then settle up before you leave. There’s brunch, pasta and Thai food if you’re hungry. Check the café’s opening hours before you go."
+        "The Coco Ball we order almost every time",
+        [
+          "Kik and I almost always get the Coco Ball, the coconut and pandan cake I’d most like you to try. It looks like a coconut and has a moist pandan sponge and coconut filling, with just the right sweetness. The coconut and pandan desserts are a big reason we keep returning.",
+          "For a drink we’d pick the Matcha Mousse Butterfly Pea. It comes in three beautiful layers and has a fragrant mix of matcha and coconut water. Simpler drinks such as Thai milk tea and Thai black tea were under THB 100. The Thai milk tea frappe is good too, though even with less sugar, I found it as sweet as a full-sugar drink back in Taiwan."
+        ]
       ],
       [
-        "When to go and how to pay",
-        "The café lists daily hours of 08:30–19:30, with the kitchen closing at 19:00. Scan the table QR code to order or ask for the printed menu with pictures. Pay at the counter before leaving by Thai QR payment, cash, credit card or debit card."
+        "You can also have a proper meal here",
+        [
+          "There’s more than coffee, matcha and dessert. The menu includes pasta, brunch and Thai dishes, with plenty of mains between THB 100 and 200. It’s more choice than at a typical dessert café, although we haven’t tried the meals yet."
+        ]
+      ],
+      [
+        "Order by QR code and pay when you leave",
+        [
+          "Each table has a number and a QR code. Scan it to see the menu in Thai or English, choose what you want and send the order from your phone. Staff will bring it to the table. There’s also a printed menu with photos at the counter.",
+          "Pay at the counter before you leave. We usually use Thai QR payment, and the café also takes cash, credit cards and debit cards."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**Google Maps:** [Chowchercof (ฌอเฌอคอฟ), Lat Phrao Soi 16](https://goo.gl/maps/jAHvcV3BWatrrB6L6).",
+          "**Getting there:** Take Exit 2 at MRT Lat Phrao. The café is about 100 metres into Lat Phrao Soi 16.",
+          "**Hours:** Daily from 08:30 to 19:30. The kitchen closes at 19:00.",
+          "**Ordering:** Scan the table QR code, then settle up before you leave. Check the menu for current prices and what’s available."
+        ]
       ]
     ]
   ],
   "bang-sue-junction": [
     [
       [
-        "穿過馬路，逛進一整棟紅樓",
-        "如果你逛完洽圖洽市集還想找古著，我會帶你過馬路，到有冷氣的 Bang Sue Junction。一、二樓的古董家具、雕塑和擺飾，我覺得像逛一間可以慢慢看的博物館。想買衣服，就把多一點時間留給三到五樓。"
+        "古著古董黑膠的二手挖寶勝地",
+        [
+          "洽圖洽紅樓——冷氣開放的二手購物天堂",
+          "如果你喜歡逛二手衣、黑膠唱片或古董收藏，但又不想在泰國室外汗流浹背，推薦來 Bang Sue Junction ，在地人口中的「洽圖洽紅樓」。這是一棟有冷氣的六層樓商場，就在洽圖洽市集的正對面；週末可以順路來逛，平日也值得專程過來慢慢看。",
+          "大家叫它「紅樓」，因為建築的外觀有紅色點綴，但它跟台灣人可能會聯想到，那種用紅磚蓋成的紅樓不一樣，裡面其實是一間間古董、古著和二手收藏品店。"
+        ]
       ],
       [
-        "我試了五件以上才選到兩件外套",
-        "我們那天在五樓試了好幾件外套，最後把 GU 和 Columbia 各帶一件回家，兩件折後一共 2,350 泰銖，那是我們當天的成交價。也可以走一趟三樓 Mono Loop，就算不買黑膠，也能看看復古封面和相機。"
+        "1、2 樓：像免費的古董博物館",
+        [
+          "一、二樓以古董家具、雕塑和擺飾為主。不少商品價格不菲，體積也不小，觀光客未必方便買回家，但我覺得光看就很有趣，像在免費逛一座有冷氣、可以拍照，又可以自由自在，不用跟著導覽走的博物館。",
+          "如果你的目標是衣服，就先簡單瀏覽這兩層，再把時間留給樓上的古著店。另外，若想仔細逛古董區，建議早一點來，因為這裡有些店家，在傍晚 6 點左右就開始收攤。"
+        ]
       ],
       [
-        "五樓補個甜點，逛店要趁早",
-        "五樓電扶梯附近有雞蛋仔。我們點了香蕉、玉米和巧克力豆，玉米加在甜食裡意外地搭。原文記下當天原味 39 泰銖、三種配料 79 泰銖。從 MRT Kamphaeng Phet 站 1 號出口出來，原文記錄約走三分鐘。古董樓層和美食廣場有些店傍晚就收，我會先去。"
+        "3 到 5 樓：海量古著、二手衣",
+        [
+          "往上走，二手衣和古著就多了起來，還有鞋子、包包、配件，甚至有懷舊數位相機和手錶。作為想挖寶的旅客，這幾層很適合買一些能當作紀念品的東西。每間店不同老闆，定價不一定便宜，但可以多看、多問，不用急著把錢掏出來。",
+          "那天，我在 5 樓的一間二手衣店試了超過五件外套。老闆不但讓我們慢慢挑，還問我要不要站到鏡子前自拍，這樣回頭挑選比較方便。最後我買了 GU 和 Columbia 外套各一件，標價大約是 700 泰銖和 2,000 泰銖；結帳時，老闆又折了 350 泰銖，兩件衣服最後只付 2,350 泰銖。",
+          "回頭想想，GU 那件未必比原價便宜很多；但我們後來查了 Columbia 那件，原價可能要三、四千泰銖，就覺得喜出望外，有挖到寶的感覺。以我們那天的經驗，店家很友善，試穿和詢價都沒有壓力，可以花時間慢慢挑，價格也可以商量。"
+        ]
       ],
       [
-        "三樓逛黑膠，六樓也能吃飯",
-        "我會留時間逛三樓的 Mono Loop。牆上是一排排黑膠封面，店裡也有日本進口二手包、手錶和相機。逛累了，六樓是美食廣場，一樓有麥當勞。古董區和美食廣場可能在傍晚 18:00–19:00 陸續打烊，想逛這幾層我會先排。"
+        "3 樓 Mono Loop：不玩黑膠也值得看看",
+        [
+          "如果你喜歡黑膠唱片，記得逛逛 3 樓的 Mono Loop。店裡有一大片黑膠區，許多歐美、日本藝人的作品放在展示的玻璃櫃，牆上也陳列了不少唱片。依照知名度和稀有度的不同，價格從幾百到上千泰銖都有。",
+          "除了黑膠唱片，這裡也有日本進口的二手包、手錶和相機。就算不是黑膠玩家，進去看看那些復古的封面設計，跟收藏品一起合影也很有意思。"
+        ]
+      ],
+      [
+        "5 樓雞蛋仔：玉米放進甜食意外好吃",
+        [
+          "5 樓電扶梯一旁，有個賣爆米花和雞蛋仔的攤位。我們去的時候，超多學生和年輕人大排長龍。點餐方式很簡單，拿攤位前的紙勾選菜單和配料，原味雞蛋仔 39 泰銖，加 3 樣配料 79 泰銖，配料甜鹹皆有：起司、Nutella、Oreo、杏仁、泰式甜蛋絲等。",
+          "在 Kik 的推薦下，那天點了新鮮香蕉、玉米和巧克力豆的組合，一吃驚為天人！沒想到玉米在甜的雞蛋仔裡，吃起來意外地搭！他們的雞蛋仔口感不如香港的 Q 彈，吃起來比較接近鬆餅，只是雞蛋仔的形狀。風味傑出、值得一試。",
+          "隔壁攤位有賣礦泉水、可樂等瓶裝飲料。瓶裝水是 10 泰銖，價格合理。"
+        ]
+      ],
+      [
+        "逛累了，還有美食廣場和麥當勞",
+        [
+          "6 樓有美食廣場，1 樓則有麥當勞。泰國的麥當勞除了世界各地都有的經典餐點，大麥克、麥香魚、炸雞、薯條，也有打拋炸雞飯、泰式油條等泰國限定的餐點。",
+          "我們整理這篇時，麥當勞和泰式手標茶推出三款泰奶聯名甜點：泰奶 Oreo 冰炫風、泰奶卡士達派，以及油條配泰奶沾醬，非常值得一試。聯名預計賣到 2027 年 1 月 5 日，但實際買得到哪幾款，還是要看當天分店的庫存狀況。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**交通：**搭 MRT 藍線到 Kamphaeng Phet 站，從 1 號出口出站，步行約 3 分鐘，在洽圖洽市集其中一個入口的對面。",
+          "營業時間：每天從早上 10:00 開始營業。週一至週四營業到 20:00，週五至週日，建議在 21:00 前抵達想逛的店，各店實際收攤時間不同。",
+          "**1、2 樓和 6 樓別太晚到：**古董區與美食廣場可能在傍晚 18:00–19:00 左右就陸續休息，想逛的話可以先去。",
+          "**付款方式：**有些店家可以刷卡，但買小吃和飲料用泰銖現金比較方便。"
+        ]
       ]
     ],
     [
       [
-        "穿过马路，逛进一整栋红楼",
-        "如果你逛完洽图洽市集还想找古着，我会带你过马路，到有空调的 Bang Sue Junction。一、二楼的古董家具、雕塑和摆件，我觉得像逛一间可以慢慢看的博物馆。想买衣服，就把更多时间留给三到五楼。"
+        "古着古董黑胶的二手挖宝胜地",
+        [
+          "洽图洽红楼——冷气开放的二手购物天堂",
+          "如果你喜欢逛二手衣、黑胶唱片或古董收藏，但又不想在泰国室外汗流浃背，推荐来 Bang Sue Junction ，在地人口中的「洽图洽红楼」。这是一栋有冷气的六层楼商场，就在洽图洽市集的正对面；周末可以顺路来逛，平日也值得专程过来慢慢看。",
+          "大家叫它「红楼」，因为建筑的外观有红色点缀，但它跟台湾人可能会联想到，那种用红砖盖成的红楼不一样，里面其实是一间间古董、古着和二手收藏品店。"
+        ]
       ],
       [
-        "我试了五件以上才选到两件外套",
-        "我们那天在五楼试了好几件外套，最后把 GU 和 Columbia 各带一件回家，两件折后一共 2,350 泰铢，那是我们当天的成交价。也可以走一趟三楼 Mono Loop，就算不买黑胶，也能看看复古封面和相机。"
+        "1、2 楼：像免费的古董博物馆",
+        [
+          "一、二楼以古董家具、雕塑和摆饰为主。不少商品价格不菲，体积也不小，观光客未必方便买回家，但我觉得光看就很有趣，像在免费逛一座有冷气、可以拍照，又可以自由自在，不用跟着导览走的博物馆。",
+          "如果你的目标是衣服，就先简单浏览这两层，再把时间留给楼上的古着店。另外，若想仔细逛古董区，建议早一点来，因为这里有些店家，在傍晚 6 点左右就开始收摊。"
+        ]
       ],
       [
-        "五楼吃个甜点，逛店要趁早",
-        "五楼扶梯附近有鸡蛋仔。我们点了香蕉、玉米和巧克力豆，玉米加在甜食里意外地搭。原文记录当天原味 39 泰铢、三种配料 79 泰铢。从 MRT Kamphaeng Phet 站 1 号出口出来，原文记录约走三分钟。古董楼层和美食广场有些店傍晚就收，我会先去。"
+        "3 到 5 楼：海量古着、二手衣",
+        [
+          "往上走，二手衣和古着就多了起来，还有鞋子、包包、配件，甚至有怀旧数位相机和手表。作为想挖宝的旅客，这几层很适合买一些能当作纪念品的东西。每间店不同老板，定价不一定便宜，但可以多看、多问，不用急着把钱掏出来。",
+          "那天，我在 5 楼的一间二手衣店试了超过五件外套。老板不但让我们慢慢挑，还问我要不要站到镜子前自拍，这样回头挑选比较方便。最後我买了 GU 和 Columbia 外套各一件，标价大约是 700 泰铢和 2,000 泰铢；结帐时，老板又折了 350 泰铢，两件衣服最後只付 2,350 泰铢。",
+          "回头想想，GU 那件未必比原价便宜很多；但我们後来查了 Columbia 那件，原价可能要三、四千泰铢，就觉得喜出望外，有挖到宝的感觉。以我们那天的经验，店家很友善，试穿和询价都没有压力，可以花时间慢慢挑，价格也可以商量。"
+        ]
       ],
       [
-        "三楼逛黑胶，六楼也能吃饭",
-        "我会留时间逛三楼的 Mono Loop。墙上是一排排黑胶封面，店里也有日本进口二手包、手表和相机。逛累了，六楼有美食广场，一楼有麦当劳。古董区和美食广场可能在傍晚 18:00–19:00 陆续关门，想逛这几层我会先安排。"
+        "3 楼 Mono Loop：不玩黑胶也值得看看",
+        [
+          "如果你喜欢黑胶唱片，记得逛逛 3 楼的 Mono Loop。店里有一大片黑胶区，许多欧美、日本艺人的作品放在展示的玻璃柜，墙上也陈列了不少唱片。依照知名度和稀有度的不同，价格从几百到上千泰铢都有。",
+          "除了黑胶唱片，这里也有日本进口的二手包、手表和相机。就算不是黑胶玩家，进去看看那些复古的封面设计，跟收藏品一起合影也很有意思。"
+        ]
+      ],
+      [
+        "5 楼鸡蛋仔：玉米放进甜食意外好吃",
+        [
+          "5 楼电扶梯一旁，有个卖爆米花和鸡蛋仔的摊位。我们去的时候，超多学生和年轻人大排长龙。点餐方式很简单，拿摊位前的纸勾选菜单和配料，原味鸡蛋仔 39 泰铢，加 3 样配料 79 泰铢，配料甜咸皆有：起司、Nutella、Oreo、杏仁、泰式甜蛋丝等。",
+          "在 Kik 的推荐下，那天点了新鲜香蕉、玉米和巧克力豆的组合，一吃惊为天人！没想到玉米在甜的鸡蛋仔里，吃起来意外地搭！他们的鸡蛋仔口感不如香港的 Q 弹，吃起来比较接近松饼，只是鸡蛋仔的形状。风味杰出、值得一试。",
+          "隔壁摊位有卖矿泉水、可乐等瓶装饮料。瓶装水是 10 泰铢，价格合理。"
+        ]
+      ],
+      [
+        "逛累了，还有美食广场和麦当劳",
+        [
+          "6 楼有美食广场，1 楼则有麦当劳。泰国的麦当劳除了世界各地都有的经典餐点，大麦克、麦香鱼、炸鸡、薯条，也有打抛炸鸡饭、泰式油条等泰国限定的餐点。",
+          "我们整理这篇时，麦当劳和泰式手标茶推出三款泰奶联名甜点：泰奶 Oreo 冰炫风、泰奶卡士达派，以及油条配泰奶沾酱，非常值得一试。联名预计卖到 2027 年 1 月 5 日，但实际买得到哪几款，还是要看当天分店的库存状况。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**交通：**搭 MRT 蓝线到 Kamphaeng Phet 站，从 1 号出口出站，步行约 3 分钟，在洽图洽市集其中一个入口的对面。",
+          "营业时间：每天从早上 10:00 开始营业。周一至周四营业到 20:00，周五至周日，建议在 21:00 前抵达想逛的店，各店实际收摊时间不同。",
+          "**1、2 楼和 6 楼别太晚到：**古董区与美食广场可能在傍晚 18:00–19:00 左右就陆续休息，想逛的话可以先去。",
+          "**付款方式：**有些店家可以刷卡，但买小吃和饮料用泰铢现金比较方便。"
+        ]
       ]
     ],
     [
       [
-        "Cross the road for a whole building of vintage finds",
-        "If you still want to browse after Chatuchak Market, I’d take you across the road to Bang Sue Junction, the air-conditioned red building. The first two floors have antique furniture, sculptures and ornaments. It feels like a museum you can drift through at your own pace. Save more time for floors three to five if you want clothes."
+        "Where to find vintage clothes, antiques and records",
+        [
+          "Chatuchak’s air-conditioned Red Building",
+          "If you like secondhand clothes, vinyl or old collectibles and need a break from the heat, I’d go to Bang Sue Junction, known locally as Chatuchak’s Red Building. It’s a six-storey air-conditioned mall opposite Chatuchak Market. Drop by while you’re at the weekend market or come on a weekday to browse at your own pace.",
+          "It takes the nickname from the red accents outside. The name may remind people in Taiwan of a red-brick building, but inside it’s a collection of antique, vintage and secondhand shops."
+        ]
       ],
       [
-        "I tried on more than five jackets before picking two",
-        "I spent a while trying on jackets on the fifth floor. A GU and a Columbia jacket came home with me for 2,350 baht total after the shopkeeper’s discount that day. On floor three, Mono Loop is fun to browse for vintage record sleeves and cameras, even if you’re not buying vinyl."
+        "Floors 1 and 2 feel like a free antiques museum",
+        [
+          "The first and second floors are mainly antique furniture, sculptures and ornaments. Many are large or expensive to take home, but I enjoyed just looking. It feels like a free air-conditioned museum where you can take photos and set your own pace.",
+          "If you’re mainly there for clothes, spend a little time on these floors and save the rest for the shops upstairs. Come earlier if you want to take a proper look at the antiques. Some of those shops start closing around 18:00."
+        ]
       ],
       [
-        "A sweet stop on five, and a reason to start early",
-        "By the escalators on the fifth floor, we ordered a bubble waffle with banana, corn and chocolate chips. The corn was surprisingly good in a sweet waffle. That day, plain cost 39 baht and three toppings were 79. Our walk from MRT Kamphaeng Phet Exit 1 took about three minutes. I’d start with antiques or the food court if you arrive late in the day."
+        "Floors 3 to 5 are full of vintage and secondhand clothes",
+        [
+          "There’s more secondhand fashion upstairs, plus shoes, bags, accessories, old digital cameras and watches. These floors are a good spot to pick up something to take home. Prices vary from shop to shop, so feel free to look around and ask before buying.",
+          "I tried on more than five jackets in one shop on the fifth floor. The owner even suggested taking mirror selfies to make it easier to compare them. I picked one GU and one Columbia jacket. The tags were around THB 700 and THB 2,000. The owner knocked THB 350 off, so I paid THB 2,350 for both.",
+          "The GU jacket may not have been much cheaper than new, but the Columbia jacket seemed to have retailed for THB 3,000–4,000. It felt like a proper find. The staff were friendly, I felt no pressure while trying things on, and we could talk about the price."
+        ]
       ],
       [
-        "Records on three, a food court on six",
-        "I’d make time for Mono Loop on the third floor, where rows of record sleeves share space with secondhand bags, watches and cameras imported from Japan. For a break, there’s a food court on six and a McDonald’s on the ground floor. Antique shops and food stalls may start closing from around 18:00–19:00, so I’d visit those floors earlier."
+        "Mono Loop on floor 3, even if you don’t collect records",
+        [
+          "If you like vinyl, try Mono Loop on the third floor. Artists from Europe, the US and Japan fill the glass displays and the walls. Records range from a few hundred to over a thousand baht, depending on the artist and how hard they are to find.",
+          "They also carry secondhand bags, watches and cameras imported from Japan. It’s fun to look at the vintage sleeve designs and take photos with the collectibles even if you don’t buy records."
+        ]
+      ],
+      [
+        "Fifth-floor egg waffles. Corn in a dessert really works",
+        [
+          "By the escalator on floor 5, a stand sells popcorn and Hong Kong-style egg waffles. We saw a long line of students and young shoppers. Tick your choices on the order sheet. A plain waffle was THB 39, and one with three toppings was THB 79. Options ran from cheese, Nutella and Oreo to almonds and Thai sweet egg-yolk threads.",
+          "Kik suggested fresh banana, corn and chocolate chips, and I loved it. I hadn’t expected corn to work so well in a dessert. The texture’s closer to a regular waffle than the springy Hong Kong version, but the flavour is worth trying.",
+          "Next door you’ll find bottled water, cola and other drinks. A bottle of water was THB 10."
+        ]
+      ],
+      [
+        "A food court and a McDonald’s for a break",
+        [
+          "There’s a food court on the sixth floor and a McDonald’s on the ground floor. The Thai menu includes local items such as crispy chicken with pad kra pao rice and Thai-style fried dough alongside the familiar burgers, fried chicken and fries.",
+          "At the time of writing, McDonald’s and Thai tea brand ChaTraMue had a collaboration with three desserts: a Thai tea Oreo McFlurry, a Thai tea custard pie and fried dough with Thai tea dipping sauce. It was scheduled to run through 5 January 2027. Availability depends on branch stock."
+        ]
+      ],
+      [
+        "HUXIAGO · Good to know",
+        [
+          "**Getting there:** Take the MRT Blue Line to Kamphaeng Phet, use Exit 1 and walk about three minutes. The building is opposite an entrance to Chatuchak Market.",
+          "**Hours:** The mall opens at 10:00 daily. It closes at 20:00 from Monday to Thursday. On Friday to Sunday, get to the shops you want before 21:00. Individual shops keep different hours.",
+          "**Go earlier for floors 1, 2 and 6:** Antique shops and food-court stalls may start closing around 18:00–19:00.",
+          "**Payment:** Some shops take cards. Baht cash is handy for snacks and drinks."
+        ]
       ]
     ]
   ],
   "saen-saep": [
     [
       [
-        "曼谷塞車時，我會先看能不能搭船",
-        "去水門、暹羅或 Phetchaburi 一帶，眼看路上的車一台接一台，我會先打開地圖，看目的地有沒有靠運河碼頭。市中心只搭幾站，快船值得跟 BTS 或摩托計程車一起比較。先看碼頭順不順路，才知道能省下多少時間。"
+        "市中心交通外掛——曼谷髒船",
+        [
+          "穿梭曼谷市中心，沿著運河行駛的交通快船，只要銅板價就能完美躲避塞車車陣，部分市中心短程不到 20 分鐘即可抵達。住在曼谷三年久仰大名，這次我們終於挑戰了，結果一坐就愛上。深入研究後，發現它不只省時又實用，還能看見老曼谷人的悠閑生活剪影。"
+        ]
       ],
       [
-        "我跟 Kik 從水門一路搭到 Bangkapi",
-        "那天是星期三，我們 16:48 在 Pratunam 上船，17:38 到 The Mall Bangkapi，這段長程往東搭了 50 分鐘。船和碼頭比較舊，我沒聞到明顯的運河異味，柴油味比較有感。沿岸有人跑步、聊天、晾衣服。傍晚通勤人潮越來越多，我找到座位，Kik 幾乎一路站著。"
+        "「曼谷髒船」髒的地方不是船",
+        [
+          "盛桑運河快船 (Khlong Saen Saep Express Boat) ，又被稱為「曼谷髒船」。船隻和碼頭確實比較老舊，但絕對稱不上「髒」，而且運河也沒有明顯的臭味，比較有感的異味，是船隻行駛時排放的廢氣。",
+          "我很喜歡沿途的風景：有人在運河旁跑步，好友閒話家常、晾衣服，靠近船頭的位子，還能看見船長操作駕船。這些畫面，是坐車、搭捷運的曼谷旅客見不到的。"
+        ]
       ],
       [
-        "先找水門碼頭，上船再付費",
-        "從 CentralWorld 步行約五分鐘到 Pratunam 水門碼頭。看清楚東行或西行，不確定就問工作人員。上船先抓穩，等票務員過來，說下船的碼頭，付費後留好收據。我們用泰銖現金，帶小面額紙鈔最方便。船資按距離，請以當天票價為準。"
+        "從西往東，先記這些實用碼頭",
+        [
+          "這條船大致沿著曼谷東西向行駛。新手搭乘時，先看這幾個與曼谷自由行比較常用的碼頭：",
+          "**Saphan Hua Chang：**在水門市場的西邊，可步行前往暹羅商圈（Siam Paragon、Siam Center、Siam Square One⋯⋯）、MBK 一帶。",
+          "**Pratunam：**水門市場附近，從 CentralWorld 步行 5 分鐘左右就到碼頭。我們那天就是從這裡上船。",
+          "**Asoke-Petchaburi：**方便轉乘 MRT Phetchaburi，也能前往機場快線 Makkasan 站。前往 BTS Asok 站、Terminal 21 商場仍須步行或轉乘。",
+          "**Soi Thonglor：**往通羅、Ekkamai 一帶可以在這裡轉乘。",
+          "**Mahadthai：**繼續往東的碼頭；前往 Rajamangala National Stadium 看演唱會，可以研究從 Mahadthai 下船後的步行路線。",
+          "**The Mall Bangkapi：**我們這次的目的地，途經商場後可連接 MRT 黃線。",
+          "以上是由西到東的順序，中間還有其他碼頭，列出的每站並非都緊接著下一站。實際搭乘前，先用 Google 地圖確認目的地和行駛方向，搭乘的時候，可以用 Google 地圖導航功能追蹤所在位置、預估抵達時間及下船時機。"
+        ]
       ],
       [
-        "去看演唱會，去程和回程分開想",
-        "去 Rajamangala National Stadium 可以考慮在 Mahadthai 下船，再按活動入口查步行路線。散場後先安排其他回程方式，因為末班會隨日期、方向和路段變動。下面這幾個碼頭由西往東排列，中間還有其他站。"
+        "從水門搭到 Bangkapi，通勤時段超擠",
+        [
+          "我們在星期三下午 4:48 從 Pratunam 上船，5:38 抵達 The Mall Bangkapi，這趟從市中心到郊區，相當遠的船程費時 50 分鐘。市中心碼頭相隔沒幾站，不會搭這麼久。我們那天一路往東，抵達曼谷東北部郊區，如果坐車的話，一定會被塞在路上。",
+          "隨著越來越多人上船，我趕緊走到船頭找了個座位，Kik 則一路站到目的地。如果你搭的是 17:00 左右的下班時段，雖然可以省下塞車時間，但不一定代表搭起來輕鬆。我們仍覺得值得體驗，也會再把它當成規劃曼谷交通時的一個選項。"
+        ]
+      ],
+      [
+        "第一次搭，買票其實不複雜",
+        [
+          "先在碼頭看路線圖，確認要往東還是往西；不確定船會不會停你要去的站，就等船靠岸時向工作人員確認。上船後，先站穩或坐好，票務人員會稍後過來收費，告知下船的碼頭，並支付對應金額即可取得收據。",
+          "我們那次是用泰銖現金付款。準備零錢或小面額紙鈔最方便，不必一上船就急著找人買票。票價依搭乘距離而定；參考票價約 16–26 泰銖，例如 Pratunam 到 Asoke-Petchaburi 是 18 泰銖，到 The Mall Bangkapi 是 26 泰銖。實際票價請以當日碼頭公告為準。"
+        ]
+      ],
+      [
+        "去看演唱會，可以考慮搭船去程",
+        [
+          "如果要去 Rajamangala National Stadium，搭船到 Mahadthai 是一個去程的選項，下船後，再依演唱會場館入口確認步行路線。那一帶遇到大型活動，路面交通常讓人很頭痛，盛桑運河快船至少提供一個不塞的走法。",
+          "**散場回程要另外安排。**船班的末班時間會因日期、平日假日、方向和路段不同，演唱會結束時未必還有船班，尚未確認前，別把回程也直接安排搭船。"
+        ]
+      ],
+      [
+        "HUXIAGO・實用資訊",
+        [
+          "**適合怎麼用：**往返水門市場、暹羅商圈周邊、Asoke-Petchaburi 一帶，或繼續往曼谷東側移動時，先看看碼頭是否離目的地不遠，並搭配摩托計程車、BTS 空鐵進行轉乘。",
+          "**搭乘方向：**先確認東行或西行；Pratunam 水門市場是很關鍵的中間節點。我們這次從 Pratunam 前往 Bangkapi，是搭往東邊行駛的船。",
+          "**票價與付款：**按距離計價，建議帶 100 泰銖以下的小面額現金。",
+          "查路線與班次：[Saen Saeb Canal 互動式地圖](https://www.saensaebcanal.com/)可查碼頭、參考票價、預估航程及首末班資訊。查詢網站僅供參考，晚間行程尤其要再確認當天船班。"
+        ]
       ]
     ],
     [
       [
-        "曼谷堵车时，我会先看能不能坐船",
-        "去水门、暹罗或 Phetchaburi 一带，眼看路上车辆排成长队，我会先打开地图，看目的地有没有靠运河码头。在市中心只坐几站，快船值得和 BTS 或摩托车出租一起比较。先看码头顺不顺路，才知道能省下多少时间。"
+        "市中心交通外挂——曼谷脏船",
+        [
+          "穿梭曼谷市中心，沿着运河行驶的交通快船，只要铜板价就能完美躲避塞车车阵，部分市中心短程不到 20 分钟即可抵达。住在曼谷三年久仰大名，这次我们终於挑战了，结果一坐就爱上。深入研究後，发现它不只省时又实用，还能看见老曼谷人的悠闲生活剪影。"
+        ]
       ],
       [
-        "我和 Kik 从水门一路坐到 Bangkapi",
-        "那天是星期三，我们 16:48 在 Pratunam 上船，17:38 到 The Mall Bangkapi，这段向东的长途坐了 50 分钟。船和码头比较旧，我没闻到明显的运河异味，柴油味比较明显。沿岸有人跑步、聊天、晾衣服。傍晚通勤的人越来越多，我找到座位，Kik 几乎一路站着。"
+        "「曼谷脏船」脏的地方不是船",
+        [
+          "盛桑运河快船 (Khlong Saen Saep Express Boat) ，又被称为「曼谷脏船」。船只和码头确实比较老旧，但绝对称不上「脏」，而且运河也没有明显的臭味，比较有感的异味，是船只行驶时排放的废气。",
+          "我很喜欢沿途的风景：有人在运河旁跑步，好友闲话家常、晾衣服，靠近船头的位子，还能看见船长操作驾船。这些画面，是坐车、搭捷运的曼谷旅客见不到的。"
+        ]
       ],
       [
-        "先找水门码头，上船再付费",
-        "从 CentralWorld 步行约五分钟到 Pratunam 水门码头。看清楚是东行还是西行，不确定就问工作人员。上船先抓稳，等船员来收票钱，告诉对方下船码头，付费后留好收据。我们用泰铢现金，带小面额纸币更方便。船费按距离计算，以当天票价为准。"
+        "从西往东，先记这些实用码头",
+        [
+          "这条船大致沿着曼谷东西向行驶。新手搭乘时，先看这几个与曼谷自由行比较常用的码头：",
+          "**Saphan Hua Chang：**在水门市场的西边，可步行前往暹罗商圈（Siam Paragon、Siam Center、Siam Square One⋯⋯）、MBK 一带。",
+          "**Pratunam：**水门市场附近，从 CentralWorld 步行 5 分钟左右就到码头。我们那天就是从这里上船。",
+          "**Asoke-Petchaburi：**方便转乘 MRT Phetchaburi，也能前往机场快线 Makkasan 站。前往 BTS Asok 站、Terminal 21 商场仍须步行或转乘。",
+          "**Soi Thonglor：**往通罗、Ekkamai 一带可以在这里转乘。",
+          "**Mahadthai：**继续往东的码头；前往 Rajamangala National Stadium 看演唱会，可以研究从 Mahadthai 下船後的步行路线。",
+          "**The Mall Bangkapi：**我们这次的目的地，途经商场後可连接 MRT 黄线。",
+          "以上是由西到东的顺序，中间还有其他码头，列出的每站并非都紧接着下一站。实际搭乘前，先用 Google 地图确认目的地和行驶方向，搭乘的时候，可以用 Google 地图导航功能追踪所在位置、预估抵达时间及下船时机。"
+        ]
       ],
       [
-        "去看演唱会，去程和回程分开安排",
-        "去 Rajamangala National Stadium 可以考虑在 Mahadthai 下船，再按活动入口查步行路线。散场后先安排其他回程方式，因为末班会随日期、方向和路段变化。下方这些码头由西向东排列，中间还有其他站。"
+        "从水门搭到 Bangkapi，通勤时段超挤",
+        [
+          "我们在星期三下午 4:48 从 Pratunam 上船，5:38 抵达 The Mall Bangkapi，这趟从市中心到郊区，相当远的船程费时 50 分钟。市中心码头相隔没几站，不会搭这麽久。我们那天一路往东，抵达曼谷东北部郊区，如果坐车的话，一定会被塞在路上。",
+          "随着越来越多人上船，我赶紧走到船头找了个座位，Kik 则一路站到目的地。如果你搭的是 17:00 左右的下班时段，虽然可以省下塞车时间，但不一定代表搭起来轻松。我们仍觉得值得体验，也会再把它当成规划曼谷交通时的一个选项。"
+        ]
+      ],
+      [
+        "第一次搭，买票其实不复杂",
+        [
+          "先在码头看路线图，确认要往东还是往西；不确定船会不会停你要去的站，就等船靠岸时向工作人员确认。上船後，先站稳或坐好，票务人员会稍後过来收费，告知下船的码头，并支付对应金额即可取得收据。",
+          "我们那次是用泰铢现金付款。准备零钱或小面额纸钞最方便，不必一上船就急着找人买票。票价依搭乘距离而定；参考票价约 16–26 泰铢，例如 Pratunam 到 Asoke-Petchaburi 是 18 泰铢，到 The Mall Bangkapi 是 26 泰铢。实际票价请以当日码头公告为准。"
+        ]
+      ],
+      [
+        "去看演唱会，可以考虑搭船去程",
+        [
+          "如果要去 Rajamangala National Stadium，搭船到 Mahadthai 是一个去程的选项，下船後，再依演唱会场馆入口确认步行路线。那一带遇到大型活动，路面交通常让人很头痛，盛桑运河快船至少提供一个不塞的走法。",
+          "**散场回程要另外安排。**船班的末班时间会因日期、平日假日、方向和路段不同，演唱会结束时未必还有船班，尚未确认前，别把回程也直接安排搭船。"
+        ]
+      ],
+      [
+        "HUXIAGO・实用资讯",
+        [
+          "**适合怎麽用：**往返水门市场、暹罗商圈周边、Asoke-Petchaburi 一带，或继续往曼谷东侧移动时，先看看码头是否离目的地不远，并搭配摩托计程车、BTS 空铁进行转乘。",
+          "**搭乘方向：**先确认东行或西行；Pratunam 水门市场是很关键的中间节点。我们这次从 Pratunam 前往 Bangkapi，是搭往东边行驶的船。",
+          "**票价与付款：**按距离计价，建议带 100 泰铢以下的小面额现金。",
+          "查路线与班次：[Saen Saeb Canal 互动式地图](https://www.saensaebcanal.com/)可查码头、参考票价、预估航程及首末班资讯。查询网站仅供参考，晚间行程尤其要再确认当天船班。"
+        ]
       ]
     ],
     [
       [
-        "When Bangkok traffic stalls, I check the canal",
-        "If I’m heading to Pratunam, Siam or Phetchaburi and the roads are backing up, I open the map and see how close the destination is to a pier. For a few stops through town, I’d compare the boat with the BTS or a motorbike taxi. The walk at each end matters as much as time on the water."
+        "Bangkok’s “dirty boat”: a way across town when traffic stalls",
+        [
+          "A cheap express boat runs along a canal through central Bangkok. For some short trips, you can get where you’re going in under 20 minutes without sitting in traffic. We’d heard about it for three years in Bangkok before we finally tried it, and loved it straight away. It also gives you a look at life along the old canal."
+        ]
       ],
       [
-        "Kik and I rode all the way to Bangkapi",
-        "On a Wednesday we boarded at Pratunam at 16:48 and reached The Mall Bangkapi at 17:38, a 50-minute eastbound trip. The piers and boat looked well used. I noticed the diesel fumes more than any smell from the water. People were jogging, chatting and hanging laundry along the banks. The boat got crowded. I found a seat, and Kik stood for nearly the whole ride."
+        "Where the “dirty boat” got its reputation",
+        [
+          "People call the Khlong Saen Saep Express Boat Bangkok’s “dirty boat.” The boats and piers looked old, but we didn’t find them particularly dirty and didn’t notice much smell from the canal. The exhaust from the boats was more noticeable.",
+          "I liked seeing people jog, catch up and hang out their washing along the canal. Near the bow you can watch the captain at work. They’re scenes you’d miss from a taxi or the train."
+        ]
       ],
       [
-        "Find Pratunam Pier, then pay on board",
-        "Pratunam Pier is about a five-minute walk from CentralWorld. Check whether you’re going east or west and ask the crew if you’re unsure. Hold on as you board. Tell the fare collector where you’re getting off and keep your receipt. We paid in cash, and small baht notes were handy. The fare depends on distance, so check the price that day."
+        "Useful piers to know, from west to east",
+        [
+          "The boat mostly runs east–west through Bangkok. If it’s your first time, these piers are good starting points for planning a trip:",
+          "**Saphan Hua Chang:** West of Pratunam Market and within walking distance of the Siam shopping area, including Siam Paragon, Siam Center, Siam Square One and MBK.",
+          "**Pratunam:** Near Pratunam Market and about five minutes on foot from CentralWorld. This is where we boarded.",
+          "**Asoke-Petchaburi:** Convenient for MRT Phetchaburi and Makkasan Airport Rail Link. BTS Asok and Terminal 21 are a separate walk or transfer away.",
+          "**Soi Thonglor:** A useful point to change transport for the Thonglor and Ekkamai areas.",
+          "**Mahadthai:** Farther east. Check the walking route from this pier if you’re going to a concert at Rajamangala National Stadium.",
+          "**The Mall Bangkapi:** Our stop that day. Walk through the mall to connect with the MRT Yellow Line.",
+          "The list runs from west to east, with other piers in between. Before boarding, use Google Maps to check the direction and your stop. On board you can follow your location and estimate when to get off."
+        ]
       ],
       [
-        "For a concert, plan the way back separately",
-        "For Rajamangala National Stadium, consider getting off at Mahadthai and checking the walk to your event entrance. Arrange a ride back after the show, because last departures vary by day, direction and route section. The list below runs from west to east, with other piers between these stops."
-      ]
-    ]
-  ],
-  "kushiro": [
-    [
-      [
-        "兩次都坐吧台",
-        "落座後，店家讓我們在高腳杯上畫畫。我寫了「胡搞夏搞」，杯裡倒進酸甜的粉紅色無酒精迎賓飲品。接著看師傅現切魚、捏握壽司。從松露茶碗蒸到起司蛋糕，我最記得的還是伴著乾冰泡泡上桌的海膽鮪魚愛心吐司。菜色會隨季節調整。"
+        "Our rush-hour ride from Pratunam to Bangkapi",
+        [
+          "We boarded at Pratunam at 16:48 on a Wednesday and reached The Mall Bangkapi at 17:38. That was 50 minutes for a long trip from the centre to the northeastern suburbs. A short hop between central piers takes less time. We would likely have been stuck in traffic if we’d made this trip by car.",
+          "As the boat filled, I moved to the front and grabbed a seat. Kik stood all the way. Around 17:00 the boat may save you time while still being crowded. We liked the experience and would use it again when it suits the route."
+        ]
       ],
       [
-        "如果第一次來，我會點 15 道",
-        "我們兩次都吃 15 道特級套餐。小胡 11 月稿記錄合作訂位優惠，12／15／17 道套餐分別為 THB 1,200／2,000／3,600，都是原價 8 折。另有午餐吧台限定的 Unlimited 15 Premium 方案，原稿記錄 THB 2,499、90 分鐘內可續點指定料理。"
+        "How to buy a ticket on your first ride",
+        [
+          "Check the pier map to see whether you’re going east or west. If you’re unsure the boat stops where you want, ask the crew when it pulls in. Hold on or sit down once you board. A fare collector will come by. Tell them your stop, pay the fare and keep the receipt.",
+          "We paid in baht cash. Small notes or coins are easiest, and you can wait for the conductor to come to you. Fares depend on distance. The source guide gives THB 16–26 as a reference, with Pratunam to Asoke-Petchaburi at THB 18 and to The Mall Bangkapi at THB 26. Check the current fare at the pier."
+        ]
       ],
       [
-        "訂位前先看時段和總價",
-        "上述價格未含服務費和稅。店家列出 12:30、14:30、17:30 和 19:30，無限續點方案只在前兩個午間時段。原稿提醒提前 10 分鐘到場，付款後不退款，若需改期至少提前 24 小時聯絡店家。訂位前請在 TableCheck 核對該日可訂方案、總價及改期條件。"
-      ]
-    ],
-    [
-      [
-        "两次都坐吧台",
-        "入座后，店家让我们在高脚杯上画画。我写了「胡搞夏搞」，杯里倒进酸甜的粉红色无酒精迎宾饮品。接着看师傅现切鱼、捏握寿司。从松露茶碗蒸到芝士蛋糕，我最记得的还是伴着干冰泡泡上桌的海胆金枪鱼爱心吐司。菜品会随季节调整。"
+        "Consider the boat on the way to a concert",
+        [
+          "For Rajamangala National Stadium, one option is to get off at Mahadthai and look up the walk to your specific concert entrance. Traffic can be heavy during big events, so the boat gives you another way in.",
+          "**Plan the return trip separately.** Last departures vary by day, direction and route. The boat may have stopped by the time your concert ends, so check before counting on it for the trip back."
+        ]
       ],
       [
-        "如果第一次来，我会点 15 道",
-        "我们两次都吃了 15 道特级套餐。小胡 11 月稿记录的合作预订价，12／15／17 道套餐分别为 THB 1,200／2,000／3,600，都是原价 8 折。另有午餐吧台限定的 Unlimited 15 Premium，原稿记录 THB 2,499、90 分钟内可续点指定料理。"
-      ],
-      [
-        "预订前先看时段和总价",
-        "以上价格未含服务费和税。店家列出 12:30、14:30、17:30 和 19:30，无限续点套餐只在前两个午间时段。原稿提醒提前 10 分钟到场，付款后不退款，如需改期请至少提前 24 小时联系商家。预订前请在 TableCheck 核对当天可订套餐、总价和改期条件。"
-      ]
-    ],
-    [
-      [
-        "We took counter seats both times",
-        "They gave us markers to decorate our glasses. I wrote the name of our account on mine, then watched it fill with a sweet-tart pink mocktail. From truffle egg custard to cheesecake, the bite I remember most is the heart-shaped uni and tuna toast that arrived with a swirl of dry ice. The menu changes with the seasons."
-      ],
-      [
-        "I’d start with the 15-course menu",
-        "We chose the 15-course Premium menu both times. Xiao Hu’s November article records partner rates of THB 1,200, 2,000 and 3,600 for the 12-, 15- and 17-course menus, a 20% discount on each. It also records a THB 2,499 Unlimited 15 Premium lunch counter option with 90 minutes to reorder selected dishes."
-      ],
-      [
-        "Check seating times and the full price before booking",
-        "Prices exclude service and tax. The listed seatings are 12:30, 14:30, 17:30 and 19:30, and the unlimited menu is lunch only. Our booking notes say to arrive 10 minutes early and allow at least 24 hours to request a change. Paid reservations are non-refundable. Check the available menus, total and current booking terms on TableCheck."
+        "HUXIAGO · Good to know",
+        [
+          "**When it’s useful:** For Pratunam Market, the Siam area, Asoke-Petchaburi or trips farther east, see whether your destination is near a pier. A motorcycle taxi or BTS connection can help with the last leg.",
+          "**Direction:** Check whether you need to go east or west. Pratunam is a useful reference point. Our boat to Bangkapi went east.",
+          "**Fare and payment:** Fares vary by distance. Bring small cash denominations below THB 100.",
+          "**Routes and departures:** The [Saen Saeb Canal interactive map](https://www.saensaebcanal.com/) shows piers, estimated trip times, sample fares and first and last boats. It is a reference. Always check that day’s service for an evening trip."
+        ]
       ]
     ]
   ]

@@ -226,6 +226,40 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     return rail, cover, mobile_nav, about, footer_link
 
 
+def story_inline(text):
+    parts = []
+    for piece in re.split(r"(\*\*[^*\n]+\*\*|\[[^\]\n]+\]\(https?://[^()\s]+\))", text):
+        if piece.startswith("**") and piece.endswith("**") and len(piece) > 4:
+            parts.append(f"<strong>{escape(piece[2:-2])}</strong>")
+        elif match := re.fullmatch(r"\[([^\]\n]+)\]\((https?://[^()\s]+)\)", piece):
+            label, url = match.groups()
+            parts.append(f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>')
+        else:
+            parts.append(escape(piece))
+    return "".join(parts)
+
+
+def story_table(rows):
+    columns, *body = rows
+    header = "".join(f'<th scope="col">{escape(cell)}</th>' for cell in columns)
+    entries = []
+    for label, *values in body:
+        cells = "".join(f"<td>{escape(value)}</td>" for value in values)
+        entries.append(f'<tr><th scope="row">{escape(label)}</th>{cells}</tr>')
+    return f'<table class="story-table"><thead><tr>{header}</tr></thead><tbody>{"".join(entries)}</tbody></table>'
+
+
+def render_story(sections):
+    parts = []
+    for heading, blocks in sections:
+        parts.append(f'<h4 class="story-heading">{story_inline(heading)}</h4>')
+        if isinstance(blocks, str):
+            blocks = [blocks]
+        for block in blocks:
+            parts.append(f"<p>{story_inline(block)}</p>" if isinstance(block, str) else story_table(block["table"]))
+    return "".join(parts)
+
+
 def render(data, deals, stories, galleries, locations, lang, offline, donor, localized, legacy_download):
     t = data["locales"][lang]
     ix = LOCALES.index(lang)
@@ -255,10 +289,6 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         title, _, detail = map(escape, s["copy"][ix])
         name = escape(s["name"])
         cat = escape(category[s["id"]][ix])
-        route = ""
-        if s["id"] == "saen-saep":
-            piers = "".join(f"<li>{escape(pier)}</li>" for pier in data["piers"])
-            route = f'<h4 class="story-heading">{escape(t[16])}</h4><ol class="story-list canal">{piers}</ol>'
         assets = galleries.get(s["id"], [])
         media = gallery(assets, ix) if assets else ""
         if assets:
@@ -266,8 +296,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
-        story = "".join(f'<h4 class="story-heading">{escape(heading)}</h4><p>{escape(text)}</p>'
-                        for heading, text in stories[s["id"]][ix])
+        story = render_story(stories[s["id"]][ix])
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'
@@ -290,7 +319,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
             f'<span class="head"><small>{s["label"]} · {cat}</small><h3>{name}</h3><p>{title}</p></span>'
             f'<span aria-hidden="true" class="chev">⌄</span></summary>'
-            f'<div class="body">{media}<div class="story-copy">{story}{route}</div>'
+            f'<div class="body">{media}<div class="story-copy">{story}</div>'
             f'<div class="info"><b>{escape(t[17])}</b>{detail}</div>'
             f'{maps}{route_action}'
             f'</div></details>'

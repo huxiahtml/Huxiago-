@@ -35,8 +35,6 @@ async function verifyMaps(page, issue) {
   };
   assert((await silq.textContent()).includes(bookingLabel[locale]));
   assert.equal(await silq.getAttribute('target'), '_blank');
-  assert.equal(await page.locator('#kushiro .place-actions a[href="https://www.instagram.com/p/DdYtIjNJEow/"]').count(), 1);
-  assert.equal(await page.locator('#silq .place-actions a[href="https://www.instagram.com/reel/DfIXxHiTF4C/"]').count(), 1);
   assert.match(await page.locator('#silq .story-copy').textContent(), /2027.*HUXIATHAI|HUXIATHAI.*2027/);
 }
 const affirm=async(page,locale)=>{const cards=page.locator('#deals [data-shared-deal]'); assert.equal(await cards.count(),2);assert.deepEqual(await cards.locator('.ticket-cta[data-cta-id]').evaluateAll(a=>a.map(x=>x.getAttribute('href'))),links);assert((await cards.nth(1).innerText()).includes(locale==='en'?'20% off':'8 折'))};
@@ -87,6 +85,25 @@ async function verifyPlaceholders(page) {
     cards.every(card => Math.abs(card.width-first.width)<=1 && Math.abs(card.height-first.height)<=1),
     'All four tickets share the same dimensions');
 }
+const articleCounts = {
+  kushiro: [5, 18, 1], silq: [7, 24, 1], 'gan-da': [6, 19, 0], 'hani-spa': [6, 16, 0],
+  chowchercof: [6, 14, 0], 'bang-sue-junction': [7, 19, 0], 'saen-saep': [7, 21, 0],
+};
+async function verifyArticles(page) {
+  for (const [id, [headings, paragraphs, tables]] of Object.entries(articleCounts)) {
+    const card = page.locator('#' + id);
+    const article = card.locator('.story-copy');
+    assert.equal(await article.locator('.story-heading').count(), headings, id + ' headings');
+    assert.equal(await article.locator('p').count(), paragraphs, id + ' paragraphs');
+    assert.equal(await article.locator('table').count(), tables, id + ' tables');
+    assert.equal(await card.locator('video, iframe, a[href*="instagram.com"]').count(), 0, id + ' video deferred');
+  }
+  assert.equal(await page.locator('#kushiro .story-table tbody tr').count(), 4);
+  assert.equal(await page.locator('#silq .story-table tbody tr').count(), 2);
+  assert.equal(await page.locator('#kushiro .story-copy a[href*="tablecheck.com"]').getAttribute('href'), links[1]);
+  assert.equal(await page.locator('#silq .story-copy a[href*="book-directonline.com"]').getAttribute('href'),
+    'https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI');
+}
 const galleryCounts = {
   kushiro: 6, silq: 5, 'gan-da': 5, 'hani-spa': 4,
   chowchercof: 5, 'bang-sue-junction': 5, 'saen-saep': 5,
@@ -130,7 +147,7 @@ for(const width of widths){await p.setViewportSize({width,height:900});reference
 await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click();
 await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
-assert.equal(await p.locator('#saen-saep .story-heading').count(),5);
+await verifyArticles(p);
 await verifyEp02Galleries(p);
 await p.locator('#kushiro summary').click();
 assert(await p.locator('#kushiro .gallery').evaluate(el=>el.scrollWidth>el.clientWidth));
@@ -161,7 +178,7 @@ assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q,lang);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
-if(name===file)await verifyEp02Galleries(q);
+if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);}
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station and coupon map links, matching rail and mobile layout, rail navigation and share, shared orange tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, transport story, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});
