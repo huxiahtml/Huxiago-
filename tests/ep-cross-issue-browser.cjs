@@ -67,6 +67,7 @@ async function verifySharedOfferStyle(page) {
       return {
         amount: [value.fontFamily,value.fontSize,value.fontWeight,value.color,value.textShadow],
         white: style.color,
+        background: style.backgroundColor,
         borderRadius: style.borderRadius,
         height: action.offsetHeight,
         fullWidth: Math.abs(action.getBoundingClientRect().width-card.clientWidth)<=1,
@@ -79,6 +80,7 @@ async function verifySharedOfferStyle(page) {
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
     assert.equal(style.white, 'rgb(255, 255, 255)');
+    assert.equal(style.background, 'rgb(251, 121, 46)');
     assert.equal(style.borderRadius, '0px');
     assert(style.height>=58 && style.fullWidth && style.atBottom && style.photoAboveValue, 'Use a full-width footer below the discount: '+JSON.stringify(style));
   }
