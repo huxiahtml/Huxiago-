@@ -979,7 +979,10 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   grid-template-columns: none;
   overflow-x: auto;
   overflow-y: hidden;
+  scrollbar-width: none;
 }
+
+.visual-v7 .deal-track::-webkit-scrollbar { display: none; }
 
 .visual-v7 .deal-track:focus-visible {
   outline: 2px solid #245a46;
@@ -1104,7 +1107,7 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   border-top: 2px dashed #fff4d5;
   border-radius: 0;
   background: #fb792e linear-gradient(153deg, transparent 12%, #ffb34c 44%, #ff9637 68%, transparent);
-  color: var(--ticket-ink);
+  color: #fff;
   font-size: 15px;
   line-height: 1.25;
   font-weight: 900;
@@ -1133,8 +1136,6 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 @media (min-width: 980px) {
   .visual-v7 .deal-track {
     grid-auto-columns: minmax(218px, calc((100% - 28px) / 3));
-    scrollbar-width: thin;
-    scrollbar-color: #b97658 #fbf3e3;
   }
 }
 

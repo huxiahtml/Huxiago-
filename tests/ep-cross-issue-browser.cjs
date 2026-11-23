@@ -66,7 +66,7 @@ async function verifySharedOfferStyle(page) {
       const style=getComputedStyle(action);
       return {
         amount: [value.fontFamily,value.fontSize,value.fontWeight],
-        textColor: style.color,
+        textColor: getComputedStyle(action.querySelector('.ticket-cta-label')).color,
         discountColor: value.color,
         stroke: value.webkitTextStrokeWidth,
         labelBorder: getComputedStyle(action.querySelector('.ticket-cta-label')).borderTopWidth,
@@ -83,7 +83,7 @@ async function verifySharedOfferStyle(page) {
   assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(9, 59, 43)', 'rgb(236, 88, 0)']);
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
-    assert.equal(style.textColor, 'rgb(9, 59, 43)');
+    assert.equal(style.textColor, 'rgb(255, 255, 255)');
     assert.equal(style.stroke, '0px');
     assert.equal(style.labelBorder, '0px');
     assert.equal(style.background, 'rgb(251, 121, 46)');
@@ -125,7 +125,9 @@ async function verifyPlaceholders(page) {
   assert(first.width > 0 && first.height > 0 &&
     cards.every(card => Math.abs(card.width-first.width)<=1 && Math.abs(card.height-first.height)<=1 && card.top===first.top),
     'All five tickets share the same dimensions in one row');
-  assert(await page.locator('#deals .deal-track').evaluate(track=>track.scrollWidth>track.clientWidth),
+  const track = page.locator('#deals .deal-track');
+  assert.equal(await track.evaluate(el => getComputedStyle(el).scrollbarWidth), 'none');
+  assert(await track.evaluate(el => el.scrollWidth > el.clientWidth),
     'Additional deals are reachable by horizontal scroll');
 }
 const articleCounts = {
