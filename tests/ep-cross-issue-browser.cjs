@@ -24,7 +24,17 @@ async function verifyMaps(page, issue) {
     assert.deepEqual(await card.locator('.location-address').allTextContents(), locations[id].map(place=>place.address));
   }
   assert.equal(await page.locator('#kushiro .place-actions a[href*="tablecheck.com"]').getAttribute('href'), links[1]);
-  assert.equal(await page.locator('#silq .place-actions a[href="https://www.silqhotel.com/"]').count(), 1);
+  const silq = page.locator('#silq .place-actions a[href*="book-directonline.com"]');
+  assert.equal(await silq.getAttribute('href'),
+    'https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI');
+  const locale = await page.locator('html').getAttribute('lang');
+  const bookingLabel = {
+    'zh-Hant': '帶入九折碼查房價',
+    'zh-Hans': '带入九折码查房价',
+    en: 'Check rates with 10% off',
+  };
+  assert((await silq.textContent()).includes(bookingLabel[locale]));
+  assert.equal(await silq.getAttribute('target'), '_blank');
   assert.equal(await page.locator('#kushiro .place-actions a[href="https://www.instagram.com/p/DdYtIjNJEow/"]').count(), 1);
   assert.equal(await page.locator('#silq .place-actions a[href="https://www.instagram.com/reel/DfIXxHiTF4C/"]').count(), 1);
   assert.match(await page.locator('#silq .story-copy').textContent(), /2027.*HUXIATHAI|HUXIATHAI.*2027/);
