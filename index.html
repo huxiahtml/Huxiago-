@@ -1229,24 +1229,25 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 }
 
 .visual-v7 .ticket-feature {
-  --ticket-face: #ffddca;
+  --ticket-face: #ffd3b9;
+  --ticket-ink: #093b2b;
   display: flex;
   flex-direction: column;
   min-height: 348px;
   padding: 0;
   overflow: hidden;
-  color: #153f34;
+  color: var(--ticket-ink);
   background: var(--ticket-face);
   box-shadow: 5px 6px 0 #255b48;
 }
 
 .visual-v7 .ticket-feature[data-shared-deal="esim"] {
   color: #fff9ee;
-  background: linear-gradient(145deg, #e06327 0%, #b3411c 53%, #a7391a 100%);
+  background: linear-gradient(155deg, #ff852e 0%, #f57223 49%, #eb5f17 100%);
 }
 
 .visual-v7 .ticket-feature[data-shared-deal="silq"] {
-  --ticket-face: #fffdfa;
+  --ticket-face: #fff;
 }
 
 .visual-v7 .ticket-feature .ticket-top {
@@ -1309,12 +1310,20 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 }
 
 .visual-v7 .ticket-feature .ticket-value {
-  color: #fff;
+  color: var(--ticket-ink);
   font-size: clamp(38px, 4.5vw, 53px);
   font-weight: 1000;
   letter-spacing: -.025em;
-  -webkit-text-stroke: 1px #245a46;
-  text-shadow: 2px 3px 0 #2e6b4e;
+  text-shadow: none;
+}
+
+.visual-v7 [data-shared-deal="esim"] .ticket-value {
+  color: #fff9ee;
+  text-shadow: 2px 3px 0 var(--ticket-ink);
+}
+
+.visual-v7 [data-shared-deal="silq"] .ticket-value {
+  color: #ec5800;
 }
 
 .visual-v7 .ticket-code {
@@ -1336,15 +1345,14 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   border: 0;
   border-top: 2px dashed #fff4d5;
   border-radius: 0;
-  background: #fb792e linear-gradient(149deg, transparent 31%, #ffd18559 52%, transparent 73%);
-  color: #fff9ee;
-  text-shadow: 0 1px 2px #762d12, 0 1px 3px #762d12;
+  background: #fb792e linear-gradient(153deg, transparent 12%, #ffb34c 44%, #ff9637 68%, transparent);
+  color: var(--ticket-ink);
   font-size: 15px;
   line-height: 1.25;
   font-weight: 900;
   transition: filter .18s ease, transform .18s ease;
 }
-.visual-v7 .ticket-feature .ticket-cta::after { flex: none; }
+.visual-v7 .ticket-feature .ticket-cta::after { content: "→"; flex: none; }
 .visual-v7 .ticket-feature .ticket-cta:hover { filter: brightness(1.06); }
 .visual-v7 .ticket-feature .ticket-cta:active { transform: translateY(2px); }
 .visual-v7 .ticket-feature .ticket-cta:focus-visible {

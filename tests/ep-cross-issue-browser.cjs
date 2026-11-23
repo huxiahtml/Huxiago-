@@ -65,8 +65,11 @@ async function verifySharedOfferStyle(page) {
       const value=getComputedStyle(amount);
       const style=getComputedStyle(action);
       return {
-        amount: [value.fontFamily,value.fontSize,value.fontWeight,value.color,value.textShadow],
+        amount: [value.fontFamily,value.fontSize,value.fontWeight],
         textColor: style.color,
+        discountColor: value.color,
+        stroke: value.webkitTextStrokeWidth,
+        labelBorder: getComputedStyle(action.querySelector('.ticket-cta-label')).borderTopWidth,
         background: style.backgroundColor,
         borderRadius: style.borderRadius,
         height: action.offsetHeight,
@@ -77,9 +80,12 @@ async function verifySharedOfferStyle(page) {
       };
     });
   });
+  assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(9, 59, 43)', 'rgb(236, 88, 0)']);
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
-    assert.equal(style.textColor, 'rgb(255, 249, 238)');
+    assert.equal(style.textColor, 'rgb(9, 59, 43)');
+    assert.equal(style.stroke, '0px');
+    assert.equal(style.labelBorder, '0px');
     assert.equal(style.background, 'rgb(251, 121, 46)');
     assert.equal(style.borderRadius, '0px');
     assert(style.height>=58 && style.fullWidth && style.atBottom && style.photoAboveValue, 'Use a full-width footer below the discount: '+JSON.stringify(style));
