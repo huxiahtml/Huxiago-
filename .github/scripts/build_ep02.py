@@ -48,17 +48,24 @@ def reel_card(url, title, index, poster=""):
     )
 
 
+def photo_figure(asset, index, css_class=""):
+    filename, *captions = asset
+    caption = escape(captions[index], quote=True)
+    src = data_uri(ROOT / "ep02" / filename, "image/webp")
+    class_attr = f' class="{css_class}"' if css_class else ""
+    return (f'<figure{class_attr}><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
+            f'<figcaption>{caption}</figcaption></figure>')
+
+
 def gallery(assets, index):
     figures = []
     for filename, hant, hans, english, *links in assets:
-        caption = (hant, hans, english)[index]
-        src = data_uri(ROOT / "ep02" / filename, "image/webp")
         if links:
+            caption = (hant, hans, english)[index]
+            src = data_uri(ROOT / "ep02" / filename, "image/webp")
             figures.append(reel_card(links[0], caption, index, src))
         else:
-            caption = escape(caption, quote=True)
-            figures.append(f'<figure><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
-                           f'<figcaption>{caption}</figcaption></figure>')
+            figures.append(photo_figure((filename, hant, hans, english), index))
     return '<div class="gallery">' + "".join(figures) + '</div>'
 
 
@@ -294,7 +301,8 @@ def story_promo(offer, index):
     )
 
 
-def render_story(sections, deals, index):
+def render_story(sections, deals, assets, index):
+    photos = {row[0]: row for row in assets}
     parts = []
     for heading, blocks in sections:
         parts.append(f'<h4 class="story-heading">{story_inline(heading)}</h4>')
@@ -307,6 +315,8 @@ def render_story(sections, deals, index):
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
                 parts.append(reel_card(block["reel"], block["title"], index))
+            elif "photo" in block:
+                parts.append(photo_figure(photos[block["photo"]], index, "story-photo"))
             else:
                 parts.append(story_table(block["table"]))
     return "".join(parts)
@@ -343,13 +353,13 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         name = escape(s["name"])
         cat = escape(category[s["id"]][ix])
         assets = galleries.get(s["id"], [])
-        media = gallery(assets, ix) if assets else ""
+        media = gallery(assets, ix) if assets and s.get("gallery_layout") != "inline" else ""
         if assets:
             src = data_uri(ROOT / "ep02" / assets[0][0], "image/webp")
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
-        story = render_story(stories[s["id"]][ix], deals, ix)
+        story = render_story(stories[s["id"]][ix], deals, assets, ix)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'

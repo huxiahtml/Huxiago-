@@ -39,6 +39,24 @@
 }
 
 /* EP.01 Reel controls on EP.02 gallery and article cards. */
+.visual-v7 details.card .gallery {
+  --gallery-media-height: clamp(280px, 82vw, 470px);
+  align-items: stretch;
+}
+.visual-v7 details.card .gallery > figure {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+.visual-v7 details.card .gallery > figure > img,
+.visual-v7 details.card .gallery > .ep02-reel > .reel-viewport {
+  flex: none;
+  height: var(--gallery-media-height);
+  aspect-ratio: auto;
+}
+.visual-v7 details.card .gallery > figure > figcaption {
+  flex: 1;
+}
 .visual-v7 .gallery .ep02-reel {
   flex-basis: min(86%, 330px);
 }
@@ -80,8 +98,8 @@
   display: none;
 }
 .story-copy .ep02-reel {
-  width: min(100%, 340px);
-  margin: 1rem 0;
+  width: min(100%, 560px);
+  margin: 1rem auto;
   overflow: hidden;
   border: 1px solid #342d29;
   border-radius: 17px;
@@ -92,9 +110,13 @@
   padding: 10px 14px;
   font-weight: 800;
 }
-.story-copy .ep02-reel:not(.is-loaded) .reel-viewport {
-  aspect-ratio: auto;
-  min-height: 165px;
+.story-copy .ep02-reel[data-kind="reel"] .reel-viewport {
+  aspect-ratio: 16 / 9;
+}
+.story-copy .ep02-reel[data-kind="reel"] iframe {
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 .hux-reel-pip-head a {
   white-space: nowrap;
@@ -107,8 +129,8 @@
   padding: .9rem 1rem;
   border: 1px solid #60331f;
   border-radius: 18px;
-  background: linear-gradient(145deg, #c24e0d, #b43e08);
-  color: #fff9ee;
+  background: var(--hux-coupon-background);
+  color: #33221a;
 }
 .story-promo-heading {
   display: flex;
@@ -143,6 +165,27 @@
   text-decoration: underline;
 }
 .story-promo-link:focus-visible {
-  outline: 2px solid #fff9ee;
+  outline: 2px solid #33221a;
   outline-offset: 3px;
+}
+
+.story-photo {
+  width: min(100%, 680px);
+  margin: .6rem auto 1.45rem;
+  overflow: hidden;
+  border: 1px solid #9e907f;
+  border-radius: 14px;
+  background: #fff8df;
+}
+.story-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.story-photo figcaption {
+  padding: .55em .85em;
+  color: #332b25;
+  font-size: .875rem;
+  font-weight: 750;
+  line-height: 1.4;
 }

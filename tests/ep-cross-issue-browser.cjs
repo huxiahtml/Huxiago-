@@ -160,7 +160,18 @@ async function verifyEp02Galleries(page) {
   for (const [id, count] of Object.entries(galleryCounts)) {
     const stop = page.locator('#' + id);
     await stop.evaluate(details => { details.open = true; });
-    const images = stop.locator('.gallery figure img');
+    const isMall = id === 'bang-sue-junction';
+    const images = stop.locator(isMall ? '.story-photo img' : '.gallery figure img');
+    if (isMall) {
+      assert.equal(await stop.locator('.gallery').count(), 0);
+      const captions = await stop.locator('.story-photo').evaluateAll(photos => photos.map(photo => ({
+        caption: photo.querySelector('figcaption').textContent,
+        followsParagraph: photo.previousElementSibling?.tagName === 'P',
+      })));
+      assert(captions.every(item => item.followsParagraph));
+      assert.match(captions[1].caption, /1.*2|一、二楼|first and second/);
+      assert.match(captions[5].caption, /Mono Loop/);
+    }
     assert.equal(await images.count(), count, id + ' gallery photo count');
     const complete = await images.evaluateAll(async items => {
       return Promise.all(items.map(async img => {
@@ -199,6 +210,39 @@ async function verifyReelsAndPromos(page, locale, interact) {
   assert.equal(await silqReel.count(), 1);
   assert.equal(await silqReel.evaluate(el => el.parentElement.children[1] === el), true);
   assert.equal(await silqReel.locator('.reel-origin').getAttribute('href'), originals[2]);
+  const normalWidth = page.viewportSize();
+  for (const width of [320, 390, 695, 1440]) {
+    await page.setViewportSize({width, height: normalWidth.height});
+    for (const stop of ['#kushiro', '#silq']) {
+      const card = page.locator(stop);
+      await card.evaluate(el => { el.open = true; });
+      const figures = await card.locator('.gallery > figure').evaluateAll(items => items.map(figure => {
+        const box = figure.getBoundingClientRect();
+        const media = figure.firstElementChild.getBoundingClientRect();
+        return [box.height, media.height];
+      }));
+      assert(figures.length > 1);
+      assert(figures.every(([height, media]) => Math.abs(height - figures[0][0]) < 1 && Math.abs(media - figures[0][1]) < 1),
+        stop + ' media and card heights match at ' + width + 'px: ' + JSON.stringify(figures));
+      assert(await card.locator('.story-promo').evaluate(promo => {
+        const reference = document.querySelector('.ticket-feature .ticket-cta');
+        const style = getComputedStyle(promo);
+        const original = getComputedStyle(reference);
+        return style.backgroundColor === original.backgroundColor && style.backgroundImage === original.backgroundImage;
+      }));
+      if (stop === '#kushiro') {
+        assert(await card.locator('.story-copy .ep02-reel').evaluate(reel => {
+          const parent = reel.parentElement.getBoundingClientRect();
+          const box = reel.getBoundingClientRect();
+          const media = reel.querySelector('.reel-viewport').getBoundingClientRect();
+          return Math.abs(parent.left + parent.width / 2 - box.left - box.width / 2) < 1 &&
+            Math.abs(media.width / media.height - 16 / 9) < .02;
+        }), 'Article Reel is centred and landscape');
+      }
+      await card.evaluate(el => { el.open = false; });
+    }
+  }
+  await page.setViewportSize(normalWidth);
   if (!interact) return;
   for (const [id, original] of [['kushiro', originals[0]], ['silq', originals[2]]]) {
     const stop = page.locator('#' + id);

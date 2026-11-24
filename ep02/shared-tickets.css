@@ -1,4 +1,7 @@
 /* One visual family for the shared pocket deals in every issue. */
+.visual-v7 {
+  --hux-coupon-background: #fb792e linear-gradient(153deg, transparent 12%, #ffb34c 44%, #ff9637 68%, transparent);
+}
 .visual-v7 .ticket-icon {
   display: grid;
   place-items: center;
@@ -188,7 +191,7 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   border: 0;
   border-top: 2px dashed #fff4d5;
   border-radius: 0;
-  background: #fb792e linear-gradient(153deg, transparent 12%, #ffb34c 44%, #ff9637 68%, transparent);
+  background: var(--hux-coupon-background);
   color: #fff;
   font-size: 15px;
   line-height: 1.25;
