@@ -59,9 +59,9 @@
       "For a first visit, I’d pick the 15-course menu and a counter seat."
     ],
     "terms": [
-      "原稿列 12／15／17 道套餐；適用日期與總價以訂位頁確認。",
-      "原稿列出 12／15／17 道套餐；适用日期和总价请在预订页确认。",
-      "Listed for the 12-, 15- and 17-course menus. Check eligible dates and total on TableCheck."
+      "請在 TableCheck 確認所選日期及套餐是否適用，以及結帳總價。",
+      "请在 TableCheck 确认所选日期及套餐是否适用，以及结账总价。",
+      "Check your selected date, menu eligibility and final total on TableCheck."
     ],
     "cta": [
       "TableCheck 訂位",
@@ -99,7 +99,12 @@
     ],
     "category": "hotel",
     "code": "HUXIATHAI",
-    "photo": "silq-room.webp"
+    "photo": "silq-room.webp",
+    "terms": [
+      "連結會帶入優惠碼。選好日期後，請在訂房頁確認房型與方案已套用折扣。",
+      "链接会带入优惠码。选好日期后，请在订房页确认房型与方案已使用折扣。",
+      "The link prefills the code. After choosing your dates, confirm the discount on your selected room and rate."
+    ]
   },
   "transport": {
     "category": "taxi",

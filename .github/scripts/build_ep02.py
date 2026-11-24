@@ -20,17 +20,45 @@ def data_uri(path, mime):
     return f'data:{mime};base64,{base64.b64encode(raw).decode("ascii")}'
 
 
+REEL_LABELS = (
+    ("播放影片", "原片 ↗", "浮動播放", "關閉浮動影片"),
+    ("播放视频", "原片 ↗", "浮动播放", "关闭浮动视频"),
+    ("Play Reel", "Original ↗", "Floating player", "Close floating player"),
+)
+PIP_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="none">'
+            '<rect x="2.5" y="3.5" width="16" height="12.5" rx="1.8" stroke="currentColor" stroke-width="1.7"/>'
+            '<path d="M5.2 6.2h4.3L8 7.7l2.5 2.5-1.4 1.4-2.5-2.5-1.4 1.4V6.2Z" fill="currentColor"/>'
+            '<rect x="10.5" y="10" width="11.5" height="10" rx="2" fill="currentColor" stroke="#252532" stroke-width="1.4"/></svg>')
+
+
+def reel_card(url, title, index, poster=""):
+    if not re.fullmatch(r"https://www\.instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+/", url):
+        raise ValueError(f"Expected an Instagram post or Reel permalink: {url}")
+    play, original, pip, close = REEL_LABELS[index]
+    title = escape(title, quote=True)
+    classes = "reel-figure ep02-reel" + (" ep01-gallery-reel" if poster else "")
+    image = f'<img src="{poster}" alt="" loading="lazy" decoding="async">' if poster else ""
+    return (
+        f'<figure class="{classes}" data-kind="reel" data-embed="{url}embed/" data-close="{close}">'
+        f'<div class="reel-viewport">{image}<button class="reel-placeholder ep01-reel-play" type="button" '
+        f'aria-label="{play} · {title}"><span aria-hidden="true">{play}</span></button>'
+        f'<a class="reel-origin" href="{url}" target="_blank" rel="noopener noreferrer">{original}</a>'
+        f'<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
+        f'</div><figcaption>{title}</figcaption></figure>'
+    )
+
+
 def gallery(assets, index):
     figures = []
     for filename, hant, hans, english, *links in assets:
-        caption = escape((hant, hans, english)[index], quote=True)
+        caption = (hant, hans, english)[index]
         src = data_uri(ROOT / "ep02" / filename, "image/webp")
-        label = caption
         if links:
-            url = escape(links[0], quote=True)
-            label = f'<a href="{url}" target="_blank" rel="noopener noreferrer">{caption}</a>'
-        figures.append(f'<figure><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
-                       f'<figcaption>{label}</figcaption></figure>')
+            figures.append(reel_card(links[0], caption, index, src))
+        else:
+            caption = escape(caption, quote=True)
+            figures.append(f'<figure><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
+                           f'<figcaption>{caption}</figcaption></figure>')
     return '<div class="gallery">' + "".join(figures) + '</div>'
 
 
@@ -250,14 +278,37 @@ def story_table(rows):
     return f'<table class="story-table"><thead><tr>{header}</tr></thead><tbody>{"".join(entries)}</tbody></table>'
 
 
-def render_story(sections):
+def story_promo(offer, index):
+    badge = escape(offer["badge"][index])
+    title = escape(offer["label"][index])
+    terms = escape(offer["terms"][index])
+    url = escape(offer["url"], quote=True)
+    cta = escape(offer["cta"][index])
+    code = f'<code class="story-promo-code">{escape(offer["code"])}</code>' if "code" in offer else ""
+    return (
+        '<div class="story-promo"><div class="story-promo-heading">'
+        f'<strong class="story-promo-discount">{badge}</strong><strong>{title}</strong>{code}</div>'
+        f'<div class="story-promo-terms">{terms}</div>'
+        f'<a class="story-promo-link" href="{url}" target="_blank" rel="noopener noreferrer">'
+        f'<span aria-hidden="true">↗ </span>{cta}</a></div>'
+    )
+
+
+def render_story(sections, deals, index):
     parts = []
     for heading, blocks in sections:
         parts.append(f'<h4 class="story-heading">{story_inline(heading)}</h4>')
         if isinstance(blocks, str):
             blocks = [blocks]
         for block in blocks:
-            parts.append(f"<p>{story_inline(block)}</p>" if isinstance(block, str) else story_table(block["table"]))
+            if isinstance(block, str):
+                parts.append(f"<p>{story_inline(block)}</p>")
+            elif "promo" in block:
+                parts.append(story_promo(deals[block["promo"]], index))
+            elif "reel" in block:
+                parts.append(reel_card(block["reel"], block["title"], index))
+            else:
+                parts.append(story_table(block["table"]))
     return "".join(parts)
 
 
@@ -283,6 +334,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         script(donor, "v22-draggable-share"),
         "" if offline else script(donor, "episode-picker-script"),
     ))
+    reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
     category = data["categories"]
     toc = []
     stops = []
@@ -297,7 +349,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
-        story = render_story(stories[s["id"]][ix])
+        story = render_story(stories[s["id"]][ix], deals, ix)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'
@@ -375,6 +427,7 @@ document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventLi
 }}));
 </script>
 {scripts}
+<script>{reel_script}</script>
 <script>
 document.getElementById('about').before(document.getElementById('share-strip'));
 </script>

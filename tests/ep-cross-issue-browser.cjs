@@ -134,7 +134,7 @@ async function verifyPlaceholders(page) {
     'Additional deals are reachable by horizontal scroll');
 }
 const articleCounts = {
-  kushiro: [5, 19, 1], silq: [7, 25, 1], 'gan-da': [6, 19, 0], 'hani-spa': [6, 16, 0],
+  kushiro: [5, 17, 1], silq: [7, 22, 1], 'gan-da': [6, 19, 0], 'hani-spa': [6, 16, 0],
   chowchercof: [6, 14, 0], 'bang-sue-junction': [7, 19, 0], 'saen-saep': [7, 21, 0],
 };
 async function verifyArticles(page) {
@@ -167,12 +167,48 @@ async function verifyEp02Galleries(page) {
         img.loading = 'eager';
         await img.decode();
         const caption = img.closest('figure').querySelector('figcaption')?.textContent.trim();
-        return img.naturalWidth > 0 && img.src.startsWith('data:image/webp;') && caption && img.alt === caption;
+        return img.naturalWidth > 0 && img.src.startsWith('data:image/webp;') && caption &&
+          img.alt === (img.closest('.ep02-reel') ? '' : caption);
       }));
     });
     assert(complete.every(Boolean), id + ' photos, captions and alt text');
     await stop.evaluate(details => { details.open = false; });
   }
+}
+async function verifyReelsAndPromos(page, locale, interact) {
+  assert.equal(await page.locator('.ep02-reel iframe').count(), 0, 'Reels load on request');
+  const posters = {
+    'hani-spa': ['有兩間分店，我們都來這間', '有两家分店，我们都来这家', 'There are two branches, and this is the one we visit'],
+    'saen-saep': ['CentralWorld 附近就有碼頭', 'CentralWorld 附近就有码头', 'There’s a pier near CentralWorld'],
+  };
+  const index = ['zh-Hant', 'zh-Hans', 'en'].indexOf(locale);
+  for (const [id, captions] of Object.entries(posters)) {
+    const first = page.locator('#' + id + ' .gallery figure').first();
+    assert.equal(await first.locator('figcaption').textContent(), captions[index]);
+    assert.equal(await first.locator('img').getAttribute('src'), await page.locator('#' + id + ' summary .thumb').getAttribute('src'));
+  }
+  for (const [id, url] of [['kushiro', links[1]], ['silq', silqLink]]) {
+    const promo = page.locator('#' + id + ' .story-promo');
+    assert.equal(await promo.locator('.story-promo-link').getAttribute('href'), url);
+    assert.equal(await promo.locator('.story-promo-discount').textContent(), offers[id].badge[index]);
+  }
+  assert.equal(await page.locator('#silq .story-promo-code').textContent(), 'HUXIATHAI');
+  const originals = await page.locator('.ep02-reel .reel-origin').evaluateAll(links => links.map(a => a.href));
+  assert.deepEqual(originals, ['https://www.instagram.com/p/DR1D9Q9iSvM/', 'https://www.instagram.com/p/DdYtIjNJEow/', 'https://www.instagram.com/reel/DfIXxHiTF4C/']);
+  if (!interact) return;
+  await page.locator('#kushiro').evaluate(el => { el.open = true; });
+  const reel = page.locator('#kushiro .gallery .ep02-reel');
+  await reel.locator('.ep01-reel-play').click();
+  const embed = originals[0] + 'embed/';
+  assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
+  await reel.locator('.reel-pip-launch').click();
+  const floating = page.locator('.hux-reel-pip');
+  assert.equal(await floating.locator('iframe').getAttribute('src'), embed);
+  assert.equal(await floating.locator('a').getAttribute('href'), originals[0]);
+  await page.keyboard.press('Escape');
+  assert.equal(await floating.count(), 0);
+  assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
+  await page.locator('#kushiro').evaluate(el => { el.open = false; });
 }
 const widths = [390, 647, 768, 979, 980, 1200, 1440];
 
@@ -197,6 +233,7 @@ await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
 await verifyArticles(p);
 await verifyEp02Galleries(p);
+await verifyReelsAndPromos(p,lang,true);
 await p.locator('#kushiro summary').click();
 assert(await p.locator('#kushiro .gallery').evaluate(el=>el.scrollWidth>el.clientWidth));
 for(const width of widths){
@@ -223,7 +260,7 @@ assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
-if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);}
+if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang,false);}
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, transport story, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});

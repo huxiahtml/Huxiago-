@@ -67,11 +67,16 @@
         [
           "**地址：**Kushiro Omakase and Japanese Dining，Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900。",
           "**交通：**餐廳不在捷運站旁，從曼谷市區前往，建議直接叫車或搭計程車。",
-          "訂位連結：[點這裡前往 Kushiro Omakase 的 TableCheck 訂位頁](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago)，請確認所選日期及套餐是否適用 8 折。",
+          {
+            "promo": "kushiro"
+          },
           "用餐時段：12:30、14:30、17:30、19:30。想看師傅在面前製作料理，請選吧台座位；Unlimited 無限續點方案，目前只開放 12:30、14:30 的午餐時段。",
           "訂位及用餐提醒：用餐當天，請提前 10 分鐘抵達。訂位付款後不提供退款；若要更改日期或時段，須提前至少 24 小時與店家聯繫。",
           "**飲食特殊需求：**若有過敏、忌口，或不吃生食的需求，請於訂位時先行告知店家，確認能否安排適合的餐點。",
-          "[再次回訪 Kushiro Omakase](https://www.instagram.com/p/DdYtIjNJEow/)"
+          {
+            "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
+            "title": "再次回訪 Kushiro Omakase"
+          }
         ]
       ]
     ],
@@ -142,11 +147,16 @@
         [
           "**地址：**Kushiro Omakase and Japanese Dining，Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900。",
           "**交通：**餐厅不在捷运站旁，从曼谷市区前往，建议直接叫车或搭计程车。",
-          "订位连结：[点这里前往 Kushiro Omakase 的 TableCheck 订位页](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago)，请确认所选日期及套餐是否适用 8 折。",
+          {
+            "promo": "kushiro"
+          },
           "用餐时段：12:30、14:30、17:30、19:30。想看师傅在面前制作料理，请选吧台座位；Unlimited 无限续点方案，目前只开放 12:30、14:30 的午餐时段。",
           "订位及用餐提醒：用餐当天，请提前 10 分钟抵达。订位付款後不提供退款；若要更改日期或时段，须提前至少 24 小时与店家联系。",
           "**饮食特殊需求：**若有过敏、忌口，或不吃生食的需求，请於订位时先行告知店家，确认能否安排适合的餐点。",
-          "[再次回访 Kushiro Omakase](https://www.instagram.com/p/DdYtIjNJEow/)"
+          {
+            "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
+            "title": "再次回访 Kushiro Omakase"
+          }
         ]
       ]
     ],
@@ -217,11 +227,16 @@
         [
           "**Address:** Kushiro Omakase and Japanese Dining, Ratchada 32, Khwaeng Chan Kasem, Khet Chatuchak, Bangkok 10900.",
           "**Getting there:** The restaurant isn’t close to a rail station. Take a taxi or book a ride from central Bangkok.",
-          "**Reservations:** [Book through TableCheck](https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago) and check whether the 20% promotion applies to your selected menu and date.",
+          {
+            "promo": "kushiro"
+          },
           "**Seatings:** 12:30, 14:30, 17:30 and 19:30. Choose the counter to watch the chef work. The unlimited menu is offered only at 12:30 and 14:30.",
           "**Before you go:** Please arrive 10 minutes early. Paid reservations are non-refundable. Contact the restaurant at least 24 hours in advance if you need to change the date or seating.",
           "**Dietary requests:** If you have allergies, avoid certain ingredients or don’t eat raw food, let the restaurant know when you book so it can confirm what it can prepare.",
-          "[Our return visit to Kushiro Omakase](https://www.instagram.com/p/DdYtIjNJEow/)"
+          {
+            "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
+            "title": "Our return visit to Kushiro Omakase"
+          }
         ]
       ]
     ]
@@ -250,7 +265,10 @@
         [
           "兩天的早餐選擇比預期多很多。除了泰式和西式，也有印度、中式、日式和韓式餐點，還能點現做的蛋料理與鬆餅。我自己特別喜歡鬆餅，搭配的果醬、糖漿任拿。",
           "我們每天早餐都吃得很滿足，連續兩天都沒有再吃午餐。第二天晚上，還直接打給櫃檯點餐直送房間（room service），兩個人點了打拋豬、泰式煎蛋、椰奶雞湯和冰淇淋。打拋豬辣得夠勁，口味道地，用餐後不用整理，也不用回家，原地繼續耍廢。",
-          "[聊聊 SILQ Hotel 入住心得](https://www.instagram.com/reel/DfIXxHiTF4C/)"
+          {
+            "reel": "https://www.instagram.com/reel/DfIXxHiTF4C/",
+            "title": "聊聊 SILQ Hotel 入住心得"
+          }
         ]
       ],
       [
@@ -305,8 +323,9 @@
           "**交通：**步行可達 BTS Phrom Phong 澎蓬站；Emporium、EmQuartier、EmSphere 約 7–14 分鐘",
           "**免費接駁車：**前往 Emporium Tower；表定每日 08:00–22:00、約每小時整點從飯店出發，實際班次請向櫃台確認",
           "**私人湯屋預約：**至少提前 5 天聯繫 THE QLUB，電話 02-407-1066 或 LINE @theqlub",
-          "訂房 9 折優惠：下方連結會帶入全大寫折扣碼【HUXIATHAI】，選擇入住日期後，請確認所選方案已成功套用折扣。",
-          "[帶入九折碼查房價](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          {
+            "promo": "silq"
+          },
           "本篇為飯店合作入住體驗。飯店提供我們住宿、早餐、餐飲額度與一小時私人湯屋；住宿與餐飲心得及評價，來自我和 Kik 的實際體驗。"
         ]
       ]
@@ -334,7 +353,10 @@
         [
           "两天的早餐选择比预期多很多。除了泰式和西式，也有印度、中式、日式和韩式餐点，还能点现做的蛋料理与松饼。我自己特别喜欢松饼，搭配的果酱、糖浆任拿。",
           "我们每天早餐都吃得很满足，连续两天都没有再吃午餐。第二天晚上，还直接打给柜台点餐直送房间（room service），两个人点了打抛猪、泰式煎蛋、椰奶鸡汤和冰淇淋。打抛猪辣得够劲，口味道地，用餐後不用整理，也不用回家，原地继续耍废。",
-          "[聊聊 SILQ Hotel 入住体验](https://www.instagram.com/reel/DfIXxHiTF4C/)"
+          {
+            "reel": "https://www.instagram.com/reel/DfIXxHiTF4C/",
+            "title": "聊聊 SILQ Hotel 入住体验"
+          }
         ]
       ],
       [
@@ -389,8 +411,9 @@
           "**交通：**步行可达 BTS Phrom Phong 澎蓬站；Emporium、EmQuartier、EmSphere 约 7–14 分钟",
           "**免费接驳车：**前往 Emporium Tower；表定每日 08:00–22:00、约每小时整点从饭店出发，实际班次请向柜台确认",
           "**私人汤屋预约：**至少提前 5 天联系 THE QLUB，电话 02-407-1066 或 LINE @theqlub",
-          "订房 9 折优惠：下方连结会带入全大写折扣码【HUXIATHAI】，选择入住日期後，请确认所选方案已成功套用折扣。",
-          "[带入九折码查房价](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          {
+            "promo": "silq"
+          },
           "本篇为饭店合作入住体验。饭店提供我们住宿、早餐、餐饮额度与一小时私人汤屋；住宿与餐饮心得及评价，来自我和 Kik 的实际体验。"
         ]
       ]
@@ -418,7 +441,10 @@
         [
           "The buffet had a lot more choice than we expected. Along with Thai and Western dishes there were Indian, Chinese, Japanese and Korean options, plus eggs and waffles made to order. The waffles, with a choice of jams and syrups, were my favourite.",
           "On both days we ate enough at breakfast to skip lunch. On our second evening we called the front desk and had pad kra pao with pork, a Thai omelette, coconut chicken soup and ice cream delivered to the room. The pad kra pao had a proper kick, and afterwards we could put our feet up without leaving the room or doing the dishes.",
-          "[Our stay at SILQ Hotel](https://www.instagram.com/reel/DfIXxHiTF4C/)"
+          {
+            "reel": "https://www.instagram.com/reel/DfIXxHiTF4C/",
+            "title": "Our stay at SILQ Hotel"
+          }
         ]
       ],
       [
@@ -473,8 +499,9 @@
           "**Getting there:** Walk from BTS Phrom Phong. Emporium, EmQuartier and EmSphere are about 7–14 minutes away on foot.",
           "**Free shuttle:** To Emporium Tower, scheduled daily from 08:00 to 22:00, with departures from the hotel around the top of each hour. Confirm with reception.",
           "**Private onsen:** Contact THE QLUB at least five days ahead on 02-407-1066 or on LINE, @theqlub.",
-          "**Booking offer:** The official booking link carries HUXIATHAI. Choose your dates and verify that the 10% discount applies to the room and rate you select.",
-          "[Check rates with HUXIATHAI](https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI)",
+          {
+            "promo": "silq"
+          },
           "This was a hosted stay. The hotel provided accommodation, breakfast, a dining credit and one hour in the private onsen. What I’ve written reflects Kik’s and my own experience."
         ]
       ]
