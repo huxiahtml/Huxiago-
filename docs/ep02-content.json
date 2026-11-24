@@ -68,115 +68,140 @@
     {
       "id": "kushiro",
       "label": "01",
-      "name": "Kushiro Omakase & Japanese Dining",
+      "name": "Kushiro Omakase and Japanese Dining",
       "action": 12,
       "url": "https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago",
       "copy": [
         [
-          "坐在吧台前，慢慢吃一頓 Omakase",
+          "全網熱推！高 CP 值日式料理",
           "我和 Kik 去過兩次，兩次都點 15 道特級套餐。看師傅一道一道做，我最想念的是那塊海膽鮪魚愛心吐司。",
           "地址在 Ratchada 32。從市區出發我會叫車。訂位前先看 TableCheck 的座位、總價和異動規則，有忌口也請先說。"
         ],
         [
-          "坐在吧台前，慢慢吃一顿 Omakase",
+          "全网热推！高性价比日式料理",
           "我和 Kik 去过两次，两次都点了 15 道特级套餐。看师傅一道一道做，我最想念的是那块海胆金枪鱼爱心吐司。",
           "餐厅位于 Ratchada 32。从市区出发我会打车。预订前先看 TableCheck 的座位、总价和改订规则，有忌口也请提前告知。"
         ],
         [
-          "Take a counter seat for omakase",
+          "A much-loved spot for great-value Japanese dining",
           "Kik and I have been twice, and both times we ordered the 15-course Premium menu. Watching the chef work was part of the meal. The heart-shaped uni and tuna toast is what I still think about.",
           "The restaurant is on Ratchada 32. I’d take a taxi from central Bangkok. Check seating, the full price and change policies on TableCheck, and mention any dietary restrictions when booking."
         ]
+      ],
+      "heading_category": [
+        "無菜單料理",
+        "无菜单料理",
+        "Omakase dining"
       ]
     },
     {
       "id": "silq",
       "label": "02",
-      "name": "SILQ Hotel & Residence Bangkok",
+      "name": "SILQ Hotel & Residence",
       "action": 10,
       "url": "https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI",
       "copy": [
         [
-          "澎蓬站旁的隱藏版五星級飯店",
+          "曼谷市中心渡假旅行首選推薦",
           "Chiffon Studio 的寬敞房間、早餐和私人湯屋，是小胡這趟合作入住最有印象的體驗。",
           "飯店位於 Sukhumvit Soi 24。房價依日期及方案而異，湯屋另向飯店確認。"
         ],
         [
-          "澎蓬站旁的隐藏版五星级酒店",
+          "曼谷市中心度假旅行首选推荐",
           "Chiffon Studio 的宽敞房间、早餐和私人汤屋，是小胡这次合作入住最有印象的体验。",
           "酒店位于 Sukhumvit Soi 24。房价依日期和方案而异，汤屋请另向酒店确认。"
         ],
         [
-          "A hidden five-star hotel near Phrom Phong",
+          "Our pick for a getaway in central Bangkok",
           "The spacious Chiffon Studio, breakfast and private onsen stood out during Xiao Hu’s hosted stay.",
           "The hotel is on Sukhumvit Soi 24. Rates vary by date and package. Ask the hotel about private onsen access."
         ]
+      ],
+      "heading_category": [
+        "五星級飯店",
+        "五星级酒店",
+        "Five-star hotel"
       ]
     },
     {
       "id": "gan-da",
       "label": "03",
-      "name": "Gan Da · กานดาอาหารตามสั่ง",
+      "name": "กานดาอาหารตามสั่ง",
       "copy": [
         [
-          "一盤現炒打拋飯",
+          "銅板價現做打拋豬、冬蔭功",
           "小胡常點的是打拋豬肉末飯加半熟蛋。兩人一起吃，可以再分一碗冬蔭功。",
           "店在 Central Lat Phrao 一帶。想吃得清淡一點，點餐時先說辣度；食材賣完可能提前收攤。"
         ],
         [
-          "一盘现炒打抛饭",
+          "平价现做打抛猪、冬荫功",
           "小胡常点的是打抛猪肉末饭加溏心煎蛋。两人一起吃，可以再分一碗冬阴功。",
           "餐厅在 Central Lat Phrao 一带。点餐时可以先说明能接受的辣度；食材卖完可能提前收摊。"
         ],
         [
-          "Pad kra pao straight from the wok",
+          "Pad kra pao and tom yum, made to order at street-food prices",
           "Xiao Hu often orders minced pork pad kra pao over rice with a runny fried egg. If there are two of you, consider sharing a bowl of tom yum.",
           "Look near Central Lat Phrao. Ask for your preferred spice level when ordering. The kitchen may close early if it sells out."
         ]
+      ],
+      "heading_category": [
+        "家常泰式料理",
+        "家常泰式料理",
+        "Home-style Thai cooking"
       ]
     },
     {
       "id": "hani-spa",
       "label": "04",
-      "name": "Hani Spa · Branch 2",
+      "name": "Hani Spa",
       "copy": [
         [
-          "走累了，留一小時按摩",
+          "不藏私！回訪Ｎ次的按摩 SPA",
           "小胡與 Kik 的體驗以二店為主。泰式按摩和足部按摩都可作為短休息，入場前可以先說希望的力道。",
           "原文由 MRT Phahon Yothin 一帶走到 Lat Phrao Soi 1。請選二店，並向店家確認療程、價格和預約時段。"
         ],
         [
-          "走累了，留一小时按摩",
+          "不藏私！回访Ｎ次的按摩 SPA",
           "小胡和 Kik 的体验以二店为主。泰式按摩和足部按摩都适合短暂休息，开始前可以先说明想要的力度。",
           "原文从 MRT Phahon Yothin 一带走到 Lat Phrao Soi 1。请选择二店，并向店家确认疗程、价格和预约时段。"
         ],
         [
-          "An hour off your feet",
+          "The massage spa we keep coming back to",
           "Xiao Hu and Kik visited Branch 2. Thai massage and foot massage both make for a short break. Tell the therapist what pressure you prefer.",
           "The source approaches Lat Phrao Soi 1 from MRT Phahon Yothin. Select Branch 2 and confirm the treatment, price and appointment directly."
         ]
+      ],
+      "heading_category": [
+        "平價質感按摩",
+        "平价质感按摩",
+        "Affordable massage"
       ]
     },
     {
       "id": "chowchercof",
       "label": "05",
-      "name": "Chowchercof Cafe",
+      "name": "Chowchercof",
       "copy": [
         [
-          "蓮花池旁吃一口椰香蛋糕",
+          "美感滿分的曼谷午茶時光",
           "小胡常點 Coco Ball 椰子香蘭葉蛋糕，也推薦有蝶豆花的抹茶慕斯。可以留點時間看看池景。",
           "原文建議從 MRT Lat Phrao 步行。出發前可先確認營業時間與當天甜點。"
         ],
         [
-          "莲花池旁吃一口椰香蛋糕",
+          "美感满分的曼谷下午茶时光",
           "小胡常点 Coco Ball 椰子香兰叶蛋糕，也推荐带蝶豆花的抹茶慕斯。可以留点时间看看池景。",
           "原文建议从 MRT Lat Phrao 步行。出发前可先确认营业时间和当天甜点。"
         ],
         [
-          "Cake by a lotus pond",
+          "A lovely spot for afternoon tea in Bangkok",
           "Xiao Hu’s usual is the Coco Ball coconut pandan cake. The matcha and butterfly pea mousse is another pick. Leave yourself a moment to enjoy the pond.",
           "The source suggests walking from MRT Lat Phrao. Check opening hours and dessert availability before you go."
         ]
+      ],
+      "heading_category": [
+        "蓮花池咖啡廳",
+        "莲花池咖啡厅",
+        "Lotus pond café"
       ]
     },
     {
@@ -185,45 +210,55 @@
       "name": "Bang Sue Junction",
       "copy": [
         [
-          "洽圖洽紅樓裡挖寶",
+          "海量古著古董！二手挖寶勝地",
           "小胡在低樓層逛古董，再往上找古著、黑膠和小吃。店鋪各有節奏，想逛的店可以先排。",
           "原文從 MRT Kamphaeng Phet 出站步行。購物與小吃可先準備一些泰銖現金。"
         ],
         [
-          "洽图洽红楼里挖宝",
+          "海量古着古董！二手淘货胜地",
           "小胡在低楼层逛古董，再往上找古着、黑胶和小吃。各家店营业时间不同，可以先逛最想去的店。",
           "原文从 MRT Kamphaeng Phet 出站步行。购物和小吃可先准备一些泰铢现金。"
         ],
         [
-          "Vintage finds in the Red Building",
+          "A treasure trove of vintage clothes and antiques",
           "Xiao Hu browsed antiques on the lower floors, then went upstairs for vintage clothes, records and snacks. Individual shops keep their own hours.",
           "The source walks from MRT Kamphaeng Phet. A little cash is handy for secondhand shops and snacks."
         ]
       ],
-      "gallery_layout": "inline"
+      "gallery_layout": "inline",
+      "heading_category": [
+        "復古購物商場",
+        "复古购物商场",
+        "Vintage shopping mall"
+      ]
     },
     {
       "id": "saen-saep",
       "label": "07",
-      "name": "Khlong Saen Saep Express Boat",
+      "name": "Saen Saep Express Boat",
       "action": 9,
       "url": "https://www.saensaebcanal.com/",
       "copy": [
         [
-          "從水門一路往東",
+          "市中心交通外掛「盛桑快船」",
           "小胡和 Kik 16:48 從 Pratunam 上船，17:38 抵達 The Mall Bangkapi。這次東行搭了 50 分鐘，傍晚通勤時段人潮較多。",
           "票價依距離和當期公告而變動。小胡這趟用泰銖現金在船上付費。看演唱會可以考慮搭船去程，先安排好散場交通。"
         ],
         [
-          "从水门一路往东",
+          "市中心交通外挂「盛桑快船」",
           "小胡和 Kik 16:48 从 Pratunam 上船，17:38 到达 The Mall Bangkapi。这次东行坐了 50 分钟，傍晚通勤时段人比较多。",
           "票价随距离和当期公告而变动。小胡这次在船上用泰铢现金付款。看演唱会可以考虑坐船前往，先安排好散场交通。"
         ],
         [
-          "Eastbound from Pratunam",
+          "The Saen Saep canal boat is a shortcut across central Bangkok",
           "Xiao Hu and Kik boarded at 16:48 and reached The Mall Bangkapi at 17:38. Their eastbound ride took 50 minutes and got crowded around rush hour.",
           "Fares depend on distance and current notices. Xiao Hu paid in baht on board. If you take the boat to a concert, arrange a way back before you leave."
         ]
+      ],
+      "heading_category": [
+        "曼谷髒船",
+        "曼谷脏船",
+        "Bangkok’s “dirty boat”"
       ]
     }
   ],

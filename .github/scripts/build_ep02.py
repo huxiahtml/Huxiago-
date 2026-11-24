@@ -410,6 +410,9 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         title, _, detail = map(escape, s["copy"][ix])
         name = escape(s["name"])
         cat = escape(category[s["id"]][ix])
+        heading_category = escape(s["heading_category"][ix])
+        label = s["label"]
+        stop_heading = f"Stop {label} · {heading_category}" if lang == "en" else f"第 {label} 站・{heading_category}"
         assets = galleries.get(s["id"], [])
         media = gallery(assets, ix, offline) if assets and s.get("gallery_layout") != "inline" else ""
         if assets:
@@ -438,7 +441,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         route_action = action if len(places) > 1 else ""
         stops.append(
             f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
-            f'<span class="head"><small>{s["label"]} · {cat}</small><h3>{name}</h3><p>{title}</p></span>'
+            f'<span class="head"><small>{stop_heading}</small><h3>{name}</h3><p>{title}</p></span>'
             f'<span aria-hidden="true" class="chev">⌄</span></summary>'
             f'<div class="body">{media}<div class="story-copy">{story}</div>'
             f'<div class="info"><b>{escape(t[17])}</b>{detail}</div>'
