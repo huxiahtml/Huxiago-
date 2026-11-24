@@ -134,7 +134,7 @@ async function verifyPlaceholders(page) {
     'Additional deals are reachable by horizontal scroll');
 }
 const articleCounts = {
-  kushiro: [5, 18, 1], silq: [7, 24, 1], 'gan-da': [6, 19, 0], 'hani-spa': [6, 16, 0],
+  kushiro: [5, 19, 1], silq: [7, 25, 1], 'gan-da': [6, 19, 0], 'hani-spa': [6, 16, 0],
   chowchercof: [6, 14, 0], 'bang-sue-junction': [7, 19, 0], 'saen-saep': [7, 21, 0],
 };
 async function verifyArticles(page) {
@@ -144,7 +144,7 @@ async function verifyArticles(page) {
     assert.equal(await article.locator('.story-heading').count(), headings, id + ' headings');
     assert.equal(await article.locator('p').count(), paragraphs, id + ' paragraphs');
     assert.equal(await article.locator('table').count(), tables, id + ' tables');
-    assert.equal(await card.locator('video, iframe, a[href*="instagram.com"]').count(), 0, id + ' video deferred');
+    assert.equal(await card.locator('video, iframe').count(), 0, id + ' video deferred');
   }
   assert.equal(await page.locator('#kushiro .story-table tbody tr').count(), 4);
   assert.equal(await page.locator('#silq .story-table tbody tr').count(), 2);
@@ -153,8 +153,8 @@ async function verifyArticles(page) {
     'https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI');
 }
 const galleryCounts = {
-  kushiro: 6, silq: 5, 'gan-da': 5, 'hani-spa': 4,
-  chowchercof: 5, 'bang-sue-junction': 5, 'saen-saep': 5,
+  kushiro: 10, silq: 10, 'gan-da': 12, 'hani-spa': 10,
+  chowchercof: 12, 'bang-sue-junction': 10, 'saen-saep': 6,
 };
 async function verifyEp02Galleries(page) {
   for (const [id, count] of Object.entries(galleryCounts)) {

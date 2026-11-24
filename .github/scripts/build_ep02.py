@@ -22,11 +22,15 @@ def data_uri(path, mime):
 
 def gallery(assets, index):
     figures = []
-    for filename, *captions in assets:
-        caption = escape(captions[index], quote=True)
+    for filename, hant, hans, english, *links in assets:
+        caption = escape((hant, hans, english)[index], quote=True)
         src = data_uri(ROOT / "ep02" / filename, "image/webp")
+        label = caption
+        if links:
+            url = escape(links[0], quote=True)
+            label = f'<a href="{url}" target="_blank" rel="noopener noreferrer">{caption}</a>'
         figures.append(f'<figure><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
-                       f'<figcaption>{caption}</figcaption></figure>')
+                       f'<figcaption>{label}</figcaption></figure>')
     return '<div class="gallery">' + "".join(figures) + '</div>'
 
 
