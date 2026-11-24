@@ -207,7 +207,14 @@ def deal_content(deals, index):
             continue
         if "photo" in offer:
             src = data_uri(ROOT / "ep02" / offer["photo"], "image/webp")
-            middle = f'<div class="ticket-photo"><img src="{src}" alt="" loading="lazy" decoding="async"></div>'
+            logo = ""
+            if "photo_logo" in offer:
+                logo_src = data_uri(ROOT / "ep02" / offer["photo_logo"], "image/webp")
+                logo = f'<img class="ticket-photo-logo" src="{logo_src}" alt="" loading="lazy" decoding="async">'
+            middle = (
+                f'<div class="ticket-photo"><img class="ticket-photo-image" src="{src}" alt="" '
+                f'loading="lazy" decoding="async">{logo}</div>'
+            )
         else:
             middle = f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
         code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""

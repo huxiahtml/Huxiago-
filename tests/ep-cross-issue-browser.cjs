@@ -49,9 +49,11 @@ async function affirm(page, locale) {
     ['esim','kushiro','silq'].map(key=>offers[key].badge[index]));
   assert.equal(await cards.locator('.ticket-copy').textContent(), offers.esim.body[index]);
   assert.equal(await cards.locator('.ticket-code').textContent(), 'HUXIATHAI');
-  const photos=cards.locator('.ticket-photo img');
+  const photos = cards.locator('.ticket-photo-image');
+  const logos = cards.locator('.ticket-photo-logo');
   assert.equal(await photos.count(), 2);
-  await photos.evaluateAll(images=>Promise.all(images.map(async image=>{
+  assert.equal(await logos.count(), 2);
+  await cards.locator('.ticket-photo img').evaluateAll(images=>Promise.all(images.map(async image=>{
     image.loading='eager';
     await image.decode();
     if (!image.naturalWidth || !image.src.startsWith('data:image/webp;')) throw Error('Offer image is not available offline');

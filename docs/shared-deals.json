@@ -70,7 +70,8 @@
     ],
     "category": "dining",
     "ticket_name": "Kushiro Omakase",
-    "photo": "kushiro-sushi.webp"
+    "photo": "kushiro-coupon-sushi.webp",
+    "photo_logo": "kushiro-coupon-logo.webp"
   },
   "silq": {
     "id": "ep02-silq-offer",
@@ -99,12 +100,13 @@
     ],
     "category": "hotel",
     "code": "HUXIATHAI",
-    "photo": "silq-room.webp",
+    "photo": "silq-coupon-lobby.webp",
     "terms": [
       "連結會帶入優惠碼。選好日期後，請在訂房頁確認房型與方案已套用折扣。",
       "链接会带入优惠码。选好日期后，请在订房页确认房型与方案已使用折扣。",
       "The link prefills the code. After choosing your dates, confirm the discount on your selected room and rate."
-    ]
+    ],
+    "photo_logo": "silq-coupon-logo.webp"
   },
   "transport": {
     "category": "taxi",
