@@ -284,48 +284,181 @@
   font: 850 1.25rem/1 sans-serif;
   cursor: pointer;
 }
-.route-pan-hint {
-  display: none;
+.canal-map-hint {
+  margin: .65rem 1rem;
+  font-size: .875rem;
 }
-@media (max-width: 680px) {
-  .route-pan-hint {
-    display: block;
-    padding: .38rem 1rem;
-    background: #fff8df;
-    font-size: .8125rem;
-  }
+.route-dialog {
+  width: min(1080px, calc(100% - 20px));
 }
-.route-dialog-image {
-  overflow: auto;
+.canal-viewport {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  background: #e5f3ee;
+  border-block: 1px solid #9eaa99;
 }
-.route-dialog-image img {
-  min-width: 640px;
+.canal-diagram {
+  position: relative;
+  width: 1440px;
+  height: 290px;
+  background:
+    radial-gradient(ellipse at 78% 65%, #d9ebe6, transparent 52%),
+    radial-gradient(circle, #96aeaa50 1px, transparent 1px) 0 0 / 16px 16px,
+    #e6f2eb;
 }
-.route-dialog .route-direction {
-  margin: 1rem 1rem .4rem;
-  font-weight: 850;
+.canal-diagram svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.route-piers {
-  margin: 0 1rem 1rem;
-  padding-left: 1.6rem;
+.canal-diagram polyline {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.route-piers li {
-  padding: .3rem 0;
-}
-.route-piers summary {
-  display: list-item;
-  padding: .4rem .55rem;
-  border-radius: 8px;
-  background: #f4e9d8;
+.canal-west { stroke: #ad662b; }
+.canal-east { stroke: #246c85; }
+.canal-diagram .canal-selected { stroke: #ff9243; stroke-width: 9; }
+.canal-pin {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
   cursor: pointer;
+}
+.canal-pin::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid #24556b;
+  border-radius: 50%;
+  background: #fff8eb;
+}
+.canal-pin:hover::before,
+.canal-pin:focus-visible::before,
+.canal-pin[aria-pressed="true"]::before {
+  background: #ffac5e;
+}
+.canal-pin:focus-visible {
+  outline: 2px solid #283c39;
+}
+.canal-pin span {
+  position: absolute;
+  bottom: calc(100% - 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: .1rem .32rem;
+  border-radius: 6px;
+  background: #fff8eb;
+  color: #283c39;
+  font: 750 13px/1.4 sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.canal-orientation {
+  position: absolute;
+  bottom: 16px;
+  background: #fff8eb;
+  padding: .25rem .45rem;
+  font-weight: 800;
+  border-radius: 6px;
+}
+.canal-orientation-west { left: 15px; }
+.canal-orientation-east { right: 15px; }
+.canal-route-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .6rem .9rem;
+  margin: .8rem 1rem;
+}
+.canal-route-form label {
+  display: grid;
+  gap: .2rem;
   font-weight: 800;
 }
-.route-piers details p {
-  margin: .25rem 0 .55rem;
-  line-height: 1.5;
+.canal-route-form select {
+  width: 100%;
+  min-width: 0;
+  padding: .38rem;
+  color: #2d261f;
+  border: 1px solid #887b6c;
+  border-radius: 8px;
+  background: #fffdf5;
+  font: inherit;
+  font-size: .875rem;
 }
-.route-source {
-  display: inline-block;
-  margin-inline: 1rem;
+.canal-route-form .canal-trip {
+  grid-column: 1 / -1;
+  min-height: 1.45em;
+  margin: 0;
   font-weight: 800;
+}
+.canal-map-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+  margin: 0 1rem;
+  font-size: .813rem;
+}
+.route-map-open img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.visual-v7 .story-video-track .canal-clip {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 min(70vw, 220px);
+}
+.canal-clip figcaption {
+  flex: 1;
+  margin: 0 0 .5rem;
+  padding: .15rem .1rem;
+  color: #2d261f;
+  font-weight: 850;
+  line-height: 1.3;
+}
+.canal-clip .clip-media {
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  height: auto;
+}
+.visual-v7 .story-video-track .canal-clip .clip-media video {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+.visual-v7 .canal-clip .clip-actions {
+  flex-wrap: nowrap;
+  right: 6px;
+  bottom: 8px;
+  gap: 6px;
+}
+.visual-v7 .canal-clip .clip-actions .clip-pip {
+  position: static;
+  inset: auto;
+  display: grid !important;
+}
+.visual-v7 .canal-clip .clip-actions button {
+  flex: none;
+  scroll-margin-block: 80px;
+}
+.canal-clip.is-loaded .reel-viewport:not(:has(video)) > img {
+  display: block;
+}
+.canal-clip button[aria-pressed="false"] .clip-icon-on,
+.canal-clip button[aria-pressed="true"] .clip-icon-off {
+  display: none !important;
 }

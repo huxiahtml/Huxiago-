@@ -154,7 +154,7 @@ async function verifyArticles(page) {
 }
 const galleryCounts = {
   kushiro: 10, silq: 16, 'gan-da': 14, 'hani-spa': 10,
-  chowchercof: 12, 'bang-sue-junction': 10, 'saen-saep': 8,
+  chowchercof: 12, 'bang-sue-junction': 10, 'saen-saep': 6,
 };
 async function verifyEp02Galleries(page) {
   for (const [id, count] of Object.entries(galleryCounts)) {
@@ -265,39 +265,56 @@ async function verifyMapAndLocalVideos(page, offline) {
   const originalSize = page.viewportSize();
   await page.setViewportSize({width: 390, height: 900});
   const transport = page.locator('#saen-saep');
-  await transport.evaluate(el => {el.open = true;});
+  const toc = page.locator('.toc-item[href="#saen-saep"]');
+  await toc.click();
+  await page.waitForFunction(() => location.hash === '#saen-saep' && document.getElementById('saen-saep')?.open);
+  assert(await transport.locator('.story-copy').isVisible());
   const map = transport.locator('.route-map-open');
   assert(await map.locator('img').evaluate(async img => {img.loading = 'eager'; await img.decode(); return img.naturalWidth > 1000;}));
+  const pageUrl = page.url();
   await map.click();
   const dialog = transport.locator('#canal-route');
   assert(await dialog.isVisible());
-  const stops = dialog.locator('.route-piers summary');
-  assert.deepEqual(await stops.allTextContents(), ['Saphan Hua Chang', 'Pratunam', 'Asoke-Petchaburi', 'Soi Thonglor', 'Mahadthai', 'The Mall Bangkapi']);
-  await stops.nth(1).click();
-  assert(await dialog.locator('.route-piers details[open] p').isVisible());
-  await stops.last().click();
-  assert.equal(await dialog.locator('.route-piers details[open] summary').textContent(), 'The Mall Bangkapi');
-  assert(await dialog.locator('.route-dialog-image').evaluate(img => img.scrollWidth > img.clientWidth));
+  const pins = dialog.locator('.canal-pin');
+  assert.equal(await pins.count(), 28);
+  assert(await dialog.locator('.canal-viewport').evaluate(el => el.scrollWidth > el.clientWidth));
+  await pins.nth(0).click();
+  await pins.nth(25).click();
+  assert.equal(await dialog.locator('.canal-from').inputValue(), '0');
+  assert.equal(await dialog.locator('.canal-to').inputValue(), '25');
+  assert.match(await dialog.locator('.canal-trip').textContent(), /Pratunam/);
+  assert((await dialog.locator('.canal-selected').getAttribute('points')).split(' ').length === 26);
+  await dialog.locator('.canal-from').selectOption('26');
+  assert.match(await dialog.locator('.canal-trip').textContent(), /向西|Westbound/);
+  assert.equal(page.url(), pageUrl);
   await page.keyboard.press('Escape');
   assert.equal(await dialog.isVisible(), false);
+  assert.equal(await transport.locator('.gallery figure[data-video]').count(), 0);
+  assert.equal(await transport.locator('.story-video-track .canal-clip').count(), 3);
   await transport.evaluate(el => {el.open = false;});
 
   const cards = page.locator('figure[data-video]');
-  assert.equal(await cards.count(), 5);
+  assert.equal(await cards.count(), 6);
   for (const card of await cards.all()) {
     const kind = await card.getAttribute('data-kind');
     const correctSource = await card.evaluate((el, isOffline) => isOffline ?
       el.dataset.video.startsWith('data:video/mp4;base64,') : el.dataset.video.startsWith('media/ep02-'), offline);
     assert.equal(kind, 'video');
     assert(correctSource);
-    assert(await card.locator('.ep01-reel-play').evaluate(button =>
-      getComputedStyle(button).backgroundColor === 'rgba(36, 30, 27, 0.18)'));
+    if (await card.evaluate(el => el.matches('.canal-clip'))) {
+      assert.equal(await card.locator('.clip-actions button').count(), 3);
+    } else {
+      assert(await card.locator('.ep01-reel-play').evaluate(button =>
+        getComputedStyle(button).backgroundColor === 'rgba(36, 30, 27, 0.18)'));
+    }
   }
-  for (const [i, id] of ['silq', 'gan-da', 'gan-da', 'saen-saep', 'saen-saep'].entries()) {
+  for (const [i, id] of ['silq', 'gan-da', 'gan-da', 'saen-saep', 'saen-saep', 'saen-saep'].entries()) {
     const stop = page.locator('#' + id);
     await stop.evaluate(el => {el.open = true;});
     const card = cards.nth(i);
-    await card.locator('.ep01-reel-play').click();
+    const standalone = id === 'saen-saep';
+    const play = card.locator(standalone ? '.clip-pause' : '.ep01-reel-play');
+    await play.click();
     const player = card.locator('video');
     await player.evaluate(video => new Promise((resolve, reject) => {
       if (video.currentTime > 0 && video.readyState >= 2) return resolve();
@@ -305,6 +322,17 @@ async function verifyMapAndLocalVideos(page, offline) {
       video.addEventListener('timeupdate', () => {clearTimeout(timer); resolve();}, {once: true});
     }));
     assert(await player.evaluate(video => video.duration > 0 && video.videoWidth < video.videoHeight));
+    if (standalone) {
+      const sound = card.locator('.clip-sound');
+      assert(await player.evaluate(video => video.muted));
+      await sound.click();
+      await card.locator('.clip-sound[aria-pressed="true"]').waitFor({state: 'visible'});
+      assert(await player.evaluate(video => !video.muted));
+      await sound.click();
+      await play.click();
+      assert(await player.evaluate(video => video.paused));
+      await play.click();
+    }
     const before = await player.evaluate(video => video.currentTime);
     await card.locator('.reel-pip-launch').click();
     assert.equal(await page.locator('.hux-reel-pip video').count(), 1);
@@ -373,5 +401,5 @@ if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else offlineRail=await railLayout(q);
 if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang,false);await verifyMapAndLocalVideos(q,true);}
 }await c.close();
-}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, route dialog and all five native videos, two-way locale navigation, downloads and responsive widths verified.');
+}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all six native videos, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});

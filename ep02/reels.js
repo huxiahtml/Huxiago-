@@ -7,9 +7,22 @@
     if (playing) frame.play().catch(() => {});
   }
 
+  function syncClip(figure, frame) {
+    const pause = figure.querySelector('.clip-pause');
+    const sound = figure.querySelector('.clip-sound');
+    if (!pause || !sound) return;
+    const playing = frame?.paused === false;
+    const audible = frame?.muted === false;
+    for (const [button, on] of [[pause, playing], [sound, audible]]) {
+      button.setAttribute('aria-pressed', String(on));
+      button.setAttribute('aria-label', on ? button.dataset.onLabel : button.dataset.offLabel);
+    }
+  }
+
   function closeFloating(restoreFocus = true) {
     if (!player?.shell) return;
     const { figure, frame, shell, button } = player;
+    if (figure.matches('.canal-clip')) frame.controls = false;
     moveFrame(frame, figure.querySelector('.reel-viewport'));
     shell.remove();
     player.shell = null;
@@ -38,16 +51,28 @@
     if (player?.figure === figure) return player.frame;
     if (player) {
       closeFloating(false);
+      player.frame.pause?.();
       player.frame.remove();
       player.figure.classList.remove('is-loaded');
+      syncClip(player.figure);
     }
     const isVideo = Boolean(figure.dataset.video);
     const frame = document.createElement(isVideo ? 'video' : 'iframe');
     frame.title = figure.querySelector('figcaption').textContent;
     if (isVideo) {
       frame.src = figure.dataset.video;
-      frame.controls = true;
+      const standalone = figure.matches('.canal-clip');
+      frame.controls = !standalone;
+      frame.muted = standalone;
+      frame.defaultMuted = standalone;
       frame.playsInline = true;
+      if (standalone) {
+        for (const event of ['play', 'pause', 'volumechange', 'ended']) {
+          frame.addEventListener(event, () => {
+            if (player?.frame === frame) syncClip(figure, frame);
+          });
+        }
+      }
       frame.preload = 'metadata';
       frame.tabIndex = 0;
       frame.setAttribute('aria-label', frame.title);
@@ -66,6 +91,7 @@
       closeFloating();
       return;
     }
+    const firstPlay = player?.figure !== figure;
     const frame = play(figure);
     const shell = document.createElement('aside');
     shell.className = 'hux-reel-pip';
@@ -92,6 +118,10 @@
     shell.append(head, screen);
     document.body.append(shell);
     moveFrame(frame, screen);
+    if (figure.matches('.canal-clip')) {
+      frame.controls = true;
+      if (firstPlay) frame.play().catch(() => {});
+    }
     player.shell = shell;
     player.button.setAttribute('aria-pressed', 'true');
     makeDraggable(head, shell);
@@ -102,14 +132,24 @@
     const button = event.target.closest('.ep02-reel button');
     if (!button) return;
     const figure = button.closest('.ep02-reel');
-    if (button.matches('.ep01-reel-play')) {
+    if (button.matches('.ep01-reel-play, .clip-pause')) {
       const frame = play(figure);
-      frame.focus();
-      if (frame instanceof HTMLVideoElement) frame.play().catch(() => {});
+      if (button.matches('.ep01-reel-play')) frame.focus();
+      if (frame instanceof HTMLVideoElement) {
+        if (frame.paused) frame.play().catch(() => {});
+        else frame.pause();
+      }
+    }
+    if (button.matches('.clip-sound')) {
+      const frame = play(figure);
+      frame.muted = !frame.muted;
+      if (frame.paused) frame.play().catch(() => {});
     }
     if (button.matches('.reel-pip-launch')) float(figure);
   });
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && player?.shell) closeFloating();
+    if (event.key === 'Escape' && player?.shell && !document.querySelector('dialog[open]')) {
+      closeFloating();
+    }
   });
 })();

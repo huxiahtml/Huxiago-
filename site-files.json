@@ -713,28 +713,28 @@
       "sha256": "a6573be742a29b3b68a8eb0e330d23782b8a2cade23d360ed1ba2a32e47fd4ce"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 14686006,
-      "sha256": "d1733e8d01e103bbe73afa017124382487bd0969ece5398800bbeee792fdfa60"
+      "bytes": 14759957,
+      "sha256": "f699ec0eeaec221b1a1d10eba6fe9027249da0959a8bd2f291abb91ce5e7849e"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 20510060,
-      "sha256": "69d08d8974fab68ba9dac9ae0b16454899c7bd950dd1cfa98b9f3083afc5683a"
+      "bytes": 21861145,
+      "sha256": "470369cab978258508d53e4811c29323c5651382b6247f915072fa23a196b37b"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 14684879,
-      "sha256": "6f5daa8adb9129a38b2826beca8afb97d05a424eb73c172be98f76e849c5aff3"
+      "bytes": 14758830,
+      "sha256": "ab1a263e976b7df70982e8f8f02086fd3a046b49a75fd8c54f7ff614eb8a4bf8"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 20508929,
-      "sha256": "14c2ff3eec728759ffd48db23aeb75c9f53ca024bb2cbbf38149191925e4fe08"
+      "bytes": 21860014,
+      "sha256": "37606199f4c9949e2f42b83c5d2962bc720cf63b2125dfcf2502e43581a5b9ad"
     },
     "ep02-en.html": {
-      "bytes": 14674799,
-      "sha256": "7ff94cb8e8c07647a0fa521cb1a85e872df4dd0a22a94c859f1ae645865e21ab"
+      "bytes": 14748698,
+      "sha256": "f7cd7707894a32ca36ad76814d63979f5784b8df1ca5acf04dc813310e77d328"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 20498876,
-      "sha256": "ef5844c83bd7698ae8c5e7a50ec04315dc9f884c3aca1a79b037d9b9f84e2538"
+      "bytes": 21849909,
+      "sha256": "6c5ed686985428ff5124e57170fb7f225039bbc6183360a2d74a80b144c2d317"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -755,6 +755,10 @@
     "media/ep02-saen-saep-ride.mp4": {
       "bytes": 968704,
       "sha256": "c3cc6937279bd588cf0c15bb15fe82fe47d0bb6849bd3ef47046f579dbec4a1e"
+    },
+    "media/ep02-saen-saep-captain.mp4": {
+      "bytes": 957856,
+      "sha256": "5eeee5238b446c205e5abc13927195920cb5e8e7035e020f6326db46779a7f48"
     }
   }
 }

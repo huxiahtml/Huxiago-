@@ -67,6 +67,49 @@ def photo_figure(asset, index, css_class=""):
             f'<figcaption>{caption}</figcaption></figure>')
 
 
+CLIP_LABELS = (
+    ("盛桑運河快船｜現場短片", "播放影片", "暫停影片", "開啟聲音", "關閉聲音", "浮動播放", "關閉浮動影片"),
+    ("盛桑运河快船｜现场短片", "播放视频", "暂停视频", "开启声音", "关闭声音", "浮动播放", "关闭浮动视频"),
+    ("On board the Saen Saep Express Boat", "Play video", "Pause video", "Turn sound on", "Mute", "Floating player", "Close floating player"),
+)
+
+CLIP_ICONS = (
+    ('<path d="M8 5.8v12.4L18 12z" fill="currentColor"/>', '<path d="M7.5 5.5h3v13h-3zm6 0h3v13h-3z" fill="currentColor"/>'),
+    ('<path d="M4.5 9.2v5.6h3.2l4.1 3.2V6L7.7 9.2zM16 9l4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+     '<path d="M4.5 9.2v5.6h3.2l4.1 3.2V6L7.7 9.2zM15 8.5q3 3.5 0 7m2.7-9.3q5.4 5.8 0 11.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'),
+)
+
+
+def clip_control(css_class, off, on, icons):
+    glyphs = "".join(
+        f'<svg class="clip-icon-{state}" viewBox="0 0 24 24" aria-hidden="true">{icon}</svg>'
+        for state, icon in zip(("off", "on"), icons)
+    )
+    return (f'<button type="button" class="{css_class}" aria-pressed="false" aria-label="{off}" '
+            f'data-off-label="{off}" data-on-label="{on}">{glyphs}</button>')
+
+
+def story_clips(assets, index, offline):
+    heading, play, pause, sound_on, mute, pip, close = map(escape, CLIP_LABELS[index])
+    clips = []
+    for filename, hant, hans, english, entry in assets:
+        caption = escape((hant, hans, english)[index])
+        poster = data_uri(ROOT / "ep02" / filename, "image/webp")
+        path = f'media/{entry["video"]}'
+        src = data_uri(ROOT / path, "video/mp4") if offline else path
+        clips.append(
+            f'<figure class="clip canal-clip ep02-reel" data-kind="video" data-video="{src}" data-close="{close}">'
+            f'<figcaption>{caption}</figcaption><div class="clip-media reel-viewport">'
+            f'<img src="{poster}" alt="" loading="lazy" decoding="async"><div class="clip-actions">'
+            f'{clip_control("clip-pause", play, pause, CLIP_ICONS[0])}'
+            f'{clip_control("clip-sound", sound_on, mute, CLIP_ICONS[1])}'
+            f'<button type="button" class="clip-pip reel-pip-launch" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
+            '</div></div></figure>'
+        )
+    return (f'<section class="story-media canal-clips" aria-label="{heading}"><h4>{heading}</h4>'
+            f'<div class="story-video-track" tabindex="0" aria-label="{heading}">{"".join(clips)}</div></section>')
+
+
 def gallery(assets, index, offline):
     figures = []
     for filename, hant, hans, english, *links in assets:
@@ -318,40 +361,60 @@ def story_promo(offer, index):
 
 
 ROUTE_MAP_TEXT = (
-    ("盛桑運河快船路線圖", "放大路線圖與查看碼頭", "由西往東 · 精選六站", "圖中路段至 Mahadthai。往東可續搭至 The Mall Bangkapi。", "開啟完整互動地圖", "關閉"),
-    ("盛桑运河快船路线图", "放大路线图并查看码头", "由西往东 · 精选六站", "图中路段到 Mahadthai。继续向东可到 The Mall Bangkapi。", "打开完整互动地图", "关闭"),
-    ("Saen Saep canal route", "Enlarge map and explore piers", "West to east · six selected piers", "The screenshot reaches Mahadthai. Continue east for The Mall Bangkapi.", "Open the full interactive map", "Close"),
+    ("盛桑運河快船路線圖", "在站內開啟完整互動地圖", "西端", "東端", "左右滑動地圖，點選碼頭", "上船碼頭", "下船碼頭", "向東", "向西", "相隔 {count} 站", "在 Pratunam 水門碼頭換船", "查看原網站票價與班次", "關閉"),
+    ("盛桑运河快船路线图", "在站内打开完整互动地图", "西端", "东端", "左右滑动地图，点选码头", "上船码头", "下船码头", "向东", "向西", "相隔 {count} 站", "在 Pratunam 水门码头换船", "查看原网站票价和班次", "关闭"),
+    ("Saen Saep canal route", "Open the interactive map here", "West", "East", "Swipe the map and choose a pier", "Board at", "Get off at", "Eastbound", "Westbound", "{count} stops apart", "Change boats at Pratunam", "Fares and hours on the source site", "Close"),
 )
 
 
-def route_map(filename, blocks, index):
-    title, open_label, direction, caption, source_label, close = map(escape, ROUTE_MAP_TEXT[index])
-    pan = ("左右滑動查看大圖", "左右滑动查看大图", "Swipe the map to see more")[index]
+def route_map(filename, index):
+    title, open_label, west, east, hint, board, arrive, eastward, westward, distance, change, source_label, close = ROUTE_MAP_TEXT[index]
+    data = json.loads((ROOT / "docs/ep02-canal-piers.json").read_bytes())
+    piers = data["piers"]
     source = "https://www.saensaebcanal.com/"
+    source_data = escape(data["coordinate_reference"], quote=True)
     src = data_uri(ROOT / "ep02" / filename, "image/webp")
-    piers = []
-    for block in blocks:
-        match = re.match(r"^\*\*([^*]+?)[:：]\*\*\s*(.+)$", block) if isinstance(block, str) else None
-        if match:
-            name, details = match.groups()
-            piers.append(
-                f'<li><details name="canal-pier"><summary>{escape(name)}</summary>'
-                f'<p>{story_inline(details)}</p></details></li>'
-            )
-    direction_list = (f'<ol class="route-piers">{"".join(piers)}</ol>')
+    min_lon, max_lon = min(p[3] for p in piers), max(p[3] for p in piers)
+    min_lat, max_lat = min(p[2] for p in piers), max(p[2] for p in piers)
+    points = []
+    markers = []
+    options = []
+    named = {0, 4, 9, 14, 23, 25, len(piers) - 1}
+    for n, (name, thai, lat, lon) in enumerate(piers):
+        x = 100 + n * 36 + (lon - min_lon) / (max_lon - min_lon) * 270
+        y = 218 - (lat - min_lat) / (max_lat - min_lat) * 150
+        points.append(f"{x:.2f},{y:.2f}")
+        label = escape(f"{n+1}. {name} · {thai}", quote=True)
+        options.append(f'<option value="{n}">{label}</option>')
+        pin_label = f'<span>{escape(name)}</span>' if n in named else ""
+        markers.append(
+            f'<button type="button" class="canal-pin" style="--x:{x:.2f}px;--y:{y:.2f}px" '
+            f'data-pier="{n}" aria-pressed="false" aria-label="{label}" title="{label}">{pin_label}</button>'
+        )
     return (
         '<figure class="route-map">'
         '<button type="button" class="route-map-open" data-map-dialog="canal-route" aria-haspopup="dialog">'
-        f'<img src="{src}" alt="{title}" loading="lazy" decoding="async"><span>{open_label} ↗</span></button>'
-        f'<figcaption>{direction} · {caption} '
-        f'<a href="{source}" target="_blank" rel="noopener noreferrer">SaenSaeb Canal</a></figcaption></figure>'
-        '<dialog id="canal-route" class="route-dialog" aria-labelledby="canal-route-title">'
-        '<div class="route-dialog-head"><h5 id="canal-route-title">'
-        f'{title}</h5><form method="dialog"><button type="submit" aria-label="{close}">×</button></form></div>'
-        f'<div class="route-pan-hint">{pan} ↔</div>'
-        f'<div class="route-dialog-image" tabindex="0" aria-label="{title}"><img alt="{title}"></div>'
-        f'<p class="route-direction">{direction}</p>{direction_list}'
-        f'<a class="route-source" href="{source}" target="_blank" rel="noopener noreferrer">{source_label} ↗</a>'
+        f'<img src="{src}" alt="{escape(title)}" loading="lazy" decoding="async"><span>{escape(open_label)} ↗</span></button></figure>'
+        '<dialog id="canal-route" class="route-dialog" aria-labelledby="canal-route-title" '
+        f'data-east="{escape(eastward)}" data-west="{escape(westward)}" data-distance="{escape(distance)}" data-transfer="{escape(change)}">'
+        f'<div class="route-dialog-head"><h5 id="canal-route-title">{escape(title)}</h5>'
+        f'<form method="dialog"><button type="submit" aria-label="{escape(close)}">×</button></form></div>'
+        f'<p class="canal-map-hint">{escape(hint)} ↔</p>'
+        '<div class="canal-viewport" tabindex="0">'
+        '<div class="canal-diagram"><svg viewBox="0 0 1440 290" aria-hidden="true">'
+        f'<polyline class="canal-west" points="{" ".join(points[:5])}"/>'
+        f'<polyline class="canal-east" points="{" ".join(points[4:])}"/>'
+        '<polyline class="canal-selected" points=""/>'
+        '</svg>'
+        f'<span class="canal-orientation canal-orientation-west">{escape(west)}</span>'
+        f'<span class="canal-orientation canal-orientation-east">{escape(east)}</span>'
+        f'{"".join(markers)}</div></div>'
+        '<div class="canal-route-form">'
+        f'<label>{escape(board)}<select class="canal-from"><option value="">—</option>{"".join(options)}</select></label>'
+        f'<label>{escape(arrive)}<select class="canal-to"><option value="">—</option>{"".join(options)}</select></label>'
+        '<p class="canal-trip" aria-live="polite"></p></div>'
+        f'<div class="canal-map-links"><a href="{source}" target="_blank" rel="noopener noreferrer">{escape(source_label)} ↗</a>'
+        f'<a href="{source_data}" target="_blank" rel="noopener noreferrer">Bangkok Open Data ↗</a></div>'
         '</dialog>'
     )
 
@@ -372,7 +435,7 @@ def render_story(sections, deals, assets, index):
                 poster = data_uri(ROOT / "ep02" / block["poster"], "image/webp") if "poster" in block else ""
                 parts.append(reel_card(block["reel"], block["title"], index, poster))
             elif "route_map" in block:
-                parts.append(route_map(block["route_map"], blocks, index))
+                parts.append(route_map(block["route_map"], index))
             elif "photo" in block:
                 parts.append(photo_figure(photos[block["photo"]], index, "story-photo"))
             else:
@@ -391,6 +454,12 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     css += "\n" + CSS.read_text(encoding="utf-8-sig")
     css = "\n".join(line.rstrip() for line in css.splitlines())
     share = script(localized, "v10-share-and-details-script").replace("Ep.01", "Ep.02")
+    share = share.replace('.toc a[href^="#spot-"]', '.toc a.toc-item')
+    share = share.replace(
+        "      closeAllDetails(target);",
+        "      if (location.hash !== a.hash) history.pushState(null, '', a.hash);\n      closeAllDetails(target);",
+        1,
+    )
     canonical = json.dumps(f"https://huxiago.com/ep02-{lang}.html")
     share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {canonical};", share, count=1)
     scripts = "\n".join((
@@ -403,6 +472,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         "" if offline else script(donor, "episode-picker-script"),
     ))
     reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
+    route_script = (ROOT / "ep02/canal-route.js").read_text(encoding="utf-8")
     category = data["categories"]
     toc = []
     stops = []
@@ -414,7 +484,12 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         label = s["label"]
         stop_heading = f"Stop {label} · {heading_category}" if lang == "en" else f"第 {label} 站・{heading_category}"
         assets = galleries.get(s["id"], [])
-        media = gallery(assets, ix, offline) if assets and s.get("gallery_layout") != "inline" else ""
+        clips = []
+        if s.get("video_layout") == "story":
+            clips = [asset for asset in assets if isinstance(asset[-1], dict) and "video" in asset[-1]]
+        photos = [asset for asset in assets if asset not in clips]
+        media = gallery(photos, ix, offline) if photos and s.get("gallery_layout") != "inline" else ""
+        video_section = story_clips(clips, ix, offline) if clips else ""
         if assets:
             src = data_uri(ROOT / "ep02" / assets[0][0], "image/webp")
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
@@ -443,7 +518,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
             f'<span class="head"><small>{stop_heading}</small><h3>{name}</h3><p>{title}</p></span>'
             f'<span aria-hidden="true" class="chev">⌄</span></summary>'
-            f'<div class="body">{media}<div class="story-copy">{story}</div>'
+            f'<div class="body">{media}<div class="story-copy">{story}</div>{video_section}'
             f'<div class="info"><b>{escape(t[17])}</b>{detail}</div>'
             f'{maps}{route_action}'
             f'</div></details>'
@@ -499,15 +574,15 @@ document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventLi
 </script>
 {scripts}
 <script>{reel_script}</script>
+<script>{route_script}</script>
 <script>
 document.getElementById('about').before(document.getElementById('share-strip'));
-document.querySelectorAll('[data-map-dialog]').forEach(button => {{
-  button.addEventListener('click', () => {{
-    const dialog = document.getElementById(button.dataset.mapDialog);
-    dialog.querySelector('img').src = button.querySelector('img').src;
-    dialog.showModal();
-  }});
-}});
+function openLinkedStation() {{
+  const station = document.getElementById(location.hash.slice(1));
+  if (station?.matches('details.stop')) station.open = true;
+}}
+openLinkedStation();
+addEventListener('hashchange', openLinkedStation);
 </script>
 </body>
 </html>
