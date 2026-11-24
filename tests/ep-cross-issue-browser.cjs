@@ -153,7 +153,7 @@ async function verifyArticles(page) {
     'https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI');
 }
 const galleryCounts = {
-  kushiro: 10, silq: 10, 'gan-da': 12, 'hani-spa': 10,
+  kushiro: 10, silq: 11, 'gan-da': 12, 'hani-spa': 10,
   chowchercof: 12, 'bang-sue-junction': 10, 'saen-saep': 6,
 };
 async function verifyEp02Galleries(page) {
@@ -195,20 +195,27 @@ async function verifyReelsAndPromos(page, locale, interact) {
   assert.equal(await page.locator('#silq .story-promo-code').textContent(), 'HUXIATHAI');
   const originals = await page.locator('.ep02-reel .reel-origin').evaluateAll(links => links.map(a => a.href));
   assert.deepEqual(originals, ['https://www.instagram.com/p/DR1D9Q9iSvM/', 'https://www.instagram.com/p/DdYtIjNJEow/', 'https://www.instagram.com/reel/DfIXxHiTF4C/']);
+  const silqReel = page.locator('#silq .gallery .ep02-reel');
+  assert.equal(await silqReel.count(), 1);
+  assert.equal(await silqReel.evaluate(el => el.parentElement.children[1] === el), true);
+  assert.equal(await silqReel.locator('.reel-origin').getAttribute('href'), originals[2]);
   if (!interact) return;
-  await page.locator('#kushiro').evaluate(el => { el.open = true; });
-  const reel = page.locator('#kushiro .gallery .ep02-reel');
-  await reel.locator('.ep01-reel-play').click();
-  const embed = originals[0] + 'embed/';
-  assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
-  await reel.locator('.reel-pip-launch').click();
-  const floating = page.locator('.hux-reel-pip');
-  assert.equal(await floating.locator('iframe').getAttribute('src'), embed);
-  assert.equal(await floating.locator('a').getAttribute('href'), originals[0]);
-  await page.keyboard.press('Escape');
-  assert.equal(await floating.count(), 0);
-  assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
-  await page.locator('#kushiro').evaluate(el => { el.open = false; });
+  for (const [id, original] of [['kushiro', originals[0]], ['silq', originals[2]]]) {
+    const stop = page.locator('#' + id);
+    await stop.evaluate(el => { el.open = true; });
+    const reel = stop.locator('.gallery .ep02-reel');
+    await reel.locator('.ep01-reel-play').click();
+    const embed = original + 'embed/';
+    assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
+    await reel.locator('.reel-pip-launch').click();
+    const floating = page.locator('.hux-reel-pip');
+    assert.equal(await floating.locator('iframe').getAttribute('src'), embed);
+    assert.equal(await floating.locator('a').getAttribute('href'), original);
+    await page.keyboard.press('Escape');
+    assert.equal(await floating.count(), 0);
+    assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
+    await stop.evaluate(el => { el.open = false; });
+  }
 }
 const widths = [390, 647, 768, 979, 980, 1200, 1440];
 
