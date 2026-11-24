@@ -66,7 +66,7 @@
   border: 0;
   cursor: pointer;
 }
-.ep02-reel.ep01-gallery-reel[data-kind="reel"] .ep01-reel-play {
+.ep02-reel.ep01-gallery-reel[data-kind] .ep01-reel-play {
   background: rgba(36, 30, 27, .18);
 }
 .ep02-reel .ep01-reel-play span {
@@ -188,4 +188,144 @@
   font-size: .875rem;
   font-weight: 750;
   line-height: 1.4;
+}
+
+.story-copy .ep02-reel .reel-viewport > img {
+  object-fit: contain;
+}
+.visual-v7 .gallery .local-video-figure[data-kind="video"] {
+  flex-basis: calc(var(--gallery-media-height) * .5625);
+}
+.hux-reel-pip[data-kind="video"] .hux-reel-pip-screen {
+  aspect-ratio: 9 / 16;
+}
+.visual-v7 .gallery .local-video-figure .reel-viewport video,
+.hux-reel-pip-screen > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #191919;
+}
+
+.route-map {
+  margin: .85rem 0 1.2rem;
+  border: 1px solid #9e907f;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff8df;
+}
+.route-map-open {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  display: grid;
+  cursor: pointer;
+  color: #2d261f;
+  text-align: left;
+  font: inherit;
+  font-weight: 850;
+  background: #fff0a0;
+}
+.route-map-open img,
+.route-dialog-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.route-map-open span,
+.route-map figcaption {
+  padding: .65rem .85rem;
+}
+.route-map figcaption {
+  font-size: .875rem;
+  line-height: 1.45;
+}
+.route-map-open:focus-visible {
+  outline: 3px solid #342d29;
+  outline-offset: -4px;
+}
+.route-dialog {
+  width: min(780px, calc(100% - 24px));
+  max-height: calc(100dvh - 28px);
+  padding: 0 0 1rem;
+  overflow: auto;
+  border: 2px solid #342d29;
+  border-radius: 18px;
+  color: #2d261f;
+  background: #fff8eb;
+  overscroll-behavior: contain;
+}
+.route-dialog::backdrop {
+  background: rgba(33, 27, 25, .58);
+}
+.route-dialog-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  padding: .6rem 1rem;
+  background: #fff0a0;
+}
+.route-dialog-head h5 {
+  margin: 0;
+  font-size: 1rem;
+}
+.route-dialog-head button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #342d29;
+  border-radius: 50%;
+  background: #fffaf0;
+  color: #342d29;
+  font: 850 1.25rem/1 sans-serif;
+  cursor: pointer;
+}
+.route-pan-hint {
+  display: none;
+}
+@media (max-width: 680px) {
+  .route-pan-hint {
+    display: block;
+    padding: .38rem 1rem;
+    background: #fff8df;
+    font-size: .8125rem;
+  }
+}
+.route-dialog-image {
+  overflow: auto;
+}
+.route-dialog-image img {
+  min-width: 640px;
+}
+.route-dialog .route-direction {
+  margin: 1rem 1rem .4rem;
+  font-weight: 850;
+}
+.route-piers {
+  margin: 0 1rem 1rem;
+  padding-left: 1.6rem;
+}
+.route-piers li {
+  padding: .3rem 0;
+}
+.route-piers summary {
+  display: list-item;
+  padding: .4rem .55rem;
+  border-radius: 8px;
+  background: #f4e9d8;
+  cursor: pointer;
+  font-weight: 800;
+}
+.route-piers details p {
+  margin: .25rem 0 .55rem;
+  line-height: 1.5;
+}
+.route-source {
+  display: inline-block;
+  margin-inline: 1rem;
+  font-weight: 800;
 }

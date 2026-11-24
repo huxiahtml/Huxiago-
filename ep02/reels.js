@@ -1,10 +1,16 @@
 (() => {
   let player = null;
 
+  function moveFrame(frame, target) {
+    const playing = frame instanceof HTMLVideoElement && !frame.paused;
+    target.append(frame);
+    if (playing) frame.play().catch(() => {});
+  }
+
   function closeFloating(restoreFocus = true) {
     if (!player?.shell) return;
     const { figure, frame, shell, button } = player;
-    figure.querySelector('.reel-viewport').append(frame);
+    moveFrame(frame, figure.querySelector('.reel-viewport'));
     shell.remove();
     player.shell = null;
     button.setAttribute('aria-pressed', 'false');
@@ -35,10 +41,20 @@
       player.frame.remove();
       player.figure.classList.remove('is-loaded');
     }
-    const frame = document.createElement('iframe');
+    const isVideo = Boolean(figure.dataset.video);
+    const frame = document.createElement(isVideo ? 'video' : 'iframe');
     frame.title = figure.querySelector('figcaption').textContent;
-    frame.src = figure.dataset.embed;
-    frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+    if (isVideo) {
+      frame.src = figure.dataset.video;
+      frame.controls = true;
+      frame.playsInline = true;
+      frame.preload = 'metadata';
+      frame.tabIndex = 0;
+      frame.setAttribute('aria-label', frame.title);
+    } else {
+      frame.src = figure.dataset.embed;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+    }
     figure.querySelector('.reel-viewport').append(frame);
     figure.classList.add('is-loaded');
     player = { figure, frame, shell: null, button: figure.querySelector('.reel-pip-launch') };
@@ -53,25 +69,29 @@
     const frame = play(figure);
     const shell = document.createElement('aside');
     shell.className = 'hux-reel-pip';
-    shell.dataset.kind = 'reel';
+    shell.dataset.kind = figure.dataset.kind;
     shell.setAttribute('aria-label', player.button.getAttribute('aria-label'));
     const head = document.createElement('div');
     head.className = 'hux-reel-pip-head';
     const title = document.createElement('span');
     title.textContent = frame.title;
-    const original = figure.querySelector('.reel-origin').cloneNode(true);
-    original.removeAttribute('class');
+    const original = figure.querySelector('.reel-origin')?.cloneNode(true);
     const exit = document.createElement('button');
     exit.type = 'button';
     exit.textContent = '×';
     exit.setAttribute('aria-label', figure.dataset.close);
     exit.addEventListener('click', () => closeFloating());
-    head.append(title, original, exit);
+    head.append(title);
+    if (original) {
+      original.removeAttribute('class');
+      head.append(original);
+    }
+    head.append(exit);
     const screen = document.createElement('div');
     screen.className = 'hux-reel-pip-screen';
-    screen.append(frame);
     shell.append(head, screen);
     document.body.append(shell);
+    moveFrame(frame, screen);
     player.shell = shell;
     player.button.setAttribute('aria-pressed', 'true');
     makeDraggable(head, shell);
@@ -82,7 +102,11 @@
     const button = event.target.closest('.ep02-reel button');
     if (!button) return;
     const figure = button.closest('.ep02-reel');
-    if (button.matches('.ep01-reel-play')) play(figure).focus();
+    if (button.matches('.ep01-reel-play')) {
+      const frame = play(figure);
+      frame.focus();
+      if (frame instanceof HTMLVideoElement) frame.play().catch(() => {});
+    }
     if (button.matches('.reel-pip-launch')) float(figure);
   });
   document.addEventListener('keydown', event => {

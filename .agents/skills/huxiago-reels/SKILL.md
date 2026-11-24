@@ -11,3 +11,4 @@ description: 在 HUXIAGO 期刊新增、更新或校稿 Instagram Reel、封面�
 - 從原始 Obsidian 的 EP 工作索引確認審稿 repo。EP.02 用 `docs/ep02-galleries.json` 的第五欄指定有封面 Reel URL，或在 `docs/ep02-stories.json` 的內文區塊使用 `{"reel": "https://www.instagram.com/reel/<id>/", "title": "片名"}`。重用 `build_ep02.py` 的 `reel_card` 與 `ep02/reels.js`，沿用 EP.01 的 Reel CSS。
 - 執行建置與 `--check`，用 `tests/ep-cross-issue-browser.cjs` 核對三語、離線、首張與縮圖、點播、浮動和原片網址。實際影片是否可播須連網單獨查驗，測試 iframe URL 和小窗只能證明元件運作。把驗證結果寫回 Obsidian 工作索引與共用紀錄。
 - 同一橫向滑廊的照片與 Reel 沿用同一媒體高度，圖說也對齊底邊。寬度可依媒體比例不同。檢查播放前、播放後及手機／桌機。內文 Reel 置中，採橫長方形 16:9，播放後維持外框比例，浮動視窗保持直式。
+- 有明確用途的站點原片可用直式 MP4，保持來源方向和全段時長。EP.02 滑廊的第五欄用 `{"video":"ep02-片名.mp4"}`，影片在 `media/`，首欄是 `ep02/` 下的 WebP 封面。網頁點播載入 MP4，離線版包含同一支壓縮影片。檢查影片和照片等高、影片直式比例、浮動時不中斷播放，並實際播放離線版。

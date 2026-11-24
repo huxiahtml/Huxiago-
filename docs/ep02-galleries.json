@@ -129,6 +129,39 @@
       "半開放式交誼空間超 chill",
       "半开放式休息区很放松",
       "An airy lounge to unwind in"
+    ],
+    [
+      "silq-reception.webp",
+      "飯店大廳及入住櫃檯",
+      "酒店大堂和入住柜台",
+      "The hotel lobby and check-in desk"
+    ],
+    [
+      "silq-shuttle.webp",
+      "建築外觀及免費接駁車",
+      "酒店外观和免费接驳车",
+      "The hotel exterior and complimentary shuttle"
+    ],
+    [
+      "silq-awards-poster.webp",
+      "SILQ 榮獲多項飯店大賞肯定",
+      "SILQ 获得多项酒店大奖",
+      "SILQ’s hotel awards on display",
+      {
+        "video": "ep02-silq-awards.mp4"
+      }
+    ],
+    [
+      "silq-gold-logo.webp",
+      "大廳外金色標誌及裝飾",
+      "大堂外的金色标志和装饰",
+      "The gold SILQ sign and décor outside the lobby"
+    ],
+    [
+      "silq-lobby-lounge.webp",
+      "寬敞飯店大廳的一角",
+      "宽敞酒店大堂的一角",
+      "A corner of the spacious hotel lobby"
     ]
   ],
   "gan-da": [
@@ -137,6 +170,15 @@
       "正宗打拋豬佐半熟煎蛋",
       "正宗打抛猪配半熟煎蛋",
       "Pad kra pao with minced pork and a runny fried egg"
+    ],
+    [
+      "gan-da-wok-poster.webp",
+      "現點現做，猛火鑊氣十足",
+      "现点现做，大火炒出锅气",
+      "Cooked to order over a roaring wok",
+      {
+        "video": "ep02-gan-da-wok.mp4"
+      }
     ],
     [
       "ep02-s3-02-15Aattm.webp",
@@ -191,6 +233,15 @@
       "蒜香雞肉飯佐半熟蛋",
       "蒜香鸡肉饭配半熟蛋",
       "Garlic chicken rice with a runny fried egg"
+    ],
+    [
+      "gan-da-egg-poster.webp",
+      "蒜香雞肉飯，戳開半熟蛋",
+      "蒜香鸡肉饭，戳开半熟蛋",
+      "Breaking the runny yolk over garlic chicken rice",
+      {
+        "video": "ep02-gan-da-egg.mp4"
+      }
     ],
     [
       "ep02-s3-11-1rkO930.webp",
@@ -423,6 +474,15 @@
       "Heading east from Pratunam Pier by the market"
     ],
     [
+      "saen-saep-boarding-poster.webp",
+      "船身搖晃，上船請先抓穩",
+      "船身摇晃，上船请先抓稳",
+      "Hold on as you board the rocking boat",
+      {
+        "video": "ep02-saen-saep-boarding.mp4"
+      }
+    ],
+    [
       "ep02-s7-04-1L6_7Xr.webp",
       "單程 20 泰銖上下，請帶小額鈔票",
       "单程约 20 泰铢，请带小额纸币",
@@ -439,6 +499,15 @@
       "找了個座位，就在船長旁邊",
       "我们找到的座位就在船长旁边",
       "We found a seat right beside the captain"
+    ],
+    [
+      "saen-saep-ride-poster.webp",
+      "印象深刻的運河快船體驗",
+      "印象深刻的运河快船体验",
+      "A memorable ride on the canal express boat",
+      {
+        "video": "ep02-saen-saep-ride.mp4"
+      }
     ]
   ]
 }

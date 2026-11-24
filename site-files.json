@@ -713,28 +713,48 @@
       "sha256": "a6573be742a29b3b68a8eb0e330d23782b8a2cade23d360ed1ba2a32e47fd4ce"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 13559385,
-      "sha256": "79f7a98b58e3a1a86fe67108c07b37ff0eacfd069be783d40cbf24d3d970a520"
+      "bytes": 14685895,
+      "sha256": "e665e840d6c788ccf4c5d44516331a51904fd354bf448247212026d150dea0e7"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 13535915,
-      "sha256": "8a68e3402807c5f9c123792feec1a34b53d4c02b08b5f90a02ceb1d9f07e8d2c"
+      "bytes": 20509949,
+      "sha256": "bcadc4ca344863a4f2cc597b1c9e0362fcd9c874398b7f24196cfdd3dab1a43f"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 13558260,
-      "sha256": "64ef301291b55337f7a31c92f0cd64ad609f31f1882526637bbf9083031896eb"
+      "bytes": 14684764,
+      "sha256": "0ad7bc614d6a2ebf906c7d4ffc4012bf35e3a9aea721071bc5f5795bafbb5e84"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 13534786,
-      "sha256": "a69032cc192037ff398d222107a179fb0c1d4ab642296157fd6211271076f037"
+      "bytes": 20508814,
+      "sha256": "6401614e42fb6a81b4f63f2b3e5446d9066815d369bfb77e94ac17ed8fb86876"
     },
     "ep02-en.html": {
-      "bytes": 13547840,
-      "sha256": "7fe3be28e843f1bd8321902b569c15cb15fdae1f7df620259bc636f96d06e870"
+      "bytes": 14674510,
+      "sha256": "68eab967cd8ab75560e89819ed2f4c767f1e241ca466cee4317c14066b08d959"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 13524393,
-      "sha256": "d1d1051896408d5105a4eb0477df025c5eabd85ecc8db65e5e4142581ef7a868"
+      "bytes": 20498587,
+      "sha256": "d603f55c9b7cc79fb71b3af5ae2d445ff45fb44e7f9b24ba05b240aea6061100"
+    },
+    "media/ep02-silq-awards.mp4": {
+      "bytes": 433426,
+      "sha256": "8fdafe281d56d5404bde85ea791203717989a0c29ba3d61c8acd87cf9c769c5a"
+    },
+    "media/ep02-gan-da-wok.mp4": {
+      "bytes": 971724,
+      "sha256": "c6b3dc786cb965b84ab11dadb02c98ea9ce3d8c87f883d4f1054879b74592931"
+    },
+    "media/ep02-gan-da-egg.mp4": {
+      "bytes": 957292,
+      "sha256": "575a97cf6f58877e4bcef9c716b7215a5d3597a372f2374fed8091937f40df44"
+    },
+    "media/ep02-saen-saep-boarding.mp4": {
+      "bytes": 1054512,
+      "sha256": "45664e4fbd592db52cc75a132ed38fa78f350cfad990bcba4ca8220ba2c551c9"
+    },
+    "media/ep02-saen-saep-ride.mp4": {
+      "bytes": 968704,
+      "sha256": "c3cc6937279bd588cf0c15bb15fe82fe47d0bb6849bd3ef47046f579dbec4a1e"
     }
   }
 }

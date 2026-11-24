@@ -75,7 +75,8 @@
           "**飲食特殊需求：**若有過敏、忌口，或不吃生食的需求，請於訂位時先行告知店家，確認能否安排適合的餐點。",
           {
             "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
-            "title": "再次回訪 Kushiro Omakase"
+            "title": "再次回訪 Kushiro Omakase",
+            "poster": "kushiro-doc-image.webp"
           }
         ]
       ]
@@ -155,7 +156,8 @@
           "**饮食特殊需求：**若有过敏、忌口，或不吃生食的需求，请於订位时先行告知店家，确认能否安排适合的餐点。",
           {
             "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
-            "title": "再次回访 Kushiro Omakase"
+            "title": "再次回访 Kushiro Omakase",
+            "poster": "kushiro-doc-image.webp"
           }
         ]
       ]
@@ -235,7 +237,8 @@
           "**Dietary requests:** If you have allergies, avoid certain ingredients or don’t eat raw food, let the restaurant know when you book so it can confirm what it can prepare.",
           {
             "reel": "https://www.instagram.com/p/DdYtIjNJEow/",
-            "title": "Our return visit to Kushiro Omakase"
+            "title": "Our return visit to Kushiro Omakase",
+            "poster": "kushiro-doc-image.webp"
           }
         ]
       ]
@@ -1199,7 +1202,7 @@
   "saen-saep": [
     [
       [
-        "市中心交通外掛——曼谷髒船",
+        "市中心交通外掛——盛桑運河快船",
         [
           "穿梭曼谷市中心，沿著運河行駛的交通快船，只要銅板價就能完美躲避塞車車陣，部分市中心短程不到 20 分鐘即可抵達。住在曼谷三年久仰大名，這次我們終於挑戰了，結果一坐就愛上。深入研究後，發現它不只省時又實用，還能看見老曼谷人的悠閑生活剪影。"
         ]
@@ -1214,6 +1217,9 @@
       [
         "從西往東，先記這些實用碼頭",
         [
+          {
+            "route_map": "saen-saep-doc-map.webp"
+          },
           "這條船大致沿著曼谷東西向行駛。新手搭乘時，先看這幾個與曼谷自由行比較常用的碼頭：",
           "**Saphan Hua Chang：**在水門市場的西邊，可步行前往暹羅商圈（Siam Paragon、Siam Center、Siam Square One⋯⋯）、MBK 一帶。",
           "**Pratunam：**水門市場附近，從 CentralWorld 步行 5 分鐘左右就到碼頭。我們那天就是從這裡上船。",
@@ -1257,7 +1263,7 @@
     ],
     [
       [
-        "市中心交通外挂——曼谷脏船",
+        "市中心交通外挂——盛桑运河快船",
         [
           "穿梭曼谷市中心，沿着运河行驶的交通快船，只要铜板价就能完美躲避塞车车阵，部分市中心短程不到 20 分钟即可抵达。住在曼谷三年久仰大名，这次我们终於挑战了，结果一坐就爱上。深入研究後，发现它不只省时又实用，还能看见老曼谷人的悠闲生活剪影。"
         ]
@@ -1272,6 +1278,9 @@
       [
         "从西往东，先记这些实用码头",
         [
+          {
+            "route_map": "saen-saep-doc-map.webp"
+          },
           "这条船大致沿着曼谷东西向行驶。新手搭乘时，先看这几个与曼谷自由行比较常用的码头：",
           "**Saphan Hua Chang：**在水门市场的西边，可步行前往暹罗商圈（Siam Paragon、Siam Center、Siam Square One⋯⋯）、MBK 一带。",
           "**Pratunam：**水门市场附近，从 CentralWorld 步行 5 分钟左右就到码头。我们那天就是从这里上船。",
@@ -1315,7 +1324,7 @@
     ],
     [
       [
-        "Bangkok’s “dirty boat”: a way across town when traffic stalls",
+        "Khlong Saen Saep Express Boat: a shortcut across central Bangkok",
         [
           "A cheap express boat runs along a canal through central Bangkok. For some short trips, you can get where you’re going in under 20 minutes without sitting in traffic. We’d heard about it for three years in Bangkok before we finally tried it, and loved it straight away. It also gives you a look at life along the old canal."
         ]
@@ -1330,6 +1339,9 @@
       [
         "Useful piers to know, from west to east",
         [
+          {
+            "route_map": "saen-saep-doc-map.webp"
+          },
           "The boat mostly runs east–west through Bangkok. If it’s your first time, these piers are good starting points for planning a trip:",
           "**Saphan Hua Chang:** West of Pratunam Market and within walking distance of the Siam shopping area, including Siam Paragon, Siam Center, Siam Square One and MBK.",
           "**Pratunam:** Near Pratunam Market and about five minutes on foot from CentralWorld. This is where we boarded.",

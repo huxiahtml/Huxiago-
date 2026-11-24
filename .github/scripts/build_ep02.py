@@ -31,18 +31,28 @@ PIP_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="none">'
             '<rect x="10.5" y="10" width="11.5" height="10" rx="2" fill="currentColor" stroke="#252532" stroke-width="1.4"/></svg>')
 
 
-def reel_card(url, title, index, poster=""):
-    if not re.fullmatch(r"https://www\.instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+/", url):
+def reel_card(url, title, index, poster="", native=False):
+    if not native and not re.fullmatch(r"https://www\.instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+/", url):
         raise ValueError(f"Expected an Instagram post or Reel permalink: {url}")
     play, original, pip, close = REEL_LABELS[index]
     title = escape(title, quote=True)
     classes = "reel-figure ep02-reel" + (" ep01-gallery-reel" if poster else "")
     image = f'<img src="{poster}" alt="" loading="lazy" decoding="async">' if poster else ""
+    kind = "reel"
+    source = f'data-embed="{url}embed/"'
+    link = f'<a class="reel-origin" href="{url}" target="_blank" rel="noopener noreferrer">{original}</a>'
+    if native:
+        kind = "video"
+        classes += " local-video-figure"
+        source = f'data-video="{url}"'
+        link = ""
+        if index == 2:
+            play = "Play video"
     return (
-        f'<figure class="{classes}" data-kind="reel" data-embed="{url}embed/" data-close="{close}">'
+        f'<figure class="{classes}" data-kind="{kind}" {source} data-close="{close}">'
         f'<div class="reel-viewport">{image}<button class="reel-placeholder ep01-reel-play" type="button" '
         f'aria-label="{play} · {title}"><span aria-hidden="true">{play}</span></button>'
-        f'<a class="reel-origin" href="{url}" target="_blank" rel="noopener noreferrer">{original}</a>'
+        f'{link}'
         f'<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
         f'</div><figcaption>{title}</figcaption></figure>'
     )
@@ -57,13 +67,19 @@ def photo_figure(asset, index, css_class=""):
             f'<figcaption>{caption}</figcaption></figure>')
 
 
-def gallery(assets, index):
+def gallery(assets, index, offline):
     figures = []
     for filename, hant, hans, english, *links in assets:
         if links:
             caption = (hant, hans, english)[index]
             src = data_uri(ROOT / "ep02" / filename, "image/webp")
-            figures.append(reel_card(links[0], caption, index, src))
+            entry = links[0]
+            if isinstance(entry, dict):
+                path = f'media/{entry["video"]}'
+                video = data_uri(ROOT / path, "video/mp4") if offline else path
+                figures.append(reel_card(video, caption, index, src, native=True))
+            else:
+                figures.append(reel_card(entry, caption, index, src))
         else:
             figures.append(photo_figure((filename, hant, hans, english), index))
     return '<div class="gallery">' + "".join(figures) + '</div>'
@@ -301,6 +317,45 @@ def story_promo(offer, index):
     )
 
 
+ROUTE_MAP_TEXT = (
+    ("盛桑運河快船路線圖", "放大路線圖與查看碼頭", "由西往東 · 精選六站", "圖中路段至 Mahadthai。往東可續搭至 The Mall Bangkapi。", "開啟完整互動地圖", "關閉"),
+    ("盛桑运河快船路线图", "放大路线图并查看码头", "由西往东 · 精选六站", "图中路段到 Mahadthai。继续向东可到 The Mall Bangkapi。", "打开完整互动地图", "关闭"),
+    ("Saen Saep canal route", "Enlarge map and explore piers", "West to east · six selected piers", "The screenshot reaches Mahadthai. Continue east for The Mall Bangkapi.", "Open the full interactive map", "Close"),
+)
+
+
+def route_map(filename, blocks, index):
+    title, open_label, direction, caption, source_label, close = map(escape, ROUTE_MAP_TEXT[index])
+    pan = ("左右滑動查看大圖", "左右滑动查看大图", "Swipe the map to see more")[index]
+    source = "https://www.saensaebcanal.com/"
+    src = data_uri(ROOT / "ep02" / filename, "image/webp")
+    piers = []
+    for block in blocks:
+        match = re.match(r"^\*\*([^*]+?)[:：]\*\*\s*(.+)$", block) if isinstance(block, str) else None
+        if match:
+            name, details = match.groups()
+            piers.append(
+                f'<li><details name="canal-pier"><summary>{escape(name)}</summary>'
+                f'<p>{story_inline(details)}</p></details></li>'
+            )
+    direction_list = (f'<ol class="route-piers">{"".join(piers)}</ol>')
+    return (
+        '<figure class="route-map">'
+        '<button type="button" class="route-map-open" data-map-dialog="canal-route" aria-haspopup="dialog">'
+        f'<img src="{src}" alt="{title}" loading="lazy" decoding="async"><span>{open_label} ↗</span></button>'
+        f'<figcaption>{direction} · {caption} '
+        f'<a href="{source}" target="_blank" rel="noopener noreferrer">SaenSaeb Canal</a></figcaption></figure>'
+        '<dialog id="canal-route" class="route-dialog" aria-labelledby="canal-route-title">'
+        '<div class="route-dialog-head"><h5 id="canal-route-title">'
+        f'{title}</h5><form method="dialog"><button type="submit" aria-label="{close}">×</button></form></div>'
+        f'<div class="route-pan-hint">{pan} ↔</div>'
+        f'<div class="route-dialog-image" tabindex="0" aria-label="{title}"><img alt="{title}"></div>'
+        f'<p class="route-direction">{direction}</p>{direction_list}'
+        f'<a class="route-source" href="{source}" target="_blank" rel="noopener noreferrer">{source_label} ↗</a>'
+        '</dialog>'
+    )
+
+
 def render_story(sections, deals, assets, index):
     photos = {row[0]: row for row in assets}
     parts = []
@@ -314,7 +369,10 @@ def render_story(sections, deals, assets, index):
             elif "promo" in block:
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
-                parts.append(reel_card(block["reel"], block["title"], index))
+                poster = data_uri(ROOT / "ep02" / block["poster"], "image/webp") if "poster" in block else ""
+                parts.append(reel_card(block["reel"], block["title"], index, poster))
+            elif "route_map" in block:
+                parts.append(route_map(block["route_map"], blocks, index))
             elif "photo" in block:
                 parts.append(photo_figure(photos[block["photo"]], index, "story-photo"))
             else:
@@ -353,7 +411,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         name = escape(s["name"])
         cat = escape(category[s["id"]][ix])
         assets = galleries.get(s["id"], [])
-        media = gallery(assets, ix) if assets and s.get("gallery_layout") != "inline" else ""
+        media = gallery(assets, ix, offline) if assets and s.get("gallery_layout") != "inline" else ""
         if assets:
             src = data_uri(ROOT / "ep02" / assets[0][0], "image/webp")
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
@@ -440,6 +498,13 @@ document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventLi
 <script>{reel_script}</script>
 <script>
 document.getElementById('about').before(document.getElementById('share-strip'));
+document.querySelectorAll('[data-map-dialog]').forEach(button => {{
+  button.addEventListener('click', () => {{
+    const dialog = document.getElementById(button.dataset.mapDialog);
+    dialog.querySelector('img').src = button.querySelector('img').src;
+    dialog.showModal();
+  }});
+}});
 </script>
 </body>
 </html>
@@ -479,6 +544,12 @@ def build():
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     for name, raw in outputs.items():
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    for assets in galleries.values():
+        for _, _, _, _, *entries in assets:
+            if entries and isinstance(entries[0], dict):
+                name = f'media/{entries[0]["video"]}'
+                raw = (ROOT / name).read_bytes()
+                manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():
         name = f"media/huxiago-title-{suffix}.svg"
         raw = (ROOT / name).read_bytes().replace(b"\r\n", b"\n")
