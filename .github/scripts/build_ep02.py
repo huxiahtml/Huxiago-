@@ -576,10 +576,11 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         story = render_story(stories[s["id"]][ix], deals, assets, ix, offline, reel_sources)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
-            f'<span class="toc-item-number">{label}</span>'
-            f'<span class="toc-item-content"><strong class="toc-item-title">{name}</strong></span>'
-            f'<span class="toc-item-side"><span class="toc-item-tag">{cat}</span>'
-            f'<span class="toc-item-action">{escape(data["labels"]["open"][ix])} →</span></span></a>'
+            f'<span class="toc-item-content"><span class="toc-item-kicker">{stop_heading}</span>'
+            f'<strong class="toc-item-title">{name}</strong>'
+            f'<span class="toc-item-description">{title}</span></span>'
+            f'<span class="toc-item-action" aria-hidden="true"><span class="toc-item-action-label">'
+            f'{escape(data["labels"]["open"][ix])}</span> {arrow_icon("right")}</span></a>'
         )
         action = ""
         if "url" in s:

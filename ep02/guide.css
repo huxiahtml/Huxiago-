@@ -5,13 +5,22 @@
 .ep02-deal-photo figcaption{font-size:13px;margin-top:4px}
 .visual-v7 .episode-upcoming{text-decoration:none}
 
-.visual-v7 .toc-item .toc-item-content { align-self:center; min-width:0; }
-.visual-v7 .toc-item .toc-item-title { display:block; margin:0; line-height:1.25; }
-.visual-v7 .toc-list .toc-item :is(.toc-item-tag, .toc-item-action) {
-  max-inline-size: 100%;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: anywhere;
+.visual-v7 .toc-list .toc-item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: .75rem;
+}
+.visual-v7 .toc-list .toc-item .toc-item-content { grid-column: 1; grid-row: 1; min-width: 0; }
+.visual-v7 .toc-item .toc-item-kicker {
+  margin-bottom: .25em;
+  color: #5a4940;
+  font-size: .75rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+.visual-v7 .toc-item .toc-item-title { display: block; margin: 0; line-height: 1.25; }
+.visual-v7 .toc-list .toc-item .toc-item-action { grid-column: 2; grid-row: 1; }
+@media (max-width: 480px) {
+  .visual-v7 .toc-item-action-label { display: none; }
 }
 .visual-v7 .pier-note { margin:.35rem 0; border-bottom:1px solid #ddd0bd; }
 .visual-v7 .pier-note summary { cursor:pointer; padding:.45rem 0; font-weight:700; }

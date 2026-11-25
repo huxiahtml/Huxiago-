@@ -190,7 +190,21 @@ async function verifyEp02Galleries(page, offline) {
     await stop.evaluate(details => { details.open = false; });
   }
 }
+async function verifyDirectoryCopy(page, locale) {
+  const index = ['zh-Hant', 'zh-Hans', 'en'].indexOf(locale);
+  const {stops} = require('../docs/ep02-content.json');
+  const actual = await page.locator('#toc .toc-item').evaluateAll(items => items.map(item =>
+    ['.toc-item-kicker', '.toc-item-title', '.toc-item-description'].map(selector =>
+      item.querySelector(selector)?.textContent)));
+  assert.deepEqual(actual, stops.map(stop => [
+    locale === 'en' ? `Stop ${stop.label} · ${stop.heading_category[index]}` : `第 ${stop.label} 站・${stop.heading_category[index]}`,
+    stop.name,
+    stop.copy[index][0],
+  ]));
+}
+
 async function verifyReelsAndPromos(page, locale) {
+  await verifyDirectoryCopy(page, locale);
   const bonus = page.locator('#bonus-reels');
   assert.equal(await bonus.locator('figure').count(), 3);
   assert.equal(await bonus.locator('.bonus-pagination button').count(), 3);
