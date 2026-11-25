@@ -249,7 +249,14 @@ sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:
                    + templates + switcher)
     ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
     source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
-    source = source.replace("</head>", f'<style id="hux-shared-ticket-icons">{ticket_css}</style></head>', 1)
+    media_css = (ROOT / "ep02/shared-media.css").read_text(encoding="utf-8")
+    source = re.sub(r'<style id="hux-shared-media">.*?</style>', "", source, flags=re.S)
+    source = source.replace(
+        "</head>",
+        f'<style id="hux-shared-ticket-icons">{ticket_css}</style>'
+        f'<style id="hux-shared-media">{media_css}</style></head>',
+        1,
+    )
     block = start + content + end
     # Accept the original EP.01 track, the former ticket-only marker, and the full managed block.
     track = r'<div\b[^>]*\bclass="deal-track"[^>]*>'

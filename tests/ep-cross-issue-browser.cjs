@@ -238,24 +238,35 @@ async function verifyReelsAndPromos(page, locale, interact) {
           const box = reel.getBoundingClientRect();
           const media = reel.querySelector('.reel-viewport').getBoundingClientRect();
           return Math.abs(parent.left + parent.width / 2 - box.left - box.width / 2) < 1 &&
-            Math.abs(media.width / media.height - 16 / 9) < .02;
-        }), 'Article Reel is centred and landscape');
+            Math.abs(media.width / media.height - 9 / 16) < .02;
+        }), 'Article Reel is centred and portrait');
       }
       await card.evaluate(el => { el.open = false; });
     }
   }
   await page.setViewportSize(normalWidth);
   if (!interact) return;
-  for (const [id, original] of [['kushiro', originals[0]], ['silq', originals[2]]]) {
+  for (const [id, placement, original] of [
+    ['kushiro', '.gallery', originals[0]],
+    ['kushiro', '.story-copy', originals[1]],
+    ['silq', '.gallery', originals[2]],
+  ]) {
     const stop = page.locator('#' + id);
     await stop.evaluate(el => { el.open = true; });
-    const reel = stop.locator('.gallery .ep02-reel[data-kind=reel]');
+    const reel = stop.locator(placement + ' .ep02-reel[data-kind=reel]');
     await reel.locator('.ep01-reel-play').click();
     const embed = original + 'embed/';
     assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
+    assert(await reel.locator('iframe').evaluate(frame => {
+      const media = frame.parentElement.getBoundingClientRect();
+      return Math.abs(media.width / media.height - 9 / 16) < .02 &&
+        Math.abs(frame.getBoundingClientRect().width - media.width) < 1;
+    }), 'The inline Instagram player fills a portrait frame');
     await reel.locator('.reel-pip-launch').click();
     const floating = page.locator('.hux-reel-pip');
     assert.equal(await floating.locator('iframe').getAttribute('src'), embed);
+    assert(await floating.locator('.hux-reel-pip-screen').evaluate(screen =>
+      Math.abs(screen.clientWidth / screen.clientHeight - 9 / 16) < .02));
     assert.equal(await floating.locator('a').getAttribute('href'), original);
     await page.keyboard.press('Escape');
     assert.equal(await floating.count(), 0);
@@ -350,6 +361,19 @@ async function verifyMapAndLocalVideos(page, offline) {
   }
   await page.setViewportSize(originalSize);
 }
+async function verifyEp01MobileMedia(page) {
+  const originalSize = page.viewportSize();
+  await page.setViewportSize({width: 390, height: 844});
+  const reels = await page.locator('.reel-figure[data-kind="reel"] .reel-viewport').evaluateAll(players =>
+    players.map(player => getComputedStyle(player).aspectRatio));
+  assert(reels.every(ratio => ratio === '9 / 16'), 'EP.01 mobile Reel frames are portrait');
+  const videos = await page.locator('.clip-media > video').evaluateAll(players => players.map(player => {
+    const style = getComputedStyle(player);
+    return style.objectFit === 'contain' && style.maxHeight === 'none';
+  }));
+  assert(videos.every(Boolean), 'EP.01 mobile videos preserve the full native frame');
+  await page.setViewportSize(originalSize);
+}
 const widths = [390, 647, 768, 979, 980, 1200, 1440];
 
 (async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
@@ -360,7 +384,7 @@ for(const lang of ['zh-Hant','zh-Hans','en']){
 await p.goto(origin+'/index.html?lang='+lang);
 await p.waitForFunction(l=>document.documentElement.lang===l,lang);
 await p.waitForFunction(l=>document.querySelector('#deals [data-shared-deal="kushiro"]').textContent.includes(l==='en'?'Book on TableCheck':l==='zh-Hans'?'TableCheck 订位':'TableCheck 訂位'),lang);
-await affirm(p,lang);assert.equal(await p.locator('details.card').count(),12);await verifyMaps(p,1);
+await affirm(p,lang);assert.equal(await p.locator('details.card').count(),12);await verifyMaps(p,1);await verifyEp01MobileMedia(p);
 const tickets = await ticketStyles(p);
 assert.deepEqual(tickets.map(x=>x.key), ['esim','kushiro','silq']);
 assert.deepEqual(tickets.map(x=>x.hasAction), [true,true,true]);
@@ -400,7 +424,7 @@ await q.goto(pathToFileURL(path.join(root,name)).href);await affirm(q,lang);awai
 assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
-else offlineRail=await railLayout(q);
+else {offlineRail=await railLayout(q);await verifyEp01MobileMedia(q);}
 if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang,false);await verifyMapAndLocalVideos(q,true);}
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all six native videos, two-way locale navigation, downloads and responsive widths verified.');
