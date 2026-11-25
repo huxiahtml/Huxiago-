@@ -213,6 +213,7 @@ async function verifyReelsAndPromos(page, locale) {
   assert.equal(await bonus.locator('a.reel-origin .hux-arrow').count(), 3);
   assert.equal(await page.locator('.ep02-reel iframe').count(), 0, 'Reels load on request');
   const posters = {
+    silq: ['建築外觀及免費接駁車', '酒店外观和免费接驳车', 'The hotel exterior and complimentary shuttle'],
     'hani-spa': ['有兩間分店，我們都來這間', '有两家分店，我们都来这家', 'There are two branches, and this is the one we visit'],
     'saen-saep': ['CentralWorld 附近就有碼頭', 'CentralWorld 附近就有码头', 'There’s a pier near CentralWorld'],
   };
@@ -235,7 +236,7 @@ async function verifyReelsAndPromos(page, locale) {
   assert.equal(await fallback.getAttribute('target'), '_blank');
   const silqReel = page.locator('#silq .gallery .ep02-reel[data-video]').filter({has: page.locator('.reel-origin')});
   assert.equal(await silqReel.count(), 1);
-  assert.equal(await silqReel.evaluate(el => el.parentElement.children[1] === el), true);
+  assert.equal(await silqReel.evaluate(el => el.parentElement.children[2] === el), true);
   assert.equal(await silqReel.locator('.reel-origin').getAttribute('href'), originals[2]);
   const normalWidth = page.viewportSize();
   for (const width of [320, 390, 695, 1440]) {
@@ -298,6 +299,15 @@ async function verifyEp02Directory(page) {
   await page.goBack();
   await page.waitForFunction(hash => location.hash === hash && document.querySelector(hash).open, start);
   assert.equal(await page.locator('details.stop[open]').count(), 1);
+  await page.goBack();
+  await page.waitForFunction(() => !location.hash && !document.querySelector('details.stop[open]'));
+  const hotel = rows.filter({has: page.locator('.toc-item-title', {hasText: 'SILQ'})});
+  const gallery = page.locator('#silq .gallery');
+  await hotel.click();
+  await gallery.evaluate(el => el.scrollTo({left: el.clientWidth * 2, behavior: 'instant'}));
+  await page.waitForFunction(() => document.querySelector('#silq .gallery').scrollLeft > 0);
+  await hotel.click();
+  assert.equal(await gallery.evaluate(el => el.scrollLeft), 0);
   await page.goBack();
   await page.waitForFunction(() => !location.hash && !document.querySelector('details.stop[open]'));
   await page.setViewportSize(originalSize);

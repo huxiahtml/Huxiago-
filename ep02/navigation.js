@@ -37,6 +37,9 @@
       }
     }
     if (event.detail === 0) station.querySelector('summary').focus({ preventScroll: true });
+    if (station.id === 'silq') {
+      station.querySelector('.gallery')?.scrollTo({ left: 0, behavior: 'instant' });
+    }
     station.scrollIntoView({ behavior: animate ? 'smooth' : 'instant', block: 'start' });
   }));
 
