@@ -33,29 +33,30 @@
               [
                 "套餐",
                 "原價",
-                "特別優惠價"
+                "優惠價"
               ],
               [
-                "基本套餐 12 Original Course",
-                "1,500 泰銖",
-                "1,200 泰銖"
+                "基本套餐\n12 Original Course",
+                "1,500",
+                "1,200"
               ],
               [
-                "特級套餐 15 Premium Course",
-                "2,500 泰銖",
-                "2,000 泰銖"
+                "特級套餐\n15 Premium Course",
+                "2,500",
+                "2,000"
               ],
               [
-                "頂級套餐 17 Luxury Course",
-                "4,500 泰銖",
-                "3,600 泰銖"
+                "頂級套餐\n17 Luxury Course",
+                "4,500",
+                "3,600"
               ],
               [
-                "無限續點特級套餐 Unlimited Omakase 15 Premium",
-                "2,999 泰銖",
-                "2,499 泰銖"
+                "無限續點特級套餐\nUnlimited Omakase 15 Premium",
+                "2,999",
+                "2,499"
               ]
-            ]
+            ],
+            "table_unit": "金額單位：泰銖"
           },
           "上表前三款套餐的訂位優惠價為 8 折。我們兩次吃的都是 15 道的特級套餐。如果你第一次來，想完整體驗從迎賓飲品、前菜、握壽司⋯⋯到甜點的流程，我們最推薦這個選項。",
           "如果想大吃特吃，也可以選擇 2026 年 11月全新推出的 Unlimited Omakase 15 Premium 方案：15 道的特級套餐，在 90 分鐘內，指定餐點皆可無限續點。原本 15 道的特級套餐，只要加價 499 泰銖即可升級，本方案目前只於午餐時段開放。",
@@ -114,29 +115,30 @@
               [
                 "套餐",
                 "原价",
-                "特别优惠价"
+                "优惠价"
               ],
               [
-                "基本套餐 12 Original Course",
-                "1,500 泰铢",
-                "1,200 泰铢"
+                "基本套餐\n12 Original Course",
+                "1,500",
+                "1,200"
               ],
               [
-                "特级套餐 15 Premium Course",
-                "2,500 泰铢",
-                "2,000 泰铢"
+                "特级套餐\n15 Premium Course",
+                "2,500",
+                "2,000"
               ],
               [
-                "顶级套餐 17 Luxury Course",
-                "4,500 泰铢",
-                "3,600 泰铢"
+                "顶级套餐\n17 Luxury Course",
+                "4,500",
+                "3,600"
               ],
               [
-                "无限续点特级套餐 Unlimited Omakase 15 Premium",
-                "2,999 泰铢",
-                "2,499 泰铢"
+                "无限续点特级套餐\nUnlimited Omakase 15 Premium",
+                "2,999",
+                "2,499"
               ]
-            ]
+            ],
+            "table_unit": "金额单位：泰铢"
           },
           "上表前三款套餐的订位优惠价为 8 折。我们两次吃的都是 15 道的特级套餐。如果你第一次来，想完整体验从迎宾饮品、前菜、握寿司⋯⋯到甜点的流程，我们最推荐这个选项。",
           "如果想大吃特吃，也可以选择 2026 年 11月全新推出的 Unlimited Omakase 15 Premium 方案：15 道的特级套餐，在 90 分钟内，指定餐点皆可无限续点。原本 15 道的特级套餐，只要加价 499 泰铢即可升级，本方案目前只於午餐时段开放。",
@@ -194,30 +196,31 @@
             "table": [
               [
                 "Menu",
-                "Regular price",
-                "Special price"
+                "Regular",
+                "Offer"
               ],
               [
                 "12 Original Course",
-                "THB 1,500",
-                "THB 1,200"
+                "1,500",
+                "1,200"
               ],
               [
                 "15 Premium Course",
-                "THB 2,500",
-                "THB 2,000"
+                "2,500",
+                "2,000"
               ],
               [
                 "17 Luxury Course",
-                "THB 4,500",
-                "THB 3,600"
+                "4,500",
+                "3,600"
               ],
               [
                 "Unlimited Omakase 15 Premium",
-                "THB 2,999",
-                "THB 2,499"
+                "2,999",
+                "2,499"
               ]
-            ]
+            ],
+            "table_unit": "Prices in THB"
           },
           "Three menus are 20% off at the listed prices. Both times we had the 15-course Premium. It’s my pick for a first visit if you want the whole experience, from the welcome drink and starters through nigiri and dessert.",
           "If you’re particularly hungry, the Unlimited Omakase 15 Premium menu introduced in November 2026 lets you reorder selected dishes within 90 minutes. The upgrade from the regular 15-course menu is THB 499 at the listed promotional prices. This option is currently offered at lunch only.",

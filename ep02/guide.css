@@ -73,6 +73,89 @@
   .visual-v7 .card .body .story-table-wrap :is(th, td) { padding-inline: 5px; }
 }
 
+.card .body .story-price-wrap {
+  margin: .8rem 0 1.35rem;
+  border: 0;
+  border-radius: 0;
+}
+
+.visual-v7 .card .body .story-price-wrap > .story-table {
+  table-layout: fixed;
+  min-inline-size: 14.5rem;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #c7b69e;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 14px;
+  background: #fffbf4;
+  line-height: 1.3;
+}
+
+.story-price-wrap caption {
+  padding: 0 .25rem .4rem;
+  text-align: right;
+  font-size: .75rem;
+  color: #624e3a;
+}
+
+.visual-v7 .card .body .story-price-wrap :is(th, td) {
+  padding: .58rem clamp(.45rem, 1.8vw, .8rem);
+  border: 0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.visual-v7 .card .body .story-price-wrap thead th {
+  background: #f4e8d5;
+  color: #584533;
+  font-size: .75rem;
+}
+
+.visual-v7 .card .body .story-price-wrap thead th:first-child { width: 47%; }
+.visual-v7 .card .body .story-price-wrap thead th:nth-child(2) { width: 25%; }
+.visual-v7 .card .body .story-price-wrap thead th:last-child { width: 28%; }
+
+.visual-v7 .card .body .story-price-wrap tbody th {
+  background: transparent;
+  font-size: .875rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.story-price-subtitle {
+  display: block;
+  margin-top: .17rem;
+  color: #6d5742;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.visual-v7 .card .body .story-price-wrap tbody :is(th, td) {
+  border-top: 1px solid #e2d6c5;
+}
+
+.visual-v7 .card .body .story-price-wrap :is(th, td):nth-child(n+2) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.visual-v7 .card .body .story-price-wrap td {
+  color: #624e3a;
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.visual-v7 .card .body .story-price-wrap :is(th, td):last-child {
+  background: #fff0d2;
+  color: #694019;
+}
+
+.visual-v7 .card .body .story-price-wrap td:last-child {
+  font-size: 1rem;
+  font-weight: 850;
+}
+
 .visual-v7 :is(.toc-item-title, .stop > summary .head p, .story-heading, #spots, .share-strip-head h3) {
   text-wrap: balance;
 }
