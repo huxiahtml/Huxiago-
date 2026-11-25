@@ -67,61 +67,34 @@ function textContrast(foreground, background) {
   const [dark, light] = [luminance(foreground), luminance(background)].sort((a,b) => a-b);
   return (light + 0.05) / (dark + 0.05);
 }
-async function verifySharedOfferStyle(page, issue = 1) {
-  const styles = await page.locator('#deals [data-shared-deal]').evaluateAll(cards => {
-    return cards.map(card => {
-      const amount=card.querySelector('.ticket-value');
-      const action=card.querySelector('.ticket-cta');
-      const value=getComputedStyle(amount);
-      const style=getComputedStyle(action);
-      const label=getComputedStyle(action.querySelector('.ticket-cta-label'));
-      return {
-        amount: [value.fontFamily,value.fontSize,value.fontWeight],
-        textColor: label.color,
-        labelBackground: label.backgroundColor,
-        labelRadius: label.borderRadius,
-        discountColor: value.color,
-        cardBackground: getComputedStyle(card).backgroundColor,
-        cardGradient: getComputedStyle(card).backgroundImage,
-        cardTitleColor: getComputedStyle(card.querySelector('h3')).color,
-        cardDescriptionColor: card.querySelector('.ticket-copy') && getComputedStyle(card.querySelector('.ticket-copy')).color,
-        discountShadow: value.textShadow,
-        stroke: value.webkitTextStrokeWidth,
-        labelBorder: label.borderTopWidth,
-        background: style.backgroundColor,
-        borderRadius: style.borderRadius,
-        height: action.offsetHeight,
-        fullWidth: Math.abs(action.getBoundingClientRect().width-card.clientWidth)<=1,
-        atBottom: Math.abs(action.offsetTop+action.offsetHeight-card.clientHeight)<=1,
-        photoAboveValue: !card.querySelector('.ticket-photo img') ||
-          card.querySelector('.ticket-photo').getBoundingClientRect().bottom <= amount.getBoundingClientRect().bottom,
-      };
-    });
-  });
-  const [esim, kushiro, silq] = styles;
-  assert.notEqual(esim.discountShadow, 'none');
-  assert.notEqual(kushiro.discountShadow, 'none');
-  if (issue === 1) {
-    assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(255, 249, 238)', 'rgb(236, 88, 0)']);
-    assert.equal(kushiro.discountShadow, esim.discountShadow);
-  } else {
-    const stops = esim.cardGradient.match(/rgb\([^)]+\)/g);
-    assert(stops?.length >= 2);
-    for (const color of [esim.cardTitleColor, esim.cardDescriptionColor, esim.discountColor]) {
-      assert(stops.every(stop => textContrast(color, stop) >= 4.5), 'eSIM text is legible across its orange gradient');
-    }
-    assert(textContrast(silq.discountColor, silq.cardBackground) >= 4.5, 'SILQ discount is legible on cream');
-  }
+async function verifySharedOfferStyle(page) {
+  const styles = await page.locator('#deals [data-shared-deal]').evaluateAll(cards => cards.map(card => {
+    const cta = card.querySelector('.ticket-cta');
+    const stub = card.querySelector('.ticket-stub');
+    const style = getComputedStyle(cta);
+    return {
+      ctaColor: style.color,
+      ctaBackground: style.backgroundColor,
+      radius: style.borderRadius,
+      line: getComputedStyle(stub, '::before').borderTopStyle,
+      cutouts: ['::before', '::after'].map(which => getComputedStyle(card, which).backgroundColor),
+      svg: Boolean(cta.querySelector('.hux-arrow path')),
+      blocks: [...card.children].map(el => el.classList[0] || el.tagName),
+      discount: getComputedStyle(card.querySelector('.ticket-value')).color,
+      surface: getComputedStyle(card).backgroundColor,
+    };
+  }));
+  assert.equal(styles[0].surface, 'rgb(251, 121, 46)');
+  assert.equal(styles[0].ctaBackground, 'rgb(255, 226, 112)');
+  assert.equal(styles[0].ctaColor, 'rgb(36, 90, 70)');
+  assert.equal(styles[1].surface, 'rgb(52, 43, 36)');
+  assert.equal(styles[2].surface, 'rgb(244, 231, 216)');
+  assert(textContrast(styles[2].discount, styles[2].surface) >= 4.5);
   for (const style of styles) {
-    assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
-    assert.equal(style.textColor, 'rgb(82, 48, 29)');
-    assert.equal(style.labelBackground, 'rgb(255, 242, 202)');
-    assert.equal(style.labelRadius, '999px');
-    assert.equal(style.stroke, '0px');
-    assert.equal(style.labelBorder, '1px');
-    assert.equal(style.background, 'rgb(251, 121, 46)');
-    assert.equal(style.borderRadius, '0px');
-    assert(style.height>=58 && style.fullWidth && style.atBottom && style.photoAboveValue, 'Use a full-width footer below the discount: '+JSON.stringify(style));
+    assert(style.svg && style.radius === '999px' && style.line === 'dashed');
+    assert.deepEqual(style.cutouts, ['rgb(255, 253, 246)', 'rgb(255, 253, 246)']);
+    assert.deepEqual(style.blocks.slice(0, 3), ['ticket-top', 'H3', 'ticket-discount']);
+    assert.equal(style.blocks.at(-1), 'ticket-stub');
   }
 }
 const railLayout = page => page.evaluate(() => {
@@ -138,7 +111,7 @@ const railLayout = page => page.evaluate(() => {
 const ticketStyles = page => page.locator('#deals [data-shared-deal]').evaluateAll(cards => cards.map(card => ({
   key: card.dataset.sharedDeal || card.dataset.upcomingDeal,
   color: getComputedStyle(card).backgroundColor,
-  icon: card.querySelector('.ticket-icon svg')?.innerHTML,
+  icon: card.querySelector('.ticket-icon svg, .ticket-no')?.innerHTML,
   hasAction: Boolean(card.querySelector('.ticket-cta')),
 })));
 async function verifyPlaceholders(page) {
@@ -218,6 +191,12 @@ async function verifyEp02Galleries(page, offline) {
   }
 }
 async function verifyReelsAndPromos(page, locale) {
+  const bonus = page.locator('#bonus-reels');
+  assert.equal(await bonus.locator('figure').count(), 3);
+  assert.equal(await bonus.locator('.bonus-pagination button').count(), 3);
+  const originalLinks = await bonus.locator('a.reel-origin').evaluateAll(links => links.map(link => link.href));
+  assert.deepEqual(originalLinks, ['https://www.instagram.com/p/DNQsAIMptgF/', 'https://youtu.be/t4BKEBcuRFA', 'https://www.instagram.com/reel/C4a_6-gvlke/']);
+  assert.equal(await bonus.locator('a.reel-origin .hux-arrow').count(), 3);
   assert.equal(await page.locator('.ep02-reel iframe').count(), 0, 'Reels load on request');
   const posters = {
     'hani-spa': ['有兩間分店，我們都來這間', '有两家分店，我们都来这家', 'There are two branches, and this is the one we visit'],
@@ -259,10 +238,8 @@ async function verifyReelsAndPromos(page, locale) {
       assert(figures.every(([height, media]) => Math.abs(height - figures[0][0]) < 1 && Math.abs(media - figures[0][1]) < 1),
         stop + ' media and card heights match at ' + width + 'px: ' + JSON.stringify(figures));
       assert(await card.locator('.story-promo').evaluate(promo => {
-        const reference = document.querySelector('.ticket-feature .ticket-cta');
         const style = getComputedStyle(promo);
-        const original = getComputedStyle(reference);
-        return style.backgroundColor === original.backgroundColor && style.backgroundImage === original.backgroundImage;
+        return style.backgroundColor === 'rgb(251, 121, 46)' && style.backgroundImage.includes('linear-gradient');
       }));
       if (stop === '#kushiro') {
         assert(await card.locator('.story-copy .ep02-reel').evaluate(reel => {

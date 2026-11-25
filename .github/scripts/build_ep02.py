@@ -39,6 +39,36 @@ PIP_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="none">'
             '<rect x="10.5" y="10" width="11.5" height="10" rx="2" fill="currentColor" stroke="#252532" stroke-width="1.4"/></svg>')
 
 
+# Match the EP.01 episode picker's rounded, 1.8px line icon.
+def arrow_icon(direction="out"):
+    paths = {
+        "out": "M4 12 12 4m-6 0h6v6",
+        "right": "M3 8h10m-4-4 4 4-4 4",
+        "down": "M8 3v10m-4-4 4 4 4-4",
+        "up": "M8 13V3M4 7l4-4 4 4",
+        "chevron": "M4 6l4 4 4-4",
+    }
+    return (f'<svg class="hux-arrow hux-arrow-{direction}" viewBox="0 0 16 16" aria-hidden="true" '
+            f'focusable="false" fill="none"><path d="{paths[direction]}" stroke="currentColor" '
+            'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def ep02_ui_arrows(page):
+    glyphs = {"↗": "out", "→": "right", "↑": "up", "⌄": "chevron"}
+    def replace(match):
+        content = match[0]
+        if content.startswith(("<script", "<style")):
+            return content
+        return re.sub(r'(?<=>)[^<>]+(?=<)', lambda m: re.sub(
+            r'[↗→↑⌄][\ufe0e\ufe0f]?', lambda g: arrow_icon(glyphs[g[0][0]]), m[0]), content)
+    return re.sub(
+        r'<(?:script|style)\b[^>]*>.*?</(?:script|style)>'
+        r'|<a\b[^>]*>.*?</a>'
+        r'|<p class="deal-swipe">.*?</p>|<span aria-hidden="true" class="chev">.*?</span>',
+        replace, page, flags=re.S,
+    )
+
+
 def reel_card(title, index, poster="", video="", original=""):
     play, original_label, pip, close = REEL_LABELS[index]
     title = escape(title, quote=True)
@@ -211,7 +241,7 @@ def add_ep01_locations(source, locations, lang, online):
 
 def deal_content(deals, index, offline=True):
     cards = []
-    for key, offer in deals.items():
+    for number, (key, offer) in enumerate(deals.items(), 1):
         icon = ticket_icon(offer["category"])
         name = escape(offer.get("ticket_name", offer["name"][index]))
         badge = escape(offer["badge"][index])
@@ -236,19 +266,21 @@ def deal_content(deals, index, offline=True):
             )
         else:
             middle = f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
+        badge_icon = f'<span class="ticket-no">#{number:02d}</span>' if key == "esim" else icon
         code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""
         primary = (
             f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{escape(offer["id"])}" '
-            f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span></a>'
+            f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span>'
+            f'{arrow_icon("down" if key == "esim" else "out")}</a>'
         )
         cards.append(
             f'<article class="deal-ticket ticket-feature" data-shared-deal="{key}" translate="no">'
-            f'<div class="ticket-top">{icon}<h3>{name}</h3></div>{middle}'
+            f'<div class="ticket-top">{badge_icon}<span class="ticket-eyebrow">{label}</span></div><h3>{name}</h3>'
             f'<div class="ticket-discount"><div class="ticket-value">{badge}</div>{code}</div>'
-            f'{primary}</article>'
+            f'{middle}<div class="ticket-stub">{primary}</div></article>'
         )
     return (f'<div class="deal-track" role="region" tabindex="0" aria-label="{TRACK_LABELS[index]}">{"".join(cards)}</div>'
-            f'<p class="deal-swipe">{SWIPE_LABELS[index]}</p>')
+            f'<p class="deal-swipe">{SWIPE_LABELS[index].rstrip(" →")} {arrow_icon("right")}</p>')
 
 
 def update_ep01(source, deals, locations, online, lang):
@@ -304,6 +336,39 @@ def script(source, id):
     return extract(source, rf'<script id="{id}">.*?</script>')
 
 
+def bonus_reels(donor, index, offline):
+    gallery = script(donor, "hux-reels-script")
+    i = gallery.index("function useInlinePlay")
+    j = gallery.index("const bonusSection", i)
+    gallery = gallery[:i] + gallery[j:]
+    gallery = re.sub(r'const spotReels=.*?},bonus=', "const bonus=", gallery, count=1, flags=re.S)
+    gallery = gallery.replace("document.querySelector('.outro')?.before(bonusSection);",
+                              "document.querySelector('#about')?.before(bonusSection);")
+    gallery = gallery.replace("document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))')",
+                              "bonusGallery.querySelectorAll('.reel-figure')")
+    if offline:
+        loading = gallery.index("if('IntersectionObserver' in window)")
+        gallery = gallery[:loading] + "})();</script>"
+    floating = script(donor, "hux-reel-pip-v21").replace(
+        "event.target.closest('.reel-pip-launch')",
+        "event.target.closest('#bonus-reels .reel-pip-launch')",
+    )
+    # Shared bonus UI uses the same accessibility copy and video titles as EP.01.
+    locale_script = extract(donor, r'<script type="application/json" id="hux-language-data">.*?</script>')
+    translations = json.loads(locale_script.split(">", 1)[1].rsplit("<", 1)[0])["strings"]
+    if index:
+        for original, translated in sorted(translations.items(), key=lambda entry: -len(entry[0])):
+            if original in gallery:
+                gallery = gallery.replace(original, translated[index - 1].replace("'", "’"))
+            if original in floating:
+                floating = floating.replace(original, translated[index - 1].replace("'", "’"))
+        localized_dot = ("第 '+(index+1)+' 支影片", "第 '+(index+1)+' 支视频", "Video '+(index+1)+'")[index]
+        gallery = gallery.replace("第 '+(index+1)+' 支影片", localized_dot)
+    return gallery.replace(" ↗</span>", " " + arrow_icon() + "</span>") + floating.replace(
+        "original.textContent=", "original.innerHTML="
+    ).replace(" ↗';", " " + arrow_icon() + "';")
+
+
 def issue_shell(donor, localized, lang, labels, count, offline, legacy_download):
     download = f"HUXIAGO_Bangkok_EP02_{lang}.html"
     rail_pattern = r'<aside class="desktop-rail"[^>]*>.*?</aside>'
@@ -321,7 +386,6 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     rail = rail.replace("Ep.01", "Ep.02").replace(">12 ", f">{count} ")
     cover = extract(localized, r'<header class="cover"[^>]*>.*?</header>').replace("Ep.01", "Ep.02")
     cover = cover.replace("\r\n", "\n")
-    cover = re.sub(r'(<p class="kicker"><strong>HUXIAGO</strong>)<span>BKK GUIDE</span>', r"\1", cover, count=1)
     title_src = media_source(f"media/huxiago-title-{TITLE_ART[lang]}.svg", "image/svg+xml", offline)
     hero_src = media_source("media/ea863e999767b920.webp", "image/webp", offline)
     cover = re.sub(r'(<img class="cover-title-art") [^>]*src="[^"]+"',
@@ -351,7 +415,6 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     cover = cover.replace(f'href="" download="{legacy_download}"', f'href="{download}" download="{download}"')
     mobile_nav = extract(localized, r'<nav [^>]*class="pocket-nav"[^>]*>.*?</nav>')
     about = extract(localized, r'<section class="about-huxia"[^>]*>.*?</section>')
-    about = re.sub(r'[ \t]*<div class="about-eyebrow">.*?</div>\r?\n', "", about, count=1)
     if not offline:
         about_src = extract(donor, r'(?<=<figure class="about-photo"><img src=")[^"]+')
         about = re.sub(r'(<figure class="about-photo"><img src=")[^"]+',
@@ -547,9 +610,12 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         for n, label in enumerate(filter_names)
     )
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
+    deal_intro = ("泰國 eSIM、曼谷餐廳與住宿優惠。", "泰国 eSIM、曼谷餐厅与住宿优惠。", "Thailand eSIM, Bangkok dining and hotel offers.")[ix]
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
+<p class="deal-kicker">HUXIAGO POCKET DEALS</p>
 <h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
+<p class="deal-intro">{escape(deal_intro)}</p>
 {deal_content(deals, ix, offline)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
@@ -557,7 +623,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <div class="toc-filters" aria-label="{escape(labels["filter"], quote=True)}">{filters}</div>
 <div class="toc-list">{"".join(toc)}</div></nav>"""
     sections = toc_section + deals_section if offline else deals_section + toc_section
-    return f"""<!doctype html>
+    return ep02_ui_arrows(f"""<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
@@ -581,10 +647,11 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <script>const huxMobileStations = matchMedia('(max-width: 979px)');</script>
 {scripts}
 <script>{navigation}</script>
+{bonus_reels(donor, ix, offline)}
 <script>{reel_script}</script>
 </body>
 </html>
-"""
+""")
 
 
 

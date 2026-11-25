@@ -76,111 +76,98 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   outline-offset: 2px;
 }
 
+.hux-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.12em;
+  flex: none;
+}
+
+.visual-v7 .share-strip .share-btn::after {
+  content: "";
+  width: 1em;
+  height: 1em;
+  flex: none;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 12 12 4m-6 0h6v6' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Same EP.01 ticket anatomy with individual colors for each merchant. */
 .visual-v7 .ticket-feature {
-  --ticket-face: #ffd3b9;
-  --ticket-ink: #093b2b;
+  --ticket-face: #fb792e;
+  --ticket-ink: #fff9ee;
+  --ticket-cta-surface: #ffe270;
+  --ticket-cta-text: #245a46;
+  --ticket-cta-edge: #24775c;
+  --ticket-perforation: rgba(255, 247, 219, .92);
   display: flex;
   flex-direction: column;
   min-height: 348px;
-  padding: 0;
-  overflow: hidden;
-  color: var(--ticket-ink);
+  padding: 18px;
   background: var(--ticket-face);
-  box-shadow: 5px 6px 0 #255b48;
-}
-
-.visual-v7 .ticket-feature[data-shared-deal="esim"] {
-  color: #fff9ee;
-  background: linear-gradient(155deg, #ff852e 0%, #f57223 49%, #eb5f17 100%);
+  color: var(--ticket-ink);
+  box-shadow: 6px 7px 0 #30624e;
 }
 
 .visual-v7 .ticket-feature[data-shared-deal="kushiro"] {
   --ticket-face: #342b24;
-  color: #fff9ee;
+  --ticket-cta-surface: #fff3d1;
+  --ticket-cta-text: #513525;
+  --ticket-cta-edge: #927557;
 }
 
 .visual-v7 .ticket-feature[data-shared-deal="silq"] {
   --ticket-face: #f4e7d8;
+  --ticket-ink: #093b2b;
+  --ticket-cta-surface: #fff3d1;
+  --ticket-cta-text: #513525;
+  --ticket-cta-edge: #6a422e;
+  --ticket-perforation: #9b7c60;
 }
 
-.visual-v7 .ticket-feature .ticket-top {
-  justify-content: flex-start;
-  min-height: 58px;
-  padding: 10px 13px 8px;
+.visual-v7 .ticket-feature .ticket-no {
+  flex: none;
+  background: #fff2b5;
+  color: #316248;
+}
+
+.visual-v7 .ticket-feature .ticket-eyebrow {
+  padding: .36em .65em;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: #fff2b5;
+  color: #245a46;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .visual-v7 .ticket-feature h3 {
-  min-width: 0;
-  margin: 0;
-  font-size: 19px;
-  line-height: 1.2;
+  margin: 18px 0 4px;
+  font-size: 18px;
+  line-height: 1.25;
+  color: inherit;
   overflow-wrap: anywhere;
-  color: inherit;
-}
-
-.visual-v7 .ticket-feature .ticket-copy {
-  margin: 10px 14px 15px;
-  color: inherit;
-  font-size: 14px;
-  line-height: 1.48;
-  font-weight: 650;
-}
-
-.visual-v7 .ticket-photo {
-  position: relative;
-  height: 148px;
-  overflow: hidden;
-  flex: none;
-}
-.visual-v7 .ticket-photo-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.visual-v7 .ticket-photo-logo {
-  position: absolute;
-  inset: 0;
-  width: 39px;
-  height: auto;
-  margin: auto;
-}
-.visual-v7 [data-shared-deal="silq"] .ticket-photo-logo {
-  inset-block-end: auto;
-  width: 52px;
-  aspect-ratio: 1;
-  padding: 6px;
-  box-sizing: border-box;
-  object-fit: contain;
-  background: #20544c;
 }
 
 .visual-v7 .ticket-discount {
   display: flex;
-  align-items: baseline;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 3px 12px;
-  margin-top: auto;
-  padding: 4px 13px 11px;
 }
 
 .visual-v7 .ticket-feature .ticket-value {
-  color: var(--ticket-ink);
+  color: #fff9ee;
   font-size: clamp(38px, 4.5vw, 53px);
   font-weight: 1000;
   letter-spacing: -.025em;
-  text-shadow: none;
-}
-
-.visual-v7 [data-shared-deal="esim"] .ticket-value,
-.visual-v7 [data-shared-deal="kushiro"] .ticket-value {
-  color: #fff9ee;
-  text-shadow: 2px 3px 0 var(--ticket-ink);
+  text-shadow: 2px 3px 0 #245a46;
 }
 
 .visual-v7 [data-shared-deal="silq"] .ticket-value {
-  color: #ec5800;
+  color: #a64012;
+  text-shadow: none;
 }
 
 .visual-v7 .ticket-code {
@@ -190,91 +177,86 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   letter-spacing: .045em;
 }
 
-.visual-v7 .ticket-feature .ticket-cta {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: none;
-  width: 100%;
-  margin: 0;
-  min-height: 58px;
-  padding: 8px 12px;
-  border: 0;
-  border-top: 2px dashed #fff4d5;
-  border-radius: 0;
-  background: var(--hux-coupon-background);
-  color: #fff;
-  font-size: 15px;
-  line-height: 1.25;
-  font-weight: 900;
-  transition: filter .18s ease, transform .18s ease;
-}
-.visual-v7 .ticket-feature .ticket-cta::after { content: none; }
-.visual-v7 .ticket-feature .ticket-cta > .ticket-cta-label {
-  display: inline-flex;
-  flex: 0 1 auto;
-  align-items: center;
-  gap: .35em;
-  min-width: 0;
-  min-height: 40px;
-  padding: 6px 11px;
-  border: 1px solid var(--hux-offer-cta-edge);
-  border-radius: 999px;
-  background: var(--hux-offer-cta-bg);
-  color: var(--hux-offer-cta-ink);
-  font-size: 14px;
-  text-align: left;
-}
-.visual-v7 .ticket-feature .ticket-cta-label::before { content: "↗"; flex: none; }
-.visual-v7 .ticket-feature .ticket-cta:hover { filter: brightness(1.06); }
-.visual-v7 .ticket-feature .ticket-cta:active { transform: translateY(2px); }
-.visual-v7 .ticket-feature .ticket-cta:focus-visible {
-  outline: 2px solid #fff7d6;
-  outline-offset: -5px;
+.visual-v7 .ticket-feature .ticket-copy {
+  margin: 12px 0 0;
+  color: inherit;
+  font-size: .9rem;
+  line-height: 1.55;
+  font-weight: 650;
 }
 
-/* Blend the merchant photograph into the ticket face, keeping the value readable. */
-.visual-v7 .ticket-feature .ticket-photo::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 48px;
-  background: linear-gradient(transparent, var(--ticket-face));
-  pointer-events: none;
-}
-.visual-v7 .ticket-feature:has(.ticket-photo) .ticket-discount {
+.visual-v7 .ticket-photo {
   position: relative;
-  margin-top: -17px;
-  min-height: 83px;
-  align-content: end;
+  overflow: hidden;
+  height: 118px;
+  flex: none;
+  margin-top: 12px;
+  border-radius: 10px;
 }
-.visual-v7 .ticket-feature .ticket-cta { justify-content: flex-start; margin-top: auto; }
-.visual-v7 .ticket-feature .ticket-cta-label {
-  display: inline-flex;
-  flex: 0 1 auto;
-  align-items: center;
-  gap: .35em;
-  min-height: 39px;
-  padding: 6px 13px;
-  border: 1px solid #6a422e;
+
+.visual-v7 .ticket-photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.visual-v7 .ticket-photo-logo {
+  position: absolute;
+  inset: 0;
+  width: 39px;
+  height: auto;
+  margin: auto;
+}
+
+.visual-v7 [data-shared-deal="silq"] .ticket-photo-logo {
+  inset-block-end: auto;
+  width: 48px;
+  aspect-ratio: 1;
+  padding: 6px;
+  object-fit: contain;
+  background: #20544c;
+}
+
+.visual-v7 .ticket-feature .ticket-stub {
+  margin-top: auto;
+  padding-top: 17px;
+}
+
+.visual-v7 .ticket-stub::before {
+  content: "";
+  display: block;
+  margin-bottom: 14px;
+  border-top: 2px dashed var(--ticket-perforation);
+}
+
+.visual-v7 .ticket-feature .ticket-cta {
+  position: relative;
+  z-index: 3;
+  gap: 8px;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 2px solid var(--ticket-cta-edge);
   border-radius: 999px;
-  background: #fff3d1;
-  color: #513525;
+  background: var(--ticket-cta-surface);
+  color: var(--ticket-cta-text);
+  box-shadow: 3px 4px 0 var(--ticket-cta-edge);
+  font-size: 14px;
+  line-height: 1.3;
 }
-.visual-v7 .ticket-feature .ticket-cta-label::before { content: "↗"; }
+
 .visual-v7 .ticket-feature .ticket-cta::after { content: none; }
+.visual-v7 .ticket-feature .ticket-cta:hover { filter: brightness(1.06); }
+.visual-v7 .ticket-feature .ticket-cta:focus-visible {
+  outline: 2px solid var(--ticket-cta-text);
+  outline-offset: 3px;
+}
 
 .visual-v7 .ticket-feature::before,
 .visual-v7 .ticket-feature::after {
-  top: auto;
-  bottom: 49px;
-  width: 17px;
-  height: 17px;
-  background: #fbf6ea;
-  transform: none;
+  background: #fffdf6;
   pointer-events: none;
 }
-.visual-v7 .ticket-feature:active { transform: none; }
 
 @media (min-width: 980px) {
   .visual-v7 .deal-track {
