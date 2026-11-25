@@ -372,14 +372,19 @@ def story_inline(text):
     return "".join(parts)
 
 
-def story_table(rows):
+def story_table(rows, heading):
     columns, *body = rows
     header = "".join(f'<th scope="col">{escape(cell)}</th>' for cell in columns)
     entries = []
     for label, *values in body:
-        cells = "".join(f"<td>{escape(value)}</td>" for value in values)
-        entries.append(f'<tr><th scope="row">{escape(label)}</th>{cells}</tr>')
-    return f'<table class="story-table"><thead><tr>{header}</tr></thead><tbody>{"".join(entries)}</tbody></table>'
+        cells = []
+        for value in values:
+            text = re.sub(r'\b\d{1,3}(?:,\d{3})+\b',
+                          r'<span class="story-amount">\g<0></span>', escape(value))
+            cells.append(f"<td>{text}</td>")
+        entries.append(f'<tr><th scope="row">{escape(label)}</th>{"".join(cells)}</tr>')
+    return (f'<div class="story-table-wrap" role="region" tabindex="0" aria-label="{escape(heading, quote=True)}">'
+            f'<table class="story-table"><thead><tr>{header}</tr></thead><tbody>{"".join(entries)}</tbody></table></div>')
 
 
 def story_promo(offer, index):
@@ -441,7 +446,7 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
             elif "photo" in block:
                 parts.append(photo_figure(photos[block["photo"]], index, offline, "story-photo"))
             else:
-                parts.append(story_table(block["table"]))
+                parts.append(story_table(block["table"], heading))
     return "".join(parts)
 
 
@@ -500,9 +505,8 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         story = render_story(stories[s["id"]][ix], deals, assets, ix, offline, reel_sources)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
-            f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'
-            f'<span class="toc-item-content"><small class="toc-item-kicker">{stop_heading}</small><strong class="toc-item-title">{name}</strong>'
-            f'<small class="toc-item-description">{title}</small></span>'
+            f'<span class="toc-item-number">{label}</span>'
+            f'<span class="toc-item-content"><strong class="toc-item-title">{name}</strong></span>'
             f'<span class="toc-item-side"><span class="toc-item-tag">{cat}</span>'
             f'<span class="toc-item-action">{escape(data["labels"]["open"][ix])} →</span></span></a>'
         )

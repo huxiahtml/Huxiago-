@@ -5,11 +5,8 @@
 .ep02-deal-photo figcaption{font-size:13px;margin-top:4px}
 .visual-v7 .episode-upcoming{text-decoration:none}
 
-/* Keep the three lines of each directory entry together as one editorial unit. */
-.visual-v7 .toc-item .toc-item-content { display:flex; flex-direction:column; align-self:center; justify-content:center; gap:3px; min-width:0; }
-.visual-v7 .toc-item .toc-item-kicker { display:block; margin:0; color:#62554a; font-size:12px; line-height:1.25; }
+.visual-v7 .toc-item .toc-item-content { align-self:center; min-width:0; }
 .visual-v7 .toc-item .toc-item-title { display:block; margin:0; line-height:1.25; }
-.visual-v7 .toc-item .toc-item-description { display:block; margin:0; line-height:1.35; }
 .visual-v7 .story-copy p { line-height:1.65; margin:.55em 0 .8em; }
 .visual-v7 .story-copy .story-heading { margin:1.45em 0 .45em; line-height:1.35; }
 .visual-v7 .pier-note { margin:.35rem 0; border-bottom:1px solid #ddd0bd; }
@@ -29,7 +26,6 @@
 
 .story-table {
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   margin: .85rem 0;
   font-size: .875rem;
@@ -45,12 +41,47 @@
   vertical-align: top;
 }
 
-.story-table th:first-child {
-  width: 39%;
-}
-
 .story-table thead {
   background: #fff2bd;
+}
+
+.visual-v7 .card .body .story-table-wrap > .story-table {
+  table-layout: auto;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.visual-v7 .card .body .story-table-wrap :is(th, td) {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+#silq .story-table :is(th, td):nth-child(2) { white-space: nowrap; }
+
+.story-amount {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 480px) {
+  .visual-v7 .card .body .story-table-wrap :is(th, td) { padding-inline: 5px; }
+}
+
+html[lang="en"] .visual-v7 :is(.toc-item-title, .stop > summary .head p, .story-heading, #spots, .share-strip-head h3) {
+  text-wrap: balance;
+}
+
+html[lang="en"] .visual-v7 :is(.story-copy > p, .about-huxia > p, .share-strip-head p) {
+  text-wrap: pretty;
+}
+
+@media (min-width: 980px) {
+  html[lang="en"] .visual-v7 :is(.story-copy > p, .story-heading, .about-huxia > p) { max-inline-size: 70ch; }
+}
+
+@media (max-width: 360px) {
+  .visual-v7 .cover .hux-cover-topbar .kicker strong { font-size: .6875rem; }
+  .visual-v7 .cover .hux-cover-topbar .kicker span { font-size: .625rem; }
 }
 
 /* EP.01 Reel controls on EP.02 gallery and article cards. */
