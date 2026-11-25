@@ -31,31 +31,45 @@ PIP_ICON = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="none">'
             '<rect x="10.5" y="10" width="11.5" height="10" rx="2" fill="currentColor" stroke="#252532" stroke-width="1.4"/></svg>')
 
 
-def reel_card(url, title, index, poster="", native=False):
-    if not native and not re.fullmatch(r"https://www\.instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+/", url):
-        raise ValueError(f"Expected an Instagram post or Reel permalink: {url}")
-    play, original, pip, close = REEL_LABELS[index]
+def reel_card(title, index, poster="", video="", original=""):
+    play, original_label, pip, close = REEL_LABELS[index]
     title = escape(title, quote=True)
     classes = "reel-figure ep02-reel" + (" ep01-gallery-reel" if poster else "")
     image = f'<img src="{poster}" alt="" loading="lazy" decoding="async">' if poster else ""
-    kind = "reel"
-    source = f'data-embed="{url}embed/"'
-    link = f'<a class="reel-origin" href="{url}" target="_blank" rel="noopener noreferrer">{original}</a>'
-    if native:
-        kind = "video"
-        classes += " local-video-figure"
-        source = f'data-video="{url}"'
-        link = ""
-        if index == 2:
-            play = "Play video"
+    if original and not re.fullmatch(r"https://www\.instagram\.com/(?:p|reel)/[A-Za-z0-9_-]+/", original):
+        raise ValueError(f"Expected an Instagram post or Reel permalink: {original}")
+    if not video:
+        watch = ("在 Instagram 觀看", "在 Instagram 观看", "Watch on Instagram")[index]
+        return (
+            f'<figure class="{classes}" data-kind="reel">'
+            f'<div class="reel-viewport">{image}'
+            f'<a class="reel-placeholder ep01-reel-play reel-external" href="{original}" '
+            f'target="_blank" rel="noopener noreferrer" aria-label="{watch} · {title}">'
+            f'<span aria-hidden="true">{watch} ↗</span></a>'
+            f'</div><figcaption>{title}</figcaption></figure>'
+        )
+    link = (f'<a class="reel-origin" href="{original}" target="_blank" '
+            f'rel="noopener noreferrer">{original_label}</a>') if original else ""
+    if index == 2 and not original:
+        play = "Play video"
     return (
-        f'<figure class="{classes}" data-kind="{kind}" {source} data-close="{close}">'
+        f'<figure class="{classes} local-video-figure" data-kind="video" data-video="{video}" data-close="{close}">'
         f'<div class="reel-viewport">{image}<button class="reel-placeholder ep01-reel-play" type="button" '
         f'aria-label="{play} · {title}"><span aria-hidden="true">{play}</span></button>'
-        f'{link}'
-        f'<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
+        f'{link}<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
         f'</div><figcaption>{title}</figcaption></figure>'
     )
+
+
+def video_source(filename, offline):
+    path = f"media/{filename}"
+    return data_uri(ROOT / path, "video/mp4") if offline else path
+
+
+def instagram_card(url, title, index, poster, sources, offline):
+    asset = sources.get(url)
+    video = video_source(asset["offline" if offline else "web"], offline) if asset else ""
+    return reel_card(title, index, poster, video=video, original=url)
 
 
 def photo_figure(asset, index, css_class=""):
@@ -95,8 +109,7 @@ def story_clips(assets, index, offline):
     for filename, hant, hans, english, entry in assets:
         caption = escape((hant, hans, english)[index])
         poster = data_uri(ROOT / "ep02" / filename, "image/webp")
-        path = f'media/{entry["video"]}'
-        src = data_uri(ROOT / path, "video/mp4") if offline else path
+        src = video_source(entry["video"], offline)
         clips.append(
             f'<figure class="clip canal-clip ep02-reel" data-kind="video" data-video="{src}" data-close="{close}">'
             f'<figcaption>{caption}</figcaption><div class="clip-media reel-viewport">'
@@ -110,7 +123,7 @@ def story_clips(assets, index, offline):
             f'<div class="story-video-track" tabindex="0" aria-label="{heading}">{"".join(clips)}</div></section>')
 
 
-def gallery(assets, index, offline):
+def gallery(assets, index, offline, reel_sources):
     figures = []
     for filename, hant, hans, english, *links in assets:
         if links:
@@ -118,11 +131,10 @@ def gallery(assets, index, offline):
             src = data_uri(ROOT / "ep02" / filename, "image/webp")
             entry = links[0]
             if isinstance(entry, dict):
-                path = f'media/{entry["video"]}'
-                video = data_uri(ROOT / path, "video/mp4") if offline else path
-                figures.append(reel_card(video, caption, index, src, native=True))
+                video = video_source(entry["video"], offline)
+                figures.append(reel_card(caption, index, src, video=video))
             else:
-                figures.append(reel_card(entry, caption, index, src))
+                figures.append(instagram_card(entry, caption, index, src, reel_sources, offline))
         else:
             figures.append(photo_figure((filename, hant, hans, english), index))
     return '<div class="gallery">' + "".join(figures) + '</div>'
@@ -433,7 +445,7 @@ def route_map(filename, index):
     )
 
 
-def render_story(sections, deals, assets, index):
+def render_story(sections, deals, assets, index, offline, reel_sources):
     photos = {row[0]: row for row in assets}
     parts = []
     for heading, blocks in sections:
@@ -447,7 +459,7 @@ def render_story(sections, deals, assets, index):
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
                 poster = data_uri(ROOT / "ep02" / block["poster"], "image/webp") if "poster" in block else ""
-                parts.append(reel_card(block["reel"], block["title"], index, poster))
+                parts.append(instagram_card(block["reel"], block["title"], index, poster, reel_sources, offline))
             elif "route_map" in block:
                 parts.append(route_map(block["route_map"], index))
             elif "photo" in block:
@@ -458,6 +470,7 @@ def render_story(sections, deals, assets, index):
 
 
 def render(data, deals, stories, galleries, locations, lang, offline, donor, localized, legacy_download):
+    reel_sources = data.get("reel_sources", {})
     t = data["locales"][lang]
     ix = LOCALES.index(lang)
     labels = {**data["layout"][lang], "bangkok": data["labels"]["bangkok"][ix]}
@@ -502,14 +515,14 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         if s.get("video_layout") == "story":
             clips = [asset for asset in assets if isinstance(asset[-1], dict) and "video" in asset[-1]]
         photos = [asset for asset in assets if asset not in clips]
-        media = gallery(photos, ix, offline) if photos and s.get("gallery_layout") != "inline" else ""
+        media = gallery(photos, ix, offline, reel_sources) if photos and s.get("gallery_layout") != "inline" else ""
         video_section = story_clips(clips, ix, offline) if clips else ""
         if assets:
             src = data_uri(ROOT / "ep02" / assets[0][0], "image/webp")
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
-        story = render_story(stories[s["id"]][ix], deals, assets, ix)
+        story = render_story(stories[s["id"]][ix], deals, assets, ix, offline, reel_sources)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'
@@ -642,6 +655,11 @@ def build():
                 name = f'media/{entries[0]["video"]}'
                 raw = (ROOT / name).read_bytes()
                 manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    for variants in data.get("reel_sources", {}).values():
+        for filename in variants.values():
+            name = f"media/{filename}"
+            raw = (ROOT / name).read_bytes()
+            manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():
         name = f"media/huxiago-title-{suffix}.svg"
         raw = (ROOT / name).read_bytes().replace(b"\r\n", b"\n")

@@ -21,7 +21,7 @@
 
 @media (max-width: 700px) {
   .visual-v7 .gallery[data-ep01-gallery] figure.ep01-gallery-reel {
-    flex-basis: min(85%, 264px);
+    flex-basis: min(88%, 300px);
   }
 
   .visual-v7 .ep01-gallery-reel[data-kind="reel"] .reel-viewport > img {

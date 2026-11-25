@@ -1,4 +1,14 @@
 {
+  "reel_sources": {
+    "https://www.instagram.com/p/DdYtIjNJEow/": {
+      "web": "ep02-kushiro-revisit.mp4",
+      "offline": "ep02-kushiro-revisit-offline.mp4"
+    },
+    "https://www.instagram.com/reel/DfIXxHiTF4C/": {
+      "web": "ep02-silq-reel.mp4",
+      "offline": "ep02-silq-reel-offline.mp4"
+    }
+  },
   "locales": {
     "zh-Hant": [
       "曼谷口袋名單",

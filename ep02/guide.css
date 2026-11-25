@@ -40,7 +40,7 @@
 
 /* EP.01 Reel controls on EP.02 gallery and article cards. */
 .visual-v7 details.card .gallery {
-  --gallery-media-height: clamp(280px, 82vw, 470px);
+  --gallery-media-height: clamp(300px, 100vw, 470px);
   align-items: stretch;
 }
 .visual-v7 details.card .gallery > figure {
@@ -74,6 +74,11 @@
   padding: 3px 10px;
   background: #fffaf0;
 }
+.ep02-reel .reel-external {
+  background: rgba(36, 30, 27, .18);
+  text-decoration: none;
+}
+.ep02-reel .reel-external::before { content: "↗"; }
 .ep02-reel .ep01-reel-play:focus-visible {
   outline: 3px solid #fffaf0;
   outline-offset: -5px;
@@ -98,7 +103,7 @@
   display: none;
 }
 .story-copy .ep02-reel {
-  width: min(100%, 300px);
+  width: min(100%, 380px);
   margin: 1rem auto;
   overflow: hidden;
   border: 1px solid #342d29;
@@ -145,10 +150,10 @@
 .story-copy .story-promo-link {
   justify-self: start;
   padding: .36rem .85rem;
-  border: 1px solid #60331f;
+  border: 1px solid var(--hux-offer-cta-edge);
   border-radius: 999px;
-  background: #fff2ca;
-  color: #52301d;
+  background: var(--hux-offer-cta-bg);
+  color: var(--hux-offer-cta-ink);
   font-weight: 850;
   text-decoration: none;
 }
@@ -185,7 +190,12 @@
 .hux-reel-pip[data-kind="video"] .hux-reel-pip-screen {
   aspect-ratio: 9 / 16;
 }
-.visual-v7 .gallery .local-video-figure .reel-viewport video,
+.ep02-reel[data-kind="video"]:not(.canal-clip) .reel-viewport {
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #191919;
+}
+.ep02-reel[data-kind="video"]:not(.canal-clip) .reel-viewport video,
 .hux-reel-pip-screen > video {
   display: block;
   width: 100%;
@@ -442,7 +452,7 @@
   flex: none;
   scroll-margin-block: 80px;
 }
-.canal-clip.is-loaded .reel-viewport:not(:has(video)) > img {
+.ep02-reel.is-loaded .reel-viewport:not(:has(video)) > img {
   display: block;
 }
 .canal-clip button[aria-pressed="false"] .clip-icon-on,

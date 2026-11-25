@@ -66,13 +66,16 @@ async function verifySharedOfferStyle(page) {
       const action=card.querySelector('.ticket-cta');
       const value=getComputedStyle(amount);
       const style=getComputedStyle(action);
+      const label=getComputedStyle(action.querySelector('.ticket-cta-label'));
       return {
         amount: [value.fontFamily,value.fontSize,value.fontWeight],
-        textColor: getComputedStyle(action.querySelector('.ticket-cta-label')).color,
+        textColor: label.color,
+        labelBackground: label.backgroundColor,
+        labelRadius: label.borderRadius,
         discountColor: value.color,
         discountShadow: value.textShadow,
         stroke: value.webkitTextStrokeWidth,
-        labelBorder: getComputedStyle(action.querySelector('.ticket-cta-label')).borderTopWidth,
+        labelBorder: label.borderTopWidth,
         background: style.backgroundColor,
         borderRadius: style.borderRadius,
         height: action.offsetHeight,
@@ -88,9 +91,11 @@ async function verifySharedOfferStyle(page) {
   assert.equal(styles[1].discountShadow, styles[0].discountShadow);
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
-    assert.equal(style.textColor, 'rgb(255, 255, 255)');
+    assert.equal(style.textColor, 'rgb(82, 48, 29)');
+    assert.equal(style.labelBackground, 'rgb(255, 242, 202)');
+    assert.equal(style.labelRadius, '999px');
     assert.equal(style.stroke, '0px');
-    assert.equal(style.labelBorder, '0px');
+    assert.equal(style.labelBorder, '1px');
     assert.equal(style.background, 'rgb(251, 121, 46)');
     assert.equal(style.borderRadius, '0px');
     assert(style.height>=58 && style.fullWidth && style.atBottom && style.photoAboveValue, 'Use a full-width footer below the discount: '+JSON.stringify(style));
@@ -188,7 +193,7 @@ async function verifyEp02Galleries(page) {
     await stop.evaluate(details => { details.open = false; });
   }
 }
-async function verifyReelsAndPromos(page, locale, interact) {
+async function verifyReelsAndPromos(page, locale) {
   assert.equal(await page.locator('.ep02-reel iframe').count(), 0, 'Reels load on request');
   const posters = {
     'hani-spa': ['有兩間分店，我們都來這間', '有两家分店，我们都来这家', 'There are two branches, and this is the one we visit'],
@@ -206,9 +211,12 @@ async function verifyReelsAndPromos(page, locale, interact) {
     assert.equal(await promo.locator('.story-promo-discount').textContent(), offers[id].badge[index]);
   }
   assert.equal(await page.locator('#silq .story-promo-code').textContent(), 'HUXIATHAI');
-  const originals = await page.locator('.ep02-reel .reel-origin').evaluateAll(links => links.map(a => a.href));
+  const originals = await page.locator('.ep02-reel :is(.reel-origin, .reel-external)').evaluateAll(links => links.map(a => a.href));
   assert.deepEqual(originals, ['https://www.instagram.com/p/DR1D9Q9iSvM/', 'https://www.instagram.com/p/DdYtIjNJEow/', 'https://www.instagram.com/reel/DfIXxHiTF4C/']);
-  const silqReel = page.locator('#silq .gallery .ep02-reel[data-kind=reel]');
+  const fallback = page.locator('#kushiro .gallery .reel-external');
+  assert.equal(await fallback.getAttribute('href'), originals[0]);
+  assert.equal(await fallback.getAttribute('target'), '_blank');
+  const silqReel = page.locator('#silq .gallery .ep02-reel[data-video]').filter({has: page.locator('.reel-origin')});
   assert.equal(await silqReel.count(), 1);
   assert.equal(await silqReel.evaluate(el => el.parentElement.children[1] === el), true);
   assert.equal(await silqReel.locator('.reel-origin').getAttribute('href'), originals[2]);
@@ -245,34 +253,6 @@ async function verifyReelsAndPromos(page, locale, interact) {
     }
   }
   await page.setViewportSize(normalWidth);
-  if (!interact) return;
-  for (const [id, placement, original] of [
-    ['kushiro', '.gallery', originals[0]],
-    ['kushiro', '.story-copy', originals[1]],
-    ['silq', '.gallery', originals[2]],
-  ]) {
-    const stop = page.locator('#' + id);
-    await stop.evaluate(el => { el.open = true; });
-    const reel = stop.locator(placement + ' .ep02-reel[data-kind=reel]');
-    await reel.locator('.ep01-reel-play').click();
-    const embed = original + 'embed/';
-    assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
-    assert(await reel.locator('iframe').evaluate(frame => {
-      const media = frame.parentElement.getBoundingClientRect();
-      return Math.abs(media.width / media.height - 9 / 16) < .02 &&
-        Math.abs(frame.getBoundingClientRect().width - media.width) < 1;
-    }), 'The inline Instagram player fills a portrait frame');
-    await reel.locator('.reel-pip-launch').click();
-    const floating = page.locator('.hux-reel-pip');
-    assert.equal(await floating.locator('iframe').getAttribute('src'), embed);
-    assert(await floating.locator('.hux-reel-pip-screen').evaluate(screen =>
-      Math.abs(screen.clientWidth / screen.clientHeight - 9 / 16) < .02));
-    assert.equal(await floating.locator('a').getAttribute('href'), original);
-    await page.keyboard.press('Escape');
-    assert.equal(await floating.count(), 0);
-    assert.equal(await reel.locator('iframe').getAttribute('src'), embed);
-    await stop.evaluate(el => { el.open = false; });
-  }
 }
 async function verifyMapAndLocalVideos(page, offline) {
   const originalSize = page.viewportSize();
@@ -307,7 +287,7 @@ async function verifyMapAndLocalVideos(page, offline) {
   await transport.evaluate(el => {el.open = false;});
 
   const cards = page.locator('figure[data-video]');
-  assert.equal(await cards.count(), 6);
+  assert.equal(await cards.count(), 8);
   for (const card of await cards.all()) {
     const kind = await card.getAttribute('data-kind');
     const correctSource = await card.evaluate((el, isOffline) => isOffline ?
@@ -321,11 +301,12 @@ async function verifyMapAndLocalVideos(page, offline) {
         getComputedStyle(button).backgroundColor === 'rgba(36, 30, 27, 0.18)'));
     }
   }
-  for (const [i, id] of ['silq', 'gan-da', 'gan-da', 'saen-saep', 'saen-saep', 'saen-saep'].entries()) {
+  for (const card of await cards.all()) {
+    const id = await card.evaluate(el => el.closest('details.stop').id);
     const stop = page.locator('#' + id);
     await stop.evaluate(el => {el.open = true;});
-    const card = cards.nth(i);
     const standalone = id === 'saen-saep';
+    const originalUrl = page.url();
     const play = card.locator(standalone ? '.clip-pause' : '.ep01-reel-play');
     await play.click();
     const player = card.locator('video');
@@ -335,6 +316,9 @@ async function verifyMapAndLocalVideos(page, offline) {
       video.addEventListener('timeupdate', () => {clearTimeout(timer); resolve();}, {once: true});
     }));
     assert(await player.evaluate(video => video.duration > 0 && video.videoWidth < video.videoHeight));
+    assert.equal(page.url(), originalUrl, 'Play directly from the first click');
+    assert.equal(await page.locator('.ep02-reel iframe').count(), 0);
+    assert(await player.evaluate(video => Math.abs(video.clientWidth / video.clientHeight - 9 / 16) < .02));
     if (standalone) {
       const sound = card.locator('.clip-sound');
       assert(await player.evaluate(video => video.muted));
@@ -397,7 +381,7 @@ await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
 await verifyArticles(p);
 await verifyEp02Galleries(p);
-await verifyReelsAndPromos(p,lang,true);
+await verifyReelsAndPromos(p,lang);
 await verifyMapAndLocalVideos(p,false);
 await p.locator('#kushiro summary').click();
 assert(await p.locator('#kushiro .gallery').evaluate(el=>el.scrollWidth>el.clientWidth));
@@ -425,7 +409,7 @@ assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else {offlineRail=await railLayout(q);await verifyEp01MobileMedia(q);}
-if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang,false);await verifyMapAndLocalVideos(q,true);}
+if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang);await verifyMapAndLocalVideos(q,true);}
 }await c.close();
-}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all six native videos, two-way locale navigation, downloads and responsive widths verified.');
+}assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all eight native videos, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});

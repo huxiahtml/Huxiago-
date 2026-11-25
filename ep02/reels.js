@@ -2,7 +2,7 @@
   let player = null;
 
   function moveFrame(frame, target) {
-    const playing = frame instanceof HTMLVideoElement && !frame.paused;
+    const playing = !frame.paused;
     target.append(frame);
     if (playing) frame.play().catch(() => {});
   }
@@ -51,34 +51,28 @@
     if (player?.figure === figure) return player.frame;
     if (player) {
       closeFloating(false);
-      player.frame.pause?.();
+      player.frame.pause();
       player.frame.remove();
       player.figure.classList.remove('is-loaded');
       syncClip(player.figure);
     }
-    const isVideo = Boolean(figure.dataset.video);
-    const frame = document.createElement(isVideo ? 'video' : 'iframe');
+    const frame = document.createElement('video');
+    const standalone = figure.matches('.canal-clip');
     frame.title = figure.querySelector('figcaption').textContent;
-    if (isVideo) {
-      frame.src = figure.dataset.video;
-      const standalone = figure.matches('.canal-clip');
-      frame.controls = !standalone;
-      frame.muted = standalone;
-      frame.defaultMuted = standalone;
-      frame.playsInline = true;
-      if (standalone) {
-        for (const event of ['play', 'pause', 'volumechange', 'ended']) {
-          frame.addEventListener(event, () => {
-            if (player?.frame === frame) syncClip(figure, frame);
-          });
-        }
+    frame.src = figure.dataset.video;
+    frame.controls = !standalone;
+    frame.muted = standalone;
+    frame.defaultMuted = standalone;
+    frame.playsInline = true;
+    frame.preload = 'metadata';
+    frame.tabIndex = 0;
+    frame.setAttribute('aria-label', frame.title);
+    if (standalone) {
+      for (const event of ['play', 'pause', 'volumechange', 'ended']) {
+        frame.addEventListener(event, () => {
+          if (player?.frame === frame) syncClip(figure, frame);
+        });
       }
-      frame.preload = 'metadata';
-      frame.tabIndex = 0;
-      frame.setAttribute('aria-label', frame.title);
-    } else {
-      frame.src = figure.dataset.embed;
-      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
     }
     figure.querySelector('.reel-viewport').append(frame);
     figure.classList.add('is-loaded');
@@ -134,11 +128,9 @@
     const figure = button.closest('.ep02-reel');
     if (button.matches('.ep01-reel-play, .clip-pause')) {
       const frame = play(figure);
+      if (frame.paused) frame.play().catch(() => {});
+      else frame.pause();
       if (button.matches('.ep01-reel-play')) frame.focus();
-      if (frame instanceof HTMLVideoElement) {
-        if (frame.paused) frame.play().catch(() => {});
-        else frame.pause();
-      }
     }
     if (button.matches('.clip-sound')) {
       const frame = play(figure);
