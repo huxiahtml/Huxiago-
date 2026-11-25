@@ -19,7 +19,7 @@
     }
   }
 
-  function closeFloating(restoreFocus = true) {
+  function closeFloating() {
     if (!player?.shell) return;
     const { figure, frame, shell, button } = player;
     if (figure.matches('.canal-clip')) frame.controls = false;
@@ -27,7 +27,8 @@
     shell.remove();
     player.shell = null;
     button.setAttribute('aria-pressed', 'false');
-    if (restoreFocus) button.focus();
+    if (!figure.closest('details.stop')?.open) frame.pause();
+    else button.focus({ preventScroll: true });
   }
 
   function makeDraggable(head, shell) {
@@ -50,11 +51,15 @@
   function play(figure) {
     if (player?.figure === figure) return player.frame;
     if (player) {
-      closeFloating(false);
-      player.frame.pause();
-      player.frame.remove();
-      player.figure.classList.remove('is-loaded');
-      syncClip(player.figure);
+      const { frame, figure: previous, shell, button } = player;
+      frame.pause();
+      frame.removeAttribute('src');
+      frame.load();
+      frame.remove();
+      shell?.remove();
+      button.setAttribute('aria-pressed', 'false');
+      previous.classList.remove('is-loaded');
+      syncClip(previous);
     }
     const frame = document.createElement('video');
     const standalone = figure.matches('.canal-clip');
@@ -64,7 +69,7 @@
     frame.muted = standalone;
     frame.defaultMuted = standalone;
     frame.playsInline = true;
-    frame.preload = 'metadata';
+    frame.preload = 'none';
     frame.tabIndex = 0;
     frame.setAttribute('aria-label', frame.title);
     if (standalone) {
@@ -138,6 +143,13 @@
       if (frame.paused) frame.play().catch(() => {});
     }
     if (button.matches('.reel-pip-launch')) float(figure);
+  });
+  document.querySelectorAll('details.stop').forEach(station => {
+    station.addEventListener('toggle', () => {
+      if (!station.open && player && !player.shell && station.contains(player.figure)) {
+        player.frame.pause();
+      }
+    });
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && player?.shell && !document.querySelector('dialog[open]')) {

@@ -25,7 +25,7 @@ class References(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
-        for key in ("src", "href", "poster"):
+        for key in ("src", "href", "poster", "data-video"):
             if values.get(key):
                 self.refs.append(values[key])
         if values.get("srcset"):
@@ -37,7 +37,8 @@ def safe_name(name: str) -> str:
     if (not name or name.startswith("/") or "\\" in name or
             any(part in (".", "..") or part.startswith(".") for part in path.parts)):
         raise ValueError(f"Unsafe archive path: {name!r}")
-    if not (name == "index.html" or name.startswith("media/") or
+    guide_photo = len(path.parts) == 2 and path.parts[0] == "ep02" and path.suffix == ".webp"
+    if not (name == "index.html" or name.startswith("media/") or guide_photo or
             (len(path.parts) == 1 and name.endswith(".html"))):
         raise ValueError(f"Unexpected site file: {name!r}")
     return name
@@ -89,7 +90,7 @@ def main() -> None:
         for html in stage.glob("*.html"):
             local_references(stage, html)
 
-        previous = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {"files": {}}
+        previous = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {"files": {}}
         for name in previous["files"]:
             safe_name(name)
             if name not in names:
@@ -100,7 +101,7 @@ def main() -> None:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dest)
             files[name] = {"bytes": src.stat().st_size, "sha256": hashlib.sha256(src.read_bytes()).hexdigest()}
-        MANIFEST.write_text(json.dumps({"files": dict(sorted(files.items()))}, ensure_ascii=False, indent=2) + "\n")
+        MANIFEST.write_text(json.dumps({"files": dict(sorted(files.items()))}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         archive.unlink()
         print(f"Validated and published {len(files)} complete site files")
 

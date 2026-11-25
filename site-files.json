@@ -713,28 +713,28 @@
       "sha256": "4bfb653ca59c569bcd6aec2e9a43ac37b8ffe4d5d76b8f5b79c1198c64b04fbc"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 14800721,
-      "sha256": "5cbb705c48b944405822909ae8bf16d97407f3a9ddc3f2d1b5620668907f7a67"
+      "bytes": 271399,
+      "sha256": "6902425935b5abcd0ca2419cbe9646e05cfb1aab5589fa684bc8572cfdca610a"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 25872715,
-      "sha256": "1b9773260bf809922be77a2dd1123c5cc0912cb835bae18d2bffaeee6d287cd5"
+      "bytes": 25874253,
+      "sha256": "53e43b0b72db1b5b1130b8c9bb42dce4f9fe19c36a95d61f65d216295bc3f7c3"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 14799594,
-      "sha256": "6619a5556f238fc4a69ee102887e6e8304c0d379606f7065781922fd5a5bd3c2"
+      "bytes": 271386,
+      "sha256": "c0425aec1c1a96435327d485cde9479d05d9cad4941cbf5563ce1a6aaf0b978a"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 25871584,
-      "sha256": "b69f968f6bdaae0e6dcdd9bdf8ddc4d7d9ca312992446c12034b70830663f166"
+      "bytes": 25873138,
+      "sha256": "88fa52b5447214700d238faaa68ee385371c398dbf88d3fba3edcd9a5c200d3b"
     },
     "ep02-en.html": {
-      "bytes": 14789476,
-      "sha256": "e65fcdd8f8ca0bdc08be4df6808ecaa43009871f0db68885ee1bad5daa797360"
+      "bytes": 271049,
+      "sha256": "90682eb11a5cfb068d72fe7968cc79f928ee8bde838b3fdea753fc96237d1ac1"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 25861493,
-      "sha256": "34d7f3bc0750142e80b860dcaf35e6b990f3aad6b47fbb328236a9417ef250b8"
+      "bytes": 25863047,
+      "sha256": "4ff950e8aefac630e583b3bbaf2fe224cad425d98e1c0aa21df83faf7d52f73b"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -775,6 +775,354 @@
     "media/ep02-silq-reel-offline.mp4": {
       "bytes": 1756232,
       "sha256": "dd71b1fc593b9f27949dff81879ff73cb28552e7fc22594cb99de54646ecc767"
+    },
+    "ep02/ep02-s1-01-1XcIuLo.webp": {
+      "bytes": 108600,
+      "sha256": "3ffdef25287ae3ea6c3ef99eb29a643b0668f2bbcb77c936ba8228e18c1ac3c8"
+    },
+    "ep02/ep02-s1-02-1Aq_LEG.webp": {
+      "bytes": 30684,
+      "sha256": "6e025761f6f18427eed6fba53ed283257d80c3fab3164a066e6e09899844500f"
+    },
+    "ep02/ep02-s1-03-1ywTPjs.webp": {
+      "bytes": 50334,
+      "sha256": "df10fa05e39b0095f789ec7ac568347734ef2eb2e9c36a5f4950c17f7676c25c"
+    },
+    "ep02/ep02-s1-04-1A4RKh8.webp": {
+      "bytes": 65812,
+      "sha256": "f7ab6ff79210f1ec6d73ecdfef02bd7476c2839f392b75f5d43bae3bf3c66b11"
+    },
+    "ep02/ep02-s1-05-11TP3Tk.webp": {
+      "bytes": 44676,
+      "sha256": "27e508d90261cce6ec53aea64971710a1923a643eb62e7d74b2bb00136941a65"
+    },
+    "ep02/ep02-s1-06-1OBx8Ez.webp": {
+      "bytes": 73488,
+      "sha256": "ada27c504108444370e5c2492eb520e3f39318ec26367eed40e71e4700c4f081"
+    },
+    "ep02/ep02-s1-07-14CJVzV.webp": {
+      "bytes": 45178,
+      "sha256": "46734e138f1ace399b220dede825b2b2d6e907f62389f81aa1c10ac4702d6785"
+    },
+    "ep02/ep02-s1-08-1AAWIBm.webp": {
+      "bytes": 69416,
+      "sha256": "03242b0ea7c334e9fc4ad2355d9cf8c8e15de66271edb0bb58d0deb999874d59"
+    },
+    "ep02/ep02-s1-09-1wDtCKq.webp": {
+      "bytes": 38650,
+      "sha256": "4e16e17cd64e7882be576224300711e0fb9ea8b47925ee4c5c10a95ca4e68fbf"
+    },
+    "ep02/ep02-s1-10-1xpEuBr.webp": {
+      "bytes": 47992,
+      "sha256": "34d41af5a2060ded76a961851837d096afe1e37155a8d1bef2d8119838b3bb43"
+    },
+    "ep02/ep02-s2-01-1J3-9Cy.webp": {
+      "bytes": 50446,
+      "sha256": "e72bc350d294a6eb92584053baafd1bc3680ecd7f357d02353356b941af7d9db"
+    },
+    "ep02/ep02-s2-02-1J2omPZ.webp": {
+      "bytes": 51634,
+      "sha256": "670a1182e0f260ce5e0d29d6c3bf74545b77c0f5ea6af0ee742ab662b4fdcb27"
+    },
+    "ep02/ep02-s2-03-1NQrRUU.webp": {
+      "bytes": 34620,
+      "sha256": "d01abdc5f6c8002e7bf0b52a048facfcf4f062adefa594088dcd3240a9cf4c8c"
+    },
+    "ep02/ep02-s2-04-19zSb_N.webp": {
+      "bytes": 39914,
+      "sha256": "3096d5b82e68bec55365e76de978c971770e81137ad6d5966d161d9901813e4d"
+    },
+    "ep02/ep02-s2-05-1FoZzdm.webp": {
+      "bytes": 182176,
+      "sha256": "659981f3010d6fb4b93afed69e59ebf269faa1ba545d872083feea9d118862e6"
+    },
+    "ep02/ep02-s2-06-1iYnn0T.webp": {
+      "bytes": 38578,
+      "sha256": "7aa244afd88131b16d966e250accaf74fa3066d41784f6cc12e7ca6df94037e5"
+    },
+    "ep02/ep02-s2-07-1fLYYpe.webp": {
+      "bytes": 79650,
+      "sha256": "a60ff43c6472c8ed8f92b9ff8b48433746ca0652674c6464da0b3a6ab9df4df1"
+    },
+    "ep02/ep02-s2-08-13Ze4EH.webp": {
+      "bytes": 26700,
+      "sha256": "ae638cfe3077f58b3aa1dc9565f1f849cd2590a03a207d1ee013a936b0718d24"
+    },
+    "ep02/ep02-s2-09-1L8uvCZ.webp": {
+      "bytes": 48132,
+      "sha256": "eb2e5071b63075cfe71b9a108522b1ab89cbec94b2d55ae9c132448895e41557"
+    },
+    "ep02/ep02-s2-10-191T8Mn.webp": {
+      "bytes": 81390,
+      "sha256": "82c0b8710fee7a2e685244c6d49f20417dc091749458c8adb17263641b4b2e95"
+    },
+    "ep02/ep02-s3-01-1234JtZ.webp": {
+      "bytes": 84402,
+      "sha256": "7b86c0ce18f346f4826e1984adb835f5f08d3bfaf0c8d399a9808c8f532a755a"
+    },
+    "ep02/ep02-s3-02-15Aattm.webp": {
+      "bytes": 73160,
+      "sha256": "b3c9ba490d96e3c8f68f7765a84b3ef7d8ad744d763e512635a00ca3eda5e687"
+    },
+    "ep02/ep02-s3-03-1xwx8h9.webp": {
+      "bytes": 88972,
+      "sha256": "cd590d45dd5be6f01e64131ec9adf86e62d300c9e5982101256d458645791db7"
+    },
+    "ep02/ep02-s3-04-1DajDAr.webp": {
+      "bytes": 102210,
+      "sha256": "3b5e357d81d0a8b8ce859db8881478bee11dba9f81cc47297260c2e24037826c"
+    },
+    "ep02/ep02-s3-05-1BcdQsV.webp": {
+      "bytes": 76900,
+      "sha256": "8a12d19aea375a2ff83c8afd2f33f5547868370fdcca34b6cb3598c4cb1bd2d7"
+    },
+    "ep02/ep02-s3-06-14wsBay.webp": {
+      "bytes": 181222,
+      "sha256": "aa78bd337c649c0f00b2e9fdc24d023aa635552d0e6442fc3531681d406f39d5"
+    },
+    "ep02/ep02-s3-07-17H8VhK.webp": {
+      "bytes": 221592,
+      "sha256": "7bf083de631e93a02b4ef7eafc236a40fe7d86b7a7c59eb81800702ee41912e4"
+    },
+    "ep02/ep02-s3-08-1aSR9Bu.webp": {
+      "bytes": 221540,
+      "sha256": "0cd3860ce9f82c20697e794127440c77c2376b3ead4de6b0e6ad233ffe33f436"
+    },
+    "ep02/ep02-s3-09-1GCIUdN.webp": {
+      "bytes": 255090,
+      "sha256": "3ad41a3f9a3e4938d5634b4f714c435f8da0a95bfd203bd936f7dd8a6fb6054e"
+    },
+    "ep02/ep02-s3-10-1FxFbB3.webp": {
+      "bytes": 79464,
+      "sha256": "3cfb12bb3f26b337031fa8271aca0aee442227cedc3c6665d8d7051f51795ec2"
+    },
+    "ep02/ep02-s3-11-1rkO930.webp": {
+      "bytes": 81024,
+      "sha256": "3c91fc9000a46fe77251ed6d6a4cdcc3ea8c9c5e7fc51aa72956f4967aac9ac7"
+    },
+    "ep02/ep02-s3-12-1KoOB51.webp": {
+      "bytes": 70920,
+      "sha256": "d45dad6c95cd094a8f279d94e15692aab6804675abf884216c6bcdc9cae2846e"
+    },
+    "ep02/ep02-s4-01-1Vs_Yx4.webp": {
+      "bytes": 72294,
+      "sha256": "197a598aeeff589273d211d6e19a5d6e4a6728b4fd867b0ebbd1d6616d8fc0ca"
+    },
+    "ep02/ep02-s4-02-17EI1qp.webp": {
+      "bytes": 101484,
+      "sha256": "0ce86f46497350584d3bca850173ce114b6a38c8e86b49fe372d25b4f32008a3"
+    },
+    "ep02/ep02-s4-03-1sviiT8.webp": {
+      "bytes": 111808,
+      "sha256": "c5fd33914f543341950354aef283a568dbb29ec0950c9defd3bc4b397df2bc5b"
+    },
+    "ep02/ep02-s4-04-1ujEMtU.webp": {
+      "bytes": 118856,
+      "sha256": "2358e73f3966ac57f31818e78603e796215db3049d23e5f147261c9b49da93b9"
+    },
+    "ep02/ep02-s4-05-1ihkWFx.webp": {
+      "bytes": 50534,
+      "sha256": "c8ad3db8f596782ee1685c72c64dc73800973d277924d4d49ec29229659d102a"
+    },
+    "ep02/ep02-s4-06-1H9EmmY.webp": {
+      "bytes": 26126,
+      "sha256": "dc5df821505d6099c4c59b236474f6eef53e2f4f59b83072af2ae6052ff66ade"
+    },
+    "ep02/ep02-s4-07-1XUNx8N.webp": {
+      "bytes": 145518,
+      "sha256": "f54670e785738ce78a3280c1d05b707339f814a1b7dfee0d707eceadbfab3cee"
+    },
+    "ep02/ep02-s4-08-1PoXBvd.webp": {
+      "bytes": 119770,
+      "sha256": "b592b7bab256f9624cbe03223758c6f7b06a20ae0d3834f441653e1da928f777"
+    },
+    "ep02/ep02-s4-09-1F-6UgB.webp": {
+      "bytes": 133274,
+      "sha256": "7f068f0611f24ba03086885fb3cad5a3189313e5023f114eaee5710c10e6daed"
+    },
+    "ep02/ep02-s4-10-1R_NhRS.webp": {
+      "bytes": 76840,
+      "sha256": "97fb96e503e101f86d8d50c873a21db8b1436412db2ed0199f952dbe699c450a"
+    },
+    "ep02/ep02-s5-01-1NrIIdT.webp": {
+      "bytes": 183204,
+      "sha256": "4a565502bfaba8f898f45573ed1b6a79e284f867aff0634c639b48994360bca1"
+    },
+    "ep02/ep02-s5-02-1jd3J1-.webp": {
+      "bytes": 58012,
+      "sha256": "787e109f13ec162f89793c88629363470783a72d2ce430a857271192a60f756e"
+    },
+    "ep02/ep02-s5-03-1GjTSql.webp": {
+      "bytes": 95220,
+      "sha256": "d485d1d1fb21b8eacfa4d8ab3f25a30fbe3d52634396e95f98b585939f0f9e30"
+    },
+    "ep02/ep02-s5-04-11HfzmV.webp": {
+      "bytes": 137342,
+      "sha256": "bdf473378f88a8d34979c44b42f7ba6fa8142e2d777e9d5aefe5cfa43786a427"
+    },
+    "ep02/ep02-s5-05-18qpMmM.webp": {
+      "bytes": 80404,
+      "sha256": "0181aed6e5e3ced452a4cfe39896e88ee27b61bfccc67ec88fde82cd9b102fca"
+    },
+    "ep02/ep02-s5-06-1I21dnI.webp": {
+      "bytes": 81628,
+      "sha256": "0082c54a9674f3de59fcb3685162198922d0c249cc6bf658c73f8ae505555b11"
+    },
+    "ep02/ep02-s5-07-1VIokEX.webp": {
+      "bytes": 48274,
+      "sha256": "48a713d1dc6613e628ca59054a6b797040e2aca680e0e5abf12ceac32eb49ca3"
+    },
+    "ep02/ep02-s5-08-1iue4E4.webp": {
+      "bytes": 124278,
+      "sha256": "24beb4565fbf4a29437149e5a8a9fda25d3e0fd310e25c50379c3c06c8370c00"
+    },
+    "ep02/ep02-s5-09-1vg8sul.webp": {
+      "bytes": 166566,
+      "sha256": "57ba72461a71c870509860834c4a8247bc44367214c01296f5895dcaca54a1c4"
+    },
+    "ep02/ep02-s5-10-1NZ4y0e.webp": {
+      "bytes": 193062,
+      "sha256": "145032ab1e03632e4a123f5fe4224fd1d92bdcc925e40d8346fe52ac44b0f46e"
+    },
+    "ep02/ep02-s5-11-1kLPG5z.webp": {
+      "bytes": 237536,
+      "sha256": "05210b813a73116cf6cc7614e42b628a071f938e7693c4f3ed20bfce7f8a4a63"
+    },
+    "ep02/ep02-s5-12-14oI5A9.webp": {
+      "bytes": 359418,
+      "sha256": "61ebe67cba6dec9cfd832279416e1054f8d99123a20f05d02a2ce25996831aad"
+    },
+    "ep02/ep02-s6-01-12hjwX_.webp": {
+      "bytes": 163758,
+      "sha256": "8119d26cff77c41d8ca5b313a0404bf8ef4f9bde002bb591d844a368547fc8da"
+    },
+    "ep02/ep02-s6-02-1-kY7KP.webp": {
+      "bytes": 301794,
+      "sha256": "424282a034fa55a84ebacceac71fe29143a229d1320631140e5767341a4196f5"
+    },
+    "ep02/ep02-s6-03-1Xs42f6.webp": {
+      "bytes": 179994,
+      "sha256": "d7105db452f851df7f6dbfcbf3c5af6333c325f068c95724ccd8de2afc1b2e26"
+    },
+    "ep02/ep02-s6-04-1zB5ge-.webp": {
+      "bytes": 162930,
+      "sha256": "f6e71f0280e0e443b8c55186d12273ee0e0b146518635f53a8f2cedd093fe1e5"
+    },
+    "ep02/ep02-s6-05-1AKwWEn.webp": {
+      "bytes": 223006,
+      "sha256": "21ee20ec5f2f7ba0a7d2ff66c92036aa87d69e7b2e49bad46d33b4d9842de04b"
+    },
+    "ep02/ep02-s6-06-1oyVL9r.webp": {
+      "bytes": 184448,
+      "sha256": "1489abcdb94a737861b7973864521baa26c5fbbe9d31f576e5a7c401d5e10950"
+    },
+    "ep02/ep02-s6-07-1hJN27h.webp": {
+      "bytes": 236856,
+      "sha256": "5a65246154adb39367289f940557d72a50505aaf073a16296ef42d1734977a99"
+    },
+    "ep02/ep02-s6-08-1Q0gdrO.webp": {
+      "bytes": 122876,
+      "sha256": "14c6652e1dd7ea14eac2ca427fd102d223f883c6527d36f7fff78b589f97b0e8"
+    },
+    "ep02/ep02-s6-09-1RhBReh.webp": {
+      "bytes": 60682,
+      "sha256": "67aef1d31b8421f39de583cadf5bc527534aeb650d0829251201ed02e9c1b4c8"
+    },
+    "ep02/ep02-s6-10-1z6fNBT.webp": {
+      "bytes": 104406,
+      "sha256": "263d0579947345bc48ba8bba05ec84d2917055d560eb9310e9928c7e713c2128"
+    },
+    "ep02/ep02-s7-01-1lj1UWO.webp": {
+      "bytes": 159418,
+      "sha256": "6d6f8772c9b0e78716f290a4b76e052d056c97fd6ec698e95d234b5a6edba105"
+    },
+    "ep02/ep02-s7-02-1Sdw153.webp": {
+      "bytes": 221572,
+      "sha256": "9053216319d8c3f8a78f2b6f511fe5aa1f886c4926874f5a26b2c0ebd87d7248"
+    },
+    "ep02/ep02-s7-03-1tWjZX8.webp": {
+      "bytes": 185164,
+      "sha256": "b3193caeb9e007047c3c893b71c58cdc5cfa8d0b3af244cdcaf106a1dc60e472"
+    },
+    "ep02/ep02-s7-04-1L6_7Xr.webp": {
+      "bytes": 48658,
+      "sha256": "8217b987b73b1d956302c9e43af8f83ba3961f533f6a0994111ca3883a297d1e"
+    },
+    "ep02/ep02-s7-05-1DB2pez.webp": {
+      "bytes": 175574,
+      "sha256": "6f8dfa62964015bda1f978370746ab7bc685dbf4568b35cac9a34c8300c777e1"
+    },
+    "ep02/ep02-s7-06-1Faxjym.webp": {
+      "bytes": 137826,
+      "sha256": "c711aaf89a63666d6d4e4002ffc1d449841416e5daab1d5c298febc4c34ee25b"
+    },
+    "ep02/gan-da-egg-poster.webp": {
+      "bytes": 31420,
+      "sha256": "4929006b5c0761513b2fb0d8edef4eb99dbe3eef7d89ab298e84de7c251dfe6e"
+    },
+    "ep02/gan-da-wok-poster.webp": {
+      "bytes": 23140,
+      "sha256": "a43e0efaf8ed06aa84766752a23471dd1eb77c21c2962ffb91260ce984068ea0"
+    },
+    "ep02/kushiro-coupon-logo.webp": {
+      "bytes": 15166,
+      "sha256": "c790c8a248383996cd370b46e3363b66f8046f2889276267a25fc4b4b10efabc"
+    },
+    "ep02/kushiro-coupon-sushi.webp": {
+      "bytes": 34040,
+      "sha256": "9a2641751bda3cf2f35130589a1beea26bdeaa160c4e70ff9142a8824adb37d2"
+    },
+    "ep02/kushiro-doc-image.webp": {
+      "bytes": 47810,
+      "sha256": "851f92fd2ca9fdf215c24e55bdae5a63b647c6212b3f6728082247b7ff89f1c9"
+    },
+    "ep02/saen-saep-boarding-poster.webp": {
+      "bytes": 39744,
+      "sha256": "d78868d74faad36f9c656968a59275e3f5ef6c81fd5293368aeef7edcbc013ca"
+    },
+    "ep02/saen-saep-captain-poster.webp": {
+      "bytes": 39020,
+      "sha256": "920f064992c5e237dd79f581218fad5f5de8974c785e03a3347e29728b8af37c"
+    },
+    "ep02/saen-saep-doc-map.webp": {
+      "bytes": 77772,
+      "sha256": "8b017edae22b9ade0e82361b727c638a1aee0a9bab1b900f002146f8dbcf3728"
+    },
+    "ep02/saen-saep-ride-poster.webp": {
+      "bytes": 29222,
+      "sha256": "a75ad1fa43f3a677822a1f0572363b23513b3272200bf1132c83e6f87767437a"
+    },
+    "ep02/silq-awards-poster.webp": {
+      "bytes": 59952,
+      "sha256": "9978bd4dea4f9eb9dfedf18fa4185768389f639418b10c8d474e8ba32750575a"
+    },
+    "ep02/silq-coupon-lobby.webp": {
+      "bytes": 111194,
+      "sha256": "5819ffca199d054ac8fbcfac752fd1880fe8d2a0498f5755cbc3941530570f40"
+    },
+    "ep02/silq-coupon-logo.webp": {
+      "bytes": 2750,
+      "sha256": "27314604449fffac9be97802be9770c55dc0c49d68d29e68b6fc0f40aa205335"
+    },
+    "ep02/silq-gold-logo.webp": {
+      "bytes": 147590,
+      "sha256": "b0db0d3f0f276b20b6fe0a3d940c80691e984bc09f8626abbccffa3b7176d728"
+    },
+    "ep02/silq-lobby-lounge.webp": {
+      "bytes": 119204,
+      "sha256": "5d4e2cccaf72e41ae956dcdd07984eeb83ebd5b6c2e89962fc5e0f8ecc91d258"
+    },
+    "ep02/silq-reception.webp": {
+      "bytes": 112280,
+      "sha256": "d07c8710dd48dbe3e593c30e733ff9e03777b943cf87ee9b2ef7fdf364658c74"
+    },
+    "ep02/silq-reel-dfixxhitf4c.webp": {
+      "bytes": 57508,
+      "sha256": "f94020081aaedb8f978987ae1629369a374e85377578785e01bac163c105d6d1"
+    },
+    "ep02/silq-shuttle.webp": {
+      "bytes": 147940,
+      "sha256": "12f106efec8e8b9110425ecf49ac05540fb8b4b7c429dadc1f91308f941f1870"
     }
   }
 }

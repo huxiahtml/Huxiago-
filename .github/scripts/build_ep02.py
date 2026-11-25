@@ -20,6 +20,14 @@ def data_uri(path, mime):
     return f'data:{mime};base64,{base64.b64encode(raw).decode("ascii")}'
 
 
+def media_source(path, mime, offline):
+    return data_uri(ROOT / path, mime) if offline else path
+
+
+def guide_photo(filename, offline):
+    return media_source(f"ep02/{filename}", "image/webp", offline)
+
+
 REEL_LABELS = (
     ("播放影片", "原片 ↗", "浮動播放", "關閉浮動影片"),
     ("播放视频", "原片 ↗", "浮动播放", "关闭浮动视频"),
@@ -62,8 +70,7 @@ def reel_card(title, index, poster="", video="", original=""):
 
 
 def video_source(filename, offline):
-    path = f"media/{filename}"
-    return data_uri(ROOT / path, "video/mp4") if offline else path
+    return media_source(f"media/{filename}", "video/mp4", offline)
 
 
 def instagram_card(url, title, index, poster, sources, offline):
@@ -72,10 +79,10 @@ def instagram_card(url, title, index, poster, sources, offline):
     return reel_card(title, index, poster, video=video, original=url)
 
 
-def photo_figure(asset, index, css_class=""):
+def photo_figure(asset, index, offline, css_class=""):
     filename, *captions = asset
     caption = escape(captions[index], quote=True)
-    src = data_uri(ROOT / "ep02" / filename, "image/webp")
+    src = guide_photo(filename, offline)
     class_attr = f' class="{css_class}"' if css_class else ""
     return (f'<figure{class_attr}><img src="{src}" alt="{caption}" loading="lazy" decoding="async">'
             f'<figcaption>{caption}</figcaption></figure>')
@@ -108,7 +115,7 @@ def story_clips(assets, index, offline):
     clips = []
     for filename, hant, hans, english, entry in assets:
         caption = escape((hant, hans, english)[index])
-        poster = data_uri(ROOT / "ep02" / filename, "image/webp")
+        poster = guide_photo(filename, offline)
         src = video_source(entry["video"], offline)
         clips.append(
             f'<figure class="clip canal-clip ep02-reel" data-kind="video" data-video="{src}" data-close="{close}">'
@@ -128,7 +135,7 @@ def gallery(assets, index, offline, reel_sources):
     for filename, hant, hans, english, *links in assets:
         if links:
             caption = (hant, hans, english)[index]
-            src = data_uri(ROOT / "ep02" / filename, "image/webp")
+            src = guide_photo(filename, offline)
             entry = links[0]
             if isinstance(entry, dict):
                 video = video_source(entry["video"], offline)
@@ -136,7 +143,7 @@ def gallery(assets, index, offline, reel_sources):
             else:
                 figures.append(instagram_card(entry, caption, index, src, reel_sources, offline))
         else:
-            figures.append(photo_figure((filename, hant, hans, english), index))
+            figures.append(photo_figure((filename, hant, hans, english), index, offline))
     return '<div class="gallery">' + "".join(figures) + '</div>'
 
 
@@ -202,7 +209,7 @@ def add_ep01_locations(source, locations, lang, online):
     return updated
 
 
-def deal_content(deals, index):
+def deal_content(deals, index, offline=True):
     cards = []
     for key, offer in deals.items():
         icon = ticket_icon(offer["category"])
@@ -218,10 +225,10 @@ def deal_content(deals, index):
             )
             continue
         if "photo" in offer:
-            src = data_uri(ROOT / "ep02" / offer["photo"], "image/webp")
+            src = guide_photo(offer["photo"], offline)
             logo = ""
             if "photo_logo" in offer:
-                logo_src = data_uri(ROOT / "ep02" / offer["photo_logo"], "image/webp")
+                logo_src = guide_photo(offer["photo_logo"], offline)
                 logo = f'<img class="ticket-photo-logo" src="{logo_src}" alt="" loading="lazy" decoding="async">'
             middle = (
                 f'<div class="ticket-photo"><img class="ticket-photo-image" src="{src}" alt="" '
@@ -313,8 +320,8 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
         rail = rail.replace(localized_nav, localized_nav.split(">", 1)[0] + ">" + nav.split(">", 1)[1])
     rail = rail.replace("Ep.01", "Ep.02").replace(">12 ", f">{count} ")
     cover = extract(localized, r'<header class="cover"[^>]*>.*?</header>').replace("Ep.01", "Ep.02")
-    title_src = data_uri(ROOT / f"media/huxiago-title-{TITLE_ART[lang]}.svg", "image/svg+xml")
-    hero_src = data_uri(ROOT / "media/ea863e999767b920.webp", "image/webp")
+    title_src = media_source(f"media/huxiago-title-{TITLE_ART[lang]}.svg", "image/svg+xml", offline)
+    hero_src = media_source("media/ea863e999767b920.webp", "image/webp", offline)
     cover = re.sub(r'(<img class="cover-title-art") [^>]*src="[^"]+"',
                    lambda m: f'{m[1]} src="{title_src}"', cover, count=1)
     cover = re.sub(r'(<div class="hero"><img [^>]*src=")[^"]+("[^>]*><span>)[^<]+',
@@ -323,6 +330,7 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     cover = re.sub(r'(<span class="cover-title-sub">)[^<]+',
                    lambda m: m[1] + escape(labels["bangkok"]), cover, count=1)
     if not offline:
+        cover = cover.replace("\r\n", "\n")
         language = extract(donor, r'<div class="hux-language-bar">.*?</div></div>')
         language = re.sub(r'(data-hux-lang="([^"]+)"[^>]+aria-pressed=")(?:true|false)',
                           lambda m: m[1] + str(m[2] == lang).lower(), language)
@@ -342,6 +350,10 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     cover = cover.replace(f'href="" download="{legacy_download}"', f'href="{download}" download="{download}"')
     mobile_nav = extract(localized, r'<nav [^>]*class="pocket-nav"[^>]*>.*?</nav>')
     about = extract(localized, r'<section class="about-huxia"[^>]*>.*?</section>')
+    if not offline:
+        about_src = extract(donor, r'(?<=<figure class="about-photo"><img src=")[^"]+')
+        about = re.sub(r'(<figure class="about-photo"><img src=")[^"]+',
+                       lambda m: m[1] + about_src, about, count=1).replace("\r\n", "\n")
     about = re.sub(r'<p>[^<]*Ep\.02[^<]*</p>', lambda _: f'<p>{escape(labels["about_follow"])}</p>', about)
     footer_link = extract(localized, r'<a class="hux-back-top"[^>]*>.*?</a>')
     return rail, cover, mobile_nav, about, footer_link
@@ -393,10 +405,10 @@ ROUTE_MAP_TEXT = (
 )
 
 
-def route_map(filename, index):
+def route_map(filename, index, offline):
     title = ("盛桑運河快船路線圖", "盛桑运河快船路线图", "Saen Saep canal route map")[index]
     label = ("開啟原網站互動路線圖", "打开原网站互动路线图", "Open the original interactive map")[index]
-    src = data_uri(ROOT / "ep02" / filename, "image/webp")
+    src = guide_photo(filename, offline)
     return (f'<figure class="route-map"><a class="route-map-open" href="https://www.saensaebcanal.com/" '
             f'target="_blank" rel="noopener noreferrer"><img src="{src}" alt="{escape(title)}" '
             f'loading="lazy" decoding="async"><span>{escape(label)} ↗</span></a></figure>')
@@ -422,12 +434,12 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
             elif "promo" in block:
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
-                poster = data_uri(ROOT / "ep02" / block["poster"], "image/webp") if "poster" in block else ""
+                poster = guide_photo(block["poster"], offline) if "poster" in block else ""
                 parts.append(instagram_card(block["reel"], block["title"], index, poster, reel_sources, offline))
             elif "route_map" in block:
-                parts.append(route_map(block["route_map"], index))
+                parts.append(route_map(block["route_map"], index, offline))
             elif "photo" in block:
-                parts.append(photo_figure(photos[block["photo"]], index, "story-photo"))
+                parts.append(photo_figure(photos[block["photo"]], index, offline, "story-photo"))
             else:
                 parts.append(story_table(block["table"]))
     return "".join(parts)
@@ -445,11 +457,10 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     css += "\n" + CSS.read_text(encoding="utf-8-sig")
     css = "\n".join(line.rstrip() for line in css.splitlines())
     share = script(localized, "v10-share-and-details-script").replace("Ep.01", "Ep.02")
-    share = share.replace('.toc a[href^="#spot-"]', '.toc a.toc-item')
-    share = share.replace(
-        "      closeAllDetails(target);",
-        "      if (location.hash !== a.hash) history.pushState(null, '', a.hash);\n      closeAllDetails(target);",
-        1,
+    share = share[:share.index('  const closeAllDetails=')] + '})();\n</script>'
+    motion = script(donor, "v17-details-motion").replace(
+        "      e.preventDefault();",
+        "      if (huxMobileStations.matches && !details.__huxAnimation) return;\n      e.preventDefault();",
     )
     canonical = json.dumps(f"https://huxiago.com/ep02-{lang}.html")
     share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {canonical};", share, count=1)
@@ -458,11 +469,12 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         script(localized, "v12-share-positioning"),
         script(donor, "v15-rail-navigation"),
         script(localized, "v16-get-guide-script").replace(legacy_download, f"HUXIAGO_Bangkok_EP02_{lang}.html"),
-        script(donor, "v17-details-motion"),
+        motion,
         script(donor, "v22-draggable-share"),
         "" if offline else script(donor, "episode-picker-script"),
     ))
     reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
+    navigation = (ROOT / "ep02/navigation.js").read_text(encoding="utf-8")
     category = data["categories"]
     toc = []
     stops = []
@@ -481,8 +493,8 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         media = gallery(photos, ix, offline, reel_sources) if photos and s.get("gallery_layout") != "inline" else ""
         video_section = story_clips(clips, ix, offline) if clips else ""
         if assets:
-            src = data_uri(ROOT / "ep02" / assets[0][0], "image/webp")
-            thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy">'
+            src = guide_photo(assets[0][0], offline)
+            thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy" decoding="async">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
         story = render_story(stories[s["id"]][ix], deals, assets, ix, offline, reel_sources)
@@ -526,7 +538,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-{deal_content(deals, ix)}</section>"""
+{deal_content(deals, ix, offline)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>
@@ -554,28 +566,10 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 {back_top}
 <footer class="footer">HUXIAGO Ep.02 · {escape(t[14] if offline else t[18])}</footer>
 </div>
-<script>
-const buttons = [...document.querySelectorAll('[data-filter]')];
-const rows = [...document.querySelectorAll('.toc-item')];
-buttons.forEach((button, index) => button.addEventListener('click', () => {{
-  buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  rows.forEach(row => {{ row.hidden = index !== 0 && row.dataset.category !== button.dataset.filter; }});
-}}));
-document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventListener('click', () => {{
-  location.href = 'ep02-' + button.dataset.huxLang + '.html' + location.hash;
-}}));
-</script>
+<script>const huxMobileStations = matchMedia('(max-width: 979px)');</script>
 {scripts}
+<script>{navigation}</script>
 <script>{reel_script}</script>
-<script>
-document.getElementById('about').before(document.getElementById('share-strip'));
-function openLinkedStation() {{
-  const station = document.getElementById(location.hash.slice(1));
-  if (station?.matches('details.stop')) station.open = true;
-}}
-openLinkedStation();
-addEventListener('hashchange', openLinkedStation);
-</script>
 </body>
 </html>
 """
@@ -613,6 +607,11 @@ def build():
     manifest_path = ROOT / "site-files.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     for name, raw in outputs.items():
+        manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    photos = {name.decode() for lang in LOCALES
+              for name in re.findall(rb' src="(ep02/[^"/]+\.webp)"', outputs[f"ep02-{lang}.html"])}
+    for name in sorted(photos):
+        raw = (ROOT / name).read_bytes()
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for assets in galleries.values():
         for _, _, _, _, *entries in assets:

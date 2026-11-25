@@ -5,7 +5,7 @@ const {pathToFileURL}=require('node:url');
 const links=['https://esimconnect.com.tw/#/access/esimbuy?region=泰國&referencecode=HUXIAGO','https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago'];
 const silqLink='https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI';
 const offers = require('../docs/shared-deals.json');
-const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname));if(!p.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(p,(e,v)=>{if(e){res.writeHead(404);return res.end()}res.setHeader('Content-Type',p.endsWith('.html')?'text/html; charset=utf-8':p.endsWith('.mp4')?'video/mp4':'application/octet-stream');res.end(v)})});
+const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname));if(!p.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(p,(e,v)=>{if(e){res.writeHead(404);return res.end()}res.setHeader('Content-Type',p.endsWith('.html')?'text/html; charset=utf-8':p.endsWith('.mp4')?'video/mp4':p.endsWith('.webp')?'image/webp':p.endsWith('.svg')?'image/svg+xml':'application/octet-stream');res.end(v)})});
 const locations = require('../docs/guide-locations.json');
 const mapDestinations = places => places.map(place => place.url);
 async function verifyMaps(page, issue) {
@@ -37,7 +37,7 @@ async function verifyMaps(page, issue) {
   assert.equal(await silq.getAttribute('target'), '_blank');
   assert.match(await page.locator('#silq .story-copy').textContent(), /2027.*HUXIATHAI|HUXIATHAI.*2027/);
 }
-async function affirm(page, locale) {
+async function affirm(page, locale, offlinePhotos = true) {
   const cards=page.locator('#deals [data-shared-deal]');
   assert.equal(await cards.count(), 3);
   const actions = cards.locator('.ticket-cta');
@@ -53,11 +53,12 @@ async function affirm(page, locale) {
   const logos = cards.locator('.ticket-photo-logo');
   assert.equal(await photos.count(), 2);
   assert.equal(await logos.count(), 2);
-  await cards.locator('.ticket-photo img').evaluateAll(images=>Promise.all(images.map(async image=>{
+  await cards.locator('.ticket-photo img').evaluateAll((images, embedded)=>Promise.all(images.map(async image=>{
     image.loading='eager';
     await image.decode();
-    if (!image.naturalWidth || !image.src.startsWith('data:image/webp;')) throw Error('Offer image is not available offline');
-  })));
+    const prefix = embedded ? 'data:image/webp;' : 'ep02/';
+    if (!image.naturalWidth || !image.getAttribute('src').startsWith(prefix)) throw Error('Offer image failed to load');
+  })), offlinePhotos);
 }
 async function verifySharedOfferStyle(page) {
   const styles = await page.locator('#deals [data-shared-deal]').evaluateAll(cards => {
@@ -163,7 +164,7 @@ const galleryCounts = {
   kushiro: 10, silq: 16, 'gan-da': 14, 'hani-spa': 10,
   chowchercof: 12, 'bang-sue-junction': 10, 'saen-saep': 6,
 };
-async function verifyEp02Galleries(page) {
+async function verifyEp02Galleries(page, offline) {
   for (const [id, count] of Object.entries(galleryCounts)) {
     const stop = page.locator('#' + id);
     await stop.evaluate(details => { details.open = true; });
@@ -180,15 +181,16 @@ async function verifyEp02Galleries(page) {
       assert.match(captions[5].caption, /Mono Loop/);
     }
     assert.equal(await images.count(), count, id + ' gallery photo count');
-    const complete = await images.evaluateAll(async items => {
+    const complete = await images.evaluateAll(async (items, embedded) => {
       return Promise.all(items.map(async img => {
         img.loading = 'eager';
         await img.decode();
         const caption = img.closest('figure').querySelector('figcaption')?.textContent.trim();
-        return img.naturalWidth > 0 && img.src.startsWith('data:image/webp;') && caption &&
+        const prefix = embedded ? 'data:image/webp;' : 'ep02/';
+        return img.naturalWidth > 0 && img.getAttribute('src').startsWith(prefix) && caption &&
           img.alt === (img.closest('.ep02-reel') ? '' : caption);
       }));
-    });
+    }, offline);
     assert(complete.every(Boolean), id + ' photos, captions and alt text');
     await stop.evaluate(details => { details.open = false; });
   }
@@ -254,6 +256,40 @@ async function verifyReelsAndPromos(page, locale) {
   }
   await page.setViewportSize(normalWidth);
 }
+async function verifyEp02Directory(page) {
+  const originalSize = page.viewportSize();
+  await page.setViewportSize({width: 390, height: 844});
+  const filters = page.locator('.toc-filters button');
+  const rows = page.locator('.toc-list .toc-item');
+  for (const button of await filters.all()) {
+    await button.click();
+    assert.equal(await button.getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('.toc-filters [aria-pressed="true"]').count(), 1);
+    const all = await button.evaluate(el => el === el.parentElement.firstElementChild);
+    const category = await button.getAttribute('data-filter');
+    const actual = await rows.evaluateAll(links => links.filter(link => link.getClientRects().length).map(link => link.dataset.category));
+    assert.deepEqual(actual, all ? await rows.evaluateAll(links => links.map(link => link.dataset.category)) : [category]);
+    assert.equal(await page.locator('details.stop[open], video, iframe').count(), 0);
+  }
+  await filters.first().click();
+  const first = rows.first();
+  const last = rows.last();
+  await first.press('Enter');
+  const start = await first.getAttribute('href');
+  await page.waitForFunction(hash => location.hash === hash && document.querySelector(hash).open, start);
+  assert.equal(await page.locator(`${start} summary`).evaluate(el => el === document.activeElement), true);
+  await last.click();
+  const end = await last.getAttribute('href');
+  await page.waitForFunction(hash => location.hash === hash && document.querySelector(hash).open, end);
+  assert.equal(await page.locator('details.stop[open]').count(), 1);
+  await page.goBack();
+  await page.waitForFunction(hash => location.hash === hash && document.querySelector(hash).open, start);
+  assert.equal(await page.locator('details.stop[open]').count(), 1);
+  await page.goBack();
+  await page.waitForFunction(() => !location.hash && !document.querySelector('details.stop[open]'));
+  await page.setViewportSize(originalSize);
+}
+
 async function verifyMapAndLocalVideos(page, offline) {
   const originalSize = page.viewportSize();
   await page.setViewportSize({width: 390, height: 900});
@@ -328,8 +364,11 @@ async function verifyMapAndLocalVideos(page, offline) {
     }, before, {timeout: 5000});
     await page.keyboard.press('Escape');
     assert.equal(await card.locator('video').count(), 1);
-    await card.locator('video').evaluate(video => video.pause());
     await stop.evaluate(el => {el.open = false;});
+    await player.evaluate(video => {
+      if (video.paused) return;
+      return new Promise(resolve => video.addEventListener('pause', resolve, {once: true}));
+    }, null, {timeout: 5000});
   }
   await page.setViewportSize(originalSize);
 }
@@ -365,10 +404,11 @@ assert.equal(new Set(tickets.map(x=>x.icon)).size, 3);
 const reference = new Map();
 for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));await verifyPlaceholders(p);await verifySharedOfferStyle(p);}
 await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click();
-await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang);
+await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang,false);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
+await verifyEp02Directory(p);
 await verifyArticles(p);
-await verifyEp02Galleries(p);
+await verifyEp02Galleries(p,false);
 await verifyReelsAndPromos(p,lang);
 await verifyMapAndLocalVideos(p,false);
 await p.locator('#kushiro summary').click();
@@ -397,7 +437,7 @@ assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else {offlineRail=await railLayout(q);await verifyEp01MobileMedia(q);}
-if(name===file){await verifyArticles(q);await verifyEp02Galleries(q);await verifyReelsAndPromos(q,lang);await verifyMapAndLocalVideos(q,true);}
+if(name===file){await verifyArticles(q);await verifyEp02Galleries(q,true);await verifyReelsAndPromos(q,lang);await verifyMapAndLocalVideos(q,true);}
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all eight native videos, two-way locale navigation, downloads and responsive widths verified.');
 }finally{await b.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1;server.close()});
