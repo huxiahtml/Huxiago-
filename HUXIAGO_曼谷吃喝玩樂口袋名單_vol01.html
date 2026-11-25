@@ -1104,6 +1104,37 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   outline-offset: -5px;
 }
 
+/* Blend the merchant photograph into the ticket face, keeping the value readable. */
+.visual-v7 .ticket-feature .ticket-photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 48px;
+  background: linear-gradient(transparent, var(--ticket-face));
+  pointer-events: none;
+}
+.visual-v7 .ticket-feature:has(.ticket-photo) .ticket-discount {
+  position: relative;
+  margin-top: -17px;
+  min-height: 83px;
+  align-content: end;
+}
+.visual-v7 .ticket-feature .ticket-cta { justify-content: flex-start; margin-top: auto; }
+.visual-v7 .ticket-feature .ticket-cta-label {
+  display: inline-flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: .35em;
+  min-height: 39px;
+  padding: 6px 13px;
+  border: 1px solid #6a422e;
+  border-radius: 999px;
+  background: #fff3d1;
+  color: #513525;
+}
+.visual-v7 .ticket-feature .ticket-cta-label::before { content: "↗"; }
+.visual-v7 .ticket-feature .ticket-cta::after { content: none; }
+
 .visual-v7 .ticket-feature::before,
 .visual-v7 .ticket-feature::after {
   top: auto;

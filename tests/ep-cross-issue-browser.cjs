@@ -82,7 +82,7 @@ async function verifySharedOfferStyle(page) {
         fullWidth: Math.abs(action.getBoundingClientRect().width-card.clientWidth)<=1,
         atBottom: Math.abs(action.offsetTop+action.offsetHeight-card.clientHeight)<=1,
         photoAboveValue: !card.querySelector('.ticket-photo img') ||
-          card.querySelector('.ticket-photo').getBoundingClientRect().bottom <= amount.getBoundingClientRect().top,
+          card.querySelector('.ticket-photo').getBoundingClientRect().bottom <= amount.getBoundingClientRect().bottom,
       };
     });
   });
@@ -149,7 +149,7 @@ async function verifyArticles(page) {
     const card = page.locator('#' + id);
     const article = card.locator('.story-copy');
     assert.equal(await article.locator('.story-heading').count(), headings, id + ' headings');
-    assert.equal(await article.locator(':scope > p').count(), paragraphs, id + ' paragraphs');
+    assert.equal(await article.locator(':scope > p, :scope > details.pier-note > p').count(), paragraphs, id + ' paragraphs');
     assert.equal(await article.locator('table').count(), tables, id + ' tables');
     assert.equal(await card.locator('video, iframe').count(), 0, id + ' video deferred');
   }
@@ -264,24 +264,12 @@ async function verifyMapAndLocalVideos(page, offline) {
   assert(await transport.locator('.story-copy').isVisible());
   const map = transport.locator('.route-map-open');
   assert(await map.locator('img').evaluate(async img => {img.loading = 'eager'; await img.decode(); return img.naturalWidth > 1000;}));
-  const pageUrl = page.url();
-  await map.click();
-  const dialog = transport.locator('#canal-route');
-  assert(await dialog.isVisible());
-  const pins = dialog.locator('.canal-pin');
-  assert.equal(await pins.count(), 28);
-  assert(await dialog.locator('.canal-viewport').evaluate(el => el.scrollWidth > el.clientWidth));
-  await pins.nth(0).click();
-  await pins.nth(25).click();
-  assert.equal(await dialog.locator('.canal-from').inputValue(), '0');
-  assert.equal(await dialog.locator('.canal-to').inputValue(), '25');
-  assert.match(await dialog.locator('.canal-trip').textContent(), /Pratunam/);
-  assert((await dialog.locator('.canal-selected').getAttribute('points')).split(' ').length === 26);
-  await dialog.locator('.canal-from').selectOption('26');
-  assert.match(await dialog.locator('.canal-trip').textContent(), /向西|Westbound/);
-  assert.equal(page.url(), pageUrl);
-  await page.keyboard.press('Escape');
-  assert.equal(await dialog.isVisible(), false);
+  assert.equal(await map.getAttribute('href'), 'https://www.saensaebcanal.com/');
+  assert.equal(await map.getAttribute('target'), '_blank');
+  const notes = transport.locator('.pier-note');
+  assert.equal(await notes.count(), 6);
+  await notes.first().locator('summary').click();
+  assert(await notes.first().locator('p').isVisible());
   assert.equal(await transport.locator('.gallery figure[data-video]').count(), 0);
   assert.equal(await transport.locator('.story-video-track .canal-clip').count(), 3);
   await transport.evaluate(el => {el.open = false;});

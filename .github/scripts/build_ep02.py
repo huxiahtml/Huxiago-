@@ -394,56 +394,12 @@ ROUTE_MAP_TEXT = (
 
 
 def route_map(filename, index):
-    title, open_label, west, east, hint, board, arrive, eastward, westward, distance, change, source_label, close = ROUTE_MAP_TEXT[index]
-    data = json.loads((ROOT / "docs/ep02-canal-piers.json").read_bytes())
-    piers = data["piers"]
-    source = "https://www.saensaebcanal.com/"
-    source_data = escape(data["coordinate_reference"], quote=True)
+    title = ("盛桑運河快船路線圖", "盛桑运河快船路线图", "Saen Saep canal route map")[index]
+    label = ("開啟原網站互動路線圖", "打开原网站互动路线图", "Open the original interactive map")[index]
     src = data_uri(ROOT / "ep02" / filename, "image/webp")
-    min_lon, max_lon = min(p[3] for p in piers), max(p[3] for p in piers)
-    min_lat, max_lat = min(p[2] for p in piers), max(p[2] for p in piers)
-    points = []
-    markers = []
-    options = []
-    named = {0, 4, 9, 14, 23, 25, len(piers) - 1}
-    for n, (name, thai, lat, lon) in enumerate(piers):
-        x = 100 + n * 36 + (lon - min_lon) / (max_lon - min_lon) * 270
-        y = 218 - (lat - min_lat) / (max_lat - min_lat) * 150
-        points.append(f"{x:.2f},{y:.2f}")
-        label = escape(f"{n+1}. {name} · {thai}", quote=True)
-        options.append(f'<option value="{n}">{label}</option>')
-        pin_label = f'<span>{escape(name)}</span>' if n in named else ""
-        markers.append(
-            f'<button type="button" class="canal-pin" style="--x:{x:.2f}px;--y:{y:.2f}px" '
-            f'data-pier="{n}" aria-pressed="false" aria-label="{label}" title="{label}">{pin_label}</button>'
-        )
-    return (
-        '<figure class="route-map">'
-        '<button type="button" class="route-map-open" data-map-dialog="canal-route" aria-haspopup="dialog">'
-        f'<img src="{src}" alt="{escape(title)}" loading="lazy" decoding="async"><span>{escape(open_label)} ↗</span></button></figure>'
-        '<dialog id="canal-route" class="route-dialog" aria-labelledby="canal-route-title" '
-        f'data-east="{escape(eastward)}" data-west="{escape(westward)}" data-distance="{escape(distance)}" data-transfer="{escape(change)}">'
-        f'<div class="route-dialog-head"><h5 id="canal-route-title">{escape(title)}</h5>'
-        f'<form method="dialog"><button type="submit" aria-label="{escape(close)}">×</button></form></div>'
-        f'<p class="canal-map-hint">{escape(hint)} ↔</p>'
-        '<div class="canal-viewport" tabindex="0">'
-        '<div class="canal-diagram"><svg viewBox="0 0 1440 290" aria-hidden="true">'
-        f'<polyline class="canal-west" points="{" ".join(points[:5])}"/>'
-        f'<polyline class="canal-east" points="{" ".join(points[4:])}"/>'
-        '<polyline class="canal-selected" points=""/>'
-        '</svg>'
-        f'<span class="canal-orientation canal-orientation-west">{escape(west)}</span>'
-        f'<span class="canal-orientation canal-orientation-east">{escape(east)}</span>'
-        f'{"".join(markers)}</div></div>'
-        '<div class="canal-route-form">'
-        f'<label>{escape(board)}<select class="canal-from"><option value="">—</option>{"".join(options)}</select></label>'
-        f'<label>{escape(arrive)}<select class="canal-to"><option value="">—</option>{"".join(options)}</select></label>'
-        '<p class="canal-trip" aria-live="polite"></p></div>'
-        f'<div class="canal-map-links"><a href="{source}" target="_blank" rel="noopener noreferrer">{escape(source_label)} ↗</a>'
-        f'<a href="{source_data}" target="_blank" rel="noopener noreferrer">Bangkok Open Data ↗</a></div>'
-        '</dialog>'
-    )
-
+    return (f'<figure class="route-map"><a class="route-map-open" href="https://www.saensaebcanal.com/" '
+            f'target="_blank" rel="noopener noreferrer"><img src="{src}" alt="{escape(title)}" '
+            f'loading="lazy" decoding="async"><span>{escape(label)} ↗</span></a></figure>')
 
 def render_story(sections, deals, assets, index, offline, reel_sources):
     photos = {row[0]: row for row in assets}
@@ -454,7 +410,15 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
             blocks = [blocks]
         for block in blocks:
             if isinstance(block, str):
-                parts.append(f"<p>{story_inline(block)}</p>")
+                if heading.startswith(("從西往東", "从西往东", "Useful piers")) and block.startswith("**") and "：**" in block:
+                    pier, description = block[2:].split("：**", 1)
+                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
+                elif heading.startswith(("从西往东", "Useful piers")) and block.startswith("**") and (":**" in block or "：**" in block):
+                    sep = "：**" if "：**" in block else ":**"
+                    pier, description = block[2:].split(sep, 1)
+                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
+                else:
+                    parts.append(f"<p>{story_inline(block)}</p>")
             elif "promo" in block:
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
@@ -499,7 +463,6 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         "" if offline else script(donor, "episode-picker-script"),
     ))
     reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
-    route_script = (ROOT / "ep02/canal-route.js").read_text(encoding="utf-8")
     category = data["categories"]
     toc = []
     stops = []
@@ -526,7 +489,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-number" aria-hidden="true">{s["label"]}</span>'
-            f'<span class="toc-item-content"><strong class="toc-item-title">{name}</strong>'
+            f'<span class="toc-item-content"><small class="toc-item-kicker">{stop_heading}</small><strong class="toc-item-title">{name}</strong>'
             f'<small class="toc-item-description">{title}</small></span>'
             f'<span class="toc-item-side"><span class="toc-item-tag">{cat}</span>'
             f'<span class="toc-item-action">{escape(data["labels"]["open"][ix])} →</span></span></a>'
@@ -540,6 +503,9 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
                        f'rel="noopener noreferrer">↗ {escape(related["labels"][ix])}</a>')
         places = locations[s["id"]]
         maps = location_block(places, ix, action if len(places) == 1 else "")
+        if s["id"] == "saen-saep":
+            example = ("我們這次的搭船路線", "我们这次的搭船路线", "Our trip")[ix]
+            maps = f'<div class="trip-example"><b>{example}</b>{maps}</div>'
         route_action = action if len(places) > 1 else ""
         stops.append(
             f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
@@ -601,7 +567,6 @@ document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventLi
 </script>
 {scripts}
 <script>{reel_script}</script>
-<script>{route_script}</script>
 <script>
 document.getElementById('about').before(document.getElementById('share-strip'));
 function openLinkedStation() {{

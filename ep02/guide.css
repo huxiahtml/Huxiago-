@@ -5,6 +5,21 @@
 .ep02-deal-photo figcaption{font-size:13px;margin-top:4px}
 .visual-v7 .episode-upcoming{text-decoration:none}
 
+/* Keep the three lines of each directory entry together as one editorial unit. */
+.visual-v7 .toc-item .toc-item-content { display:flex; flex-direction:column; align-self:center; justify-content:center; gap:3px; min-width:0; }
+.visual-v7 .toc-item .toc-item-kicker { display:block; margin:0; color:#62554a; font-size:12px; line-height:1.25; }
+.visual-v7 .toc-item .toc-item-title { display:block; margin:0; line-height:1.25; }
+.visual-v7 .toc-item .toc-item-description { display:block; margin:0; line-height:1.35; }
+.visual-v7 .story-copy p { line-height:1.65; margin:.55em 0 .8em; }
+.visual-v7 .story-copy .story-heading { margin:1.45em 0 .45em; line-height:1.35; }
+.visual-v7 .pier-note { margin:.35rem 0; border-bottom:1px solid #ddd0bd; }
+.visual-v7 .pier-note summary { cursor:pointer; padding:.45rem 0; font-weight:700; }
+.visual-v7 .pier-note p { margin:.1rem 0 .8rem; }
+.visual-v7 .trip-example { margin:1rem 0 .5rem; }
+.visual-v7 .trip-example .place-locations { display:flex; flex-wrap:wrap; gap:8px; }
+.visual-v7 .trip-example .location-address { display:none; }
+.visual-v7 .trip-example + .btn { margin-top:.25rem; }
+
 .story-copy a {
   color: inherit;
   text-decoration: underline;
