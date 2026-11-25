@@ -7,6 +7,12 @@
 
 .visual-v7 .toc-item .toc-item-content { align-self:center; min-width:0; }
 .visual-v7 .toc-item .toc-item-title { display:block; margin:0; line-height:1.25; }
+.visual-v7 .toc-list .toc-item :is(.toc-item-tag, .toc-item-action) {
+  max-inline-size: 100%;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
 .visual-v7 .story-copy p { line-height:1.65; margin:.55em 0 .8em; }
 .visual-v7 .story-copy .story-heading { margin:1.45em 0 .45em; line-height:1.35; }
 .visual-v7 .pier-note { margin:.35rem 0; border-bottom:1px solid #ddd0bd; }
@@ -67,21 +73,90 @@
   .visual-v7 .card .body .story-table-wrap :is(th, td) { padding-inline: 5px; }
 }
 
-html[lang="en"] .visual-v7 :is(.toc-item-title, .stop > summary .head p, .story-heading, #spots, .share-strip-head h3) {
+.visual-v7 :is(.toc-item-title, .stop > summary .head p, .story-heading, #spots, .share-strip-head h3) {
   text-wrap: balance;
 }
 
-html[lang="en"] .visual-v7 :is(.story-copy > p, .about-huxia > p, .share-strip-head p) {
+.visual-v7 :is(.story-copy > p, .about-huxia > p, .share-strip-head p, .stop figcaption) {
   text-wrap: pretty;
 }
 
+.visual-v7 .card.stop summary .head small,
+.visual-v7 .deal-zone .deal-swipe { letter-spacing: .02em; }
+
+.visual-v7 .cover .kicker strong { font-size: .9375rem; }
+
 @media (min-width: 980px) {
-  html[lang="en"] .visual-v7 :is(.story-copy > p, .story-heading, .about-huxia > p) { max-inline-size: 70ch; }
+  .visual-v7 :is(.story-copy > p, .story-heading, .about-huxia > p) { max-inline-size: 62ch; }
+  html:lang(zh) .visual-v7 :is(.story-copy > p, .story-heading, .about-huxia > p) { max-inline-size: 37em; }
 }
 
-@media (max-width: 360px) {
-  .visual-v7 .cover .hux-cover-topbar .kicker strong { font-size: .6875rem; }
-  .visual-v7 .cover .hux-cover-topbar .kicker span { font-size: .625rem; }
+@media (max-width: 699px) {
+  .visual-v7 .pocket-nav {
+    max-inline-size: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .visual-v7 .pocket-nav a {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+}
+
+.visual-v7 .cover .hux-cover-topbar .hux-language-switch {
+  width: auto;
+  height: auto;
+}
+
+.visual-v7 .cover .hux-cover-topbar .hux-language-switch button {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .visual-v7 .cover .hux-cover-topbar {
+    min-height: 0;
+    gap: .625rem;
+  }
+  .visual-v7 .cover .hux-cover-topbar .kicker,
+  .visual-v7 .cover .hux-cover-topbar .hux-language-bar {
+    position: static;
+  }
+  .visual-v7 .cover .hux-cover-topbar .kicker {
+    height: auto;
+    min-height: 44px;
+    padding: .45rem .65rem;
+  }
+  .visual-v7 .cover .hux-cover-topbar .kicker strong { font-size: .875rem; }
+  html[lang] body.visual-v7 .cover .cover-title-meta {
+    flex-wrap: wrap;
+  }
+  html[lang] body.visual-v7 .cover .cover-title-meta .cover-title-sub {
+    max-width: 100%;
+  }
+}
+
+.visual-v7 .ticket-feature[data-shared-deal="esim"],
+.visual-v7 .ticket-feature[data-shared-deal="esim"] .ticket-value {
+  color: #2e1b12;
+}
+
+.visual-v7 .ticket-feature[data-shared-deal="esim"] .ticket-value {
+  text-shadow: 1px 1px 0 #ffc17f;
+}
+
+.visual-v7 .ticket-feature[data-shared-deal="silq"] .ticket-value { color: #a64012; }
+
+.visual-v7 .deal-zone .ticket-feature :is(.ticket-value, .ticket-cta-label) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 /* EP.01 Reel controls on EP.02 gallery and article cards. */

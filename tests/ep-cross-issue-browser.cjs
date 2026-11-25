@@ -60,7 +60,14 @@ async function affirm(page, locale, offlinePhotos = true) {
     if (!image.naturalWidth || !image.getAttribute('src').startsWith(prefix)) throw Error('Offer image failed to load');
   })), offlinePhotos);
 }
-async function verifySharedOfferStyle(page) {
+function textContrast(foreground, background) {
+  const luminance = color => color.match(/\d+/g).map(channel => Number(channel) / 255)
+    .reduce((value, channel, index) => value + [0.2126, 0.7152, 0.0722][index] *
+      (channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4), 0);
+  const [dark, light] = [luminance(foreground), luminance(background)].sort((a,b) => a-b);
+  return (light + 0.05) / (dark + 0.05);
+}
+async function verifySharedOfferStyle(page, issue = 1) {
   const styles = await page.locator('#deals [data-shared-deal]').evaluateAll(cards => {
     return cards.map(card => {
       const amount=card.querySelector('.ticket-value');
@@ -74,6 +81,10 @@ async function verifySharedOfferStyle(page) {
         labelBackground: label.backgroundColor,
         labelRadius: label.borderRadius,
         discountColor: value.color,
+        cardBackground: getComputedStyle(card).backgroundColor,
+        cardGradient: getComputedStyle(card).backgroundImage,
+        cardTitleColor: getComputedStyle(card.querySelector('h3')).color,
+        cardDescriptionColor: card.querySelector('.ticket-copy') && getComputedStyle(card.querySelector('.ticket-copy')).color,
         discountShadow: value.textShadow,
         stroke: value.webkitTextStrokeWidth,
         labelBorder: label.borderTopWidth,
@@ -87,9 +98,20 @@ async function verifySharedOfferStyle(page) {
       };
     });
   });
-  assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(255, 249, 238)', 'rgb(236, 88, 0)']);
-  assert.notEqual(styles[0].discountShadow, 'none');
-  assert.equal(styles[1].discountShadow, styles[0].discountShadow);
+  const [esim, kushiro, silq] = styles;
+  assert.notEqual(esim.discountShadow, 'none');
+  assert.notEqual(kushiro.discountShadow, 'none');
+  if (issue === 1) {
+    assert.deepEqual(styles.map(style => style.discountColor), ['rgb(255, 249, 238)', 'rgb(255, 249, 238)', 'rgb(236, 88, 0)']);
+    assert.equal(kushiro.discountShadow, esim.discountShadow);
+  } else {
+    const stops = esim.cardGradient.match(/rgb\([^)]+\)/g);
+    assert(stops?.length >= 2);
+    for (const color of [esim.cardTitleColor, esim.cardDescriptionColor, esim.discountColor]) {
+      assert(stops.every(stop => textContrast(color, stop) >= 4.5), 'eSIM text is legible across its orange gradient');
+    }
+    assert(textContrast(silq.discountColor, silq.cardBackground) >= 4.5, 'SILQ discount is legible on cream');
+  }
   for (const style of styles) {
     assert.deepEqual(style.amount, styles[0].amount, 'Share the original eSIM discount style');
     assert.equal(style.textColor, 'rgb(82, 48, 29)');
@@ -290,6 +312,37 @@ async function verifyEp02Directory(page) {
   await page.setViewportSize(originalSize);
 }
 
+async function verifyEp02Reading(page) {
+  const previous = page.viewportSize();
+  await page.setViewportSize({width: 320, height: 844});
+  const result = await page.evaluate(() => {
+    const stop = document.getElementById('silq');
+    stop.open = true;
+    try {
+      const values = [...stop.querySelectorAll('.story-amount')].map(amount => {
+        const range = document.createRange();
+        range.selectNodeContents(amount);
+        return [amount.textContent, range.getClientRects().length];
+      });
+      document.documentElement.style.fontSize = '200%';
+      const header = document.querySelector('.hux-cover-topbar');
+      const brand = header.querySelector('.kicker').getBoundingClientRect();
+      const languages = header.querySelector('.hux-language-bar').getBoundingClientRect();
+      const overlap = brand.left < languages.right && brand.right > languages.left &&
+        brand.top < languages.bottom && brand.bottom > languages.top;
+      const wideDirectory = [...document.querySelectorAll('.toc-item-side')].some(side => side.scrollWidth > side.clientWidth + 1);
+      return {values, overlap, wideDirectory, pageOverflow: document.documentElement.scrollWidth > innerWidth};
+    } finally {
+      document.documentElement.style.removeProperty('font-size');
+      stop.open = false;
+    }
+  });
+  assert.deepEqual(result.values, [['5,010',1],['4,509',1],['5,689',1],['5,120',1]]);
+  assert.equal(result.overlap, false, 'Cover brand and language controls can reflow at 200% text size');
+  assert.equal(result.wideDirectory, false, 'Directory labels can wrap at 200% text size');
+  assert.equal(result.pageOverflow, false, 'Enlarged type fits the page');
+  await page.setViewportSize(previous);
+}
 async function verifyMapAndLocalVideos(page, offline) {
   const originalSize = page.viewportSize();
   await page.setViewportSize({width: 390, height: 900});
@@ -407,6 +460,7 @@ await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click(
 await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang,false);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
 await verifyEp02Directory(p);
+await verifyEp02Reading(p);
 await verifyArticles(p);
 await verifyEp02Galleries(p,false);
 await verifyReelsAndPromos(p,lang);
@@ -416,7 +470,7 @@ assert(await p.locator('#kushiro .gallery').evaluate(el=>el.scrollWidth>el.clien
 for(const width of widths){
   await p.setViewportSize({width,height:900});
   assert.deepEqual(await railLayout(p), reference.get(width));
-  await verifyPlaceholders(p);await verifySharedOfferStyle(p);
+  await verifyPlaceholders(p);await verifySharedOfferStyle(p,2);
   assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), 'page overflows at width '+width);
 }
 assert.deepEqual(await ticketStyles(p),tickets);
@@ -434,7 +488,7 @@ const c=await b.newContext({offline:true,viewport:{width:1440,height:900}});cons
 for(const name of [lang==='zh-Hant'?fs.readdirSync(root).find(n=>n.endsWith('vol01.html')):'HUXIAGO_Bangkok_EP01_'+lang+'.html',file]){
 await q.goto(pathToFileURL(path.join(root,name)).href);await affirm(q,lang);await verifyMaps(q,name===file?2:1);
 assert.deepEqual(await ticketStyles(q),tickets);
-await verifyPlaceholders(q);await verifySharedOfferStyle(q);
+await verifyPlaceholders(q);await verifySharedOfferStyle(q,name===file?2:1);
 if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
 else {offlineRail=await railLayout(q);await verifyEp01MobileMedia(q);}
 if(name===file){await verifyArticles(q);await verifyEp02Galleries(q,true);await verifyReelsAndPromos(q,lang);await verifyMapAndLocalVideos(q,true);}

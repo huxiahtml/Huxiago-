@@ -320,6 +320,8 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
         rail = rail.replace(localized_nav, localized_nav.split(">", 1)[0] + ">" + nav.split(">", 1)[1])
     rail = rail.replace("Ep.01", "Ep.02").replace(">12 ", f">{count} ")
     cover = extract(localized, r'<header class="cover"[^>]*>.*?</header>').replace("Ep.01", "Ep.02")
+    cover = cover.replace("\r\n", "\n")
+    cover = re.sub(r'(<p class="kicker"><strong>HUXIAGO</strong>)<span>BKK GUIDE</span>', r"\1", cover, count=1)
     title_src = media_source(f"media/huxiago-title-{TITLE_ART[lang]}.svg", "image/svg+xml", offline)
     hero_src = media_source("media/ea863e999767b920.webp", "image/webp", offline)
     cover = re.sub(r'(<img class="cover-title-art") [^>]*src="[^"]+"',
@@ -330,7 +332,6 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     cover = re.sub(r'(<span class="cover-title-sub">)[^<]+',
                    lambda m: m[1] + escape(labels["bangkok"]), cover, count=1)
     if not offline:
-        cover = cover.replace("\r\n", "\n")
         language = extract(donor, r'<div class="hux-language-bar">.*?</div></div>')
         language = re.sub(r'(data-hux-lang="([^"]+)"[^>]+aria-pressed=")(?:true|false)',
                           lambda m: m[1] + str(m[2] == lang).lower(), language)
@@ -350,6 +351,7 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
     cover = cover.replace(f'href="" download="{legacy_download}"', f'href="{download}" download="{download}"')
     mobile_nav = extract(localized, r'<nav [^>]*class="pocket-nav"[^>]*>.*?</nav>')
     about = extract(localized, r'<section class="about-huxia"[^>]*>.*?</section>')
+    about = re.sub(r'[ \t]*<div class="about-eyebrow">.*?</div>\r?\n', "", about, count=1)
     if not offline:
         about_src = extract(donor, r'(?<=<figure class="about-photo"><img src=")[^"]+')
         about = re.sub(r'(<figure class="about-photo"><img src=")[^"]+',
@@ -541,7 +543,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
-<p class="deal-kicker">HUXIAGO POCKET DEALS</p><h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
+<h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
 {deal_content(deals, ix, offline)}</section>"""
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
