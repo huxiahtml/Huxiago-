@@ -149,7 +149,7 @@ async function verifyArticles(page) {
     const card = page.locator('#' + id);
     const article = card.locator('.story-copy');
     assert.equal(await article.locator('.story-heading').count(), headings, id + ' headings');
-    assert.equal(await article.locator(':scope > p, :scope > details.pier-note > p').count(), paragraphs, id + ' paragraphs');
+    assert.equal(await article.locator(':scope > p, :scope > .pier-route > p').count(), paragraphs, id + ' paragraphs');
     assert.equal(await article.locator('table').count(), tables, id + ' tables');
     assert.equal(await card.locator('video, iframe').count(), 0, id + ' video deferred');
   }
@@ -266,10 +266,9 @@ async function verifyMapAndLocalVideos(page, offline) {
   assert(await map.locator('img').evaluate(async img => {img.loading = 'eager'; await img.decode(); return img.naturalWidth > 1000;}));
   assert.equal(await map.getAttribute('href'), 'https://www.saensaebcanal.com/');
   assert.equal(await map.getAttribute('target'), '_blank');
-  const notes = transport.locator('.pier-note');
+  const notes = transport.locator('.pier-stop');
   assert.equal(await notes.count(), 6);
-  await notes.first().locator('summary').click();
-  assert(await notes.first().locator('p').isVisible());
+  assert(await notes.first().locator('span').isVisible());
   assert.equal(await transport.locator('.gallery figure[data-video]').count(), 0);
   assert.equal(await transport.locator('.story-video-track .canal-clip').count(), 3);
   await transport.evaluate(el => {el.open = false;});

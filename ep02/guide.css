@@ -12,9 +12,11 @@
 .visual-v7 .toc-item .toc-item-description { display:block; margin:0; line-height:1.35; }
 .visual-v7 .story-copy p { line-height:1.65; margin:.55em 0 .8em; }
 .visual-v7 .story-copy .story-heading { margin:1.45em 0 .45em; line-height:1.35; }
-.visual-v7 .pier-note { margin:.35rem 0; border-bottom:1px solid #ddd0bd; }
-.visual-v7 .pier-note summary { cursor:pointer; padding:.45rem 0; font-weight:700; }
-.visual-v7 .pier-note p { margin:.1rem 0 .8rem; }
+.visual-v7 .story-copy .pier-route { margin:.6rem 0 .9rem .45rem; border-left:2px solid #559c9a; }
+.visual-v7 .story-copy p.pier-stop { position:relative; margin:0; padding:.25rem 0 .7rem 1.15rem; line-height:1.55; }
+.visual-v7 .story-copy p.pier-stop::before { content:""; position:absolute; left:-6px; top:.65rem; width:10px; height:10px; border:2px solid #367a79; border-radius:50%; background:#fff8e9; }
+.visual-v7 .story-copy .pier-stop strong { display:block; margin-bottom:.12rem; line-height:1.35; }
+.visual-v7 .story-copy .pier-stop span { display:block; }
 .visual-v7 .trip-example { margin:1rem 0 .5rem; }
 .visual-v7 .trip-example .place-locations { display:flex; flex-wrap:wrap; gap:8px; }
 .visual-v7 .trip-example .location-address { display:none; }

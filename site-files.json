@@ -713,28 +713,28 @@
       "sha256": "4bfb653ca59c569bcd6aec2e9a43ac37b8ffe4d5d76b8f5b79c1198c64b04fbc"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 14800721,
-      "sha256": "5cbb705c48b944405822909ae8bf16d97407f3a9ddc3f2d1b5620668907f7a67"
+      "bytes": 14801058,
+      "sha256": "07976585d73d547e9cee8cd706dec85aa074c1a8dcbc5c9bc3deea54892adf98"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 25872715,
-      "sha256": "1b9773260bf809922be77a2dd1123c5cc0912cb835bae18d2bffaeee6d287cd5"
+      "bytes": 25873052,
+      "sha256": "18d8477dff4db3f073cfe20e8a47987ecc2366a71eddec1184eeff62277512c5"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 14799594,
-      "sha256": "6619a5556f238fc4a69ee102887e6e8304c0d379606f7065781922fd5a5bd3c2"
+      "bytes": 14799931,
+      "sha256": "e50a048fa2d38d9d48b2eda67dd7eb0059b3ee69e63e7ae2375ef976f86dec4d"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 25871584,
-      "sha256": "b69f968f6bdaae0e6dcdd9bdf8ddc4d7d9ca312992446c12034b70830663f166"
+      "bytes": 25871921,
+      "sha256": "cba5ea34f0bfab675fcfe0dc3a04d4cbbf5f0c57d301321b0b44ae38b171867d"
     },
     "ep02-en.html": {
-      "bytes": 14789476,
-      "sha256": "e65fcdd8f8ca0bdc08be4df6808ecaa43009871f0db68885ee1bad5daa797360"
+      "bytes": 14789813,
+      "sha256": "abc6146ebf87b39d43701eba54c89f22d2bd51aecbcc5937a8150f8bf44e85ab"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 25861493,
-      "sha256": "34d7f3bc0750142e80b860dcaf35e6b990f3aad6b47fbb328236a9417ef250b8"
+      "bytes": 25861830,
+      "sha256": "9eff847326d20fe98216bf5f3da7d9fbc39b0cdce6e87f11823f36dab09d549d"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,

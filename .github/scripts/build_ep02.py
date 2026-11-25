@@ -408,15 +408,24 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
         parts.append(f'<h4 class="story-heading">{story_inline(heading)}</h4>')
         if isinstance(blocks, str):
             blocks = [blocks]
+        in_pier_route = False
         for block in blocks:
+            is_pier = (isinstance(block, str) and heading.startswith(("從西往東", "从西往东", "Useful piers"))
+                       and block.startswith("**") and ("：**" in block or ":**" in block))
+            if is_pier and not in_pier_route:
+                parts.append('<div class="pier-route">')
+                in_pier_route = True
+            elif not is_pier and in_pier_route:
+                parts.append('</div>')
+                in_pier_route = False
             if isinstance(block, str):
                 if heading.startswith(("從西往東", "从西往东", "Useful piers")) and block.startswith("**") and "：**" in block:
                     pier, description = block[2:].split("：**", 1)
-                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
+                    parts.append(f'<p class="pier-stop"><strong>{escape(pier)}</strong><span>{story_inline(description.strip())}</span></p>')
                 elif heading.startswith(("从西往东", "Useful piers")) and block.startswith("**") and (":**" in block or "：**" in block):
                     sep = "：**" if "：**" in block else ":**"
                     pier, description = block[2:].split(sep, 1)
-                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
+                    parts.append(f'<p class="pier-stop"><strong>{escape(pier)}</strong><span>{story_inline(description.strip())}</span></p>')
                 else:
                     parts.append(f"<p>{story_inline(block)}</p>")
             elif "promo" in block:
@@ -430,6 +439,8 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
                 parts.append(photo_figure(photos[block["photo"]], index, "story-photo"))
             else:
                 parts.append(story_table(block["table"]))
+        if in_pier_route:
+            parts.append('</div>')
     return "".join(parts)
 
 
