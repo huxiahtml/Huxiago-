@@ -618,7 +618,17 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         "      if (huxMobileStations.matches && !details.__huxAnimation) return;\n      e.preventDefault();",
     )
     canonical = f"https://huxiago.com/{EP02_WEB_PATH[lang]}"
-    canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline and lang == "zh-Hant" else ""
+    canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline else ""
+    share_image = f"https://huxiago.com/media/huxiago-share-ep02-{lang.lower()}.jpg"
+    share_title = escape(t[0] + " EP.02 | HUXIAGO", quote=True)
+    share_description = escape(t[1], quote=True)
+    social_meta = "" if offline else (f'<meta name="description" content="{share_description}">'
+        f'<meta property="og:type" content="website"><meta property="og:url" content="{canonical}">'
+        f'<meta property="og:title" content="{share_title}"><meta property="og:description" content="{share_description}">'
+        f'<meta property="og:image" content="{share_image}"><meta property="og:image:width" content="1200">'
+        f'<meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">'
+        f'<meta name="twitter:title" content="{share_title}"><meta name="twitter:description" content="{share_description}">'
+        f'<meta name="twitter:image" content="{share_image}">')
     share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {json.dumps(canonical)};", share, count=1)
     scripts = "\n".join((
         share,
@@ -663,13 +673,13 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
         story = render_story(story_sections, deals, assets, ix, offline, reel_sources)
+        directory = data["directory"][s["id"]][ix]
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
-            f'<span class="toc-item-content"><span class="toc-item-kicker">{stop_heading}</span>'
-            f'<strong class="toc-item-title">{name}</strong>'
-            f'<span class="toc-item-description">{title}</span></span>'
-            f'<span class="toc-item-action" aria-hidden="true"><span class="toc-item-action-label">'
-            f'{escape(data["labels"]["open"][ix])}</span> {arrow_icon("right")}</span></a>'
+            f'<span class="toc-item-number">{label}</span><span class="toc-item-content">'
+            f'<strong class="toc-item-title">{escape(directory)}</strong>'
+            f'<span class="toc-item-side"><span class="toc-item-tag">{cat}</span>'
+            f'<span class="toc-item-action" aria-hidden="true">{escape(data["labels"]["open"][ix])} {arrow_icon("right")}</span></span></span></a>'
         )
         action = ""
         if "url" in s:
@@ -717,6 +727,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <meta name="robots" content="noindex, nofollow">
 <title>{escape(t[0])} EP.02 | HUXIAGO</title>
 {canonical_link}
+{social_meta}
 <style>{css}</style>
 </head>
 <body class="visual-v7">
@@ -797,6 +808,10 @@ def build():
             name = f"{folder}/{filename}"
             raw = (ROOT / name).read_bytes()
             manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    for filename in ("huxiago-share-ep01.jpg", "huxiago-share-ep02-zh-hant.jpg", "huxiago-share-ep02-zh-hans.jpg", "huxiago-share-ep02-en.jpg"):
+        name = f"media/{filename}"
+        raw = (ROOT / name).read_bytes()
+        manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():
         name = f"media/huxiago-title-{suffix}.svg"
         raw = (ROOT / name).read_bytes().replace(b"\r\n", b"\n")

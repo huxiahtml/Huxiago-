@@ -446,5 +446,42 @@
       "Thai people made Bangkok what it is, and Chatuchak has given us a place to grow. We put all our energy into making each issue of Thailand Guide PLAY+.",
       "If you enjoyed this issue and want to cheer us on, send it to someone who loves Thailand as much as we do. Thanks for reading all the way here. See you next time."
     ]
-  ]
+  ],
+  "directory": {
+    "kushiro": [
+      "Kushiro Omakase 無菜單料理",
+      "Kushiro Omakase 无菜单料理",
+      "Kushiro Omakase · Japanese dining"
+    ],
+    "silq": [
+      "SILQ Hotel 摩登輕奢飯店",
+      "SILQ Hotel 摩登轻奢酒店",
+      "SILQ Hotel · Modern luxury"
+    ],
+    "gan-da": [
+      "กานดาอาหารตามสั่ง 家常泰式料理",
+      "กานดาอาหารตามสั่ง 家常泰式料理",
+      "กานดาอาหารตามสั่ง · Thai home cooking"
+    ],
+    "hani-spa": [
+      "Hani Spa 平價質感按摩",
+      "Hani Spa 平价质感按摩",
+      "Hani Spa · Affordable massage"
+    ],
+    "chowchercof": [
+      "Chowchercof 蓮花池咖啡廳",
+      "Chowchercof 莲花池咖啡厅",
+      "Chowchercof · Lotus pond café"
+    ],
+    "bang-sue-junction": [
+      "Bang Sue Junction 洽圖洽紅樓",
+      "Bang Sue Junction 恰图恰红楼",
+      "Bang Sue Junction · Chatuchak Red Building"
+    ],
+    "saen-saep": [
+      "Saen Saep Express Boat 曼谷髒船",
+      "Saen Saep Express Boat 曼谷脏船",
+      "Saen Saep Express Boat · Bangkok canal boat"
+    ]
+  }
 }

@@ -732,3 +732,20 @@
 .canal-clip button[aria-pressed="true"] .clip-icon-off {
   display: none !important;
 }
+
+/* Match EP.01 directory: numbered badge, title and category/action row. */
+.visual-v7 .toc-list .toc-item { display:grid; grid-template-columns:38px minmax(0,1fr); align-items:start; gap:12px; padding:15px; }
+.visual-v7 .toc-item-content { min-width:0; display:flex; flex-direction:column; gap:12px; }
+.visual-v7 .toc-item-side { display:flex; position:static!important; flex-direction:row; align-items:center; justify-content:space-between; gap:8px; }
+.visual-v7 .toc-item-title { padding:0!important; overflow-wrap:anywhere; }
+@media(max-width:360px){.visual-v7 .toc-list .toc-item{grid-template-columns:32px minmax(0,1fr);gap:10px;padding:12px}.visual-v7 .toc-item-number{width:32px;height:32px}}
+/* Make media and caption edges consistent across mixed galleries. */
+.visual-v7 details.card .gallery > figure { align-self:stretch!important; }
+.visual-v7 details.card .gallery > figure > img,
+.visual-v7 details.card .gallery > figure.ep02-reel > .reel-viewport { height:var(--gallery-media-height)!important; min-height:var(--gallery-media-height); max-height:var(--gallery-media-height); }
+.visual-v7 details.card .gallery > figure > figcaption { flex:1 0 auto; }
+
+.visual-v7 .toc-item-side { flex-wrap: wrap; min-width:0; }
+.visual-v7 .toc-item-tag, .visual-v7 .toc-item-action { white-space: normal; }
+.visual-v7 .toc-list .toc-item .toc-item-content { grid-column:2; grid-row:1; }
+.visual-v7 details.card .gallery > figure { margin:0; }
