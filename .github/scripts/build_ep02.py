@@ -626,7 +626,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     )
     canonical = f"https://huxiago.com/{EP02_WEB_PATH[lang]}"
     canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline else ""
-    share_image = f"https://huxiago.com/media/huxiago-share-ep02-{lang.lower()}.jpg"
+    share_image = f"https://huxiago.com/media/hux-share-ep02-compact-{lang.lower()}.jpg"
     share_title = escape(t[0] + " EP.02 | HUXIAGO", quote=True)
     share_description = escape(t[1], quote=True)
     social_meta = "" if offline else (f'<meta name="description" content="{share_description}">'
@@ -816,7 +816,7 @@ def build():
             name = f"{folder}/{filename}"
             raw = (ROOT / name).read_bytes()
             manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
-    for filename in ("huxiago-share-ep01.jpg", "huxiago-share-ep02-zh-hant.jpg", "huxiago-share-ep02-zh-hans.jpg", "huxiago-share-ep02-en.jpg"):
+    for filename in ("huxiago-share-ep01.jpg", "huxiago-share-ep02-zh-hant.jpg", "huxiago-share-ep02-zh-hans.jpg", "huxiago-share-ep02-en.jpg", "hux-share-ep02-compact-zh-hant.jpg", "hux-share-ep02-compact-zh-hans.jpg", "hux-share-ep02-compact-en.jpg"):
         name = f"media/{filename}"
         raw = (ROOT / name).read_bytes()
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}

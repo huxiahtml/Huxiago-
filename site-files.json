@@ -713,24 +713,24 @@
       "sha256": "5269b2db9dd1aabddea8a60b65e9c38abf98d4aaec353a39744b7d995393226e"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 307986,
-      "sha256": "77a9d33d7d0d415c3f82a4997f653f984ae7af26cc20f3096f344772e1922bd1"
+      "bytes": 307994,
+      "sha256": "0806239b3804275848b2b3ad3aec43ed2e3f77d3de3de5800006bd40978bae6c"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
       "bytes": 26182384,
       "sha256": "2187701d36883a6824422f252d5fd160ebb6896bd6ebfd9cd2b773e4875a54cd"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 308004,
-      "sha256": "0f21e9bb2b01d25a9dc0790ca7dd59d194c13ffac7a9032e8302279f31ee7de8"
+      "bytes": 308012,
+      "sha256": "6f5989c033659e9c5fa6f5a606c11cd26d27b542809858a2971518c9b3075210"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
       "bytes": 26181295,
       "sha256": "08c2af14a0801340dcd68f11c18fb5ed4712219410f8c1465e4c521191789707"
     },
     "ep02-en.html": {
-      "bytes": 307809,
-      "sha256": "a5b7e1f7762d48dc57940789c6bf3edc23353ac639b20d846fe704e11990f3da"
+      "bytes": 307817,
+      "sha256": "d0eefa61bc197f89ed3c0ab9a861b37b209da616aaad04d49ea820749694598b"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
       "bytes": 26171128,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 307663,
-      "sha256": "c8fe5ad04385f41b29db16e6614813b7b54cdb01ad4d796014fc03671e0777ff"
+      "bytes": 307671,
+      "sha256": "61ccfc9be05e5b32777cd9378ac1506504c09767b7100b0bbf52d66da4189edb"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,
@@ -1175,6 +1175,18 @@
     "media/huxiago-share-ep02-en.jpg": {
       "bytes": 99088,
       "sha256": "2f1a9df307a18a8f1bac5fa00ae965698098003bca7db5c8bde10a97eb458e72"
+    },
+    "media/hux-share-ep02-compact-zh-hant.jpg": {
+      "bytes": 109982,
+      "sha256": "bd3ce4a899dfdfbfcbd7e7d3dc34d5f2d4a0eba91f915e1de0c108076dc75d9d"
+    },
+    "media/hux-share-ep02-compact-zh-hans.jpg": {
+      "bytes": 109893,
+      "sha256": "62d463453245f5df87a9d0b5c71af20a6ca3137e09098390deeead305d4b920c"
+    },
+    "media/hux-share-ep02-compact-en.jpg": {
+      "bytes": 108252,
+      "sha256": "939e1700e60f9c49fed301c93ab0a73929b49fd00313a984a3dff1a0881a204c"
     }
   }
 }
