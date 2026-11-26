@@ -222,17 +222,43 @@ async function verifyReelsAndPromos(page, locale) {
   assert.equal(await page.locator('#bang-sue-junction figure[data-video]').count(), 1);
   const sim = page.locator('#deals [data-shared-deal="esim"] a.ticket-related');
   assert.equal(await sim.getAttribute('href'), offers.esim.related.url);
-  if (!offline) {
-    const firstBonus = bonus.locator('figure[data-video]').first();
-    await firstBonus.locator('.ep01-reel-play').click();
-    const player = firstBonus.locator('video');
-    await player.evaluate(video => {
-      if (video.currentTime > 0.12) return;
-      return new Promise(resolve => video.addEventListener('timeupdate', resolve, {once: true}));
-    }, null, {timeout: 5000});
-    assert(await player.evaluate(video => video.playsInline && !video.paused));
-    await player.evaluate(video => video.pause());
+  const bonusWidth = page.viewportSize();
+  const bonusCards = bonus.locator('.gallery > figure');
+  const bonusLayout = () => bonusCards.evaluateAll(items => items.map(card =>
+    [card, card.firstElementChild, card.lastElementChild].map(item => {
+      const box = item.getBoundingClientRect();
+      return [Math.round(box.width), Math.round(box.height)];
+    })));
+  for (const width of [320, 390, 1440]) {
+    await page.setViewportSize({width, height: 900});
+    const before = await bonusLayout();
+    assert(before.every(card => JSON.stringify(card) === JSON.stringify(before[0])),
+      'Bonus cards, media and captions must align at ' + width + 'px');
+    assert(Math.abs(before[0][1][0] / before[0][1][1] - 9 / 16) < .01);
+    if (!offline && width === 390) {
+      const firstBonus = bonusCards.first();
+      const viewport = firstBonus.locator('.reel-viewport');
+      await viewport.evaluate(el => window.scrollBy(0, el.getBoundingClientRect().top - 72));
+      const position = () => bonus.evaluate(el => [Math.round(scrollY), Math.round(el.querySelector('.gallery').scrollLeft)]);
+      const scrollBefore = await position();
+      await firstBonus.locator('.ep01-reel-play').click();
+      await page.waitForFunction(() => {
+        const video = document.querySelector('#bonus-reels video');
+        return video?.playsInline && video.currentTime > .12 && !video.paused;
+      }, null, {timeout: 9000});
+      assert.deepEqual(await bonusLayout(), before, 'Playing preserves bonus card layout');
+      assert.deepEqual(await position(), scrollBefore, 'Playing preserves scroll position');
+      await firstBonus.locator('.reel-pip-launch').click();
+      await page.locator('.hux-reel-pip video').waitFor();
+      assert.deepEqual(await bonusLayout(), before, 'Opening floating playback preserves bonus card layout');
+      await page.keyboard.press('Escape');
+      await page.locator('.hux-reel-pip').waitFor({state:'detached'});
+      assert.deepEqual(await bonusLayout(), before, 'Closing floating playback preserves bonus card layout');
+      assert.deepEqual(await position(), scrollBefore, 'Floating playback preserves scroll position');
+      await firstBonus.locator('video').evaluate(video => video.pause());
+    }
   }
+  await page.setViewportSize(bonusWidth);
   assert.equal(await page.locator('.ep02-reel iframe').count(), 0, 'Reels load on request');
   const posters = {
     silq: ['建築外觀及免費接駁車', '酒店外观和免费接驳车', 'The hotel exterior and complimentary shuttle'],

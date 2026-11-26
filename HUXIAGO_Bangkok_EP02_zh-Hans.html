@@ -1573,7 +1573,7 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 .visual-v7 details.card .gallery > figure > figcaption {
   flex: 1;
 }
-.visual-v7 .gallery .ep02-reel[data-kind] {
+.visual-v7 details.card .gallery .ep02-reel[data-kind] {
   flex-basis: calc(var(--gallery-media-height) * .5625);
 }
 
@@ -1627,8 +1627,33 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 .ep02-reel.is-loaded .reel-viewport > img {
   display: none;
 }
-.visual-v7 #bonus-reels .ep02-reel .reel-viewport {
+.visual-v7 #bonus-reels .gallery {
+  align-items: stretch;
+}
+
+.visual-v7 #bonus-reels .gallery > .reel-figure {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.visual-v7 #bonus-reels .reel-figure > .reel-viewport {
+  flex: none;
+  height: auto;
   aspect-ratio: 9 / 16;
+}
+
+.visual-v7 #bonus-reels .reel-viewport > :is(video, iframe) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.visual-v7 #bonus-reels .reel-figure > figcaption {
+  flex: 1;
 }
 
 .story-copy .ep02-reel {
@@ -2528,7 +2553,7 @@ function load(figure){if(figure.classList.contains('is-loaded'))return;
     player.shell = shell;
     player.button.setAttribute('aria-pressed', 'true');
     makeDraggable(head, shell);
-    exit.focus();
+    exit.focus({ preventScroll: true });
   }
 
   document.addEventListener('click', event => {
@@ -2539,7 +2564,7 @@ function load(figure){if(figure.classList.contains('is-loaded'))return;
       const frame = play(figure);
       if (frame.paused) frame.play().catch(() => {});
       else frame.pause();
-      if (button.matches('.ep01-reel-play')) frame.focus();
+      if (button.matches('.ep01-reel-play')) frame.focus({ preventScroll: true });
     }
     if (button.matches('.clip-sound')) {
       const frame = play(figure);

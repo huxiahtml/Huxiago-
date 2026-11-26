@@ -125,7 +125,7 @@
     player.shell = shell;
     player.button.setAttribute('aria-pressed', 'true');
     makeDraggable(head, shell);
-    exit.focus();
+    exit.focus({ preventScroll: true });
   }
 
   document.addEventListener('click', event => {
@@ -136,7 +136,7 @@
       const frame = play(figure);
       if (frame.paused) frame.play().catch(() => {});
       else frame.pause();
-      if (button.matches('.ep01-reel-play')) frame.focus();
+      if (button.matches('.ep01-reel-play')) frame.focus({ preventScroll: true });
     }
     if (button.matches('.clip-sound')) {
       const frame = play(figure);
