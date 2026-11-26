@@ -70,7 +70,7 @@ def ep02_ui_arrows(page):
     )
 
 
-def reel_card(title, index, poster="", video="", original=""):
+def reel_card(title, index, poster="", video="", original="", silent=False):
     play, original_label, pip, close = REEL_LABELS[index]
     title = escape(title, quote=True)
     classes = "reel-figure ep02-reel" + (" ep01-gallery-reel" if poster else "")
@@ -89,13 +89,15 @@ def reel_card(title, index, poster="", video="", original=""):
         )
     link = (f'<a class="reel-origin" href="{original}" target="_blank" '
             f'rel="noopener noreferrer">{original_label.rstrip(" ↗")} {arrow_icon()}</a>') if original else ""
+    silent_note = ("無聲版，原聲請看原片", "无声版，原声请看原片", "Silent preview · audio on original")[index] if silent else ""
+    note = f'<span class="reel-silent-note">{escape(silent_note)}</span>' if silent else ""
     if index == 2 and not original:
         play = "Play video"
     return (
         f'<figure class="{classes} local-video-figure" data-kind="video" data-video="{video}" data-close="{close}">'
         f'<div class="reel-viewport">{image}<button class="reel-placeholder ep01-reel-play" type="button" '
         f'aria-label="{play} · {title}"><span aria-hidden="true">{play}</span></button>'
-        f'{link}<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
+        f'{link}{note}<button class="reel-pip-launch" type="button" aria-label="{pip}" aria-pressed="false">{PIP_ICON}</button>'
         f'</div><figcaption>{title}</figcaption></figure>'
     )
 
@@ -108,7 +110,7 @@ def instagram_card(url, title, index, poster, sources, offline):
     asset = sources.get(url)
     filename = asset.get("offline" if offline else "web") if asset else None
     video = video_source(filename, offline) if filename else ""
-    return reel_card(title, index, poster, video=video, original=url)
+    return reel_card(title, index, poster, video=video, original=url, silent=bool(asset and asset.get("silent")))
 
 
 def photo_figure(asset, index, offline, css_class=""):
@@ -812,6 +814,8 @@ def build():
                         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for variants in data.get("reel_sources", {}).values():
         for key, filename in variants.items():
+            if key not in ("web", "offline", "poster"):
+                continue
             folder = "ep02" if key == "poster" else "media"
             name = f"{folder}/{filename}"
             raw = (ROOT / name).read_bytes()

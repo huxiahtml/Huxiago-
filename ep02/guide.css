@@ -761,3 +761,5 @@
 .visual-v7 details.card .gallery .ep02-reel .ep01-reel-play span { white-space: nowrap; font-size: clamp(11px, 3.1vw, 14px); }
 .visual-v7 details.card .gallery .ep02-reel[data-kind="video"] .reel-viewport video { object-fit: cover; }
 .visual-v7 details.card .gallery .ep02-reel[data-kind="video"] .reel-viewport video { position:absolute; inset:0; width:auto; max-width:100%; height:100%; aspect-ratio:9/16; margin:auto; object-fit:contain; }
+
+.ep02-reel .reel-silent-note { position:absolute; z-index:5; left:8px; bottom:8px; max-width:calc(100% - 16px); padding:3px 7px; border-radius:6px; background:rgba(35,30,27,.82); color:white; font-size:11px; line-height:1.3; pointer-events:none; }

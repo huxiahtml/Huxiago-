@@ -19,6 +19,11 @@
     "https://www.instagram.com/p/DZ90zA0Rwgb/": {
       "web": "ep02-bonus-old-town.mp4",
       "poster": "bonus-old-town-poster.webp"
+    },
+    "https://www.instagram.com/p/DR1D9Q9iSvM/": {
+      "web": "ep02-kushiro-first-silent.mp4",
+      "offline": "ep02-kushiro-first-silent-offline.mp4",
+      "silent": true
     }
   },
   "locales": {
