@@ -198,6 +198,8 @@ def ticket_icon(category):
 
 TRACK_LABELS = ("優惠票券", "优惠票券", "Offer tickets")
 SWIPE_LABELS = ("左右滑動收好康  →", "左右滑动收好康  →", "Swipe for more offers →")
+DEAL_INTRO = ("更多泰國優惠、折扣，不定期更新。", "更多泰国优惠、折扣，不定期更新。",
+              "More Thailand offers and discounts, updated from time to time.")
 UPCOMING_COLORS = {"transport": "deal-pink", "dining-experiences": "deal-blue"}
 
 
@@ -265,7 +267,9 @@ def deal_content(deals, index, offline=True):
                 f'loading="lazy" decoding="async">{logo}</div>'
             )
         else:
-            middle = f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
+            middle = ""
+        if "body" in offer:
+            middle += f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
         badge_icon = f'<span class="ticket-no">#{number:02d}</span>' if key == "esim" else icon
         code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""
         primary = (
@@ -284,6 +288,13 @@ def deal_content(deals, index, offline=True):
 
 
 def update_ep01(source, deals, locations, online, lang):
+    source = source.replace("Use it offline when you land in Bangkok", "Use it offline anywhere in Bangkok")
+    for original, localized in zip((
+        "吃到飽網卡優惠先上線，更多獨家折扣，敬請期待。",
+        "吃到饱网卡优惠先上线，更多独家折扣，敬请期待。",
+        "Unlimited-data SIM offers are ready. More exclusive deals are coming soon.",
+    ), DEAL_INTRO):
+        source = source.replace(original, localized)
     start = "<!--hux-shared-deals:start-->"
     end = "<!--hux-shared-deals:end-->"
     content = deal_content(deals, LOCALES.index(lang))
@@ -336,14 +347,11 @@ def script(source, id):
     return extract(source, rf'<script id="{id}">.*?</script>')
 
 
-def bonus_reels(donor, index, offline):
+def bonus_reels(donor, videos, index, offline):
     gallery = script(donor, "hux-reels-script")
     i = gallery.index("function useInlinePlay")
     j = gallery.index("const bonusSection", i)
     gallery = gallery[:i] + gallery[j:]
-    gallery = re.sub(r'const spotReels=.*?},bonus=', "const bonus=", gallery, count=1, flags=re.S)
-    gallery = gallery.replace("document.querySelector('.outro')?.before(bonusSection);",
-                              "document.querySelector('#about')?.before(bonusSection);")
     gallery = gallery.replace("document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))')",
                               "bonusGallery.querySelectorAll('.reel-figure')")
     if offline:
@@ -353,7 +361,7 @@ def bonus_reels(donor, index, offline):
         "event.target.closest('.reel-pip-launch')",
         "event.target.closest('#bonus-reels .reel-pip-launch')",
     )
-    # Shared bonus UI uses the same accessibility copy and video titles as EP.01.
+    # Keep the EP.01 player and accessibility labels with this issue’s selection.
     locale_script = extract(donor, r'<script type="application/json" id="hux-language-data">.*?</script>')
     translations = json.loads(locale_script.split(">", 1)[1].rsplit("<", 1)[0])["strings"]
     if index:
@@ -364,6 +372,12 @@ def bonus_reels(donor, index, offline):
                 floating = floating.replace(original, translated[index - 1].replace("'", "’"))
         localized_dot = ("第 '+(index+1)+' 支影片", "第 '+(index+1)+' 支视频", "Video '+(index+1)+'")[index]
         gallery = gallery.replace("第 '+(index+1)+' 支影片", localized_dot)
+    titles = [[title[index], kind, url_id] for title, kind, url_id in videos]
+    bonus_data = json.dumps(titles, ensure_ascii=False)
+    declaration = extract(gallery, r"const spotReels=.*?},bonus=.*?;")
+    gallery = gallery.replace(declaration, f"const bonus={bonus_data};", 1)
+    for old in ("從我們的故事開始，左右滑動看更多影片。", *translations["從我們的故事開始，左右滑動看更多影片。"]):
+        gallery = gallery.replace(old.replace("'", "’"), ("左右滑動看更多曼谷影片。", "左右滑动看更多曼谷视频。", "Swipe for more Bangkok stories.")[index])
     return gallery.replace(" ↗</span>", " " + arrow_icon() + "</span>") + floating.replace(
         "original.textContent=", "original.innerHTML="
     ).replace(" ↗';", " " + arrow_icon() + "';")
@@ -460,10 +474,10 @@ def story_table(rows, heading, unit=""):
 
 def story_promo(offer, index):
     badge = escape(offer["badge"][index])
-    title = escape(offer["label"][index])
+    title = escape(offer.get("story_label", offer["label"])[index])
     terms = escape(offer["terms"][index])
     url = escape(offer["url"], quote=True)
-    cta = escape(offer["cta"][index])
+    cta = escape(offer.get("story_cta", offer["cta"])[index])
     code = f'<code class="story-promo-code">{escape(offer["code"])}</code>' if "code" in offer else ""
     return (
         '<div class="story-promo"><div class="story-promo-heading">'
@@ -489,6 +503,17 @@ def route_map(filename, index, offline):
             f'target="_blank" rel="noopener noreferrer"><img src="{src}" alt="{escape(title)}" '
             f'loading="lazy" decoding="async"><span>{escape(label)} ↗</span></a></figure>')
 
+def story_menu(groups):
+    items = []
+    for label, dishes in groups:
+        details = "".join(
+            f'<li><span lang="th">{escape(thai)}</span> <span>{escape(name)}</span></li>'
+            for thai, name in dishes
+        )
+        items.append(f'<dt>{escape(label)}</dt><dd><ul>{details}</ul></dd>')
+    return '<dl class="story-menu">' + "".join(items) + '</dl>'
+
+
 def render_story(sections, deals, assets, index, offline, reel_sources):
     photos = {row[0]: row for row in assets}
     parts = []
@@ -506,7 +531,9 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
                     pier, description = block[2:].split(sep, 1)
                     parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
                 else:
-                    parts.append(f"<p>{story_inline(block)}</p>")
+                    fact = heading.startswith("HUXIAGO") and re.match(r"^\*\*[^*]+[：:]\*\*", block)
+                    class_attr = ' class="story-fact"' if fact else ""
+                    parts.append(f"<p{class_attr}>{story_inline(block)}</p>")
             elif "promo" in block:
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
@@ -516,6 +543,10 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
                 parts.append(route_map(block["route_map"], index, offline))
             elif "photo" in block:
                 parts.append(photo_figure(photos[block["photo"]], index, offline, "story-photo"))
+            elif "gallery" in block:
+                parts.append(gallery([photos[filename] for filename in block["gallery"]], index, offline, reel_sources))
+            elif "menu" in block:
+                parts.append(story_menu(block["menu"]))
             else:
                 parts.append(story_table(block["table"], heading, block.get("table_unit", "")))
     return "".join(parts)
@@ -565,7 +596,16 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         clips = []
         if s.get("video_layout") == "story":
             clips = [asset for asset in assets if isinstance(asset[-1], dict) and "video" in asset[-1]]
-        photos = [asset for asset in assets if asset not in clips]
+        story_sections = stories[s["id"]][ix]
+        inline_media = {
+            filename
+            for _, blocks in story_sections
+            if isinstance(blocks, list)
+            for block in blocks
+            if isinstance(block, dict)
+            for filename in block.get("gallery", [])
+        }
+        photos = [asset for asset in assets if asset not in clips and asset[0] not in inline_media]
         media = gallery(photos, ix, offline, reel_sources) if photos and s.get("gallery_layout") != "inline" else ""
         video_section = story_clips(clips, ix, offline) if clips else ""
         if assets:
@@ -573,7 +613,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             thumb = f'<img class="thumb" src="{src}" alt="" loading="lazy" decoding="async">'
         else:
             thumb = f'<span class="thumb ep02-text-thumb" aria-hidden="true">{s["label"]}</span>'
-        story = render_story(stories[s["id"]][ix], deals, assets, ix, offline, reel_sources)
+        story = render_story(story_sections, deals, assets, ix, offline, reel_sources)
         toc.append(
             f'<a class="toc-item" href="#{s["id"]}" data-category="{cat}">'
             f'<span class="toc-item-content"><span class="toc-item-kicker">{stop_heading}</span>'
@@ -611,7 +651,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         for n, label in enumerate(filter_names)
     )
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
-    deal_intro = ("泰國 eSIM、曼谷餐廳與住宿優惠。", "泰国 eSIM、曼谷餐厅与住宿优惠。", "Thailand eSIM, Bangkok dining and hotel offers.")[ix]
+    deal_intro = DEAL_INTRO[ix]
     deals_section = f"""
 <section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
 <p class="deal-kicker">HUXIAGO POCKET DEALS</p>
@@ -624,6 +664,8 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <div class="toc-filters" aria-label="{escape(labels["filter"], quote=True)}">{filters}</div>
 <div class="toc-list">{"".join(toc)}</div></nav>"""
     sections = toc_section + deals_section if offline else deals_section + toc_section
+    outro_title, *outro_paragraphs = data["conclusion"][ix]
+    outro = "".join("<p>" + escape(line).replace("\n", "<br>") + "</p>" for line in outro_paragraphs)
     return ep02_ui_arrows(f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -641,6 +683,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <p class="intro">{escape(t[1])}</p>
 {sections}
 <section aria-labelledby="spots">{section_head}{"".join(stops)}</section>
+<section class="outro" aria-labelledby="conclusion-title"><h2 id="conclusion-title">{escape(outro_title)}</h2>{outro}</section>
 {about}
 {back_top}
 <footer class="footer">HUXIAGO Ep.02 · {escape(t[14] if offline else t[18])}</footer>
@@ -648,7 +691,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <script>const huxMobileStations = matchMedia('(max-width: 979px)');</script>
 {scripts}
 <script>{navigation}</script>
-{bonus_reels(donor, ix, offline)}
+{bonus_reels(donor, data["bonus_reels"], ix, offline)}
 <script>{reel_script}</script>
 </body>
 </html>

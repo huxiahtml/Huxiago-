@@ -13,9 +13,9 @@
       "5% off"
     ],
     "label": [
-      "HUXIAGO 唯一推薦",
-      "HUXIAGO 唯一推荐",
-      "HUXIAGO’s pick"
+      "網卡優惠",
+      "上网卡优惠",
+      "Mobile data deal"
     ],
     "title": [
       "泰國 eSIM",
@@ -23,9 +23,9 @@
       "Thailand eSIM"
     ],
     "body": [
-      "本地電信 True 4G 吃到飽只要 NT$ 99 起，連線穩定低延遲，ChatGPT 等 AI 服務暢通無阻。半年已售出 800+ 筆。下單即自動套用【HUXIAGO】獨家 95 折。",
-      "本地电信 True 4G 无限流量 NT$ 99 起，连接稳定、延迟低，ChatGPT 等 AI 服务畅通无阻。半年已售出 800+ 笔。下单即自动使用【HUXIAGO】专享 95 折。",
-      "Plans with unlimited True 4G data start at NT$99, with a stable, low-latency connection for services such as ChatGPT. Over 800 plans were sold in six months. The exclusive HUXIAGO 5% discount is applied automatically at checkout."
+      "本地電信 True 4G 吃到飽 NT$ 99 起，連線穩定，ChatGPT 等 AI 服務不受限。點擊自動套用折扣碼【HUXIAGO】。",
+      "本地电信 True 4G 无限流量 NT$ 99 起，连接稳定，ChatGPT 等 AI 服务不受限。点击自动使用折扣码【HUXIAGO】。",
+      "Unlimited data on Thailand’s True 4G network from NT$99, with a stable connection for services such as ChatGPT. The HUXIAGO code applies automatically."
     ],
     "cta": [
       "查看泰國 eSIM・全方案",
@@ -54,14 +54,14 @@
       "Dining deal"
     ],
     "body": [
-      "初訪我會點 15 道，坐吧台看師傅一貫一貫捏壽司。",
-      "第一次来，我会点 15 道，坐吧台看师傅一贯一贯捏寿司。",
-      "For a first visit, I’d pick the 15-course menu and a counter seat."
+      "必吃無菜單料理，也有吃到飽方案！指定套餐可享 8 折。",
+      "必吃无菜单料理，也有吃到饱方案！指定套餐可享 8 折。",
+      "Try the omakase or explore the unlimited menu. Save 20% on eligible sets."
     ],
     "terms": [
-      "請在 TableCheck 確認所選日期及套餐是否適用，以及結帳總價。",
-      "请在 TableCheck 确认所选日期及套餐是否适用，以及结账总价。",
-      "Check your selected date, menu eligibility and final total on TableCheck."
+      "點擊按鈕查詢日期、時段及適用套餐，總價以結帳頁為準。",
+      "点击按钮查询日期、时段及适用套餐，总价以结账页为准。",
+      "Check dates, seatings and eligible menus on TableCheck. The final total is shown at checkout."
     ],
     "cta": [
       "TableCheck 訂位",
@@ -71,7 +71,12 @@
     "category": "dining",
     "ticket_name": "Kushiro Omakase",
     "photo": "kushiro-coupon-sushi.webp",
-    "photo_logo": "kushiro-coupon-logo.webp"
+    "photo_logo": "kushiro-coupon-logo.webp",
+    "story_label": [
+      "訂位優惠",
+      "订位优惠",
+      "Booking offer"
+    ]
   },
   "silq": {
     "id": "ep02-silq-offer",
@@ -102,11 +107,26 @@
     "code": "HUXIATHAI",
     "photo": "silq-coupon-lobby.webp",
     "terms": [
-      "連結會帶入優惠碼。選好日期後，請在訂房頁確認房型與方案已套用折扣。",
-      "链接会带入优惠码。选好日期后，请在订房页确认房型与方案已使用折扣。",
-      "The link prefills the code. After choosing your dates, confirm the discount on your selected room and rate."
+      "連結自動帶入優惠碼。選好日期後，請確認房型與方案已套用折扣。",
+      "链接自动带入优惠码。选好日期后，请确认房型与方案已使用折扣。",
+      "The link prefills the code. After choosing your dates, confirm the discount on the selected room and rate."
     ],
-    "photo_logo": "silq-coupon-logo.webp"
+    "photo_logo": "silq-coupon-logo.webp",
+    "body": [
+      "渡假首選！摩登輕奢風五星級飯店，點擊套用限時折扣碼。",
+      "度假首选！摩登轻奢风五星级饭店，点击使用限时折扣码。",
+      "A modern five-star stay for a Bangkok getaway. Tap to apply the limited-time code."
+    ],
+    "story_label": [
+      "獨家優惠碼",
+      "专享优惠码",
+      "Exclusive promo code"
+    ],
+    "story_cta": [
+      "飯店官網訂房",
+      "酒店官网订房",
+      "Book on the hotel website"
+    ]
   },
   "transport": {
     "category": "taxi",

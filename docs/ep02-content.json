@@ -12,7 +12,7 @@
   "locales": {
     "zh-Hant": [
       "曼谷口袋名單",
-      "從板前壽司、現炒打拋飯，到傍晚穿過曼谷的運河。把下一趟想吃、想逛、想走的路收進口袋。",
+      "好評如潮，第二期準時上線！從頂級日料、質感按摩、現炒打拋飯，到穿梭市中心的運河快船，跟著長住曼谷的台泰夫妻，把你下一趟想吃、想逛、想玩的，全都收進口袋。",
       "站點",
       "優惠",
       "下載離線版",
@@ -33,7 +33,7 @@
     ],
     "zh-Hans": [
       "曼谷口袋名单",
-      "从板前寿司、现炒打抛饭，到傍晚穿过曼谷的运河。把下一趟想吃、想逛、想走的路收进口袋。",
+      "好评如潮，第二期准时上线！从顶级日料、质感按摩、现炒打抛饭，到穿梭市中心的运河快船，跟着长住曼谷的台泰夫妻，把你下一趟想吃、想逛、想玩的，全都收进口袋。",
       "站点",
       "优惠",
       "下载离线版",
@@ -54,7 +54,7 @@
     ],
     "en": [
       "Bangkok Pocket Guide",
-      "From counter sushi and wok-fried pad kra pao to an evening ride on Bangkok’s canal. Save the places you want to eat, browse and explore on your next trip.",
+      "You loved the first issue, and we’re back on schedule for issue two! From omakase, boutique massages and sizzling pad kra pao to an express boat through the city centre, join a Taiwanese–Thai couple who call Bangkok home and save the places you’ll want to eat, shop and explore on your next trip.",
       "Stops",
       "Deals",
       "Download offline guide",
@@ -370,5 +370,69 @@
       "filter": "Filter the contents by category",
       "about_follow": "For first-hand stories from Thailand and new HUXIAGO guides, follow us using the buttons below. See you online!"
     }
-  }
+  },
+  "bonus_reels": [
+    [
+      [
+        "曼谷文青社區——嵩越路完全攻略",
+        "曼谷文青社区——嵩越路完全攻略",
+        "A guide to Bangkok’s creative Song Wat neighbourhood"
+      ],
+      "reel",
+      "DZrnpYpp0XG"
+    ],
+    [
+      [
+        "大挑戰！10 小時玩爆曼谷老城區",
+        "大挑战！10 小时玩遍曼谷老城区",
+        "The challenge: 10 hours in Bangkok’s Old Town"
+      ],
+      "p",
+      "DZ90zA0Rwgb"
+    ],
+    [
+      [
+        "沒畢業，完蛋了？小胡的奮鬥故事",
+        "没毕业，完蛋了？小胡的奋斗故事",
+        "I didn’t graduate. What now? Zev’s story"
+      ],
+      "p",
+      "DfarWfKn7Ek"
+    ]
+  ],
+  "conclusion": [
+    [
+      "結語 · 洽圖洽深夜獨白",
+      "說到「洽圖洽」，你第一個想起的是什麼？",
+      "非假日必定空空如也的洽圖洽市集，\n面積驚人、城市綠洲般的洽圖洽公園，\n還是有吃有玩、平價美味的城堡夜市？",
+      "兩年前，剛剛訂婚的我們自媒體有了起色，漸漸站穩腳步，但仍需勒緊褲帶，省吃儉用。",
+      "搬家到洽圖洽，是不二選擇。",
+      "沒想到，它立刻成為我們最愛的社區之一：\n家常泰式料理、平價質感按摩、\n蓮花池咖啡廳、城堡夜市、洽圖洽紅樓⋯⋯\n一顆顆金色記憶球，無法勝數。",
+      "半夜三更，窗外未眠的噪鵑啼叫得再大聲，也絲毫遮掩不了昏黃燈光下，我堅定敲打著電腦、挑燈趕稿的鍵盤聲。",
+      "泰國人成就了曼谷，洽圖洽滋養了我們。而我們，燃燒著青春，卯足氣力打造每一期的泰國指南PLAY+。",
+      "如果你喜歡這樣的內容、想給我們一個鼓勵，就馬上把它轉發給跟你、我，一樣熱愛泰國的他吧。謝謝讀到這裡的你，後會有期。"
+    ],
+    [
+      "结语 · 洽图洽深夜独白",
+      "说到「洽图洽」，你第一个想起的是什么？",
+      "非假日必定空空如也的洽图洽市集，\n面积惊人、城市绿洲般的洽图洽公园，\n还是有吃有玩、平价美味的城堡夜市？",
+      "两年前，刚刚订婚的我们自媒体有了起色，渐渐站稳脚步，但仍需勒紧裤带，省吃俭用。",
+      "搬家到洽图洽，是不二选择。",
+      "没想到，它立刻成为我们最爱的社区之一：\n家常泰式料理、平价质感按摩、\n莲花池咖啡厅、城堡夜市、洽图洽红楼⋯⋯\n一颗颗金色记忆球，数也数不完。",
+      "半夜三更，窗外未眠的噪鹃啼叫得再大声，也丝毫遮掩不了昏黄灯光下，我坚定敲打着电脑、挑灯赶稿的键盘声。",
+      "泰国人成就了曼谷，洽图洽滋养了我们。而我们，燃烧着青春，卯足力气打造每一期的泰国指南PLAY+。",
+      "如果你喜欢这样的内容、想给我们一个鼓励，就马上把它转发给和你、我一样热爱泰国的朋友吧。谢谢读到这里的你，后会有期。"
+    ],
+    [
+      "A late-night letter from Chatuchak",
+      "When you hear “Chatuchak,” what comes to mind first?",
+      "The market that goes quiet on weekdays, the sprawling urban oasis of Chatuchak Park, or the affordable bites and good times at the Castle Night Market?",
+      "Two years ago, just after we got engaged, our work as creators was finally gaining traction. We were finding our feet, but we still had to watch every baht.",
+      "Moving to Chatuchak was the obvious choice.",
+      "Before we knew it, it had become one of our favourite neighbourhoods. Home-style Thai food, good massages at neighbourhood prices, a lotus-pond café, the Castle Night Market and Chatuchak’s Red Building. More golden memories than we can count.",
+      "Deep into the night, Asian koels call outside the window. Even at their loudest, they can’t drown out the sound of me typing under a warm lamp, racing to finish this issue.",
+      "Thai people made Bangkok what it is, and Chatuchak has given us a place to grow. We put all our energy into making each issue of Thailand Guide PLAY+.",
+      "If you enjoyed this issue and want to cheer us on, send it to someone who loves Thailand as much as we do. Thanks for reading all the way here. See you next time."
+    ]
+  ]
 }
