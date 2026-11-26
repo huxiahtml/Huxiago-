@@ -40,7 +40,8 @@
     if (station.id === 'silq') {
       station.querySelector('.gallery')?.scrollTo({ left: 0, behavior: 'instant' });
     }
-    station.scrollIntoView({ behavior: animate ? 'smooth' : 'instant', block: 'start' });
+    const smoothScroll = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    station.scrollIntoView({ behavior: smoothScroll ? 'smooth' : 'instant', block: 'start' });
   }));
 
   document.querySelectorAll('a[href="#toc"], .footer a[href="#top"], .hux-back-top').forEach(link => {
