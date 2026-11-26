@@ -713,28 +713,28 @@
       "sha256": "5269b2db9dd1aabddea8a60b65e9c38abf98d4aaec353a39744b7d995393226e"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 305393,
-      "sha256": "757ff9466bdbb12aad58d311baff6d44cf1e5f328d4b7bdb63c35961713b05a4"
+      "bytes": 305566,
+      "sha256": "777053c5f16cf0c05f48f78e25372771a8ee7ef5a23a65a15c1574de21ca129e"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 26181401,
-      "sha256": "36a891977ef2fd01187878c2f6aa55bfbcd329d0633937f6ee8211de72ab2528"
+      "bytes": 26181574,
+      "sha256": "84ae55c0f7d24fe301f80ea8a198833dfc0b3d67a11e5f3ddd19b3d660b372dc"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 305411,
-      "sha256": "fd7637813876b7af0fcafbf62bda0efc218dd564d8648cfeae9addd19c5d8c7e"
+      "bytes": 305584,
+      "sha256": "27d04589de18969075e506900342a583a71a04398ae87f7982032d3f8f333ff7"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 26180312,
-      "sha256": "f2491de67ec006740bda37cb9c03e6be22333ac55c86e5f726f33440679a6865"
+      "bytes": 26180485,
+      "sha256": "8fd18f8a30778e33338ef2c531d47ea875cee2206cd8f965f91782c3991c9255"
     },
     "ep02-en.html": {
-      "bytes": 305216,
-      "sha256": "b9c49632738654d75cca01672ab3d86778d05e24e9e18676c281fdecb955e2bf"
+      "bytes": 305389,
+      "sha256": "1c13577e2512ca747646a8526d80c163fb4505ae917c94bc39cf84da7f1fe735"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 26170145,
-      "sha256": "13212f01d6688b006b01c7f9f2ce64f6d6add8e59151f15ca2adb00c11ed8abd"
+      "bytes": 26170318,
+      "sha256": "d643bac3001598f7b709181b498e05fbb28b64f4f5b7119a899fafa34b5b38d6"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 305097,
-      "sha256": "c368338ef7bfe48c2323802e7e78dfc0073f9f6ab8bbb01954e7f981786e7ff6"
+      "bytes": 305270,
+      "sha256": "ffa1c599841d095391678e49ebcb03f7bb19067e8fcce949e6a479a64236f172"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,

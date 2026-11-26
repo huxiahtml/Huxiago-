@@ -749,3 +749,8 @@
 .visual-v7 .toc-item-tag, .visual-v7 .toc-item-action { white-space: normal; }
 .visual-v7 .toc-list .toc-item .toc-item-content { grid-column:2; grid-row:1; }
 .visual-v7 details.card .gallery > figure { margin:0; }
+
+/* Compact, always-visible pier descriptions. */
+.visual-v7 .story-copy .pier-list { margin: .35rem 0 1rem; padding: 0 0 0 1.35em; list-style: disc outside; }
+.visual-v7 .story-copy .pier-list li { display: list-item; margin: 0 0 .6em; padding: 0 0 0 .15em; line-height: 1.65; }
+.visual-v7 .story-copy .pier-list li:last-child { margin-bottom: 0; }

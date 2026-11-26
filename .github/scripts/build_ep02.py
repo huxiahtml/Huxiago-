@@ -569,19 +569,24 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
         parts.append(f'<h4 class="story-heading">{story_inline(heading)}</h4>')
         if isinstance(blocks, str):
             blocks = [blocks]
+        pier_list_open = False
         for block in blocks:
-            if isinstance(block, str):
-                if heading.startswith(("從西往東", "从西往东", "Useful piers")) and block.startswith("**") and "：**" in block:
-                    pier, description = block[2:].split("：**", 1)
-                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
-                elif heading.startswith(("从西往东", "Useful piers")) and block.startswith("**") and (":**" in block or "：**" in block):
-                    sep = "：**" if "：**" in block else ":**"
-                    pier, description = block[2:].split(sep, 1)
-                    parts.append(f'<details class="pier-note"><summary>{escape(pier)}</summary><p>{story_inline(description.strip())}</p></details>')
-                else:
-                    fact = heading.startswith("HUXIAGO") and re.match(r"^\*\*[^*]+[：:]\*\*", block)
-                    class_attr = ' class="story-fact"' if fact else ""
-                    parts.append(f"<p{class_attr}>{story_inline(block)}</p>")
+            is_pier = (isinstance(block, str) and heading.startswith(("從西往東", "从西往东", "Useful piers"))
+                       and block.startswith("**") and ("：**" in block or ":**" in block))
+            if pier_list_open and not is_pier:
+                parts.append("</ul>")
+                pier_list_open = False
+            if is_pier:
+                if not pier_list_open:
+                    parts.append('<ul class="pier-list">')
+                    pier_list_open = True
+                sep = "：**" if "：**" in block else ":**"
+                pier, description = block[2:].split(sep, 1)
+                parts.append(f'<li><strong>{escape(pier)}</strong>：{story_inline(description.strip())}</li>')
+            elif isinstance(block, str):
+                fact = heading.startswith("HUXIAGO") and re.match(r"^\*\*[^*]+[：:]\*\*", block)
+                class_attr = ' class="story-fact"' if fact else ""
+                parts.append(f"<p{class_attr}>{story_inline(block)}</p>")
             elif "promo" in block:
                 parts.append(story_promo(deals[block["promo"]], index))
             elif "reel" in block:
@@ -597,6 +602,8 @@ def render_story(sections, deals, assets, index, offline, reel_sources):
                 parts.append(story_menu(block["menu"]))
             else:
                 parts.append(story_table(block["table"], heading, block.get("table_unit", "")))
+        if pier_list_open:
+            parts.append("</ul>")
     return "".join(parts)
 
 
