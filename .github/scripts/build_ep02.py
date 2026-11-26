@@ -773,7 +773,7 @@ def build():
                 data, deals, stories, galleries, locations, lang, offline, outputs["index.html"].decode("utf-8"),
                 localized, legacy_download).encode("utf-8")
     # Serve the clean URL from a real asset, avoiding redirecting its backing page.
-    outputs[f'{EP02_WEB_PATH["zh-Hant"]}.html'] = outputs["ep02-zh-Hant.html"]
+    outputs[f'{EP02_WEB_PATH["zh-Hant"]}.html'] = outputs["ep02-zh-Hant.html"].replace(b"\r\n", b"\n")
     manifest_path = ROOT / "site-files.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     for name, raw in outputs.items():
