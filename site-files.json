@@ -713,24 +713,24 @@
       "sha256": "5269b2db9dd1aabddea8a60b65e9c38abf98d4aaec353a39744b7d995393226e"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 307994,
-      "sha256": "0806239b3804275848b2b3ad3aec43ed2e3f77d3de3de5800006bd40978bae6c"
+      "bytes": 308003,
+      "sha256": "c8f62f594c5056dfa52ce372b8c3c3354e6e6b43440418a20bc0d6adae66cd6f"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
       "bytes": 26182384,
       "sha256": "2187701d36883a6824422f252d5fd160ebb6896bd6ebfd9cd2b773e4875a54cd"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 308012,
-      "sha256": "6f5989c033659e9c5fa6f5a606c11cd26d27b542809858a2971518c9b3075210"
+      "bytes": 308021,
+      "sha256": "96ac7dae00d83042281547812430d392d87e351d68584add87eec800975da6a6"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
       "bytes": 26181295,
       "sha256": "08c2af14a0801340dcd68f11c18fb5ed4712219410f8c1465e4c521191789707"
     },
     "ep02-en.html": {
-      "bytes": 307817,
-      "sha256": "d0eefa61bc197f89ed3c0ab9a861b37b209da616aaad04d49ea820749694598b"
+      "bytes": 307826,
+      "sha256": "a06345a2d0b321fb2fb68585a68bcdfb4dfdf149878de294e73db62bc3f1aa2d"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
       "bytes": 26171128,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 307671,
-      "sha256": "61ccfc9be05e5b32777cd9378ac1506504c09767b7100b0bbf52d66da4189edb"
+      "bytes": 307680,
+      "sha256": "a787617f0e813b197915ea7e6e96085e3b7eb1ee67c584ee85d47031989f5ed3"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,
@@ -1187,6 +1187,18 @@
     "media/hux-share-ep02-compact-en.jpg": {
       "bytes": 108252,
       "sha256": "939e1700e60f9c49fed301c93ab0a73929b49fd00313a984a3dff1a0881a204c"
+    },
+    "media/ep02-saen-saep-boarding-hd.mp4": {
+      "bytes": 3565877,
+      "sha256": "e8267ec8951e5cdb8522409da885bba0da2186a62fe6bf8efa49a77b91f344a0"
+    },
+    "media/ep02-saen-saep-ride-hd.mp4": {
+      "bytes": 9430842,
+      "sha256": "0a16fc28e82b66721aa0b1f7c9762296fd1118f90f11b7ca1aca5265fab90988"
+    },
+    "media/ep02-saen-saep-captain-hd.mp4": {
+      "bytes": 5309546,
+      "sha256": "e9af38bbb798d2b0761cc04eef98b91ae8dac9bff5f522be608bf73304f38852"
     }
   }
 }

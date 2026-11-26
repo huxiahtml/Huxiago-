@@ -148,7 +148,7 @@ def story_clips(assets, index, offline):
     for filename, hant, hans, english, entry in assets:
         caption = escape((hant, hans, english)[index])
         poster = guide_photo(filename, offline)
-        src = video_source(entry["video"], offline)
+        src = video_source(entry.get("offline_video", entry["video"]) if offline else entry["video"], offline)
         clips.append(
             f'<figure class="clip canal-clip ep02-reel" data-kind="video" data-video="{src}" data-close="{close}">'
             f'<figcaption>{caption}</figcaption><div class="clip-media reel-viewport">'

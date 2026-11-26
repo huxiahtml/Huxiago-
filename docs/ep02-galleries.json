@@ -471,7 +471,8 @@
       "船身摇晃，上船请先抓稳",
       "Hold on as you board the rocking boat",
       {
-        "video": "ep02-saen-saep-boarding.mp4"
+        "video": "ep02-saen-saep-boarding-hd.mp4",
+        "offline_video": "ep02-saen-saep-boarding.mp4"
       }
     ],
     [
@@ -498,7 +499,8 @@
       "印象深刻的运河快船体验",
       "A memorable ride on the canal express boat",
       {
-        "video": "ep02-saen-saep-ride.mp4"
+        "video": "ep02-saen-saep-ride-hd.mp4",
+        "offline_video": "ep02-saen-saep-ride.mp4"
       }
     ],
     [
@@ -507,7 +509,8 @@
       "坐在船长旁边，看他掌舵",
       "A seat beside the captain at the helm",
       {
-        "video": "ep02-saen-saep-captain.mp4"
+        "video": "ep02-saen-saep-captain-hd.mp4",
+        "offline_video": "ep02-saen-saep-captain.mp4"
       }
     ]
   ]
