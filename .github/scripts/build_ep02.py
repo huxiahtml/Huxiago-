@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CSS = ROOT / "ep02/guide.css"
 LOCALES = ("zh-Hant", "zh-Hans", "en")
+EP02_WEB_PATH = {"zh-Hant": "bkk-ep02-zh", "zh-Hans": "ep02-zh-Hans.html", "en": "ep02-en.html"}
 TITLE_ART = {"zh-Hant": "zh-tw", "zh-Hans": "zh-cn", "en": "en"}
 
 
@@ -243,7 +244,7 @@ def add_ep01_locations(source, locations, lang, online):
     return updated
 
 
-def deal_content(deals, index, offline=True):
+def deal_content(deals, index, offline):
     cards = []
     for number, (key, offer) in enumerate(deals.items(), 1):
         icon = ticket_icon(offer["category"])
@@ -294,28 +295,63 @@ def deal_content(deals, index, offline=True):
             f'<p class="deal-swipe">{SWIPE_LABELS[index].rstrip(" →")} {arrow_icon("right")}</p>')
 
 
-def update_ep01(source, deals, locations, online, lang):
-    source = source.replace("Use it offline when you land in Bangkok", "Use it offline anywhere in Bangkok")
-    for original, localized in zip((
-        "吃到飽網卡優惠先上線，更多獨家折扣，敬請期待。",
-        "吃到饱网卡优惠先上线，更多独家折扣，敬请期待。",
-        "Unlimited-data SIM offers are ready. More exclusive deals are coming soon.",
-    ), DEAL_INTRO):
-        source = source.replace(original, localized)
-    start = "<!--hux-shared-deals:start-->"
-    end = "<!--hux-shared-deals:end-->"
-    content = deal_content(deals, LOCALES.index(lang))
-    if online:
-        templates = "".join(f'<template id="shared-deals-{code}">{deal_content(deals, i)}</template>'
+def deal_section(deals, titles, lang, offline, switch_language=False, heading_id="esim-title"):
+    def body(index):
+        return (
+            '<p class="deal-kicker">HUXIAGO POCKET DEALS</p>'
+            f'<h2 id="{heading_id}">{escape(titles[index])}</h2>'
+            f'<p class="deal-intro">{escape(DEAL_INTRO[index])}</p>'
+            + deal_content(deals, index, offline)
+        )
+
+    content = body(LOCALES.index(lang))
+    panel = f'<div id="hux-shared-deals" data-locale="{lang}" translate="no">{content}</div>'
+    if switch_language:
+        templates = "".join(f'<template id="shared-deals-{code}">{body(i)}</template>'
                             for i, code in enumerate(LOCALES))
         switcher = """<script>(()=>{const deals=document.getElementById('hux-shared-deals'),
 root=document.documentElement;let locale=deals.dataset.locale;
 function sync(){const next=root.lang;const tpl=document.getElementById('shared-deals-'+next);
-if(!tpl||locale===next)return;locale=next;
+if(!tpl||locale===next)return;locale=next;deals.dataset.locale=next;
 deals.replaceChildren(tpl.content.cloneNode(true));}
 sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang']});})();</script>"""
-        content = (f'<div id="hux-shared-deals" data-locale="{lang}" translate="no">{content}</div>'
-                   + templates + switcher)
+        panel += templates + switcher
+    return f'<section aria-labelledby="{heading_id}" class="deal-zone" id="deals">{panel}</section>'
+
+
+def update_ep01_picker(source):
+    route = EP02_WEB_PATH["zh-Hant"]
+    link = extract(source, r'<a class="episode-upcoming ep02-link"[^>]*>.*?</a>')
+    source = source.replace(link, (
+        f'<a class="episode-upcoming ep02-link" href="https://huxiago.com/{route}" aria-label="HUXIAGO EP.02">'
+        '<span><b>Ep.02</b><small>曼谷篇</small></span></a>'
+    ), 1)
+    source = re.sub(
+        r"document\.querySelector\('\.episode-upcoming small'\)\.textContent=[^;]*;"
+        r"document\.querySelector\('\.episode-upcoming em'\)\.textContent=[^;]*;",
+        "document.querySelector('.episode-upcoming small').textContent="
+        "document.querySelector('.episode-current small').textContent;",
+        source,
+        count=1,
+    )
+    legacy = r'<script>\(\(\)=>\{const a=document\.querySelector\("\.ep02-link"\), root=document\.documentElement;.*?</script>'
+    previous = extract(source, r'<script id="hux-ep02-route">.*?</script>|' + legacy)
+    paths = json.dumps(EP02_WEB_PATH)
+    script = f"""<script id="hux-ep02-route">(()=>{{
+const paths={paths},link=document.querySelector('.ep02-link'),root=document.documentElement;
+function sync(){{
+  const locale=Object.hasOwn(paths,root.lang)?root.lang:'zh-Hant';
+  link.href=location.protocol==='file:'?'ep02-'+locale+'.html':paths[locale];
+}}
+sync();new MutationObserver(sync).observe(root,{{attributes:true,attributeFilter:['lang']}});
+}})();</script>"""
+    return source.replace(previous, script, 1)
+
+
+def update_ep01(source, deals, locations, titles, online, lang):
+    source = source.replace("Use it offline when you land in Bangkok", "Use it offline anywhere in Bangkok")
+    if online:
+        source = update_ep01_picker(source)
     ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
     source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
     media_css = (ROOT / "ep02/shared-media.css").read_text(encoding="utf-8")
@@ -326,20 +362,8 @@ sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:
         f'<style id="hux-shared-media">{media_css}</style></head>',
         1,
     )
-    block = start + content + end
-    # Accept the original EP.01 track, the former ticket-only marker, and the full managed block.
-    track = r'<div\b[^>]*\bclass="deal-track"[^>]*>'
-    swipe = r'<p class="deal-swipe"[^>]*>.*?</p>'
-    managed = re.escape(start) + ".*?" + re.escape(end)
-    if start not in source:
-        pattern = track + ".*?" + swipe
-    elif re.search(track + re.escape(start), source):
-        pattern = track + managed + ".*?" + swipe
-    else:
-        pattern = managed
-    updated, count = re.subn(pattern, lambda _: block, source, count=1, flags=re.S)
-    if count != 1 or "esimconnect.com.tw" not in source:
-        raise ValueError("EP.01 deals template missing")
+    section = extract(source, r'<section\b[^>]*\bid="deals"[^>]*>.*?</section>')
+    updated = source.replace(section, deal_section(deals, titles, lang, not online, switch_language=online), 1)
     return add_ep01_locations(updated, locations, lang, online)
 
 
@@ -435,6 +459,8 @@ def issue_shell(donor, localized, lang, labels, count, offline, legacy_download)
         language = extract(donor, r'<div class="hux-language-bar">.*?</div></div>')
         language = re.sub(r'(data-hux-lang="([^"]+)"[^>]+aria-pressed=")(?:true|false)',
                           lambda m: m[1] + str(m[2] == lang).lower(), language)
+        language = re.sub(r'(data-hux-lang="([^"]+)")',
+                          lambda m: m[1] + f' data-hux-route="{EP02_WEB_PATH[m[2]]}"', language)
         kicker = extract(cover, r'<p class="kicker">.*?</p>')
         cover = cover.replace(kicker, f'<div class="hux-cover-topbar">{kicker}{language}</div>', 1)
         picker = extract(donor, r'<span class="episode-picker"[^>]*>.*?</a></span></span>')
@@ -591,8 +617,9 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         "      e.preventDefault();",
         "      if (huxMobileStations.matches && !details.__huxAnimation) return;\n      e.preventDefault();",
     )
-    canonical = json.dumps(f"https://huxiago.com/ep02-{lang}.html")
-    share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {canonical};", share, count=1)
+    canonical = f"https://huxiago.com/{EP02_WEB_PATH[lang]}"
+    canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline and lang == "zh-Hant" else ""
+    share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {json.dumps(canonical)};", share, count=1)
     scripts = "\n".join((
         share,
         script(localized, "v12-share-positioning"),
@@ -673,13 +700,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         for n, label in enumerate(filter_names)
     )
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
-    deal_intro = DEAL_INTRO[ix]
-    deals_section = f"""
-<section aria-labelledby="ep02-deals-title" class="deal-zone" id="deals">
-<p class="deal-kicker">HUXIAGO POCKET DEALS</p>
-<h2 id="ep02-deals-title">{escape(data["labels"]["deal_line"][ix])}</h2>
-<p class="deal-intro">{escape(deal_intro)}</p>
-{deal_content(deals, ix, offline)}</section>"""
+    deals_section = deal_section(deals, data["labels"]["deal_line"], lang, offline, heading_id="ep02-deals-title")
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>
@@ -695,6 +716,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>{escape(t[0])} EP.02 | HUXIAGO</title>
+{canonical_link}
 <style>{css}</style>
 </head>
 <body class="visual-v7">
@@ -729,10 +751,11 @@ def build():
         json.loads((ROOT / "docs" / name).read_text(encoding="utf-8-sig"))
         for name in ("ep02-content.json", "shared-deals.json", "ep02-stories.json", "ep02-galleries.json", "guide-locations.json")
     )
+    titles = data["labels"]["deal_line"]
     index_path = ROOT / "index.html"
     index_original = index_path.read_bytes()
     donor = index_original.decode("utf-8")
-    outputs = {"index.html": update_ep01(donor, deals, locations, True, "zh-Hant").encode("utf-8")}
+    outputs = {"index.html": update_ep01(donor, deals, locations, titles, True, "zh-Hant").encode("utf-8")}
     ep01_files = {
         "zh-Hant": next(ROOT.glob("HUXIAGO_*_vol01.html")).name,
         "zh-Hans": "HUXIAGO_Bangkok_EP01_zh-Hans.html",
@@ -742,7 +765,7 @@ def build():
         source = (ROOT / name).read_bytes().decode("utf-8")
         if lang != "zh-Hant":
             source = source.replace("\r\n", "\n")
-        outputs[name] = update_ep01(source, deals, locations, False, lang).encode("utf-8")
+        outputs[name] = update_ep01(source, deals, locations, titles, False, lang).encode("utf-8")
     for lang, legacy_download in ep01_files.items():
         localized = outputs[legacy_download].decode("utf-8")
         for offline, name in ((False, f"ep02-{lang}.html"), (True, f"HUXIAGO_Bangkok_EP02_{lang}.html")):

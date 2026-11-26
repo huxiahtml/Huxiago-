@@ -5,7 +5,34 @@ const {pathToFileURL}=require('node:url');
 const links=['https://esimconnect.com.tw/#/access/esimbuy?region=泰國&referencecode=HUXIAGO','https://www.tablecheck.com/en/kushiro-omakase-and-japanese-dining-bangkok/reserve/message?utm_source=huxiago'];
 const silqLink='https://book-directonline.com/properties/SILQHotelResidencedirect?locale=en&promocode=HUXIATHAI';
 const offers = require('../docs/shared-deals.json');
-const server=http.createServer((req,res)=>{const p=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname));if(!p.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(p,(e,v)=>{if(e){res.writeHead(404);return res.end()}res.setHeader('Content-Type',p.endsWith('.html')?'text/html; charset=utf-8':p.endsWith('.mp4')?'video/mp4':p.endsWith('.webp')?'image/webp':p.endsWith('.svg')?'image/svg+xml':'application/octet-stream');res.end(v)})});
+const redirects = new Map(fs.readFileSync(path.join(root, '_redirects'), 'utf8')
+  .split(/\r?\n/).filter(line => line.startsWith('/')).map(line => {
+    const [from, to, status] = line.split(/\s+/);
+    return [from, {to, status: Number(status)}];
+  }));
+const episodeRoutes = {'zh-Hant':'/bkk-ep02-zh','zh-Hans':'/ep02-zh-Hans.html',en:'/ep02-en.html'};
+const server = http.createServer((req,res) => {
+  const url = new URL(req.url, 'http://127.0.0.1');
+  const redirect = redirects.get(url.pathname);
+  if (redirect && redirect.status !== 200) {
+    res.writeHead(redirect.status, {Location: redirect.to + url.search});
+    return res.end();
+  }
+  const filename = path.resolve(root, '.' + decodeURIComponent(redirect?.to ?? url.pathname));
+  if (!filename.startsWith(root + path.sep)) {
+    res.writeHead(403);
+    return res.end();
+  }
+  fs.readFile(filename, (error, bytes) => {
+    if (error) {
+      res.writeHead(404);
+      return res.end();
+    }
+    const mime = {'.html':'text/html; charset=utf-8','.mp4':'video/mp4','.webp':'image/webp','.svg':'image/svg+xml'};
+    res.setHeader('Content-Type', mime[path.extname(filename)] ?? 'application/octet-stream');
+    res.end(bytes);
+  });
+});
 const locations = require('../docs/guide-locations.json');
 const mapDestinations = places => places.map(place => place.url);
 async function verifyMaps(page, issue) {
@@ -97,6 +124,19 @@ async function verifySharedOfferStyle(page) {
     assert.equal(style.blocks.at(-1), 'ticket-stub');
   }
 }
+const dealLayout = page => page.locator('#deals').evaluate(section => {
+  const heading = section.querySelector('h2');
+  const intro = section.querySelector('.deal-intro');
+  const track = section.querySelector('.deal-track');
+  const size = el => [el.offsetWidth, el.offsetHeight];
+  return {
+    heading: [heading.textContent, getComputedStyle(heading).fontSize],
+    intro: [intro.textContent, getComputedStyle(intro).fontSize],
+    section: size(section),
+    track: size(track),
+    cards: [...track.children].map(size),
+  };
+});
 const railLayout = page => page.evaluate(() => {
   const rail = document.querySelector('.desktop-rail');
   return {
@@ -497,20 +537,32 @@ const widths = [390, 647, 768, 979, 980, 1200, 1440];
 const b=await chromium.launch({executablePath:process.env.HUX_CHROME_BIN,headless:true});
 try{const p=await b.newPage({reducedMotion:'reduce'});const errors=[];
 await p.addInitScript(() => { Object.defineProperty(navigator,'share',{value: payload => { window.testShare = payload; }}); });p.on('pageerror',e=>errors.push(String(e)));await p.route(/^https?:/,r=>r.request().url().startsWith(origin)?r.continue():r.abort());
+await p.goto(origin+'/ep02-zh-Hant.html?utm_source=qa#silq');
+assert.equal(p.url(), origin+'/bkk-ep02-zh?utm_source=qa#silq');
+assert(await p.locator('#silq').evaluate(el => el.open));
+await p.locator('[data-hux-lang="en"]').click();
+await p.waitForURL(origin+episodeRoutes.en+'#silq');
+await p.locator('[data-hux-lang="zh-Hant"]').click();
+await p.waitForURL(origin+episodeRoutes['zh-Hant']+'#silq');
+assert(await p.locator('#silq').evaluate(el => el.open));
+assert.equal(await p.locator('link[rel="canonical"]').getAttribute('href'),'https://huxiago.com/bkk-ep02-zh');
 for(const lang of ['zh-Hant','zh-Hans','en']){
 await p.goto(origin+'/index.html?lang='+lang);
 await p.waitForFunction(l=>document.documentElement.lang===l,lang);
 await p.waitForFunction(l=>document.querySelector('#deals [data-shared-deal="kushiro"]').textContent.includes(l==='en'?'Book on TableCheck':l==='zh-Hans'?'TableCheck 订位':'TableCheck 訂位'),lang);
-await affirm(p,lang);assert.equal(await p.locator('details.card').count(),12);await verifyMaps(p,1);await verifyEp01MobileMedia(p);
+await affirm(p,lang,false);assert.equal(await p.locator('details.card').count(),12);await verifyMaps(p,1);await verifyEp01MobileMedia(p);
 const tickets = await ticketStyles(p);
 assert.deepEqual(tickets.map(x=>x.key), ['esim','kushiro','silq']);
 assert.deepEqual(tickets.map(x=>x.hasAction), [true,true,true]);
 assert(tickets.every(x=>x.icon));
 assert.equal(new Set(tickets.map(x=>x.icon)).size, 3);
 const reference = new Map();
-for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,await railLayout(p));await verifyPlaceholders(p);await verifySharedOfferStyle(p);}
-await p.locator('.episode-trigger').click();await p.locator('.ep02-link').click();
-await p.waitForURL(u=>u.pathname==='/ep02-'+lang+'.html');await affirm(p,lang,false);
+for(const width of widths){await p.setViewportSize({width,height:900});reference.set(width,{rail:await railLayout(p),deals:await dealLayout(p)});await verifyPlaceholders(p);await verifySharedOfferStyle(p);}
+await p.locator('.episode-trigger').click();
+assert.equal(await p.locator('.ep02-link').evaluate(link=>link.pathname),episodeRoutes[lang]);
+assert.doesNotMatch(await p.locator('.ep02-link').textContent(),/審稿|审稿|preview|draft/i);
+await p.locator('.ep02-link').click();
+await p.waitForURL(u=>u.pathname===episodeRoutes[lang]);await affirm(p,lang,false);
 assert.equal(await p.locator('details.card').count(),7);await verifyMaps(p,2);
 await verifyEp02Directory(p);
 await verifyEp02Reading(p);
@@ -522,7 +574,8 @@ await p.locator('#kushiro summary').click();
 assert(await p.locator('#kushiro .body > .gallery').evaluate(el=>el.scrollWidth>el.clientWidth));
 for(const width of widths){
   await p.setViewportSize({width,height:900});
-  assert.deepEqual(await railLayout(p), reference.get(width));
+  assert.deepEqual(await railLayout(p), reference.get(width).rail);
+  assert.deepEqual(await dealLayout(p), reference.get(width).deals);
   await verifyPlaceholders(p);await verifySharedOfferStyle(p,2);
   assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), 'page overflows at width '+width);
 }
@@ -531,19 +584,23 @@ await p.locator('.rail-links a[href="#deals"]').click();
 await p.waitForFunction(()=>document.querySelector('.rail-links .active')?.hash==='#deals');
 await p.locator('.rail-links a[href="#share-strip"]').click();
 await p.locator('#share-strip [data-share="native"]').evaluate(button=>button.click());
-await p.waitForFunction(locale=>window.testShare?.url==='https://huxiago.com/ep02-'+locale+'.html',lang);
+await p.waitForFunction(url=>window.testShare?.url===url,'https://huxiago.com'+episodeRoutes[lang]);
 const railDownload=p.waitForEvent('download');
 await p.locator('.rail-acquire').click();
 assert.equal((await railDownload).suggestedFilename(),'HUXIAGO_Bangkok_EP02_'+lang+'.html');
 const pending=p.waitForEvent('download');await p.locator('.acquire-button').click();const file=(await pending).suggestedFilename();assert.equal(file,'HUXIAGO_Bangkok_EP02_'+lang+'.html');
 await p.locator('.episode-trigger').click();await p.locator('#episode-menu a').click();await p.waitForURL(u=>u.pathname==='/index.html'&&u.searchParams.get('lang')===lang);
-const c=await b.newContext({offline:true,viewport:{width:1440,height:900}});const q=await c.newPage();let offlineRail;
+const c=await b.newContext({offline:true,viewport:{width:1440,height:900}});const q=await c.newPage();let offlineRail, offlineDeals;
 for(const name of [lang==='zh-Hant'?fs.readdirSync(root).find(n=>n.endsWith('vol01.html')):'HUXIAGO_Bangkok_EP01_'+lang+'.html',file]){
 await q.goto(pathToFileURL(path.join(root,name)).href);await affirm(q,lang);await verifyMaps(q,name===file?2:1);
 assert.deepEqual(await ticketStyles(q),tickets);
 await verifyPlaceholders(q);await verifySharedOfferStyle(q,name===file?2:1);
-if(name===file)assert.deepEqual(await railLayout(q),offlineRail);
-else {offlineRail=await railLayout(q);await verifyEp01MobileMedia(q);}
+if(name===file){
+  assert.deepEqual(await railLayout(q),offlineRail);
+  assert.deepEqual(await dealLayout(q),offlineDeals);
+}else {
+  offlineRail=await railLayout(q);offlineDeals=await dealLayout(q);await verifyEp01MobileMedia(q);
+}
 if(name===file){await verifyArticles(q);await verifyEp02Galleries(q,true);await verifyReelsAndPromos(q,lang);await verifyMapAndLocalVideos(q,true);}
 }await c.close();
 }assert.deepEqual(errors,[]);console.log('Both issues and all six offline editions: station maps and coupon links, matching rail and mobile layout, rail navigation and share, three linked photo tickets and same-size pink/blue COMING SOON tickets, unchanged 12 EP.01 cards, seven EP.02 cards, galleries, 28-pier interactive map, TOC auto-open and all eight native station videos, two-way locale navigation, downloads and responsive widths verified.');

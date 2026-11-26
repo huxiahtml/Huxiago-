@@ -62,6 +62,7 @@
   openLinkedStation();
   addEventListener('hashchange', openLinkedStation);
   document.querySelectorAll('[data-hux-lang]').forEach(button => button.addEventListener('click', () => {
-    location.href = 'ep02-' + button.dataset.huxLang + '.html' + location.hash;
+    const route = location.protocol === 'file:' ? 'ep02-' + button.dataset.huxLang + '.html' : button.dataset.huxRoute;
+    location.href = route + location.hash;
   }));
 })();

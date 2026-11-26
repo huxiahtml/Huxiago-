@@ -273,13 +273,6 @@
 .visual-v7 .chev .hux-arrow { width: 16px; height: 16px; }
 .visual-v7 .card[open] .chev .hux-arrow { transform: rotate(180deg); }
 
-.visual-v7 .deal-zone .ticket-feature :is(.ticket-value, .ticket-cta-label) {
-  min-inline-size: 0;
-  max-inline-size: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
 /* EP.01 Reel controls on EP.02 gallery and article cards. */
 .visual-v7 details.card .gallery {
   --gallery-media-height: clamp(300px, 100vw, 470px);

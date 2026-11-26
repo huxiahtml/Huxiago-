@@ -254,6 +254,13 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   line-height: 1.3;
 }
 
+.visual-v7 .deal-zone .ticket-feature :is(.ticket-value, .ticket-cta-label) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .visual-v7 .ticket-feature .ticket-cta::after { content: none; }
 .visual-v7 .ticket-feature .ticket-cta:hover { filter: brightness(1.06); }
 .visual-v7 .ticket-feature .ticket-cta:focus-visible {

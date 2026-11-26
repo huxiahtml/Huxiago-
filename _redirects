@@ -1,0 +1,6 @@
+# Bangkok EP.02 Traditional Chinese
+/bkk-ep02-zh /ep02-zh-Hant.html 200
+/bkk-ep02-zh/ /bkk-ep02-zh 301
+/ep02-zh-Hant /bkk-ep02-zh 301
+/ep02-zh-Hant/ /bkk-ep02-zh 301
+/ep02-zh-Hant.html /bkk-ep02-zh 301
