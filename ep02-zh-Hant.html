@@ -2533,6 +2533,34 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   }));
 })();
 </script>
+<script id="hux-mobile-cta-motion-20261017">
+(()=>{
+ const touch=window.matchMedia('(hover: none) and (pointer: coarse)');
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const targets=[...document.querySelectorAll('.cover .acquire-button')];
+ const visible=new Map(targets.map(element=>[element,!('IntersectionObserver'in window)]));
+ function sync(){
+  for(const element of targets){
+   const active=touch.matches&&!reduce.matches&&!document.hidden&&visible.get(element);
+   if(active&&!element.querySelector('.hux-mobile-shine')){
+    const shine=document.createElement('span');shine.className='hux-mobile-shine';shine.setAttribute('aria-hidden','true');element.append(shine);
+   }
+   element.classList.toggle('hux-mobile-cue-active',Boolean(active));
+  }
+ }
+ if('IntersectionObserver'in window){
+  const observer=new IntersectionObserver(entries=>{for(const entry of entries)visible.set(entry.target,entry.isIntersecting&&entry.intersectionRatio>=.25);sync();},{threshold:[0,.25]});
+  targets.forEach(element=>observer.observe(element));
+ }
+ for(const element of targets){
+  element.addEventListener('pointerdown',()=>element.classList.add('hux-mobile-cue-held'),{passive:true});
+  for(const event of ['pointerup','pointercancel','pointerleave'])element.addEventListener(event,()=>element.classList.remove('hux-mobile-cue-held'),{passive:true});
+ }
+ document.addEventListener('visibilitychange',sync);
+ for(const query of [touch,reduce]){if(query.addEventListener)query.addEventListener('change',sync);else query.addListener(sync);}
+ sync();
+})();
+</script>
 <script id="v16-get-guide-script">
 (()=>{
   // Both CTAs point at this exact self-contained page, whether hosted or opened as a local file.

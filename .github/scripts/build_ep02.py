@@ -641,6 +641,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         share,
         script(localized, "v12-share-positioning"),
         script(donor, "v15-rail-navigation"),
+        "" if offline else script(donor, "hux-mobile-cta-motion-20261017").replace(".cover .acquire-button,.deal-yellow", ".cover .acquire-button"),
         script(localized, "v16-get-guide-script").replace(legacy_download, f"HUXIAGO_Bangkok_EP02_{lang}.html"),
         motion,
         script(donor, "v22-draggable-share"),
