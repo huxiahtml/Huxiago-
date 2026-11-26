@@ -752,7 +752,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <p class="intro">{escape(t[1])}</p>
 {sections}
 <section aria-labelledby="spots">{section_head}{"".join(stops)}</section>
-<section class="outro" aria-labelledby="conclusion-title"><h2 id="conclusion-title">{escape(outro_title)}</h2>{outro}</section>
+<section class="outro" aria-labelledby="conclusion-title"><p class="ending-kicker">HUXIAGO · Ep.02</p><h2 id="conclusion-title">{escape(outro_title)}</h2>{outro}</section>
 {about}
 {back_top}
 <footer class="footer">HUXIAGO Ep.02 · {escape(t[14] if offline else t[18])}</footer>
