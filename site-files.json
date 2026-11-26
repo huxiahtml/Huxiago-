@@ -1,12 +1,12 @@
 {
   "files": {
     "HUXIAGO_曼谷吃喝玩樂口袋名單_vol01.html": {
-      "bytes": 7095156,
-      "sha256": "4ec21a887d6a48a931bcf6a59d321778f7f9de2c4a978ec3d96abaf9e3dc4845"
+      "bytes": 7096405,
+      "sha256": "ca2382d986e2a57fd37b4e6fda2f3dc18599c2a7a68792e473b73a5e5bc061a0"
     },
     "index.html": {
-      "bytes": 1404480,
-      "sha256": "279349fcf140108b52fcab41cd78a0237b80d18c30dcc5a058f1ba2ff344a3b8"
+      "bytes": 1407121,
+      "sha256": "f1d37e6c135f705d022e9e2ba2937c830730fc33c5f6dcecceead8d2fe3b7d77"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -705,36 +705,36 @@
       "sha256": "75aa2d26ceb68b8444bbc73af888cd5064130e91a0302a833d9791f1dcfa48a4"
     },
     "HUXIAGO_Bangkok_EP01_zh-Hans.html": {
-      "bytes": 7065438,
-      "sha256": "fb21386c19f9aae14ba8489bb6a5f0b7ad448a9a51c30839e9c2273c030b9a70"
+      "bytes": 7066687,
+      "sha256": "b5455df73bd78be6411f1263d12beb0b856852a5260d9cdb051f97e6034edfa6"
     },
     "HUXIAGO_Bangkok_EP01_en.html": {
-      "bytes": 7054322,
-      "sha256": "c117a49e987f55da2093e849b221bcc56b284f77596310d18b8f012f69bb71b0"
+      "bytes": 7055571,
+      "sha256": "5a969ed947c9872e01d03de6e144b909231de466d00f63767c13863c29826508"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 296883,
-      "sha256": "5b541869192844c7e75f2181be61f7e69e9d24d12f371f2a1950b761f2657acc"
+      "bytes": 302147,
+      "sha256": "8bb225cc7e37de77fb6801dbc8cc9057f01389fdb4d85d3102cca20c3ffa6574"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 25371531,
-      "sha256": "c90aa24e16410c98bd143edd93de93265f3ea61b1c7c74dc0ce7ff97df14ab6b"
+      "bytes": 26179706,
+      "sha256": "b679ea22b2b9fe4e18a54371d34b841b023640a5b85f704d6ec68a0a9a15ed02"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 296888,
-      "sha256": "9e74cdaafb6a3f1aee07c12eb389faebd85c5aaf8592db5a5b8c887d69bea607"
+      "bytes": 302149,
+      "sha256": "9844eeb316aec4fb339961dde82c33c36db20d2a330a0169cb96bef210de1f4e"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 25370441,
-      "sha256": "9b4dfa290c469feb4d0bc3561d45be35d6837dedbbbd75f6ce53f4bb49cec47e"
+      "bytes": 26178613,
+      "sha256": "de40ab4fdd7b43bcec762a25d9bae22af6e3698e96409529e498d1b009abc8a0"
     },
     "ep02-en.html": {
-      "bytes": 296513,
-      "sha256": "9801001589a75b94eb459f41f26fafe2d253902fc52b1cbaa5eb0aa1f54769b1"
+      "bytes": 301810,
+      "sha256": "5263387ca062f9d868dc663facc73b2c5297e52ee96c64a131d8cbeb06864935"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 25360312,
-      "sha256": "d1928bc2455618766a64a8e6cb2befb9e9864e9c974e073f874a8298ae35cf9d"
+      "bytes": 26168508,
+      "sha256": "ac53cb3fe5aee67c5a7bbfa89dfeded539ee279b8ba264077a625f34efb72f6d"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -1123,6 +1123,38 @@
     "ep02/silq-shuttle.webp": {
       "bytes": 147940,
       "sha256": "12f106efec8e8b9110425ecf49ac05540fb8b4b7c429dadc1f91308f941f1870"
+    },
+    "ep02/mcdonalds-thai-tea-poster.webp": {
+      "bytes": 20566,
+      "sha256": "b605ff847ce67f2aa3cb8910a2c0909a4eb1d0992271764c32b3e0cecec077f3"
+    },
+    "media/ep02-mcdonalds-thai-tea.mp4": {
+      "bytes": 12002433,
+      "sha256": "1dd0f58acca5fa1aefee995a5e692e828c103a90355c824d9fba1638b605adc0"
+    },
+    "media/ep02-mcdonalds-thai-tea-offline.mp4": {
+      "bytes": 1041554,
+      "sha256": "610b1ac8f7a75fe6627d8bc411a368c173b87a293a94da9db3e104e4f52cfa76"
+    },
+    "media/ep02-bonus-song-wat.mp4": {
+      "bytes": 19517711,
+      "sha256": "baae15e4bcd915f9d77c21ee0ba2e81d9728701c30a5b5ca839cc4e9614d0a67"
+    },
+    "ep02/bonus-song-wat-poster.webp": {
+      "bytes": 38076,
+      "sha256": "72c6687f52492633f95fd1f4ab65d24465ace5a144ce7f865e9ec98d6b953953"
+    },
+    "media/ep02-bonus-old-town.mp4": {
+      "bytes": 18534678,
+      "sha256": "66844cbb23254aefa5224ad28097caa526f8ad72f9ba3f7638413f0d30582c31"
+    },
+    "ep02/bonus-old-town-poster.webp": {
+      "bytes": 30280,
+      "sha256": "80fc9fb593b86e03c2815e5fc07a81d131977a18d5e5978fdbde9280bf22dc2d"
+    },
+    "media/ep02-gan-da-egg-offline.mp4": {
+      "bytes": 430010,
+      "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     }
   }
 }

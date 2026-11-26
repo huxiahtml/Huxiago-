@@ -27,7 +27,8 @@
     shell.remove();
     player.shell = null;
     button.setAttribute('aria-pressed', 'false');
-    if (!figure.closest('details.stop')?.open) frame.pause();
+    const station = figure.closest('details.stop');
+    if (station && !station.open) frame.pause();
     else button.focus({ preventScroll: true });
   }
 

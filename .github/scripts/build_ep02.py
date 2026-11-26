@@ -83,11 +83,11 @@ def reel_card(title, index, poster="", video="", original=""):
             f'<div class="reel-viewport">{image}'
             f'<a class="reel-placeholder ep01-reel-play reel-external" href="{original}" '
             f'target="_blank" rel="noopener noreferrer" aria-label="{watch} · {title}">'
-            f'<span aria-hidden="true">{watch} ↗</span></a>'
+            f'<span aria-hidden="true">{watch} {arrow_icon()}</span></a>'
             f'</div><figcaption>{title}</figcaption></figure>'
         )
     link = (f'<a class="reel-origin" href="{original}" target="_blank" '
-            f'rel="noopener noreferrer">{original_label}</a>') if original else ""
+            f'rel="noopener noreferrer">{original_label.rstrip(" ↗")} {arrow_icon()}</a>') if original else ""
     if index == 2 and not original:
         play = "Play video"
     return (
@@ -105,7 +105,8 @@ def video_source(filename, offline):
 
 def instagram_card(url, title, index, poster, sources, offline):
     asset = sources.get(url)
-    video = video_source(asset["offline" if offline else "web"], offline) if asset else ""
+    filename = asset.get("offline" if offline else "web") if asset else None
+    video = video_source(filename, offline) if filename else ""
     return reel_card(title, index, poster, video=video, original=url)
 
 
@@ -168,7 +169,8 @@ def gallery(assets, index, offline, reel_sources):
             src = guide_photo(filename, offline)
             entry = links[0]
             if isinstance(entry, dict):
-                video = video_source(entry["video"], offline)
+                filename = entry.get("offline_video", entry["video"]) if offline else entry["video"]
+                video = video_source(filename, offline)
                 figures.append(reel_card(caption, index, src, video=video))
             else:
                 figures.append(instagram_card(entry, caption, index, src, reel_sources, offline))
@@ -270,6 +272,11 @@ def deal_content(deals, index, offline=True):
             middle = ""
         if "body" in offer:
             middle += f'<p class="ticket-copy">{escape(offer["body"][index])}</p>'
+        if related := offer.get("related"):
+            link = escape(related["url"], quote=True)
+            text = escape(related["label"][index])
+            middle += (f'<a class="ticket-related" href="{link}" target="_blank" rel="noopener noreferrer">'
+                       f'{text} {arrow_icon("out")}</a>')
         badge_icon = f'<span class="ticket-no">#{number:02d}</span>' if key == "esim" else icon
         code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""
         primary = (
@@ -347,19 +354,19 @@ def script(source, id):
     return extract(source, rf'<script id="{id}">.*?</script>')
 
 
-def bonus_reels(donor, videos, index, offline):
+def bonus_reels(donor, videos, sources, index, offline):
     gallery = script(donor, "hux-reels-script")
     i = gallery.index("function useInlinePlay")
     j = gallery.index("const bonusSection", i)
     gallery = gallery[:i] + gallery[j:]
     gallery = gallery.replace("document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))')",
-                              "bonusGallery.querySelectorAll('.reel-figure')")
+                              "bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)')")
     if offline:
         loading = gallery.index("if('IntersectionObserver' in window)")
         gallery = gallery[:loading] + "})();</script>"
     floating = script(donor, "hux-reel-pip-v21").replace(
         "event.target.closest('.reel-pip-launch')",
-        "event.target.closest('#bonus-reels .reel-pip-launch')",
+        "event.target.closest('#bonus-reels .reel-figure:not(.ep02-reel) .reel-pip-launch')",
     )
     # Keep the EP.01 player and accessibility labels with this issue’s selection.
     locale_script = extract(donor, r'<script type="application/json" id="hux-language-data">.*?</script>')
@@ -376,6 +383,21 @@ def bonus_reels(donor, videos, index, offline):
     bonus_data = json.dumps(titles, ensure_ascii=False)
     declaration = extract(gallery, r"const spotReels=.*?},bonus=.*?;")
     gallery = gallery.replace(declaration, f"const bonus={bonus_data};", 1)
+    native_cards = []
+    for title, kind, reel_id in titles:
+        url = f"https://www.instagram.com/{kind}/{reel_id}/"
+        source = sources.get(url)
+        poster = guide_photo(source["poster"], offline) if source else ""
+        native_cards.append(instagram_card(url, title, index, poster, sources, offline) if source else None)
+    card_code = json.dumps(native_cards, ensure_ascii=False).replace("</", "<\\/")
+    original_loop = "for(const [title,kind,id] of bonus)bonusGallery.append(card(title,kind,id));"
+    replacement = (
+        f"const nativeCards={card_code};"
+        "for(const [i,[title,kind,id]] of bonus.entries()){"
+        "if(nativeCards[i])bonusGallery.insertAdjacentHTML('beforeend',nativeCards[i]);"
+        "else bonusGallery.append(card(title,kind,id));}"
+    )
+    gallery = gallery.replace(original_loop, replacement, 1)
     for old in ("從我們的故事開始，左右滑動看更多影片。", *translations["從我們的故事開始，左右滑動看更多影片。"]):
         gallery = gallery.replace(old.replace("'", "’"), ("左右滑動看更多曼谷影片。", "左右滑动看更多曼谷视频。", "Swipe for more Bangkok stories.")[index])
     return gallery.replace(" ↗</span>", " " + arrow_icon() + "</span>") + floating.replace(
@@ -691,7 +713,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <script>const huxMobileStations = matchMedia('(max-width: 979px)');</script>
 {scripts}
 <script>{navigation}</script>
-{bonus_reels(donor, data["bonus_reels"], ix, offline)}
+{bonus_reels(donor, data["bonus_reels"], reel_sources, ix, offline)}
 <script>{reel_script}</script>
 </body>
 </html>
@@ -739,12 +761,15 @@ def build():
     for assets in galleries.values():
         for _, _, _, _, *entries in assets:
             if entries and isinstance(entries[0], dict):
-                name = f'media/{entries[0]["video"]}'
-                raw = (ROOT / name).read_bytes()
-                manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+                for key in ("video", "offline_video"):
+                    if filename := entries[0].get(key):
+                        name = f"media/{filename}"
+                        raw = (ROOT / name).read_bytes()
+                        manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for variants in data.get("reel_sources", {}).values():
-        for filename in variants.values():
-            name = f"media/{filename}"
+        for key, filename in variants.items():
+            folder = "ep02" if key == "poster" else "media"
+            name = f"{folder}/{filename}"
             raw = (ROOT / name).read_bytes()
             manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():

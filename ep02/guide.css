@@ -353,6 +353,10 @@
 .ep02-reel.is-loaded .reel-viewport > img {
   display: none;
 }
+.visual-v7 #bonus-reels .ep02-reel .reel-viewport {
+  aspect-ratio: 9 / 16;
+}
+
 .story-copy .ep02-reel {
   width: min(100%, 380px);
   margin: 1rem auto;

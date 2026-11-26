@@ -218,6 +218,15 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   background: #20544c;
 }
 
+.visual-v7 .ticket-feature .ticket-related {
+  align-self: flex-start;
+  margin-top: .45rem;
+  color: inherit;
+  font-size: .8rem;
+  font-weight: 750;
+  text-underline-offset: .18em;
+}
+
 .visual-v7 .ticket-feature .ticket-stub {
   margin-top: auto;
   padding-top: 17px;

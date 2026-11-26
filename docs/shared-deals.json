@@ -32,7 +32,15 @@
       "查看泰国 eSIM・全方案",
       "Explore Thailand eSIM plans"
     ],
-    "category": "phone"
+    "category": "phone",
+    "related": {
+      "url": "https://esimconnect.com.tw/#/access/simbuy?region=%E6%B3%B0%E5%9C%8B%20(%E5%AF%A6%E9%AB%94%E5%8D%A1)&referencecode=HUXIAGO",
+      "label": [
+        "另看泰國實體 SIM 卡",
+        "另看泰国实体 SIM 卡",
+        "See Thailand physical SIMs"
+      ]
+    }
   },
   "kushiro": {
     "id": "ep02-kushiro-offer",

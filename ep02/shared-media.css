@@ -39,3 +39,29 @@
     object-fit: contain;
   }
 }
+
+@media (max-width: 560px) {
+  html[lang="en"] .visual-v7 .cover .acquire-button {
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  html[lang="en"] .visual-v7 .cover .acquire-icon {
+    flex-basis: 32px;
+    inline-size: 32px;
+    block-size: 32px;
+  }
+
+  html[lang="en"] .visual-v7 .cover .acquire-arrow {
+    font-size: 14px;
+  }
+
+  html[lang="en"] .visual-v7 .cover .acquire-button > span:nth-child(2) {
+    font-size: clamp(.875rem, 4vw, 1rem);
+  }
+
+  html[lang="en"] .visual-v7 .cover .acquire-button small {
+    font-size: clamp(.6875rem, 3vw, .8125rem) !important;
+    letter-spacing: 0;
+  }
+}

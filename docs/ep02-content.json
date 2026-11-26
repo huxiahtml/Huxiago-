@@ -7,6 +7,18 @@
     "https://www.instagram.com/reel/DfIXxHiTF4C/": {
       "web": "ep02-silq-reel.mp4",
       "offline": "ep02-silq-reel-offline.mp4"
+    },
+    "https://www.instagram.com/reel/DfXj9HEtG1z/": {
+      "web": "ep02-mcdonalds-thai-tea.mp4",
+      "offline": "ep02-mcdonalds-thai-tea-offline.mp4"
+    },
+    "https://www.instagram.com/reel/DZrnpYpp0XG/": {
+      "web": "ep02-bonus-song-wat.mp4",
+      "poster": "bonus-song-wat-poster.webp"
+    },
+    "https://www.instagram.com/p/DZ90zA0Rwgb/": {
+      "web": "ep02-bonus-old-town.mp4",
+      "poster": "bonus-old-town-poster.webp"
     }
   },
   "locales": {
