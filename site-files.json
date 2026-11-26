@@ -1155,6 +1155,10 @@
     "media/ep02-gan-da-egg-offline.mp4": {
       "bytes": 430010,
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
+    },
+    "bkk-ep02-zh.html": {
+      "bytes": 302962,
+      "sha256": "2ad1d4a985000d66dec1eb1f901cfdf1436e79d90669dc8849f91371f4424765"
     }
   }
 }

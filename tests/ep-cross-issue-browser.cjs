@@ -18,7 +18,9 @@ const server = http.createServer((req,res) => {
     res.writeHead(redirect.status, {Location: redirect.to + url.search});
     return res.end();
   }
-  const filename = path.resolve(root, '.' + decodeURIComponent(redirect?.to ?? url.pathname));
+  const requested = path.resolve(root, '.' + decodeURIComponent(redirect?.to ?? url.pathname));
+  const filename = !path.extname(requested) && fs.existsSync(requested + '.html')
+    ? requested + '.html' : requested;
   if (!filename.startsWith(root + path.sep)) {
     res.writeHead(403);
     return res.end();
