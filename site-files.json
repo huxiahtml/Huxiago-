@@ -713,24 +713,24 @@
       "sha256": "5269b2db9dd1aabddea8a60b65e9c38abf98d4aaec353a39744b7d995393226e"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 308995,
-      "sha256": "d7c0afe7aee08c32217f1cd729713e316b3a4e4c5bf26975332785b789cc3766"
+      "bytes": 308339,
+      "sha256": "38016fea5b026d0effe84be2c5ff7af67c14d69102f89fb334e1de317fb228cb"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
       "bytes": 26182720,
       "sha256": "f93b20e346bdb805c22414c89415871f484fa76421e44b6ce8e40b83cf0b9888"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 309013,
-      "sha256": "8a3d3d764b34c03b4380ccf9dfeedbef3952b9044e39f2c702c5e74d8a211ac5"
+      "bytes": 308357,
+      "sha256": "2594530368a6d367f423d8d5b863748355f0f16f34de6185eacd4f71358d7e7b"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
       "bytes": 26181631,
       "sha256": "f21904fd98f74addfa62611ccbfa2f4a069aea4bb310a205f586fa1b4f06e3ba"
     },
     "ep02-en.html": {
-      "bytes": 308829,
-      "sha256": "90d0b86107a0e0ae717275f58193585a59d24dcad252a11d6a7c1de1c946440f"
+      "bytes": 308162,
+      "sha256": "1aa78b5ffe7f38de5191e6e2d61956bc30bd0725ec81cbdf8a132951e189211c"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
       "bytes": 26171464,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 308672,
-      "sha256": "c7b83c1ec193213d650225a28bb15a455ff06af1541d5617026c031bef43152c"
+      "bytes": 308016,
+      "sha256": "52c9c05a95f5fed8642a356954518daad31d10347320b025d76ce8f4f4058fc6"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,

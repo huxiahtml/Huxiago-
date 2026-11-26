@@ -316,7 +316,7 @@ async function verifyReelsAndPromos(page, locale) {
   assert.equal(await page.locator('#silq .story-promo-code').textContent(), 'HUXIATHAI');
   const originals = await page.locator('.stop .ep02-reel :is(.reel-origin, .reel-external)').evaluateAll(links => links.map(a => a.href));
   assert.deepEqual(originals, ['https://www.instagram.com/p/DR1D9Q9iSvM/', 'https://www.instagram.com/p/DdYtIjNJEow/', 'https://www.instagram.com/reel/DfIXxHiTF4C/', 'https://www.instagram.com/reel/DfXj9HEtG1z/']);
-  const fallback = page.locator(offline ? '#kushiro .gallery .reel-external' : '#kushiro .gallery .ep02-reel[data-video] .reel-origin');
+  const fallback = page.locator('#kushiro .gallery .reel-external');
   assert.equal(await fallback.getAttribute('href'), originals[0]);
   assert.equal(await fallback.getAttribute('target'), '_blank');
   const silqReel = page.locator('#silq .gallery .ep02-reel[data-video]').filter({has: page.locator('.reel-origin')});
@@ -455,7 +455,7 @@ async function verifyMapAndLocalVideos(page, offline) {
   await transport.evaluate(el => {el.open = false;});
 
   const cards = page.locator('.stop figure[data-video]');
-  assert.equal(await cards.count(), offline ? 8 : 9);
+  assert.equal(await cards.count(), 8);
   for (const card of await cards.all()) {
     const kind = await card.getAttribute('data-kind');
     const correctSource = await card.evaluate((el, isOffline) => isOffline ?
