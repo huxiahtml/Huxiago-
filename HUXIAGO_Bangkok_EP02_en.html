@@ -2036,7 +2036,14 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 /* Compact, always-visible pier descriptions. */
 .visual-v7 .story-copy .pier-list { margin: .35rem 0 1rem; padding: 0 0 0 1.35em; list-style: disc outside; }
 .visual-v7 .story-copy .pier-list li { display: list-item; margin: 0 0 .6em; padding: 0 0 0 .15em; line-height: 1.65; }
-.visual-v7 .story-copy .pier-list li:last-child { margin-bottom: 0; }</style>
+.visual-v7 .story-copy .pier-list li:last-child { margin-bottom: 0; }
+
+/* Wider vertical media, with compact single-line captions across each gallery. */
+.visual-v7 details.card .gallery .ep02-reel[data-kind] { flex-basis: min(75%, 360px); }
+.visual-v7 details.card .gallery > figure > figcaption { flex: 0 0 auto; min-height: 0; padding: .55em .75em; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.visual-v7 details.card .gallery .ep02-reel .ep01-reel-play span { white-space: nowrap; font-size: clamp(11px, 3.1vw, 14px); }
+.visual-v7 details.card .gallery .ep02-reel[data-kind="video"] .reel-viewport video { object-fit: cover; }
+.visual-v7 details.card .gallery .ep02-reel[data-kind="video"] .reel-viewport video { position:absolute; inset:0; width:auto; max-width:100%; height:100%; aspect-ratio:9/16; margin:auto; object-fit:contain; }</style>
 </head>
 <body class="visual-v7">
 <aside class="desktop-rail" aria-label="HUXIAGO chapter navigation">
