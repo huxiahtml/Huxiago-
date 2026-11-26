@@ -69,6 +69,7 @@
     frame.controls = !standalone;
     frame.muted = standalone;
     frame.defaultMuted = standalone;
+    if (figure.closest('#kushiro')) frame.volume = 0.45;
     frame.playsInline = true;
     frame.preload = 'none';
     frame.tabIndex = 0;

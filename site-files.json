@@ -713,28 +713,28 @@
       "sha256": "5269b2db9dd1aabddea8a60b65e9c38abf98d4aaec353a39744b7d995393226e"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 308384,
-      "sha256": "f637855efbbdea266740339f809d957eb98fdbd3f65c5f2afa8617ad1d9d9347"
+      "bytes": 309033,
+      "sha256": "51b2d2f9a8e7c6315a9bf29c3da2c5cfa8f1b2036b5a71604d92746fb3a9a4be"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 20508631,
-      "sha256": "0ccbf67f62c82fa43bf0d4b4c393a89081b47a8f5f86f9f909273a9c18fbe1ba"
+      "bytes": 20508688,
+      "sha256": "b8a5db5baaae0da2c89d012aeff5ddbe41881a8e7bf77b6cc6f8ba8361607fee"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 308402,
-      "sha256": "605b0ca9cc395a13ded63e57a2435019738e79b3666ad1fb3ee3b2514711ce9f"
+      "bytes": 309051,
+      "sha256": "8310cb0f4bb86a475eaa7446a5aed7a7c846271a7b889a4507052e0bc0895db8"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 20507542,
-      "sha256": "d24100528db63505705f9b1ce96df556fb8a54c92709dfa1bc130ca0db9cd09c"
+      "bytes": 20507599,
+      "sha256": "cda784b1dc9b05b8822bbba0820d7ca6799fcbccb08a146523b7c854f632b403"
     },
     "ep02-en.html": {
-      "bytes": 308207,
-      "sha256": "357df01bc0510d1110b76c7b46a460b3ed1669889eb846b40d704a06343cc897"
+      "bytes": 308862,
+      "sha256": "a47cfc74efe1e31d53c4374966790a70930d3d4bf943a9c54df210276f56a658"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 20497330,
-      "sha256": "eb9fff2ec2b34eea5a05cb40b058d1e9f1bcc4befe00e63684ebb1dbf3b28d52"
+      "bytes": 20497387,
+      "sha256": "23b720ab24a4a90a93bd975056024e4e5112c507697c7a1ea30060108e5c8eaf"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 308061,
-      "sha256": "887b4b8e8de39a5f8864efd1cd1103495160acbef512cf58b9bf14586c415cdc"
+      "bytes": 308710,
+      "sha256": "fb96b7339aa23708dd540928223e9285b35ccbdc4e2b02d3e39653a13c361b33"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,
@@ -1207,6 +1207,10 @@
     "media/ep02-kushiro-first-silent-offline.mp4": {
       "bytes": 4633087,
       "sha256": "e5ade7ba1ad18e2cf5cf9b8e06bdf3159754b7acaf57844df11bfa5d595a97c1"
+    },
+    "media/ep02-kushiro-first-with-audio.mp4": {
+      "bytes": 7054652,
+      "sha256": "2fbd1e04add4673f31f6c3673f7d725c5047fe1d0e019e77144b06d1e60c6220"
     }
   }
 }
