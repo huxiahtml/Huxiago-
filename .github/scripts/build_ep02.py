@@ -107,6 +107,8 @@ def video_source(filename, offline):
 
 
 def instagram_card(url, title, index, poster, sources, offline):
+    if offline:
+        return ""
     asset = sources.get(url)
     filename = asset.get("offline" if offline else "web") if asset else None
     video = video_source(filename, offline) if filename else ""
@@ -381,6 +383,8 @@ def script(source, id):
 
 
 def bonus_reels(donor, videos, sources, index, offline):
+    if offline:
+        return ""
     gallery = script(donor, "hux-reels-script")
     i = gallery.index("function useInlinePlay")
     j = gallery.index("const bonusSection", i)
