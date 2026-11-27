@@ -2352,6 +2352,7 @@ if('IntersectionObserver' in window){const observer=new IntersectionObserver(ent
 else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEach(load);
 })();
 </script><script id="hux-directory-filter-v18">(()=>{const nav=document.querySelector('#toc');if(!nav)return;const buttons=[...nav.querySelectorAll('.toc-filters button')];const links=[...nav.querySelectorAll('.toc-list a[data-category]')];buttons.forEach(button=>button.addEventListener('click',()=>{const value=button.dataset.filter;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));links.forEach(a=>{a.hidden=value!=='全部'&&a.dataset.category!==value});}));})();</script><script id="hux-gallery-height-script-v20">(()=>{const galleries=[...document.querySelectorAll('details.card .gallery')];const nearest=(gallery)=>{const center=gallery.getBoundingClientRect().left+gallery.clientWidth/2;let best=null,distance=Infinity;for(const figure of gallery.children){if(figure.tagName!=='FIGURE')continue;const rect=figure.getBoundingClientRect(),gap=Math.abs(rect.left+rect.width/2-center);if(gap<distance){distance=gap;best=figure}}return best};const update=(gallery)=>{if(!gallery.closest('details[open]'))return;const figure=nearest(gallery);if(!figure)return;const size=figure.getBoundingClientRect().height;if(!size)return;const style=getComputedStyle(gallery);const extra=parseFloat(style.paddingTop)+parseFloat(style.paddingBottom)+7;gallery.style.height=Math.ceil(size+extra)+'px'};galleries.forEach(gallery=>{let frame=0;const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{if(scrolling)defer();else update(gallery)})};let settleTimer=0,scrolling=false;const settle=()=>{clearTimeout(settleTimer);scrolling=false;schedule()};const defer=()=>{clearTimeout(settleTimer);settleTimer=setTimeout(settle,180)};gallery.addEventListener('scroll',()=>{scrolling=true;cancelAnimationFrame(frame);defer()},{passive:true});gallery.addEventListener('scrollend',settle,{passive:true});gallery.closest('details').addEventListener('toggle',schedule);gallery.querySelectorAll('img').forEach(img=>img.addEventListener('load',schedule,{once:true}));if('ResizeObserver'in window){const observer=new ResizeObserver(schedule);gallery.querySelectorAll('figure').forEach(f=>observer.observe(f))}if(gallery.closest('details[open]'))schedule()});window.addEventListener('resize',()=>galleries.forEach(update),{passive:true})})();</script><script id="hux-reel-pip-v21">(()=>{let active=null;const close=()=>{if(!active)return;const {shell,figure,wasLoaded}=active;shell.remove();if(wasLoaded){const viewport=figure.querySelector('.reel-viewport');const iframe=document.createElement('iframe');iframe.title=figure.querySelector('figcaption').textContent;iframe.src=figure.dataset.embed;iframe.loading='lazy';iframe.allow='autoplay; encrypted-media; picture-in-picture';viewport.append(iframe);figure.classList.add('is-loaded')}active=null};document.addEventListener('click',event=>{const button=event.target.closest('.reel-pip-launch');if(!button)return;event.preventDefault();const figure=button.closest('.reel-figure');if(active?.figure===figure){close();return}close();const wasLoaded=figure.classList.contains('is-loaded');figure.querySelector('.reel-viewport iframe')?.remove();figure.classList.remove('is-loaded');const link=figure.querySelector('.reel-origin');const shell=document.createElement('aside');shell.className='hux-reel-pip';shell.dataset.kind=figure.dataset.kind;shell.setAttribute('aria-label','浮動影片播放器');const head=document.createElement('div');head.className='hux-reel-pip-head';const title=document.createElement('span');title.textContent=figure.querySelector('figcaption').textContent;const original=document.createElement('a');original.href=link.href;original.target='_blank';original.rel='noopener noreferrer';original.textContent='原片 ↗';original.setAttribute('aria-label','開啟原片');const exit=document.createElement('button');exit.type='button';exit.textContent='×';exit.setAttribute('aria-label','關閉浮動影片');exit.addEventListener('click',close);head.append(title,original,exit);const screen=document.createElement('div');screen.className='hux-reel-pip-screen';const frame=document.createElement('iframe');frame.title=title.textContent;frame.src=figure.dataset.embed;frame.allow='autoplay; encrypted-media; picture-in-picture';screen.append(frame);shell.append(head,screen);document.body.append(shell);active={shell,figure,wasLoaded};let drag=null;head.addEventListener('pointerdown',e=>{if(e.target.closest('a,button'))return;drag={x:e.clientX,y:e.clientY,left:shell.getBoundingClientRect().left,top:shell.getBoundingClientRect().top};head.setPointerCapture(e.pointerId)});head.addEventListener('pointermove',e=>{if(!drag)return;const x=Math.max(0,Math.min(innerWidth-shell.offsetWidth,drag.left+e.clientX-drag.x));const y=Math.max(0,Math.min(innerHeight-shell.offsetHeight,drag.top+e.clientY-drag.y));shell.style.left=x+'px';shell.style.top=y+'px';shell.style.right='auto';shell.style.bottom='auto'});head.addEventListener('pointerup',()=>drag=null);head.addEventListener('pointercancel',()=>drag=null)});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();</script>
+<script type="application/json" id="hux-analytics-catalog">{"EP.01":[{"episode":"EP.01","anchor":"spot-1","id":"central-park-bangkok","name":"Central Park Bangkok","tag":"逛街","position":1},{"episode":"EP.01","anchor":"spot-2","id":"cafe-amazon-experience","name":"Café Amazon Experience","tag":"咖啡甜點","position":2},{"episode":"EP.01","anchor":"spot-3","id":"sala-lakorn","name":"Sala Lakorn","tag":"曼谷餐廳","position":3},{"episode":"EP.01","anchor":"spot-4","id":"liabduan-danneramit","name":"Liabduan Danneramit","tag":"街頭美食","position":4},{"episode":"EP.01","anchor":"spot-5","id":"hainanese-chicken-rice","name":"無名海南雞飯","tag":"街頭美食","position":5},{"episode":"EP.01","anchor":"spot-6","id":"muvmi","name":"MuvMi","tag":"交通","position":6},{"episode":"EP.01","anchor":"spot-7","id":"mk-restaurants","name":"MK Restaurants","tag":"曼谷餐廳","position":7},{"episode":"EP.01","anchor":"spot-8","id":"som-tam-nua","name":"Som Tam Nua","tag":"曼谷餐廳","position":8},{"episode":"EP.01","anchor":"spot-9","id":"baan-ice","name":"Baan Ice","tag":"曼谷餐廳","position":9},{"episode":"EP.01","anchor":"spot-10","id":"truecoffee","name":"TrueCoffee","tag":"咖啡甜點","position":10},{"episode":"EP.01","anchor":"spot-11","id":"swensens","name":"Swensen’s","tag":"咖啡甜點","position":11},{"episode":"EP.01","anchor":"spot-12","id":"fufu-taiwanese-shabu","name":"FUFU Taiwanese Shabu","tag":"曼谷餐廳","position":12}],"EP.02":[{"episode":"EP.02","anchor":"kushiro","id":"kushiro","name":"Kushiro Omakase and Japanese Dining","tag":"曼谷餐廳","position":1},{"episode":"EP.02","anchor":"silq","id":"silq","name":"SILQ Hotel & Residence","tag":"住宿","position":2},{"episode":"EP.02","anchor":"gan-da","id":"gan-da","name":"กานดาอาหารตามสั่ง","tag":"街頭美食","position":3},{"episode":"EP.02","anchor":"hani-spa","id":"hani-spa","name":"Hani Spa","tag":"按摩放鬆","position":4},{"episode":"EP.02","anchor":"chowchercof","id":"chowchercof","name":"Chowchercof","tag":"咖啡甜點","position":5},{"episode":"EP.02","anchor":"bang-sue-junction","id":"bang-sue-junction","name":"Bang Sue Junction","tag":"逛街","position":6},{"episode":"EP.02","anchor":"saen-saep","id":"saen-saep","name":"Saen Saep Express Boat","tag":"交通","position":7}],"offers":[{"id":"esim","name":"泰國 eSIM","tag":"網卡優惠","cta":"huxiago-esim"},{"id":"kushiro","name":"Kushiro Omakase","tag":"曼谷餐廳","cta":"ep02-kushiro-offer"},{"id":"silq","name":"SILQ Hotel & Residence","tag":"住宿","cta":"ep02-silq-offer"}]}</script>
 <script id="hux-analytics">
 (()=>{
   if(window.huxiagoAnalytics)return;
@@ -2359,6 +2360,10 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
   const episode=config.episode||'EP.01';
   const itemId=config.itemId||'huxiago_vol01';
   const issueContext=config.language?{item_id:itemId,episode,content_language:config.language}:null;
+  const analyticsCatalog=JSON.parse(document.getElementById('hux-analytics-catalog').textContent);
+  const catalog=analyticsCatalog[episode]||[];
+  const offerCatalog=new Map(analyticsCatalog.offers.map(offer=>[offer.id,offer]));
+  const entries=new Map(catalog.map(place=>[place.anchor,place]));
   const cardSelector='details.card[id^="spot-"],details.card[data-analytics-position]';
   const ga4MeasurementId=String(config.ga4MeasurementId||'').trim();
   const clarityProjectId=String(config.clarityProjectId||'').trim();
@@ -2395,7 +2400,7 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
   const cleanText=value=>String(typeof value==='string'?value:(value?.getAttribute?.('aria-label')||value?.textContent||'')).replace(/\s+/g,' ').trim().slice(0,100);
   const track=(eventName,parameters={})=>{
     if(!/^[a-z][a-z0-9_]{0,39}$/.test(eventName))return;
-    const payload=Object.fromEntries(Object.entries({item_id:itemId,episode,...issueContext,...parameters}).filter(([,value])=>value!==''&&value!=null));
+    const payload=Object.fromEntries(Object.entries({item_id:itemId,episode,content_language:config.language||document.documentElement.lang,...issueContext,...parameters}).filter(([,value])=>value!==''&&value!=null));
     try{if(hasGa4&&typeof window.gtag==='function')window.gtag('event',eventName,{...payload,send_to:ga4MeasurementId})}catch(error){}
     try{
       if(hasClarity&&typeof window.clarity==='function'){
@@ -2435,6 +2440,94 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
     }
     return '';
   };
+
+  // Independent audit of site-operated controls. Existing outcome event semantics stay separate.
+  const controlSelector='a[href],button,summary,input:not([type="hidden"]),select,label[for],[role="button"],[role="tab"],[role="link"]';
+  const controlLabels={toc:'目錄',open:'開卡',map:'地圖',offer:'優惠',download:'下載',share:'分享',language:'語言',filter:'分類篩選',reel:'影音',gallery:'圖集',navigate:'頁內導覽',link:'外連',select:'選擇',button:'按鈕',play:'播放',pause:'暫停',seek:'拖曳進度'};
+  const digest=value=>{
+    let hash=2166136261;
+    for(let i=0;i<value.length;i++)hash=Math.imul(hash^value.charCodeAt(i),16777619);
+    return (hash>>>0).toString(36);
+  };
+  const token=value=>String(value||'').toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-|-$/g,'');
+  const destination=element=>{
+    if(!element.matches('a[href]'))return '';
+    const url=getUrl(element);
+    if(!url||!/^https?:$/.test(url.protocol))return '';
+    const fragment=url.hash.split('?')[0];
+    return url.origin===location.origin?url.pathname+fragment:url.origin+url.pathname+(fragment.startsWith('#/')?fragment:'');
+  };
+  const catalogContext=control=>{
+    const card=control.closest(cardSelector);
+    const href=control.getAttribute('href')||'';
+    return entries.get(card?.id)||((href.startsWith('#')&&entries.get(href.slice(1)))||null);
+  };
+  const filterKeys=[
+    ['all','全部','All'],['shopping','逛街','Shopping'],['coffee-dessert','咖啡甜點','咖啡甜点','Coffee & desserts'],
+    ['street-food','街頭美食','街头美食','Street food'],['restaurant','曼谷餐廳','曼谷餐厅','Dining'],
+    ['transport','交通','Transport'],['accommodation','住宿','Stay'],['wellness','按摩放鬆','按摩放松','Wellness']
+  ];
+  const describeControl=(control, override)=>{
+    const href=control.getAttribute('href')||'';
+    const url=control.matches('a[href]')?getUrl(control):null;
+    const kind=override||(control.matches('.toc a[href^="#"]')?'toc':
+      control.matches('summary')?'open':control.matches('[data-get-guide],[download]')?'download':
+      control.matches('[data-share]')?'share':control.matches('[data-hux-lang]')||control.closest('.lang-switch,.lang-switcher')?'language':
+      control.matches('[data-filter]')?'filter':control.matches('.ticket-cta:not(.ticket-map),.ticket-related')?'offer':
+      url&&isMap(url)?'map':control.closest('.reel-figure,.hux-reel-pip-head,.clip')?'reel':
+      control.closest('.gallery')?'gallery':url?(url.origin===location.origin?'navigate':'link'):
+      control.matches('select,input')?'select':'button');
+    const place=catalogContext(control);
+    const ticket=control.closest('.deal-ticket');
+    const offerId=ticket?.dataset.sharedDeal;
+    const offer=offerCatalog.get(offerId);
+    const component=control.closest('[id]')?.id||placement(control);
+    const scope=place?.id||(offerId&&'offer-'+offerId)||token(component)||'guide';
+    const explicit=control.dataset.ctaId||control.getAttribute('id')||control.dataset.share||control.dataset.huxLang||control.dataset.filter;
+    const group=control.closest('summary,details.card,nav,header,section,aside,.deal-ticket,.gallery,.reel-figure')||document.body;
+    const ordinal=[...group.querySelectorAll(control.matches('video')?'video':controlSelector)].indexOf(control)+1;
+    const route=destination(control).replace(/^\/(?:bkk-ep02-zh|ep02-(?:zh-hant|zh-hans|en))(?:\.html)?(?=\/|#|$)/i,'/ep02');
+    const qualifier=explicit||route||[...control.classList].filter(v=>!/^is-|^active$/.test(v)).sort().join(' ')||control.tagName;
+    const categoryKey=filterKeys.find(([, ...labels])=>labels.includes(control.dataset.filter))?.[0];
+    const semantic=categoryKey||(kind==='download'?'offline-guide':
+      control.matches('.ticket-details')?'issue-details':
+      control.matches('.ticket-related')?'physical-sim':
+      kind==='map'?'google-maps':
+      kind==='navigate'&&/^\/ep02(?:\.html)?(?:#|$)/.test(route)&&!href.startsWith('#')?'ep02':
+      kind==='navigate'&&href.startsWith('#')?token(href.slice(1)):
+      token(explicit));
+    const primary=['toc','open'].includes(kind)&&place;
+    const action=primary?kind:[kind,semantic||digest(qualifier),ordinal||1].join(':');
+    const ctaId=(control.dataset.ctaId||[scope,action].join(':')).slice(0,96);
+    const display=cleanText(control)||controlLabels[kind]||kind;
+    return {
+      cta_id:ctaId,link_id:ctaId,link_text:display,action_type:kind,cta_location:placement(control),
+      link_url:route&&url?safeUrl(url):undefined,link_domain:url?.hostname,
+      offer_id:offerId,offer_name:offer?.name,
+      content_category:place?.tag||offer?.tag,
+      ...(place?{place_id:place.id,place_name:place.name,content_id:episode+':'+place.id,content_category:place.tag,position:place.position}:{})
+    };
+  };
+  const auditClick=event=>{
+    if(event.type==='auxclick'&&event.button!==1)return;
+    const target=event.target instanceof Element?event.target:event.target?.parentElement;
+    const control=target?.closest(controlSelector);
+    if(!control||control.closest('[inert]')||control.matches(':disabled,[aria-disabled="true"],.ticket-disabled,select'))return;
+    if(control.matches('label[for]')&&control.control)return; // native click arrives on the associated control
+    track('ui_click',describeControl(control));
+  };
+  document.addEventListener('click',auditClick,true);
+  document.addEventListener('auxclick',auditClick,true);
+  document.addEventListener('change',event=>{
+    if(event.target instanceof HTMLSelectElement)track('ui_click',describeControl(event.target,'select'));
+  },true);
+  for(const [mediaEvent,action] of [['play','play'],['pause','pause'],['seeked','seek']]){
+    document.addEventListener(mediaEvent,event=>{
+      if(event.target instanceof HTMLVideoElement)track('media_control',describeControl(event.target,action));
+    },true);
+  }
+
+
   document.addEventListener('click',event=>{
     const target=event.target instanceof Element?event.target:event.target?.parentElement;
     if(!target)return;
@@ -2459,7 +2552,7 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
     if(anchor.matches('[data-get-guide]')){
       track('guide_download',{...common,item_name:`HUXIAGO Vol.${episode.split('.').pop()} HTML`,download_stage:'click',file_name:anchor.getAttribute('download')||url.pathname.split('/').pop(),file_extension:'html'});
     }else if(anchor.matches('.ticket-cta:not(.ticket-map)')){
-      track('offer_click',{...common,offer_name:cleanText(anchor.closest('.deal-ticket')?.querySelector('h3'))||'Unknown offer'});
+      track('offer_click',{...common,cta_id:anchor.dataset.ctaId,link_id:anchor.dataset.ctaId,offer_id:anchor.closest('.deal-ticket')?.dataset.sharedDeal,offer_name:cleanText(anchor.closest('.deal-ticket')?.querySelector('h3'))||'Unknown offer'});
     }else if(isMap(url)){
       track('map_click',common);
     }else if(anchor.matches('.reel-origin,.reel-external')||anchor.closest('.hux-reel-pip-head')){
@@ -2472,7 +2565,13 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
   },true);
   // Capture canonical names before a language controller can change headings.
   const places=new Map([...document.querySelectorAll(cardSelector)].map(card=>[
-    card.id,{card,parameters:Object.freeze({place_id:card.id,place_name:cleanText(card.dataset.analyticsPlaceName||card.querySelector('.head h3')),episode,position:Number(card.dataset.analyticsPosition||card.id.slice(5))}),
+    card.id,{card,parameters:Object.freeze({
+      place_id:entries.get(card.id)?.id||card.id,
+      place_name:entries.get(card.id)?.name||cleanText(card.dataset.analyticsPlaceName||card.querySelector('.head h3')),
+      content_id:entries.has(card.id)?episode+':'+entries.get(card.id).id:undefined,
+      content_category:entries.get(card.id)?.tag,
+      episode,position:entries.get(card.id)?.position||Number(card.dataset.analyticsPosition||card.id.slice(5))
+    }),
       paragraphs:[...card.querySelectorAll(card.dataset.analyticsPosition?'.story-copy p':'.body p')].filter(p=>cleanText(p).length>=30),since:null,viewed:false}
   ]));
   document.addEventListener('click',event=>{
@@ -2530,7 +2629,7 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
     const observer=new IntersectionObserver(entries=>{
       for(const entry of entries){
         if(!entry.isIntersecting||entry.intersectionRatio<.5)continue;
-        track('offer_view',{offer_name:cleanText(entry.target.querySelector('h3'))||'Unknown offer',cta_location:'offer_card'});
+        track('offer_view',{offer_id:entry.target.dataset.sharedDeal,cta_id:entry.target.querySelector('.ticket-cta[data-cta-id]')?.dataset.ctaId,link_id:entry.target.querySelector('.ticket-cta[data-cta-id]')?.dataset.ctaId,offer_name:cleanText(entry.target.querySelector('h3'))||'Unknown offer',cta_location:'offer_card'});
         observer.unobserve(entry.target);
       }
     },{threshold:.5});

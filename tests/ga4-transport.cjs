@@ -33,7 +33,7 @@ const assert=require('node:assert/strict');
   for(const name of wanted){
    const matches=parsed.filter(p=>p.get('en')===name);assert.equal(matches.length,1,name);
    const p=matches[0];assert.equal(p.get('tid'),'G-YZZEBJ9YBT');
-   assert.equal(p.get('ep.place_id'),'spot-1');assert.equal(p.get('ep.episode'),'EP.01');
+   assert.equal(p.get('ep.place_id'),'central-park-bangkok');assert.equal(p.get('ep.episode'),'EP.01');
    assert.equal(p.get('ep.place_name'),'Central Park Bangkok');assert.equal(p.get('epn.position'),'1');
   }
   // Store only the event contract, omitting client/session identifiers.

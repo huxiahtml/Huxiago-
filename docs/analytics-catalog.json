@@ -1,0 +1,178 @@
+{
+  "EP.01": [
+    {
+      "episode": "EP.01",
+      "anchor": "spot-1",
+      "id": "central-park-bangkok",
+      "name": "Central Park Bangkok",
+      "tag": "逛街",
+      "position": 1
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-2",
+      "id": "cafe-amazon-experience",
+      "name": "Café Amazon Experience",
+      "tag": "咖啡甜點",
+      "position": 2
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-3",
+      "id": "sala-lakorn",
+      "name": "Sala Lakorn",
+      "tag": "曼谷餐廳",
+      "position": 3
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-4",
+      "id": "liabduan-danneramit",
+      "name": "Liabduan Danneramit",
+      "tag": "街頭美食",
+      "position": 4
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-5",
+      "id": "hainanese-chicken-rice",
+      "name": "無名海南雞飯",
+      "tag": "街頭美食",
+      "position": 5
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-6",
+      "id": "muvmi",
+      "name": "MuvMi",
+      "tag": "交通",
+      "position": 6
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-7",
+      "id": "mk-restaurants",
+      "name": "MK Restaurants",
+      "tag": "曼谷餐廳",
+      "position": 7
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-8",
+      "id": "som-tam-nua",
+      "name": "Som Tam Nua",
+      "tag": "曼谷餐廳",
+      "position": 8
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-9",
+      "id": "baan-ice",
+      "name": "Baan Ice",
+      "tag": "曼谷餐廳",
+      "position": 9
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-10",
+      "id": "truecoffee",
+      "name": "TrueCoffee",
+      "tag": "咖啡甜點",
+      "position": 10
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-11",
+      "id": "swensens",
+      "name": "Swensen’s",
+      "tag": "咖啡甜點",
+      "position": 11
+    },
+    {
+      "episode": "EP.01",
+      "anchor": "spot-12",
+      "id": "fufu-taiwanese-shabu",
+      "name": "FUFU Taiwanese Shabu",
+      "tag": "曼谷餐廳",
+      "position": 12
+    }
+  ],
+  "EP.02": [
+    {
+      "episode": "EP.02",
+      "anchor": "kushiro",
+      "id": "kushiro",
+      "name": "Kushiro Omakase and Japanese Dining",
+      "tag": "曼谷餐廳",
+      "position": 1
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "silq",
+      "id": "silq",
+      "name": "SILQ Hotel & Residence",
+      "tag": "住宿",
+      "position": 2
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "gan-da",
+      "id": "gan-da",
+      "name": "กานดาอาหารตามสั่ง",
+      "tag": "街頭美食",
+      "position": 3
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "hani-spa",
+      "id": "hani-spa",
+      "name": "Hani Spa",
+      "tag": "按摩放鬆",
+      "position": 4
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "chowchercof",
+      "id": "chowchercof",
+      "name": "Chowchercof",
+      "tag": "咖啡甜點",
+      "position": 5
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "bang-sue-junction",
+      "id": "bang-sue-junction",
+      "name": "Bang Sue Junction",
+      "tag": "逛街",
+      "position": 6
+    },
+    {
+      "episode": "EP.02",
+      "anchor": "saen-saep",
+      "id": "saen-saep",
+      "name": "Saen Saep Express Boat",
+      "tag": "交通",
+      "position": 7
+    }
+  ],
+  "offers": [
+    {
+      "id": "esim",
+      "name": "泰國 eSIM",
+      "tag": "網卡優惠",
+      "cta": "huxiago-esim"
+    },
+    {
+      "id": "kushiro",
+      "name": "Kushiro Omakase",
+      "tag": "曼谷餐廳",
+      "cta": "ep02-kushiro-offer"
+    },
+    {
+      "id": "silq",
+      "name": "SILQ Hotel & Residence",
+      "tag": "住宿",
+      "cta": "ep02-silq-offer"
+    }
+  ]
+}

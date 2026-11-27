@@ -5,8 +5,8 @@
       "sha256": "8c33ef2c6469320b9e81b1f128f7035d02650d37f81796318d3111375f3e0e35"
     },
     "index.html": {
-      "bytes": 543572,
-      "sha256": "7d9ae48f8589475f433fb55da05b5c61b8a4c0104ff44b5ea324733339ec4169"
+      "bytes": 553129,
+      "sha256": "5da4c093e3387388bd8d509eb5aa0982bf7655cdd0bd745e53b09c32d04a5a9e"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -713,24 +713,24 @@
       "sha256": "6606be8d44149aa39be495a81810617d38673f308d129b7f5338c2c15f3ca7dc"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 324560,
-      "sha256": "54a218421be0bc665130bf14439b781ee8b183014f366b423bfd0cdefbf41fe9"
+      "bytes": 334116,
+      "sha256": "8cf3136cb6747d218dec3288a72406aaecd714a3a302adee9ecc40fbd45aa1f9"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
       "bytes": 20512692,
       "sha256": "7b0e492fa617e8a49a58858393da71fbb619f557adc7ad00ba4661ae005d2280"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 324589,
-      "sha256": "8c04137b3842ab729f152ea161200875e9350c36b1d0bc082bf9cd89410eb785"
+      "bytes": 334145,
+      "sha256": "b517b453b96d180ba619c799cc276afad0e87dd77a26310c7d49df9bd42cf45a"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
       "bytes": 20511614,
       "sha256": "4c65ee20a90ee0ae440c09c8974bb598d18c875d62d87b509e1721a29bff437a"
     },
     "ep02-en.html": {
-      "bytes": 324508,
-      "sha256": "0765e6d7d9e9ece0899579dbce3266612f1275ac6afd30f8f1f4ba91d47e4f05"
+      "bytes": 334064,
+      "sha256": "43d5b78440dc3ee9da210984d01d9bac4a926cb4c1ccf3521cc6a1765058deff"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
       "bytes": 20501515,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 324050,
-      "sha256": "e2215c155b397b721341379ea8060b223487a02cab6649252fd7451f77610e0b"
+      "bytes": 333508,
+      "sha256": "0e66de311f1706ea28c121328ec4018a1b5cd40172e28dda4e13982ee8fb613f"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,

@@ -10,6 +10,7 @@ const live=process.argv.includes('--live');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const out=process.env.TEST_OUTPUT||path.join(root,'test-results');
 fs.mkdirSync(out,{recursive:true});
+const canonical=require('../docs/analytics-catalog.json')['EP.01'];
 const expected=['Central Park Bangkok','Café Amazon Experience','Sala Lakorn','Liabduan Danneramit','神級海南雞飯','MuvMi','MK Restaurants','Som Tam Nua','Baan Ice','TrueCoffee','Swensen’s','FUFU Taiwanese Shabu'];
 const results=[];
 (async()=>{
@@ -42,34 +43,34 @@ const results=[];
   await page.screenshot({path:path.join(out,label+'-cover.png')});
   if(!process.argv.includes('--smoke')){
   for(let i=1;i<=12;i++){
-   const id='spot-'+i;
-   await click('.toc a[href="#'+id+'"]');
+   const {id,anchor,name}=canonical[i-1];
+   await click('.toc a[href="#'+anchor+'"]');
    await page.waitForTimeout(700);
    assert.equal(await count('toc_item_click',id),1);
    assert.equal(await count('place_card_open',id),0,'TOC must not count as direct open');
-   const p=page.locator('#'+id+' .body p').filter({hasText:/.{30}/}).first();
+   const p=page.locator('#'+anchor+' .body p').filter({hasText:/.{30}/}).first();
    await p.scrollIntoViewIfNeeded();
    await page.waitForFunction(id=>Array.from(window.dataLayer||[]).some(x=>x[1]==='place_content_view'&&x[2].place_id===id),id,{timeout:6000});
    // Close, directly reopen, close and reopen again. Reading stays deduplicated.
-   await click('#'+id+' > summary');await page.waitForTimeout(400);
-   await click('#'+id+' > summary');await page.waitForTimeout(650);
+   await click('#'+anchor+' > summary');await page.waitForTimeout(400);
+   await click('#'+anchor+' > summary');await page.waitForTimeout(650);
    assert.equal(await count('place_card_open',id),1);
-   await click('#'+id+' > summary');await page.waitForTimeout(400);
+   await click('#'+anchor+' > summary');await page.waitForTimeout(400);
    assert.equal(await count('place_card_open',id),1,'Closing is not an open');
-   await click('#'+id+' > summary');await page.waitForTimeout(650);
+   await click('#'+anchor+' > summary');await page.waitForTimeout(650);
    await p.scrollIntoViewIfNeeded();await page.waitForTimeout(1300);
    assert.equal(await count('place_card_open',id),2);
    assert.equal(await count('place_content_view',id),1);
    const payloads=(await events()).filter(e=>['toc_item_click','place_card_open','place_content_view'].includes(e.name)&&e.place_id===id);
-   for(const e of payloads){assert.equal(e.place_name,expected[i-1]);assert.equal(e.position,i);assert.equal(e.episode,'EP.01');assert.equal(e.send_to,'G-YZZEBJ9YBT');}
+   for(const e of payloads){assert.equal(e.place_name,name);assert.equal(e.position,i);assert.equal(e.episode,'EP.01');assert.equal(e.send_to,'G-YZZEBJ9YBT');}
    results.push({device:label,place_id:id,place_name:expected[i-1],toc:1,direct:2,read:1});
    console.log(label+' '+id+' PASS');
   }
   assert.equal((await events()).filter(e=>e.name==='guide_open').length,0);
   // Repeated TOC selection, including an already-open destination.
   await click('.toc a[href="#spot-12"]');await page.waitForTimeout(650);
-  assert.equal(await count('toc_item_click','spot-12'),2);
-  assert.equal(await count('place_card_open','spot-12'),2);
+  assert.equal(await count('toc_item_click','fufu-taiwanese-shabu'),2);
+  assert.equal(await count('place_card_open','fufu-taiwanese-shabu'),2);
   await page.screenshot({path:path.join(out,label+'-place.png')});
   fs.writeFileSync(path.join(out,label+'-events.json'),JSON.stringify(await events(),null,2));
   }
@@ -77,33 +78,33 @@ const results=[];
   await load();
   await page.evaluate(()=>{window.huxDetailsMotion.open(document.getElementById('spot-1'));});
   await page.waitForTimeout(650);
-  assert.equal(await count('place_card_open','spot-1'),0);
+  assert.equal(await count('place_card_open','central-park-bangkok'),0);
   await page.locator('#spot-1 .body p').filter({hasText:/.{30}/}).first().scrollIntoViewIfNeeded();
   await page.waitForTimeout(300);
   await page.evaluate(()=>window.huxDetailsMotion.closeInstant(document.getElementById('spot-1')));
   await page.waitForTimeout(1300);
-  assert.equal(await count('place_content_view','spot-1'),0,'Short glance must not count');
+  assert.equal(await count('place_content_view','central-park-bangkok'),0,'Short glance must not count');
   // Hidden-document state resets dwell even when geometry remains visible.
   await page.evaluate(()=>{Object.defineProperty(document,'visibilityState',{configurable:true,get:()=> 'hidden'});document.dispatchEvent(new Event('visibilitychange'));window.huxDetailsMotion.open(document.getElementById('spot-1'));});
   await page.waitForTimeout(650);
   await page.locator('#spot-1 .body p').filter({hasText:/.{30}/}).first().scrollIntoViewIfNeeded();
   await page.waitForTimeout(1400);
-  assert.equal(await count('place_content_view','spot-1'),0);
+  assert.equal(await count('place_content_view','central-park-bangkok'),0);
   await page.evaluate(()=>{delete document.visibilityState;document.dispatchEvent(new Event('visibilitychange'));});
   await page.locator('#spot-1 .body p').filter({hasText:/.{30}/}).first().scrollIntoViewIfNeeded();
-  await page.waitForFunction(()=>Array.from(window.dataLayer||[]).some(x=>x[1]==='place_content_view'&&x[2].place_id==='spot-1'),null,{timeout:6000});
+  await page.waitForFunction(()=>Array.from(window.dataLayer||[]).some(x=>x[1]==='place_content_view'&&x[2].place_id==='central-park-bangkok'),null,{timeout:6000});
   // Names remain canonical after translation and across a persisted-English reload.
   await click('[data-hux-lang="en"]');
   await click('.toc a[href="#spot-5"]');await page.waitForTimeout(700);
-  assert.equal((await events()).find(e=>e.name==='toc_item_click'&&e.place_id==='spot-5').place_name,expected[4]);
+  assert.equal((await events()).find(e=>e.name==='toc_item_click'&&e.place_id==='hainanese-chicken-rice').place_name,canonical[4].name);
   await load();
   assert.equal(await page.locator('html').getAttribute('lang'),'en');
   if(mobile){await click('#spot-5 > summary');}else{
    await page.locator('#spot-5 > summary').focus();await page.keyboard.press('Enter');
   }
   await page.waitForTimeout(650);
-  assert.equal(await count('place_card_open','spot-5'),1);
-  assert.equal((await events()).find(e=>e.name==='place_card_open'&&e.place_id==='spot-5').place_name,expected[4]);
+  assert.equal(await count('place_card_open','hainanese-chicken-rice'),1);
+  assert.equal((await events()).find(e=>e.name==='place_card_open'&&e.place_id==='hainanese-chicken-rice').place_name,canonical[4].name);
   // Existing share panel and floating player still open and close.
   await click('.share-fab-toggle');assert.equal(await page.locator('.share-fab.open').count(),1);
   await page.keyboard.press('Escape');assert.equal(await page.locator('.share-fab.open').count(),0);
@@ -111,7 +112,7 @@ const results=[];
   if(await pip.count()){
    await pip.click();assert.equal(await page.locator('.hux-reel-pip iframe').count(),1);
    const opened=(await events()).find(e=>e.name==='reel_open'&&e.reel_action==='inline_pip');
-   assert.equal(opened.place_id,'spot-5');assert.equal(opened.episode,'EP.01');assert.equal(opened.place_name,expected[4]);
+   assert.equal(opened.place_id,'hainanese-chicken-rice');assert.equal(opened.episode,'EP.01');assert.equal(opened.place_name,canonical[4].name);
    await page.keyboard.press('Escape');assert.equal(await page.locator('.hux-reel-pip').count(),0);
   }
   const mapLinks=page.locator('details.card[id^="spot-"] a[href*="google.com/maps"],details.card[id^="spot-"] a[href*="maps.app.goo.gl"]');
@@ -120,12 +121,12 @@ const results=[];
   for(let i=0;i<mapCount;i++)await mapLinks.nth(i).evaluate(a=>a.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
   const mapEvents=(await events()).filter(e=>e.name==='map_click');
   assert.equal(mapEvents.length,mapCount);
-  for(const e of mapEvents){assert.match(e.place_id,/^spot-\d+$/);assert.equal(e.place_name,expected[e.position-1]);assert.equal(e.episode,'EP.01');}
+  for(const e of mapEvents){assert.equal(e.place_id,canonical[e.position-1].id);assert.equal(e.place_name,canonical[e.position-1].name);assert.equal(e.episode,'EP.01');}
   await page.locator('[data-share]').first().evaluate(b=>b.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
   assert.equal((await events()).find(e=>e.name==='share').episode,'EP.01');
   await page.locator('#spot-1 .reel-origin').first().evaluate(a=>a.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true})));
   const original=(await events()).find(e=>e.name==='reel_open'&&e.reel_action==='original_link');
-  assert.equal(original.place_id,'spot-1');assert.equal(original.place_name,expected[0]);assert.equal(original.episode,'EP.01');
+  assert.equal(original.place_id,'central-park-bangkok');assert.equal(original.place_name,expected[0]);assert.equal(original.episode,'EP.01');
   assert.ok(await page.locator('[data-get-guide]').first().getAttribute('href'));
   assert.deepEqual(errors,[]);
   await context.close();

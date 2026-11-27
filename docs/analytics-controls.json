@@ -1,0 +1,2739 @@
+{
+  "EP.01": [
+    {
+      "id": "about:link:155baz4:1",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Instagram",
+        "zh-Hans": "前往胡搞夏搞的 Instagram",
+        "en": "Visit HUXIAGO on Instagram"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:pgtt7b:4",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Threads",
+        "zh-Hans": "前往胡搞夏搞的 Threads",
+        "en": "Visit HUXIAGO on Threads"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:ti1s0m:2",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Facebook",
+        "zh-Hans": "前往胡搞夏搞的 Facebook",
+        "en": "Visit HUXIAGO on Facebook"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:u6tv9c:3",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 YouTube",
+        "zh-Hans": "前往胡搞夏搞的 YouTube",
+        "en": "Visit HUXIAGO on YouTube"
+      },
+      "action": "link"
+    },
+    {
+      "id": "baan-ice:map:google-maps:2",
+      "labels": {
+        "zh-Hant": "在 Google 地圖查看 Baan Ice 曼谷各分店",
+        "zh-Hans": "在 Google 地图查看 Baan Ice 曼谷各分店",
+        "en": "Find branches on Google Maps: Baan Ice Bangkok branches"
+      },
+      "action": "map",
+      "place": "baan-ice",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "baan-ice:open",
+      "labels": {
+        "zh-Hant": "第 09 站 · 泰南料理Baan Ice泰國南部料理首選餐廳⌄",
+        "zh-Hans": "第 09 站 · 泰南料理Baan Ice泰国南部料理首选餐厅⌄",
+        "en": "Stop 09 · Southern Thai cuisineBaan IceOur favourite for southern Thai flavours⌄"
+      },
+      "action": "open",
+      "place": "baan-ice",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "baan-ice:toc",
+      "labels": {
+        "zh-Hant": "第 09 站，Baan Ice 泰南料理，酸咖哩・藤菜炒蛋，查看介紹",
+        "zh-Hans": "第 09 站，Baan Ice 泰南料理，酸咖哩・藤菜炒蛋，查看介绍",
+        "en": "Stop 09, Baan Ice Southern Thai Cuisine, Sour curry · leafy greens with egg, Read more"
+      },
+      "action": "toc",
+      "place": "baan-ice",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:7",
+      "labels": {
+        "zh-Hant": "第 1 支影片",
+        "zh-Hans": "第 1 支影片",
+        "en": "Video 1"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:8",
+      "labels": {
+        "zh-Hant": "第 2 支影片",
+        "zh-Hans": "第 2 支影片",
+        "en": "Video 2"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:9",
+      "labels": {
+        "zh-Hant": "第 3 支影片",
+        "zh-Hans": "第 3 支影片",
+        "en": "Video 3"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:reel:1fk50fs:1",
+      "labels": {
+        "zh-Hant": "開啟原片：辭職移居曼谷自媒體血淚談",
+        "zh-Hans": "开启原片：辞职移居曼谷自媒体血泪谈",
+        "en": "Open original: Leaving work for Bangkok and content creation"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：辭職移居曼谷自媒體血淚談",
+        "zh-Hans": "浮动播放：辞职移居曼谷自媒体血泪谈",
+        "en": "Play in floating window: Leaving work for Bangkok and content creation"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:dclygf:1",
+      "labels": {
+        "zh-Hant": "開啟原片：胡搞夏搞是誰？我們的故事",
+        "zh-Hans": "开启原片：胡搞夏搞是谁？我们的故事",
+        "en": "Open original: Who are HUXIAGO? Our story"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:vil3z5:1",
+      "labels": {
+        "zh-Hant": "開啟原片：《消失的國界》深度專題報導",
+        "zh-Hans": "开启原片：《消失的国界》深度专题报导",
+        "en": "Open original: Vanishing Borders · In-depth feature"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "cafe-amazon-experience:map:google-maps:16",
+      "labels": {
+        "zh-Hant": "在 Google Maps 搜尋 Café Amazon Experience",
+        "zh-Hans": "在 Google Maps 搜寻 Café Amazon Experience",
+        "en": "Search Google Maps for Café Amazon Experience"
+      },
+      "action": "map",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:open",
+      "labels": {
+        "zh-Hant": "第 02 站 · 旗艦咖啡館Café Amazon Experience美術館等級純白文青咖啡館⌄",
+        "zh-Hans": "第 02 站 · 旗舰咖啡馆Café Amazon Experience美术馆等级纯白文青咖啡馆⌄",
+        "en": "Stop 02 · Flagship caféCafé Amazon ExperienceA white café with gallery-level architecture⌄"
+      },
+      "action": "open",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:pause:vpnsng:1",
+      "labels": {
+        "zh-Hant": "旗艦咖啡館內的空間畫面",
+        "zh-Hans": "旗舰咖啡馆内的空间画面",
+        "en": "Inside the flagship café"
+      },
+      "action": "pause",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:pause:vpnsng:2",
+      "labels": {
+        "zh-Hant": "Café Amazon Experience 現場短片",
+        "zh-Hans": "Café Amazon Experience 现场短片",
+        "en": "A short video from the café"
+      },
+      "action": "pause",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:pause:vpnsng:3",
+      "labels": {
+        "zh-Hant": "在旗艦店走走看看",
+        "zh-Hans": "在旗舰店走走看看",
+        "en": "Exploring the flagship"
+      },
+      "action": "pause",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:play:vpnsng:1",
+      "labels": {
+        "zh-Hant": "旗艦咖啡館內的空間畫面",
+        "zh-Hans": "旗舰咖啡馆内的空间画面",
+        "en": "Inside the flagship café"
+      },
+      "action": "play",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:play:vpnsng:2",
+      "labels": {
+        "zh-Hant": "Café Amazon Experience 現場短片",
+        "zh-Hans": "Café Amazon Experience 现场短片",
+        "en": "A short video from the café"
+      },
+      "action": "play",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:play:vpnsng:3",
+      "labels": {
+        "zh-Hant": "在旗艦店走走看看",
+        "zh-Hans": "在旗舰店走走看看",
+        "en": "Exploring the flagship"
+      },
+      "action": "play",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1pf9wj4:1",
+      "labels": {
+        "zh-Hant": "開啟原片：2026 曼谷必玩景點 TOP 3・Café Amazon Experience",
+        "zh-Hans": "开启原片：2026 曼谷必玩景点 TOP 3・Café Amazon Experience",
+        "en": "Open original: Top 3 Bangkok stops for 2026 · Café Amazon Experience"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1svkw8b:12",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1svkw8b:4",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1svkw8b:8",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1uokip5:10",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Unmute"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1uokip5:2",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Unmute"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1uokip5:6",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Unmute"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：2026 曼谷必玩景點 TOP 3・Café Amazon Experience",
+        "zh-Hans": "浮动播放：2026 曼谷必玩景点 TOP 3・Café Amazon Experience",
+        "en": "Play in floating window: Top 3 Bangkok stops for 2026 · Café Amazon Experience"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:c1h2qs:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:c1h2qs:5",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:c1h2qs:9",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:quqjfr:11",
+      "labels": {
+        "zh-Hant": "開啟 PIP",
+        "zh-Hans": "开启 PIP",
+        "en": "Open picture-in-picture"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:quqjfr:3",
+      "labels": {
+        "zh-Hant": "開啟 PIP",
+        "zh-Hans": "开启 PIP",
+        "en": "Open picture-in-picture"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:reel:quqjfr:7",
+      "labels": {
+        "zh-Hant": "開啟 PIP",
+        "zh-Hans": "开启 PIP",
+        "en": "Open picture-in-picture"
+      },
+      "action": "reel",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:seek:vpnsng:1",
+      "labels": {
+        "zh-Hant": "旗艦咖啡館內的空間畫面",
+        "zh-Hans": "旗舰咖啡馆内的空间画面",
+        "en": "Inside the flagship café"
+      },
+      "action": "seek",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:seek:vpnsng:2",
+      "labels": {
+        "zh-Hant": "Café Amazon Experience 現場短片",
+        "zh-Hans": "Café Amazon Experience 现场短片",
+        "en": "A short video from the café"
+      },
+      "action": "seek",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:seek:vpnsng:3",
+      "labels": {
+        "zh-Hant": "在旗艦店走走看看",
+        "zh-Hans": "在旗舰店走走看看",
+        "en": "Exploring the flagship"
+      },
+      "action": "seek",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "cafe-amazon-experience:toc",
+      "labels": {
+        "zh-Hant": "第 02 站，Café Amazon Experience 旗艦咖啡館，Ari・建築與抹茶，查看介紹",
+        "zh-Hans": "第 02 站，Café Amazon Experience 旗舰咖啡馆，Ari・建筑与抹茶，查看介绍",
+        "en": "Stop 02, Café Amazon Experience, Ari · architecture & matcha, Read more"
+      },
+      "action": "toc",
+      "place": "cafe-amazon-experience",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "central-park-bangkok:map:google-maps:10",
+      "labels": {
+        "zh-Hant": "在 Google Maps 搜尋 Central Park",
+        "zh-Hans": "在 Google Maps 搜寻 Central Park",
+        "en": "Search Google Maps for Central Park"
+      },
+      "action": "map",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:open",
+      "labels": {
+        "zh-Hant": "第 01 站 · 百貨商場Central Park Bangkok激推！泰國現象級必逛地標⌄",
+        "zh-Hans": "第 01 站 · 百货商场Central Park Bangkok激推！泰国现象级必逛地标⌄",
+        "en": "Stop 01 · Shopping mallCentral Park BangkokA Bangkok landmark we always recommend⌄"
+      },
+      "action": "open",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:1aehyru:1",
+      "labels": {
+        "zh-Hant": "開啟原片：2025 全新商場 Central Park Bangkok、挽肉與米開箱",
+        "zh-Hans": "开启原片：2025 全新商场 Central Park Bangkok、挽肉与米开箱",
+        "en": "Open original: Central Park Bangkok and Hikiniku to Come · 2025 first look"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:1c8dhfi:2",
+      "labels": {
+        "zh-Hant": "開啟原片：在 LG 美食街考考琳妲",
+        "zh-Hans": "开启原片：在 LG 美食街考考琳妲",
+        "en": "Open original: Quizzing Linda at the LG food court"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：2025 全新商場 Central Park Bangkok、挽肉與米開箱",
+        "zh-Hans": "浮动播放：2025 全新商场 Central Park Bangkok、挽肉与米开箱",
+        "en": "Play in floating window: Central Park Bangkok and Hikiniku to Come · 2025 first look"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放：Central Park Bangkok CTM 手標茶介紹",
+        "zh-Hans": "浮动播放：Central Park Bangkok CTM 手标茶介绍",
+        "en": "Play in floating window: CTM tea at Central Park Bangkok"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:reel:pxczqn:2",
+      "labels": {
+        "zh-Hant": "開啟原片：Central Park Bangkok CTM 手標茶介紹",
+        "zh-Hans": "开启原片：Central Park Bangkok CTM 手标茶介绍",
+        "en": "Open original: CTM tea at Central Park Bangkok"
+      },
+      "action": "reel",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "central-park-bangkok:toc",
+      "labels": {
+        "zh-Hant": "第 01 站，Central Park 百貨商場，空中花園・逛街吃飯，查看介紹",
+        "zh-Hans": "第 01 站，Central Park 百货商场，空中花园・逛街吃饭，查看介绍",
+        "en": "Stop 01, Central Park shopping mall, Sky garden · shopping & food, Read more"
+      },
+      "action": "toc",
+      "place": "central-park-bangkok",
+      "tag": "逛街"
+    },
+    {
+      "id": "ep02-kushiro-offer",
+      "labels": {
+        "zh-Hant": "TableCheck 訂位",
+        "zh-Hans": "TableCheck 订位",
+        "en": "Book on TableCheck"
+      },
+      "action": "offer",
+      "offer": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "ep02-silq-offer",
+      "labels": {
+        "zh-Hant": "飯店官網訂房",
+        "zh-Hans": "酒店官网订房",
+        "en": "Book on the hotel website"
+      },
+      "action": "offer",
+      "offer": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "episode-menu:navigate:ep02:5",
+      "labels": {
+        "zh-Hant": "HUXIAGO EP.02",
+        "zh-Hans": "HUXIAGO EP.02",
+        "en": "HUXIAGO EP.02"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "floating_share:button:14um0in:148",
+      "labels": {
+        "zh-Hant": "開啟分享面板",
+        "zh-Hans": "开启分享面板",
+        "en": "Open sharing options"
+      },
+      "action": "button"
+    },
+    {
+      "id": "floating_share:share:ig:145",
+      "labels": {
+        "zh-Hant": "分享到 Instagram",
+        "zh-Hans": "分享到 Instagram",
+        "en": "Share on Instagram"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:line:146",
+      "labels": {
+        "zh-Hant": "分享到 LINE",
+        "zh-Hans": "分享到 LINE",
+        "en": "Share on LINE"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:native:147",
+      "labels": {
+        "zh-Hant": "系統分享",
+        "zh-Hans": "系统分享",
+        "en": "Share via your device"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:threads:144",
+      "labels": {
+        "zh-Hant": "分享到 Threads",
+        "zh-Hans": "分享到 Threads",
+        "en": "Share on Threads"
+      },
+      "action": "share"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:link:14rwlld:8",
+      "labels": {
+        "zh-Hant": "查看 FUFU 官方分店資訊，開啟新分頁",
+        "zh-Hans": "查看 FUFU 官方分店资讯，开启新分页",
+        "en": "View FUFU’s official branches (opens a new tab)"
+      },
+      "action": "link",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:link:rtrfs:7",
+      "labels": {
+        "zh-Hant": "查看 FUFU 官方方案與價格，開啟新分頁",
+        "zh-Hans": "查看 FUFU 官方方案与价格，开启新分页",
+        "en": "View FUFU’s official packages and prices (opens a new tab)"
+      },
+      "action": "link",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:map:google-maps:6",
+      "labels": {
+        "zh-Hant": "在 Google 地圖搜尋 FUFU Ari 分店",
+        "zh-Hans": "在 Google 地图搜寻 FUFU Ari 分店",
+        "en": "Search Google Maps for FUFU Ari branch"
+      },
+      "action": "map",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:open",
+      "labels": {
+        "zh-Hant": "第 12 站 · 火鍋吃到飽FUFU Taiwanese Shabu海陸雙享頂級台式火鍋 Buffet⌄",
+        "zh-Hans": "第 12 站 · 火锅吃到饱FUFU Taiwanese Shabu海陆双享顶级台式火锅 Buffet⌄",
+        "en": "Stop 12 · Hot-pot buffetFUFU Taiwanese ShabuA premium Taiwanese hot-pot buffet with meat and seafood"
+      },
+      "action": "open",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:pause:vpnsng:1",
+      "labels": {
+        "zh-Hant": "店裡的一段棉花糖片段",
+        "zh-Hans": "店里的一段棉花糖片段",
+        "en": "Candyfloss in the restaurant"
+      },
+      "action": "pause",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:play:vpnsng:1",
+      "labels": {
+        "zh-Hant": "店裡的一段棉花糖片段",
+        "zh-Hans": "店里的一段棉花糖片段",
+        "en": "Candyfloss in the restaurant"
+      },
+      "action": "play",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:reel:1svkw8b:5",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:reel:1uokip5:3",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Unmute"
+      },
+      "action": "reel",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:reel:c1h2qs:2",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:reel:quqjfr:4",
+      "labels": {
+        "zh-Hant": "開啟 PIP",
+        "zh-Hans": "开启 PIP",
+        "en": "Open picture-in-picture"
+      },
+      "action": "reel",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:seek:vpnsng:1",
+      "labels": {
+        "zh-Hant": "店裡的一段棉花糖片段",
+        "zh-Hans": "店里的一段棉花糖片段",
+        "en": "Candyfloss in the restaurant"
+      },
+      "action": "seek",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "fufu-taiwanese-shabu:toc",
+      "labels": {
+        "zh-Hant": "第 12 站，FUFU Taiwanese Shabu 台式火鍋吃到飽，台式火鍋・Miracle 吃到飽，查看介紹",
+        "zh-Hans": "第 12 站，FUFU Taiwanese Shabu 台式火锅吃到饱，台式火锅・Miracle 吃到饱，查看介绍",
+        "en": "Stop 12, FUFU Taiwanese Shabu Buffet, Taiwanese hot pot · Miracle buffet, Read more"
+      },
+      "action": "toc",
+      "place": "fufu-taiwanese-shabu",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "hainanese-chicken-rice:map:google-maps:11",
+      "labels": {
+        "zh-Hant": "導航到無名海南雞飯旁的 7-Eleven，開啟 Google 地圖",
+        "zh-Hans": "导航到无名海南鸡饭旁的 7-Eleven，开启 Google 地图",
+        "en": "Navigate to the 7-Eleven next to the chicken-rice stall in Google Maps"
+      },
+      "action": "map",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:open",
+      "labels": {
+        "zh-Hant": "第 05 站 · 洽圖洽美食神級海南雞飯完勝米其林的無名路邊攤⌄",
+        "zh-Hans": "第 05 站 · 洽图洽美食神级海南鸡饭完胜米其林的无名路边摊⌄",
+        "en": "Stop 05 · Chatuchak street foodHidden Hainanese Chicken RiceOur hidden chicken-rice pick over the fa"
+      },
+      "action": "open",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:pause:vpnsng:1",
+      "labels": {
+        "zh-Hant": "醬汁與雞飯的近景",
+        "zh-Hans": "酱汁与鸡饭的近景",
+        "en": "Close-up of chicken rice and sauces"
+      },
+      "action": "pause",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:play:vpnsng:1",
+      "labels": {
+        "zh-Hant": "醬汁與雞飯的近景",
+        "zh-Hans": "酱汁与鸡饭的近景",
+        "en": "Close-up of chicken rice and sauces"
+      },
+      "action": "play",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1o6woy6:1",
+      "labels": {
+        "zh-Hant": "開啟原片：神級海南雞飯",
+        "zh-Hans": "开启原片：神级海南鸡饭",
+        "en": "Open original: Hidden Hainanese Chicken Rice"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1svkw8b:8",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1t1e5st:2",
+      "labels": {
+        "zh-Hant": "開啟原片：台灣創作者朋友一致好評",
+        "zh-Hans": "开启原片：台湾创作者朋友一致好评",
+        "en": "Open original: A hit with our Taiwanese creator friends"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1uokip5:6",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Unmute"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：神級海南雞飯",
+        "zh-Hans": "浮动播放：神级海南鸡饭",
+        "en": "Play in floating window: Hidden Hainanese Chicken Rice"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放：台灣創作者朋友一致好評",
+        "zh-Hans": "浮动播放：台湾创作者朋友一致好评",
+        "en": "Play in floating window: A hit with our Taiwanese creator friends"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:c1h2qs:5",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:reel:quqjfr:7",
+      "labels": {
+        "zh-Hant": "開啟 PIP",
+        "zh-Hans": "开启 PIP",
+        "en": "Open picture-in-picture"
+      },
+      "action": "reel",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:seek:vpnsng:1",
+      "labels": {
+        "zh-Hant": "醬汁與雞飯的近景",
+        "zh-Hans": "酱汁与鸡饭的近景",
+        "en": "Close-up of chicken rice and sauces"
+      },
+      "action": "seek",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hainanese-chicken-rice:toc",
+      "labels": {
+        "zh-Hant": "第 05 站，無名海南雞飯，17:00 左右到・可能售完，查看介紹",
+        "zh-Hans": "第 05 站，无名海南鸡饭，17:00 左右到・可能售完，查看介绍",
+        "en": "Stop 05, Hidden Hainanese Chicken Rice, Arrive around 17:00 · may sell out, Read more"
+      },
+      "action": "toc",
+      "place": "hainanese-chicken-rice",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "huxiago-esim",
+      "labels": {
+        "zh-Hant": "查看全方案、選項",
+        "zh-Hans": "查看全部方案和选项",
+        "en": "View all plans and options"
+      },
+      "action": "offer",
+      "offer": "esim",
+      "tag": "網卡優惠"
+    },
+    {
+      "id": "liabduan-danneramit:map:google-maps:4",
+      "labels": {
+        "zh-Hant": "在 Google Maps 搜尋 Liabduan Danneramit",
+        "zh-Hans": "在 Google Maps 搜寻 Liabduan Danneramit",
+        "en": "Search Google Maps for Liabduan Danneramit"
+      },
+      "action": "map",
+      "place": "liabduan-danneramit",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "liabduan-danneramit:open",
+      "labels": {
+        "zh-Hant": "第 04 站 · 城堡夜市Liabduan Danneramit在地人最愛的隱藏版平價夜市⌄",
+        "zh-Hans": "第 04 站 · 城堡夜市Liabduan Danneramit在地人最爱的隐藏版平价夜市⌄",
+        "en": "Stop 04 · Castle night marketLiabduan DanneramitAn affordable local favourite⌄"
+      },
+      "action": "open",
+      "place": "liabduan-danneramit",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "liabduan-danneramit:reel:1hmy2e:1",
+      "labels": {
+        "zh-Hant": "開啟原片：曼谷城堡夜市 5 推薦＋3 點須知",
+        "zh-Hans": "开启原片：曼谷城堡夜市 5 推荐＋3 点须知",
+        "en": "Open original: Castle night market: 5 picks and 3 tips"
+      },
+      "action": "reel",
+      "place": "liabduan-danneramit",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "liabduan-danneramit:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：曼谷城堡夜市 5 推薦＋3 點須知",
+        "zh-Hans": "浮动播放：曼谷城堡夜市 5 推荐＋3 点须知",
+        "en": "Play in floating window: Castle night market: 5 picks and 3 tips"
+      },
+      "action": "reel",
+      "place": "liabduan-danneramit",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "liabduan-danneramit:toc",
+      "labels": {
+        "zh-Hant": "第 04 站，Liabduan Danneramit 城堡夜市，城堡拍照・在地小吃，查看介紹",
+        "zh-Hans": "第 04 站，Liabduan Danneramit 城堡夜市，城堡拍照・在地小吃，查看介绍",
+        "en": "Stop 04, Liabduan Danneramit Night Market, Castle photos · local bites, Read more"
+      },
+      "action": "toc",
+      "place": "liabduan-danneramit",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "mk-restaurants:link:lmsuow:5",
+      "labels": {
+        "zh-Hant": "查看 MK 官方活動，開啟新分頁",
+        "zh-Hans": "查看 MK 官方活动，开启新分页",
+        "en": "View MK’s official offers (opens a new tab)"
+      },
+      "action": "link",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "mk-restaurants:map:google-maps:4",
+      "labels": {
+        "zh-Hant": "在 Google 地圖打開 MK Restaurant",
+        "zh-Hans": "在 Google 地图打开 MK Restaurant",
+        "en": "Open Google Maps for MK Restaurant"
+      },
+      "action": "map",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "mk-restaurants:open",
+      "labels": {
+        "zh-Hant": "第 07 站 · 泰式火鍋MK Restaurants經典連鎖泰國國民火鍋品牌⌄",
+        "zh-Hans": "第 07 站 · 泰式火锅MK Restaurants经典连锁泰国国民火锅品牌⌄",
+        "en": "Stop 07 · Thai hot potMK RestaurantsA classic Thai hot-pot chain⌄"
+      },
+      "action": "open",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "mk-restaurants:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：泰國天花板 Ep.01・MK Restaurants",
+        "zh-Hans": "浮动播放：泰国天花板 Ep.01・MK Restaurants",
+        "en": "Play in floating window: Thai favourites Ep.01 · MK Restaurants"
+      },
+      "action": "reel",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "mk-restaurants:reel:4ku7hu:1",
+      "labels": {
+        "zh-Hant": "開啟原片：泰國天花板 Ep.01・MK Restaurants",
+        "zh-Hans": "开启原片：泰国天花板 Ep.01・MK Restaurants",
+        "en": "Open original: Thai favourites Ep.01 · MK Restaurants"
+      },
+      "action": "reel",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "mk-restaurants:toc",
+      "labels": {
+        "zh-Hant": "第 07 站，MK Restaurants 連鎖火鍋店，百貨商場・火鍋聚餐，查看介紹",
+        "zh-Hans": "第 07 站，MK Restaurants 连锁火锅店，百货商场・火锅聚餐，查看介绍",
+        "en": "Stop 07, MK Restaurants, Mall dining · hot pot together, Read more"
+      },
+      "action": "toc",
+      "place": "mk-restaurants",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "muvmi:link:1fpiqga:6",
+      "labels": {
+        "zh-Hant": "訪問 MuvMi 官網，開啟新分頁",
+        "zh-Hans": "访问 MuvMi 官网，开启新分页",
+        "en": "Visit MuvMi’s website (opens a new tab)"
+      },
+      "action": "link",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:link:1ocpwcw:5",
+      "labels": {
+        "zh-Hant": "在 Google Play 下載 MuvMi，開啟新分頁",
+        "zh-Hans": "在 Google Play 下载 MuvMi，开启新分页",
+        "en": "Get MuvMi on Google Play (opens a new tab)"
+      },
+      "action": "link",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:link:d4ro6f:4",
+      "labels": {
+        "zh-Hant": "在 App Store 下載 MuvMi，開啟新分頁",
+        "zh-Hans": "在 App Store 下载 MuvMi，开启新分页",
+        "en": "Get MuvMi on the App Store (opens a new tab)"
+      },
+      "action": "link",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:map:google-maps:7",
+      "labels": {
+        "zh-Hant": "↗ 上車點範例｜BTS Ari 4 號出口↗ 上车点示例｜BTS Ari 4 号出口↗ Pickup example · BTS Ari Exit 4",
+        "zh-Hans": "↗ 上車點範例｜BTS Ari 4 號出口↗ 上车点示例｜BTS Ari 4 号出口↗ Pickup example · BTS Ari Exit 4",
+        "en": "↗ 上車點範例｜BTS Ari 4 號出口↗ 上车点示例｜BTS Ari 4 号出口↗ Pickup example · BTS Ari Exit 4"
+      },
+      "action": "map",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:open",
+      "labels": {
+        "zh-Hant": "第 06 站 · 嘟嘟車AppMuvMi共享電動嘟嘟車叫車平台⌄",
+        "zh-Hans": "第 06 站 · 嘟嘟车AppMuvMi共享电动嘟嘟车叫车平台⌄",
+        "en": "Stop 06 · Tuk-tuk appMuvMiAn app for shared electric tuk-tuks⌄"
+      },
+      "action": "open",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:reel:1l9pd18:1",
+      "labels": {
+        "zh-Hant": "開啟原片：曼谷交通工具測評・MuvMi",
+        "zh-Hans": "开启原片：曼谷交通工具测评・MuvMi",
+        "en": "Open original: Bangkok transport review · MuvMi"
+      },
+      "action": "reel",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：曼谷交通工具測評・MuvMi",
+        "zh-Hans": "浮动播放：曼谷交通工具测评・MuvMi",
+        "en": "Play in floating window: Bangkok transport review · MuvMi"
+      },
+      "action": "reel",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "muvmi:toc",
+      "labels": {
+        "zh-Hant": "第 06 站，MuvMi 共享電動嘟嘟車，短程移動・電動嘟嘟車，查看介紹",
+        "zh-Hans": "第 06 站，MuvMi 共享电动嘟嘟车，短程移动・电动嘟嘟车，查看介绍",
+        "en": "Stop 06, MuvMi Electric Tuk-Tuks, Short trips · electric tuk-tuks, Read more"
+      },
+      "action": "toc",
+      "place": "muvmi",
+      "tag": "交通"
+    },
+    {
+      "id": "offer-esim:offer:physical-sim:1",
+      "labels": {
+        "zh-Hant": "另看泰國實體 SIM 卡",
+        "zh-Hans": "另看泰国实体 SIM 卡",
+        "en": "See Thailand physical SIMs"
+      },
+      "action": "offer",
+      "offer": "esim",
+      "tag": "網卡優惠"
+    },
+    {
+      "id": "offer-kushiro:navigate:issue-details:1",
+      "labels": {
+        "zh-Hant": "到 EP.02 看詳情 · Kushiro Omakase",
+        "zh-Hans": "到 EP.02 看详情 · Kushiro Omakase",
+        "en": "Details in EP.02 · Kushiro Omakase"
+      },
+      "action": "navigate",
+      "offer": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "offer-silq:navigate:issue-details:1",
+      "labels": {
+        "zh-Hant": "到 EP.02 看詳情 · SILQ Hotel",
+        "zh-Hans": "到 EP.02 看详情 · SILQ Hotel",
+        "en": "Details in EP.02 · SILQ Hotel"
+      },
+      "action": "navigate",
+      "offer": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "page:link:155baz4:9",
+      "labels": {
+        "zh-Hant": "@huxia.thai ↗",
+        "zh-Hans": "@huxia.thai ↗",
+        "en": "@huxia.thai ↗"
+      },
+      "action": "link"
+    },
+    {
+      "id": "page:navigate:about:6",
+      "labels": {
+        "zh-Hant": "06關於我們",
+        "zh-Hans": "06关于我们",
+        "en": "06About us"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:deals:1",
+      "labels": {
+        "zh-Hant": "優惠",
+        "zh-Hans": "优惠",
+        "en": "Deals"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:deals:2",
+      "labels": {
+        "zh-Hant": "02口袋優惠",
+        "zh-Hans": "02口袋优惠",
+        "en": "02Pocket deals"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:share-strip:5",
+      "labels": {
+        "zh-Hant": "05分享攻略",
+        "zh-Hans": "05分享攻略",
+        "en": "05Share the guide"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:spots:3",
+      "labels": {
+        "zh-Hant": "景點",
+        "zh-Hans": "景点",
+        "en": "Places"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:spots:4",
+      "labels": {
+        "zh-Hant": "0412 站口袋名單",
+        "zh-Hans": "0412 站口袋名单",
+        "en": "0412 places to explore"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:toc:2",
+      "labels": {
+        "zh-Hant": "目錄",
+        "zh-Hans": "目录",
+        "en": "Contents"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:toc:3",
+      "labels": {
+        "zh-Hant": "03本期目錄",
+        "zh-Hans": "03本期目录",
+        "en": "03Contents"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:top:1",
+      "labels": {
+        "zh-Hant": "01封面",
+        "zh-Hans": "01封面",
+        "en": "01Cover"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:top:143",
+      "labels": {
+        "zh-Hant": "回到最上面 ↑",
+        "zh-Hans": "回到最上面 ↑",
+        "en": "Back to top ↑"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "quick_nav:download:offline-guide:8",
+      "labels": {
+        "zh-Hant": "下載收藏完整版攻略 ↗",
+        "zh-Hans": "下载收藏完整版攻略 ↗",
+        "en": "Save the complete guide ↗"
+      },
+      "action": "download"
+    },
+    {
+      "id": "sala-lakorn:map:google-maps:7",
+      "labels": {
+        "zh-Hant": "在 Google Maps 搜尋 Sala Lakorn",
+        "zh-Hans": "在 Google Maps 搜寻 Sala Lakorn",
+        "en": "Search Google Maps for Sala Lakorn"
+      },
+      "action": "map",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:open",
+      "labels": {
+        "zh-Hant": "第 03 站 · Buffet 吃到飽Sala Lakorn頂級國際自助餐＋沈浸式劇場⌄",
+        "zh-Hans": "第 03 站 · Buffet 吃到饱Sala Lakorn顶级国际自助餐＋沉浸式剧场⌄",
+        "en": "Stop 03 · Dinner buffetSala LakornInternational buffet with immersive theatre⌄"
+      },
+      "action": "open",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:reel:1avk3kk:2",
+      "labels": {
+        "zh-Hant": "開啟原片：Sala Lakorn 初訪開箱",
+        "zh-Hans": "开启原片：Sala Lakorn 初访开箱",
+        "en": "Open original: Our first visit to Sala Lakorn"
+      },
+      "action": "reel",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:reel:1cklqb2:1",
+      "labels": {
+        "zh-Hant": "開啟原片：Sala Lakorn 第二次開箱",
+        "zh-Hans": "开启原片：Sala Lakorn 第二次开箱",
+        "en": "Open original: Our second Sala Lakorn visit"
+      },
+      "action": "reel",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：Sala Lakorn 第二次開箱",
+        "zh-Hans": "浮动播放：Sala Lakorn 第二次开箱",
+        "en": "Play in floating window: Our second Sala Lakorn visit"
+      },
+      "action": "reel",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放：Sala Lakorn 初訪開箱",
+        "zh-Hans": "浮动播放：Sala Lakorn 初访开箱",
+        "en": "Play in floating window: Our first visit to Sala Lakorn"
+      },
+      "action": "reel",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "sala-lakorn:toc",
+      "labels": {
+        "zh-Hant": "第 03 站，Sala Lakorn 沉浸式劇場 Buffet，河畔晚餐・劇場表演，查看介紹",
+        "zh-Hans": "第 03 站，Sala Lakorn 沉浸式剧场 Buffet，河畔晚餐・剧场表演，查看介绍",
+        "en": "Stop 03, Sala Lakorn Dinner & Theatre, Riverside dining · live performance, Read more"
+      },
+      "action": "toc",
+      "place": "sala-lakorn",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "share-strip:share:ig:127",
+      "labels": {
+        "zh-Hant": "分享到 Instagram",
+        "zh-Hans": "分享到 Instagram",
+        "en": "Share on Instagram"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:line:128",
+      "labels": {
+        "zh-Hant": "分享到 LINE",
+        "zh-Hans": "分享到 LINE",
+        "en": "Share on LINE"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:native:129",
+      "labels": {
+        "zh-Hant": "系統分享",
+        "zh-Hans": "系统分享",
+        "en": "Share via your device"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:threads:126",
+      "labels": {
+        "zh-Hant": "分享到 Threads",
+        "zh-Hans": "分享到 Threads",
+        "en": "Share on Threads"
+      },
+      "action": "share"
+    },
+    {
+      "id": "som-tam-nua:map:google-maps:4",
+      "labels": {
+        "zh-Hant": "在 Google 地圖查看 Som Tam Nua 曼谷各分店",
+        "zh-Hans": "在 Google 地图查看 Som Tam Nua 曼谷各分店",
+        "en": "Find branches on Google Maps: Som Tam Nua Bangkok branches"
+      },
+      "action": "map",
+      "place": "som-tam-nua",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "som-tam-nua:open",
+      "labels": {
+        "zh-Hant": "第 08 站 · 伊善料理Som Tam Nua泰國東北料理優質選擇⌄",
+        "zh-Hans": "第 08 站 · 伊善料理Som Tam Nua泰国东北料理优质选择⌄",
+        "en": "Stop 08 · Isan cuisineSom Tam NuaA comfortable introduction to northeastern Thai food⌄"
+      },
+      "action": "open",
+      "place": "som-tam-nua",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "som-tam-nua:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：泰國天花板 Ep.01・Som Tam Nua",
+        "zh-Hans": "浮动播放：泰国天花板 Ep.01・Som Tam Nua",
+        "en": "Play in floating window: Thai favourites Ep.01 · Som Tam Nua"
+      },
+      "action": "reel",
+      "place": "som-tam-nua",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "som-tam-nua:reel:4ku7hu:1",
+      "labels": {
+        "zh-Hant": "開啟原片：泰國天花板 Ep.01・Som Tam Nua",
+        "zh-Hans": "开启原片：泰国天花板 Ep.01・Som Tam Nua",
+        "en": "Open original: Thai favourites Ep.01 · Som Tam Nua"
+      },
+      "action": "reel",
+      "place": "som-tam-nua",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "som-tam-nua:toc",
+      "labels": {
+        "zh-Hant": "第 08 站，Som Tam Nua 泰國東北料理，鐵板豬頸肉・伊善料理，查看介紹",
+        "zh-Hans": "第 08 站，Som Tam Nua 泰国东北料理，铁板猪颈肉・伊善料理，查看介绍",
+        "en": "Stop 08, Som Tam Nua Isan Cuisine, Sizzling pork neck · Isan flavours, Read more"
+      },
+      "action": "toc",
+      "place": "som-tam-nua",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "swensens:map:google-maps:2",
+      "labels": {
+        "zh-Hant": "在 Google 地圖搜尋 Swensen’s",
+        "zh-Hans": "在 Google 地图搜寻 Swensen’s",
+        "en": "Search Google Maps for Swensen’s"
+      },
+      "action": "map",
+      "place": "swensens",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "swensens:open",
+      "labels": {
+        "zh-Hant": "第 11 站 · 雙聖冰淇淋Swensen’s泰國人從小吃的平價甜點店⌄",
+        "zh-Hans": "第 11 站 · 双圣冰淇淋Swensen’s泰国人从小吃的平价甜点店⌄",
+        "en": "Stop 11 · Ice creamSwensen’sAn affordable dessert shop Thai people grew up with⌄"
+      },
+      "action": "open",
+      "place": "swensens",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "swensens:toc",
+      "labels": {
+        "zh-Hant": "第 11 站，Swensen’s 雙聖冰淇淋，聖代・泰式甜糯米飯，查看介紹",
+        "zh-Hans": "第 11 站，Swensen’s 双圣冰淇淋，圣代・泰式甜糯米饭，查看介绍",
+        "en": "Stop 11, Swensen’s Ice Cream, Sundaes · Thai sweet sticky rice, Read more"
+      },
+      "action": "toc",
+      "place": "swensens",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "toc:filter:all:1",
+      "labels": {
+        "zh-Hant": "全部",
+        "zh-Hans": "全部",
+        "en": "All"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:coffee-dessert:3",
+      "labels": {
+        "zh-Hant": "咖啡甜點",
+        "zh-Hans": "咖啡甜点",
+        "en": "Cafés & sweets"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:restaurant:5",
+      "labels": {
+        "zh-Hant": "曼谷餐廳",
+        "zh-Hans": "曼谷餐厅",
+        "en": "Restaurants"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:shopping:2",
+      "labels": {
+        "zh-Hant": "逛街",
+        "zh-Hans": "逛街",
+        "en": "Shopping"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:street-food:4",
+      "labels": {
+        "zh-Hant": "街頭美食",
+        "zh-Hans": "街头美食",
+        "en": "Street food"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:transport:6",
+      "labels": {
+        "zh-Hant": "交通",
+        "zh-Hans": "交通",
+        "en": "Transport"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "top:button:jmtypi:4",
+      "labels": {
+        "zh-Hant": "選擇指南集數，目前為第 1 集",
+        "zh-Hans": "选择指南集数，目前为第 1 集",
+        "en": "Choose a guide, currently episode 1"
+      },
+      "action": "button"
+    },
+    {
+      "id": "top:download:offline-guide:6",
+      "labels": {
+        "zh-Hant": "下載收藏完整版攻略 HTML 檔",
+        "zh-Hans": "下载收藏完整版攻略 HTML 档",
+        "en": "Save the complete HTML guide"
+      },
+      "action": "download"
+    },
+    {
+      "id": "top:language:en:3",
+      "labels": {
+        "zh-Hant": "English",
+        "zh-Hans": "English",
+        "en": "English"
+      },
+      "action": "language"
+    },
+    {
+      "id": "top:language:zh-hans:2",
+      "labels": {
+        "zh-Hant": "简体中文",
+        "zh-Hans": "简体中文",
+        "en": "简体中文"
+      },
+      "action": "language"
+    },
+    {
+      "id": "top:language:zh-hant:1",
+      "labels": {
+        "zh-Hant": "繁體中文",
+        "zh-Hans": "繁體中文",
+        "en": "繁體中文"
+      },
+      "action": "language"
+    },
+    {
+      "id": "truecoffee:link:14oj2u7:7",
+      "labels": {
+        "zh-Hant": "查看 TrueCoffee 官方菜單，開啟新分頁",
+        "zh-Hans": "查看 TrueCoffee 官方菜单，开启新分页",
+        "en": "View TrueCoffee’s official menu (opens a new tab)"
+      },
+      "action": "link",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:link:kq4knt:6",
+      "labels": {
+        "zh-Hant": "查看 TrueCoffee 官方分店資訊，開啟新分頁",
+        "zh-Hans": "查看 TrueCoffee 官方分店资讯，开启新分页",
+        "en": "View TrueCoffee’s official branches (opens a new tab)"
+      },
+      "action": "link",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:map:google-maps:5",
+      "labels": {
+        "zh-Hant": "在 Google 地圖搜尋 TrueCoffee True Space Icon Siam",
+        "zh-Hans": "在 Google 地图搜寻 TrueCoffee True Space Icon Siam",
+        "en": "Search Google Maps for TrueCoffee True Space Icon Siam"
+      },
+      "action": "map",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:open",
+      "labels": {
+        "zh-Hant": "第 10 站 · 連鎖咖啡廳TrueCoffee泰式咖啡、奶茶都經典好喝⌄",
+        "zh-Hans": "第 10 站 · 连锁咖啡厅TrueCoffee泰式咖啡、奶茶都经典好喝⌄",
+        "en": "Stop 10 · Coffee chainTrueCoffeeClassic Thai coffee and milk tea⌄"
+      },
+      "action": "open",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:reel:17j57c8:2",
+      "labels": {
+        "zh-Hant": "開啟原片：ICONSIAM 分店河景超美",
+        "zh-Hans": "开启原片：ICONSIAM 分店河景超美",
+        "en": "Open original: A gorgeous river view at the ICONSIAM branch"
+      },
+      "action": "reel",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放影片",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放：ICONSIAM 分店河景超美",
+        "zh-Hans": "浮动播放：ICONSIAM 分店河景超美",
+        "en": "Play in floating window: A gorgeous river view at the ICONSIAM branch"
+      },
+      "action": "reel",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "truecoffee:toc",
+      "labels": {
+        "zh-Hant": "第 10 站，TrueCoffee 連鎖咖啡廳，泰奶・ICONSIAM 河景，查看介紹",
+        "zh-Hans": "第 10 站，TrueCoffee 连锁咖啡厅，泰奶・ICONSIAM 河景，查看介绍",
+        "en": "Stop 10, TrueCoffee, Thai tea · ICONSIAM river views, Read more"
+      },
+      "action": "toc",
+      "place": "truecoffee",
+      "tag": "咖啡甜點"
+    }
+  ],
+  "EP.02": [
+    {
+      "id": "about:link:155baz4:1",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Instagram",
+        "zh-Hans": "前往胡搞夏搞的 Instagram",
+        "en": "Visit HUXIAGO on Instagram"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:pgtt7b:4",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Threads",
+        "zh-Hans": "前往胡搞夏搞的 Threads",
+        "en": "Visit HUXIAGO on Threads"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:ti1s0m:2",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 Facebook",
+        "zh-Hans": "前往胡搞夏搞的 Facebook",
+        "en": "Visit HUXIAGO on Facebook"
+      },
+      "action": "link"
+    },
+    {
+      "id": "about:link:u6tv9c:3",
+      "labels": {
+        "zh-Hant": "前往胡搞夏搞的 YouTube",
+        "zh-Hans": "前往胡搞夏搞的 YouTube",
+        "en": "Visit HUXIAGO on YouTube"
+      },
+      "action": "link"
+    },
+    {
+      "id": "bang-sue-junction:map:google-maps:5",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bang-sue-junction:open",
+      "labels": {
+        "zh-Hant": "第 06 站・復古購物商場Bang Sue Junction海量古著古董！二手挖寶勝地",
+        "zh-Hans": "第 06 站・复古购物商场Bang Sue Junction海量古着古董！二手淘货胜地",
+        "en": "Stop 06 · Vintage shopping mallBang Sue JunctionA treasure trove of vintage clothes and antiques"
+      },
+      "action": "open",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bang-sue-junction:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片 · 重磅聯名！麥當勞 × 手標泰奶",
+        "zh-Hans": "播放视频 · 重磅联名！麦当劳 × 手标泰奶",
+        "en": "Play Reel · McDonald’s meets ChaTraMue Thai tea"
+      },
+      "action": "reel",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bang-sue-junction:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bang-sue-junction:reel:litql5:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bang-sue-junction:toc",
+      "labels": {
+        "zh-Hant": "06Bang Sue Junction 洽圖洽紅樓逛街查看介紹",
+        "zh-Hans": "06Bang Sue Junction 恰图恰红楼逛街查看介绍",
+        "en": "06Bang Sue Junction · Chatuchak Red BuildingShoppingRead more"
+      },
+      "action": "toc",
+      "place": "bang-sue-junction",
+      "tag": "逛街"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:10",
+      "labels": {
+        "zh-Hant": "第 2 支影片",
+        "zh-Hans": "第 2 支视频",
+        "en": "Video 2"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:11",
+      "labels": {
+        "zh-Hant": "第 3 支影片",
+        "zh-Hans": "第 3 支视频",
+        "en": "Video 3"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:button:5njir5:9",
+      "labels": {
+        "zh-Hant": "第 1 支影片",
+        "zh-Hans": "第 1 支视频",
+        "en": "Video 1"
+      },
+      "action": "button"
+    },
+    {
+      "id": "bonus-reels:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片 · 大挑戰！10 小時玩爆曼谷老城區",
+        "zh-Hans": "播放视频 · 大挑战！10 小时玩遍曼谷老城区",
+        "en": "Play Reel · The challenge: 10 hours in Bangkok’s Old Town"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:1tjt6jp:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放：沒畢業，完蛋了？小胡的奮鬥故事",
+        "zh-Hans": "浮动播放：没毕业，完蛋了？小胡的奋斗故事",
+        "en": "Play in floating window: I didn’t graduate. What now? Zev’s story"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:on4hkv:1",
+      "labels": {
+        "zh-Hant": "開啟原片：沒畢業，完蛋了？小胡的奮鬥故事",
+        "zh-Hans": "开启原片：没毕业，完蛋了？小胡的奋斗故事",
+        "en": "Open original: I didn’t graduate. What now? Zev’s story"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "bonus-reels:reel:rto5bx:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel"
+    },
+    {
+      "id": "chowchercof:map:google-maps:2",
+      "labels": {
+        "zh-Hant": "Chowchercof（ฌอเฌอคอฟ）Lat Phrao 16 主店",
+        "zh-Hans": "Chowchercof（ฌอเฌอคอฟ）Lat Phrao 16 主店",
+        "en": "Chowchercof (ฌอเฌอคอฟ), Lat Phrao Soi 16"
+      },
+      "action": "map",
+      "place": "chowchercof",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "chowchercof:map:google-maps:3",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "chowchercof",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "chowchercof:open",
+      "labels": {
+        "zh-Hant": "第 05 站・蓮花池咖啡廳Chowchercof美感滿分的曼谷午茶時光",
+        "zh-Hans": "第 05 站・莲花池咖啡厅Chowchercof美感满分的曼谷下午茶时光",
+        "en": "Stop 05 · Lotus pond caféChowchercofA lovely spot for afternoon tea in Bangkok"
+      },
+      "action": "open",
+      "place": "chowchercof",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "chowchercof:toc",
+      "labels": {
+        "zh-Hant": "05Chowchercof 蓮花池咖啡廳咖啡甜點查看介紹",
+        "zh-Hans": "05Chowchercof 莲花池咖啡厅咖啡甜点查看介绍",
+        "en": "05Chowchercof · Lotus pond caféCoffee & dessertsRead more"
+      },
+      "action": "toc",
+      "place": "chowchercof",
+      "tag": "咖啡甜點"
+    },
+    {
+      "id": "ep02-kushiro-offer",
+      "labels": {
+        "zh-Hant": "TableCheck 訂位",
+        "zh-Hans": "TableCheck 订位",
+        "en": "Book on TableCheck"
+      },
+      "action": "offer",
+      "offer": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "ep02-silq-offer",
+      "labels": {
+        "zh-Hant": "飯店官網訂房",
+        "zh-Hans": "酒店官网订房",
+        "en": "Book on the hotel website"
+      },
+      "action": "offer",
+      "offer": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "episode-menu:navigate:ja2nox:5",
+      "labels": {
+        "zh-Hant": "Ep.01",
+        "zh-Hans": "Ep.01",
+        "en": "Ep.01"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "floating_share:button:14um0in:114",
+      "labels": {
+        "zh-Hant": "開啟分享面板",
+        "zh-Hans": "开启分享面板",
+        "en": "Open sharing options"
+      },
+      "action": "button"
+    },
+    {
+      "id": "floating_share:share:ig:111",
+      "labels": {
+        "zh-Hant": "分享到 Instagram",
+        "zh-Hans": "分享到 Instagram",
+        "en": "Share on Instagram"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:line:112",
+      "labels": {
+        "zh-Hant": "分享到 LINE",
+        "zh-Hans": "分享到 LINE",
+        "en": "Share on LINE"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:native:113",
+      "labels": {
+        "zh-Hant": "系統分享",
+        "zh-Hans": "系统分享",
+        "en": "Share via your device"
+      },
+      "action": "share"
+    },
+    {
+      "id": "floating_share:share:threads:110",
+      "labels": {
+        "zh-Hant": "分享到 Threads",
+        "zh-Hans": "分享到 Threads",
+        "en": "Share on Threads"
+      },
+      "action": "share"
+    },
+    {
+      "id": "gan-da:map:google-maps:6",
+      "labels": {
+        "zh-Hant": "กานดาอาหารตามสั่ง",
+        "zh-Hans": "กานดาอาหารตามสั่ง",
+        "en": "กานดาอาหารตามสั่ง"
+      },
+      "action": "map",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "gan-da:map:google-maps:7",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "gan-da:open",
+      "labels": {
+        "zh-Hant": "第 03 站・家常泰式料理กานดาอาหารตามสั่ง銅板價現做打拋豬、冬蔭功",
+        "zh-Hans": "第 03 站・家常泰式料理กานดาอาหารตามสั่ง平价现做打抛猪、冬荫功",
+        "en": "Stop 03 · Home-style Thai cookingกานดาอาหารตามสั่งPad kra pao and tom yum, made to order at street-f"
+      },
+      "action": "open",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "gan-da:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片 · 蒜香雞肉飯，戳開半熟蛋",
+        "zh-Hans": "播放视频 · 蒜香鸡肉饭，戳开半熟蛋",
+        "en": "Play video · Breaking the runny yolk over garlic chicken rice"
+      },
+      "action": "reel",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "gan-da:reel:1uu7l17:2",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "gan-da:toc",
+      "labels": {
+        "zh-Hant": "03กานดาอาหารตามสั่ง 家常泰式料理街頭美食查看介紹",
+        "zh-Hans": "03กานดาอาหารตามสั่ง 家常泰式料理街头美食查看介绍",
+        "en": "03กานดาอาหารตามสั่ง · Thai home cookingStreet foodRead more"
+      },
+      "action": "toc",
+      "place": "gan-da",
+      "tag": "街頭美食"
+    },
+    {
+      "id": "hani-spa:map:google-maps:2",
+      "labels": {
+        "zh-Hant": "Hani Spa – Branch 2",
+        "zh-Hans": "Hani Spa – Branch 2",
+        "en": "Hani Spa – Branch 2"
+      },
+      "action": "map",
+      "place": "hani-spa",
+      "tag": "按摩放鬆"
+    },
+    {
+      "id": "hani-spa:map:google-maps:3",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "hani-spa",
+      "tag": "按摩放鬆"
+    },
+    {
+      "id": "hani-spa:open",
+      "labels": {
+        "zh-Hant": "第 04 站・平價質感按摩Hani Spa不藏私！回訪Ｎ次的按摩 SPA",
+        "zh-Hans": "第 04 站・平价质感按摩Hani Spa不藏私！回访Ｎ次的按摩 SPA",
+        "en": "Stop 04 · Affordable massageHani SpaThe massage spa we keep coming back to"
+      },
+      "action": "open",
+      "place": "hani-spa",
+      "tag": "按摩放鬆"
+    },
+    {
+      "id": "hani-spa:toc",
+      "labels": {
+        "zh-Hant": "04Hani Spa 平價質感按摩按摩放鬆查看介紹",
+        "zh-Hans": "04Hani Spa 平价质感按摩按摩放松查看介绍",
+        "en": "04Hani Spa · Affordable massageWellnessRead more"
+      },
+      "action": "toc",
+      "place": "hani-spa",
+      "tag": "按摩放鬆"
+    },
+    {
+      "id": "huxiago-esim",
+      "labels": {
+        "zh-Hant": "查看全方案、選項",
+        "zh-Hans": "查看全部方案和选项",
+        "en": "View all plans and options"
+      },
+      "action": "offer",
+      "offer": "esim",
+      "tag": "網卡優惠"
+    },
+    {
+      "id": "kushiro:link:key6ox:10",
+      "labels": {
+        "zh-Hant": "TableCheck 訂位",
+        "zh-Hans": "TableCheck 订位",
+        "en": "Book on TableCheck"
+      },
+      "action": "link",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:link:key6ox:8",
+      "labels": {
+        "zh-Hant": "TableCheck 訂位",
+        "zh-Hans": "TableCheck 订位",
+        "en": "Book on TableCheck"
+      },
+      "action": "link",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:map:google-maps:9",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:navigate:issue-details:1",
+      "labels": {
+        "zh-Hant": "查看詳情 · Kushiro Omakase",
+        "zh-Hans": "查看详情 · Kushiro Omakase",
+        "en": "View details · Kushiro Omakase"
+      },
+      "action": "navigate",
+      "place": "kushiro",
+      "offer": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:open",
+      "labels": {
+        "zh-Hant": "第 01 站・無菜單料理Kushiro Omakase and Japanese Dining全網熱推！高 CP 值日式料理",
+        "zh-Hans": "第 01 站・无菜单料理Kushiro Omakase and Japanese Dining全网热推！高性价比日式料理",
+        "en": "Stop 01 · Omakase diningKushiro Omakase and Japanese DiningA much-loved spot for great-value Japanes"
+      },
+      "action": "open",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片 · 再次回訪 Kushiro Omakase",
+        "zh-Hans": "播放视频 · 再次回访 Kushiro Omakase",
+        "en": "Play Reel · Our return visit to Kushiro Omakase"
+      },
+      "action": "reel",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:reel:1eco7cq:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:reel:1vgojkg:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "kushiro:toc",
+      "labels": {
+        "zh-Hant": "01Kushiro Omakase 無菜單料理曼谷餐廳查看介紹",
+        "zh-Hans": "01Kushiro Omakase 无菜单料理曼谷餐厅查看介绍",
+        "en": "01Kushiro Omakase · Japanese diningDiningRead more"
+      },
+      "action": "toc",
+      "place": "kushiro",
+      "tag": "曼谷餐廳"
+    },
+    {
+      "id": "offer-esim:offer:physical-sim:1",
+      "labels": {
+        "zh-Hant": "另看泰國實體 SIM 卡",
+        "zh-Hans": "另看泰国实体 SIM 卡",
+        "en": "See Thailand physical SIMs"
+      },
+      "action": "offer",
+      "offer": "esim",
+      "tag": "網卡優惠"
+    },
+    {
+      "id": "page:link:155baz4:9",
+      "labels": {
+        "zh-Hant": "@huxia.thai",
+        "zh-Hans": "@huxia.thai",
+        "en": "@huxia.thai"
+      },
+      "action": "link"
+    },
+    {
+      "id": "page:navigate:about:6",
+      "labels": {
+        "zh-Hant": "06關於我們",
+        "zh-Hans": "06关于我们",
+        "en": "06About us"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:deals:1",
+      "labels": {
+        "zh-Hant": "優惠",
+        "zh-Hans": "优惠",
+        "en": "Deals"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:deals:2",
+      "labels": {
+        "zh-Hant": "02口袋優惠",
+        "zh-Hans": "02口袋优惠",
+        "en": "02Pocket deals"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:share-strip:5",
+      "labels": {
+        "zh-Hant": "05分享攻略",
+        "zh-Hans": "05分享攻略",
+        "en": "05Share the guide"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:spots:3",
+      "labels": {
+        "zh-Hant": "景點",
+        "zh-Hans": "景点",
+        "en": "Places"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:spots:4",
+      "labels": {
+        "zh-Hant": "047 站口袋名單",
+        "zh-Hans": "047 站口袋名单",
+        "en": "047 places to explore"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:toc:2",
+      "labels": {
+        "zh-Hant": "目錄",
+        "zh-Hans": "目录",
+        "en": "Contents"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:toc:3",
+      "labels": {
+        "zh-Hant": "03本期目錄",
+        "zh-Hans": "03本期目录",
+        "en": "03Contents"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:top:1",
+      "labels": {
+        "zh-Hant": "01封面",
+        "zh-Hans": "01封面",
+        "en": "01Cover"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "page:navigate:top:109",
+      "labels": {
+        "zh-Hant": "回到最上面",
+        "zh-Hans": "回到最上面",
+        "en": "Back to top"
+      },
+      "action": "navigate"
+    },
+    {
+      "id": "quick_nav:download:offline-guide:8",
+      "labels": {
+        "zh-Hant": "下載收藏完整版攻略",
+        "zh-Hans": "下载收藏完整版攻略",
+        "en": "Save the complete guide"
+      },
+      "action": "download"
+    },
+    {
+      "id": "saen-saep:link:1txf5o4:15",
+      "labels": {
+        "zh-Hant": "查閱路線與班次",
+        "zh-Hans": "查看路线与班次",
+        "en": "Check route and departures"
+      },
+      "action": "link",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:link:1txf5o4:2",
+      "labels": {
+        "zh-Hant": "開啟原網站互動路線圖",
+        "zh-Hans": "打开原网站互动路线图",
+        "en": "Open the original interactive map"
+      },
+      "action": "link",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:link:1txf5o4:3",
+      "labels": {
+        "zh-Hant": "Saen Saeb Canal 互動式地圖",
+        "zh-Hans": "Saen Saeb Canal 互动式地图",
+        "en": "Saen Saeb Canal interactive map"
+      },
+      "action": "link",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:map:google-maps:13",
+      "labels": {
+        "zh-Hant": "上船｜水門碼頭",
+        "zh-Hans": "上船｜水门码头",
+        "en": "Boarding · Pratunam Pier"
+      },
+      "action": "map",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:map:google-maps:14",
+      "labels": {
+        "zh-Hant": "下船｜The Mall Bangkapi 碼頭",
+        "zh-Hans": "下船｜The Mall Bangkapi 码头",
+        "en": "Arrival · The Mall Bangkapi Pier"
+      },
+      "action": "map",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:open",
+      "labels": {
+        "zh-Hant": "第 07 站・曼谷髒船Saen Saep Express Boat市中心交通外掛「盛桑快船」",
+        "zh-Hans": "第 07 站・曼谷脏船Saen Saep Express Boat市中心交通外挂「盛桑快船」",
+        "en": "Stop 07 · Bangkok’s “dirty boat”Saen Saep Express BoatThe Saen Saep canal boat is a shortcut across "
+      },
+      "action": "open",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:19wa8cb:3",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:19wa8cb:6",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:19wa8cb:9",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:1uokip5:2",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Turn sound on"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:1uokip5:5",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Turn sound on"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:1uokip5:8",
+      "labels": {
+        "zh-Hant": "開啟聲音",
+        "zh-Hans": "开启声音",
+        "en": "Turn sound on"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:c1h2qs:1",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放视频",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:c1h2qs:4",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放视频",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:reel:c1h2qs:7",
+      "labels": {
+        "zh-Hant": "播放影片",
+        "zh-Hans": "播放视频",
+        "en": "Play video"
+      },
+      "action": "reel",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "saen-saep:toc",
+      "labels": {
+        "zh-Hant": "07Saen Saep Express Boat 曼谷髒船交通查看介紹",
+        "zh-Hans": "07Saen Saep Express Boat 曼谷脏船交通查看介绍",
+        "en": "07Saen Saep Express Boat · Bangkok canal boatTransportRead more"
+      },
+      "action": "toc",
+      "place": "saen-saep",
+      "tag": "交通"
+    },
+    {
+      "id": "share-strip:share:ig:102",
+      "labels": {
+        "zh-Hant": "分享到 Instagram",
+        "zh-Hans": "分享到 Instagram",
+        "en": "Share on Instagram"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:line:103",
+      "labels": {
+        "zh-Hant": "分享到 LINE",
+        "zh-Hans": "分享到 LINE",
+        "en": "Share on LINE"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:native:104",
+      "labels": {
+        "zh-Hant": "系統分享",
+        "zh-Hans": "系统分享",
+        "en": "Share via your device"
+      },
+      "action": "share"
+    },
+    {
+      "id": "share-strip:share:threads:101",
+      "labels": {
+        "zh-Hant": "分享到 Threads",
+        "zh-Hans": "分享到 Threads",
+        "en": "Share on Threads"
+      },
+      "action": "share"
+    },
+    {
+      "id": "silq:link:1e3zcau:5",
+      "labels": {
+        "zh-Hant": "飯店官網訂房",
+        "zh-Hans": "酒店官网订房",
+        "en": "Book on the hotel website"
+      },
+      "action": "link",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:link:1e3zcau:7",
+      "labels": {
+        "zh-Hant": "帶入九折碼查房價",
+        "zh-Hans": "带入九折码查房价",
+        "en": "Check rates with 10% off"
+      },
+      "action": "link",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:map:google-maps:6",
+      "labels": {
+        "zh-Hant": "Google Maps",
+        "zh-Hans": "Google Maps",
+        "en": "Google Maps"
+      },
+      "action": "map",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:navigate:issue-details:1",
+      "labels": {
+        "zh-Hant": "查看詳情 · SILQ Hotel",
+        "zh-Hans": "查看详情 · SILQ Hotel",
+        "en": "View details · SILQ Hotel"
+      },
+      "action": "navigate",
+      "place": "silq",
+      "offer": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:open",
+      "labels": {
+        "zh-Hant": "第 02 站・五星級飯店SILQ Hotel & Residence曼谷市中心渡假旅行首選推薦",
+        "zh-Hans": "第 02 站・五星级酒店SILQ Hotel & Residence曼谷市中心度假旅行首选推荐",
+        "en": "Stop 02 · Five-star hotelSILQ Hotel & ResidenceOur pick for a getaway in central Bangkok"
+      },
+      "action": "open",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:reel:1aiu3g1:1",
+      "labels": {
+        "zh-Hant": "播放影片 · 聊聊 SILQ Hotel 入住心得",
+        "zh-Hans": "播放视频 · 聊聊 SILQ Hotel 入住体验",
+        "en": "Play Reel · Our stay at SILQ Hotel"
+      },
+      "action": "reel",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:reel:1dq1mlc:2",
+      "labels": {
+        "zh-Hant": "原片",
+        "zh-Hans": "原片",
+        "en": "Original"
+      },
+      "action": "reel",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:reel:1uu7l17:3",
+      "labels": {
+        "zh-Hant": "浮動播放",
+        "zh-Hans": "浮动播放",
+        "en": "Floating player"
+      },
+      "action": "reel",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "silq:toc",
+      "labels": {
+        "zh-Hant": "02SILQ Hotel 摩登輕奢飯店住宿查看介紹",
+        "zh-Hans": "02SILQ Hotel 摩登轻奢酒店住宿查看介绍",
+        "en": "02SILQ Hotel · Modern luxuryStayRead more"
+      },
+      "action": "toc",
+      "place": "silq",
+      "tag": "住宿"
+    },
+    {
+      "id": "toc:filter:accommodation:3",
+      "labels": {
+        "zh-Hant": "住宿",
+        "zh-Hans": "住宿",
+        "en": "Stay"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:all:1",
+      "labels": {
+        "zh-Hant": "全部",
+        "zh-Hans": "全部",
+        "en": "All"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:coffee-dessert:6",
+      "labels": {
+        "zh-Hant": "咖啡甜點",
+        "zh-Hans": "咖啡甜点",
+        "en": "Coffee & desserts"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:restaurant:2",
+      "labels": {
+        "zh-Hant": "曼谷餐廳",
+        "zh-Hans": "曼谷餐厅",
+        "en": "Dining"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:shopping:7",
+      "labels": {
+        "zh-Hant": "逛街",
+        "zh-Hans": "逛街",
+        "en": "Shopping"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:street-food:4",
+      "labels": {
+        "zh-Hant": "街頭美食",
+        "zh-Hans": "街头美食",
+        "en": "Street food"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:transport:8",
+      "labels": {
+        "zh-Hant": "交通",
+        "zh-Hans": "交通",
+        "en": "Transport"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "toc:filter:wellness:5",
+      "labels": {
+        "zh-Hant": "按摩放鬆",
+        "zh-Hans": "按摩放松",
+        "en": "Wellness"
+      },
+      "action": "filter"
+    },
+    {
+      "id": "top:button:jmtypi:4",
+      "labels": {
+        "zh-Hant": "Ep.02",
+        "zh-Hans": "Ep.02",
+        "en": "Ep.02"
+      },
+      "action": "button"
+    },
+    {
+      "id": "top:download:offline-guide:6",
+      "labels": {
+        "zh-Hant": "下載收藏完整版攻略 HTML 檔",
+        "zh-Hans": "下载收藏完整版攻略 HTML 档",
+        "en": "Save the complete HTML guide"
+      },
+      "action": "download"
+    },
+    {
+      "id": "top:language:en:3",
+      "labels": {
+        "zh-Hant": "English",
+        "zh-Hans": "English",
+        "en": "English"
+      },
+      "action": "language"
+    },
+    {
+      "id": "top:language:zh-hans:2",
+      "labels": {
+        "zh-Hant": "简体中文",
+        "zh-Hans": "简体中文",
+        "en": "简体中文"
+      },
+      "action": "language"
+    },
+    {
+      "id": "top:language:zh-hant:1",
+      "labels": {
+        "zh-Hant": "繁體中文",
+        "zh-Hans": "繁體中文",
+        "en": "繁體中文"
+      },
+      "action": "language"
+    }
+  ]
+}

@@ -402,7 +402,8 @@ def script(source, id):
 def issue_analytics(donor, lang):
     config = extract(donor, r'<script>window\.HUXIAGO_ANALYTICS_CONFIG=\{[^\n]+\};</script>')
     context = json.dumps({"episode": "EP.02", "itemId": "huxiago_vol02", "language": lang})
-    return config + f'<script>Object.assign(window.HUXIAGO_ANALYTICS_CONFIG,{context});</script>\n' + script(donor, "hux-analytics")
+    catalog = extract(donor, r'<script type="application/json" id="hux-analytics-catalog">.*?</script>')
+    return config + f'<script>Object.assign(window.HUXIAGO_ANALYTICS_CONFIG,{context});</script>\n' + catalog + "\n" + script(donor, "hux-analytics")
 
 
 def bonus_reels(donor, videos, sources, index, offline):
