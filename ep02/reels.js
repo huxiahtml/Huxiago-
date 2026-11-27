@@ -1,5 +1,7 @@
 (() => {
   let player = null;
+  const canalFrames = new WeakMap();
+  const manuallyPaused = new WeakSet();
 
   function moveFrame(frame, target) {
     const playing = !frame.paused;
@@ -51,6 +53,10 @@
 
   function play(figure) {
     if (player?.figure === figure) return player.frame;
+    if (player?.figure.matches('.canal-clip')) {
+      closeFloating();
+      player = null;
+    }
     if (player) {
       const { frame, figure: previous, shell, button } = player;
       frame.pause();
@@ -62,6 +68,17 @@
       previous.classList.remove('is-loaded');
       syncClip(previous);
     }
+    const frame = figure.matches('.canal-clip') ? canalFrame(figure) : createFrame(figure);
+    player = { figure, frame, shell: null, button: figure.querySelector('.reel-pip-launch') };
+    return frame;
+  }
+
+  function canalFrame(figure) {
+    if (!canalFrames.has(figure)) canalFrames.set(figure, createFrame(figure));
+    return canalFrames.get(figure);
+  }
+
+  function createFrame(figure) {
     const frame = document.createElement('video');
     const standalone = figure.matches('.canal-clip');
     frame.title = figure.querySelector('figcaption').textContent;
@@ -77,13 +94,12 @@
     if (standalone) {
       for (const event of ['play', 'pause', 'volumechange', 'ended']) {
         frame.addEventListener(event, () => {
-          if (player?.frame === frame) syncClip(figure, frame);
+          syncClip(figure, frame);
         });
       }
     }
     figure.querySelector('.reel-viewport').append(frame);
     figure.classList.add('is-loaded');
-    player = { figure, frame, shell: null, button: figure.querySelector('.reel-pip-launch') };
     return frame;
   }
 
@@ -134,20 +150,60 @@
     if (!button) return;
     const figure = button.closest('.ep02-reel');
     if (button.matches('.ep01-reel-play, .clip-pause')) {
-      const frame = play(figure);
-      if (frame.paused) frame.play().catch(() => {});
-      else frame.pause();
+      const canal = figure.matches('.canal-clip');
+      const frame = canal ? canalFrame(figure) : play(figure);
+      if (frame.paused) {
+        manuallyPaused.delete(figure);
+        frame.play().catch(() => {});
+      } else {
+        if (canal) manuallyPaused.add(figure);
+        frame.pause();
+      }
       if (button.matches('.ep01-reel-play')) frame.focus({ preventScroll: true });
     }
     if (button.matches('.clip-sound')) {
-      const frame = play(figure);
+      const frame = canalFrame(figure);
+      manuallyPaused.delete(figure);
       frame.muted = !frame.muted;
       if (frame.paused) frame.play().catch(() => {});
     }
     if (button.matches('.reel-pip-launch')) float(figure);
   });
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        for (const figure of entry.target.querySelectorAll('.canal-clip')) {
+          if (player?.figure === figure && player.shell) continue;
+          const frame = canalFrames.get(figure);
+          if (!entry.isIntersecting) {
+            frame?.pause();
+          } else if (!reducedMotion.matches && !manuallyPaused.has(figure) && frame?.muted !== false) {
+            canalFrame(figure).play().catch(() => {});
+          }
+        }
+      }
+    }, { threshold: 0.25 });
+    document.querySelectorAll('.canal-clips').forEach(section => {
+      const clip = section.querySelector('.canal-clip');
+      if (clip && !clip.dataset.video.startsWith('data:')) observer.observe(section);
+    });
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) {
+        document.querySelectorAll('.canal-clip').forEach(figure => {
+          if (player?.figure !== figure || !player.shell) canalFrames.get(figure)?.pause();
+        });
+      }
+    });
+  }
+
   document.querySelectorAll('details.stop').forEach(station => {
     station.addEventListener('toggle', () => {
+      if (!station.open) {
+        station.querySelectorAll('.canal-clip').forEach(figure => {
+          if (player?.figure !== figure || !player.shell) canalFrames.get(figure)?.pause();
+        });
+      }
       if (!station.open && player && !player.shell && station.contains(player.figure)) {
         player.frame.pause();
       }

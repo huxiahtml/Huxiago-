@@ -185,6 +185,7 @@ def gallery(assets, index, offline, reel_sources):
 
 
 TICKET_ICONS = {
+    "globe": '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>',
     "phone": '<rect x="6" y="2.7" width="12" height="18.6" rx="3.2" fill="#fffaf0"/>'
              '<path d="M10 6h4m-3 12h2"/><path d="M9.6 12.1a3.8 3.8 0 0 1 4.8 0m-3.3 1.8a1.5 1.5 0 0 1 1.8 0"/>',
     "dining": '<path d="M4 4v4a3 3 0 0 0 6 0V4M7 4v16"/>'
@@ -282,8 +283,8 @@ def deal_content(deals, index, offline):
             text = escape(related["label"][index])
             middle += (f'<a class="ticket-related" href="{link}" target="_blank" rel="noopener noreferrer">'
                        f'{text} {arrow_icon("out")}</a>')
-        badge_icon = f'<span class="ticket-no">#{number:02d}</span>' if key == "esim" else icon
-        code = f'<span class="ticket-code">{escape(offer["code"])}</span>' if "code" in offer else ""
+        badge_icon = icon
+        code = f'<span class="ticket-code">【{escape(offer["code"])}】</span>' if "code" in offer else ""
         primary = (
             f'<a class="ticket-cta" href="{escape(offer["url"], quote=True)}" data-cta-id="{escape(offer["id"])}" '
             f'target="_blank" rel="noopener noreferrer"><span class="ticket-cta-label">{escape(offer["cta"][index])}</span>'

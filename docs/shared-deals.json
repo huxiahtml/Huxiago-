@@ -23,16 +23,16 @@
       "Thailand eSIM"
     ],
     "body": [
-      "本地電信 True 4G 吃到飽 NT$ 99 起，連線穩定，ChatGPT 等 AI 服務不受限。點擊自動套用折扣碼【HUXIAGO】。",
-      "本地电信 True 4G 无限流量 NT$ 99 起，连接稳定，ChatGPT 等 AI 服务不受限。点击自动使用折扣码【HUXIAGO】。",
-      "Unlimited data on Thailand’s True 4G network from NT$99, with a stable connection for services such as ChatGPT. The HUXIAGO code applies automatically."
+      "泰國原生電信吃到飽 NT$ 99 起，連線穩定，支援 ChatGPT、Claude 等 AI 服務，已熱賣近千筆。點擊自動套用折扣碼【HUXIAGO】。",
+      "泰国本地运营商不限流量，NT$ 99 起，连接稳定，支持 ChatGPT、Claude 等 AI 服务，已热卖近千单。点击自动应用折扣码【HUXIAGO】。",
+      "Unlimited data on a local Thai network from NT$99, with a stable connection for AI services including ChatGPT and Claude. Nearly 1,000 orders sold. Tap to apply code HUXIAGO automatically."
     ],
     "cta": [
-      "查看泰國 eSIM・全方案",
-      "查看泰国 eSIM・全方案",
-      "Explore Thailand eSIM plans"
+      "查看全方案、選項",
+      "查看全部方案和选项",
+      "View all plans and options"
     ],
-    "category": "phone",
+    "category": "globe",
     "related": {
       "url": "https://esimconnect.com.tw/#/access/simbuy?region=%E6%B3%B0%E5%9C%8B%20(%E5%AF%A6%E9%AB%94%E5%8D%A1)&referencecode=HUXIAGO",
       "label": [
@@ -62,9 +62,9 @@
       "Dining deal"
     ],
     "body": [
-      "必吃無菜單料理，也有吃到飽方案！指定套餐可享 8 折。",
-      "必吃无菜单料理，也有吃到饱方案！指定套餐可享 8 折。",
-      "Try the omakase or explore the unlimited menu. Save 20% on eligible sets."
+      "Google 評論 4.9 分無菜單料理，還有全新吃到飽方案！平台獨家優惠。",
+      "Google 评分 4.9 的无菜单料理，还有全新的不限量套餐！平台独家优惠。",
+      "Omakase rated 4.9 on Google, with a new unlimited menu and an exclusive booking offer."
     ],
     "terms": [
       "點擊按鈕查詢日期、時段及適用套餐，總價以結帳頁為準。",
@@ -107,9 +107,9 @@
       "Stay deal"
     ],
     "cta": [
-      "九折訂房",
-      "九折订房",
-      "Book with 10% off"
+      "飯店官網訂房",
+      "酒店官网订房",
+      "Book on the hotel website"
     ],
     "category": "hotel",
     "code": "HUXIATHAI",
@@ -121,9 +121,9 @@
     ],
     "photo_logo": "silq-coupon-logo.webp",
     "body": [
-      "渡假首選！摩登輕奢風五星級飯店，點擊套用限時折扣碼。",
-      "度假首选！摩登轻奢风五星级饭店，点击使用限时折扣码。",
-      "A modern five-star stay for a Bangkok getaway. Tap to apply the limited-time code."
+      "國際旅客曼谷度假首選，摩登輕奢風五星級飯店，點擊套用限時折扣碼。",
+      "国际旅客曼谷度假首选，摩登轻奢风五星级酒店，点击使用限时折扣码。",
+      "A modern five-star hotel for an international getaway in Bangkok. Tap to apply the limited-time code."
     ],
     "story_label": [
       "獨家優惠碼",
