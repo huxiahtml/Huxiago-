@@ -383,6 +383,12 @@ def script(source, id):
     return extract(source, rf'<script id="{id}">.*?</script>')
 
 
+def issue_analytics(donor, lang):
+    config = extract(donor, r'<script>window\.HUXIAGO_ANALYTICS_CONFIG=\{[^\n]+\};</script>')
+    context = json.dumps({"episode": "EP.02", "itemId": "huxiago_vol02", "language": lang})
+    return config + f'<script>Object.assign(window.HUXIAGO_ANALYTICS_CONFIG,{context});</script>\n' + script(donor, "hux-analytics")
+
+
 def bonus_reels(donor, videos, sources, index, offline):
     if offline:
         return ""
@@ -654,6 +660,8 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         script(donor, "v22-draggable-share"),
         "" if offline else script(donor, "episode-picker-script"),
     ))
+    if not offline:
+        scripts += "\n" + issue_analytics(donor, lang)
     reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
     navigation = (ROOT / "ep02/navigation.js").read_text(encoding="utf-8")
     category = data["categories"]
@@ -709,8 +717,10 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
             example = ("我們這次的搭船路線", "我们这次的搭船路线", "Our trip")[ix]
             maps = f'<div class="trip-example"><b>{example}</b>{maps}</div>'
         route_action = action if len(places) > 1 else ""
+        analytics = "" if offline else (f' data-analytics-position="{int(label)}" '
+                                       f'data-analytics-place-name="{escape(s["name"], quote=True)}"')
         stops.append(
-            f'<details class="card stop" id="{s["id"]}"><summary>{thumb}'
+            f'<details class="card stop" id="{s["id"]}"{analytics}><summary>{thumb}'
             f'<span class="head"><small>{stop_heading}</small><h3>{name}</h3><p>{title}</p></span>'
             f'<span aria-hidden="true" class="chev">⌄</span></summary>'
             f'<div class="body">{media}<div class="story-copy">{story}</div>{video_section}'

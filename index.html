@@ -2328,6 +2328,10 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
 (()=>{
   if(window.huxiagoAnalytics)return;
   const config=window.HUXIAGO_ANALYTICS_CONFIG||{};
+  const episode=config.episode||'EP.01';
+  const itemId=config.itemId||'huxiago_vol01';
+  const issueContext=config.language?{item_id:itemId,episode,content_language:config.language}:null;
+  const cardSelector='details.card[id^="spot-"],details.card[data-analytics-position]';
   const ga4MeasurementId=String(config.ga4MeasurementId||'').trim();
   const clarityProjectId=String(config.clarityProjectId||'').trim();
   const isLiveSite=/^(www\.)?huxiago\.com$/i.test(location.hostname)&&location.protocol==='https:';
@@ -2348,17 +2352,22 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
     window.dataLayer=window.dataLayer||[];
     window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
     window.gtag('js',new Date());
-    window.gtag('config',ga4MeasurementId);
+    if(issueContext)window.gtag('config',ga4MeasurementId,issueContext);
+    else window.gtag('config',ga4MeasurementId);
     loadScript('https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ga4MeasurementId),'ga4');
   }
   if(hasClarity){
     window.clarity=window.clarity||function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
+    if(issueContext){
+      window.clarity('set','episode',episode);
+      window.clarity('set','content_language',config.language);
+    }
     loadScript('https://www.clarity.ms/tag/'+encodeURIComponent(clarityProjectId),'clarity');
   }
   const cleanText=value=>String(typeof value==='string'?value:(value?.getAttribute?.('aria-label')||value?.textContent||'')).replace(/\s+/g,' ').trim().slice(0,100);
   const track=(eventName,parameters={})=>{
     if(!/^[a-z][a-z0-9_]{0,39}$/.test(eventName))return;
-    const payload=Object.fromEntries(Object.entries({item_id:'huxiago_vol01',episode:'EP.01',...parameters}).filter(([,value])=>value!==''&&value!=null));
+    const payload=Object.fromEntries(Object.entries({item_id:itemId,episode,...issueContext,...parameters}).filter(([,value])=>value!==''&&value!=null));
     try{if(hasGa4&&typeof window.gtag==='function')window.gtag('event',eventName,{...payload,send_to:ga4MeasurementId})}catch(error){}
     try{
       if(hasClarity&&typeof window.clarity==='function'){
@@ -2374,7 +2383,7 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
   });
   if(!hasGa4&&!hasClarity)return;
   const placeContext=element=>{
-    const card=element.closest('details.card[id^="spot-"]');
+    const card=element.closest(cardSelector);
     return card?places.get(card.id)?.parameters||{}:{};
   };
   const placement=element=>{
@@ -2420,12 +2429,12 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
     if(!url||!/^https?:$/.test(url.protocol))return;
     const common={cta_location:placement(anchor),link_text:cleanText(anchor),link_url:safeUrl(url),link_domain:url.hostname,...placeContext(anchor)};
     if(anchor.matches('[data-get-guide]')){
-      track('guide_download',{...common,item_name:'HUXIAGO Vol.01 HTML',download_stage:'click',file_name:anchor.getAttribute('download')||url.pathname.split('/').pop(),file_extension:'html'});
+      track('guide_download',{...common,item_name:`HUXIAGO Vol.${episode.split('.').pop()} HTML`,download_stage:'click',file_name:anchor.getAttribute('download')||url.pathname.split('/').pop(),file_extension:'html'});
     }else if(anchor.matches('.ticket-cta:not(.ticket-map)')){
       track('offer_click',{...common,offer_name:cleanText(anchor.closest('.deal-ticket')?.querySelector('h3'))||'Unknown offer'});
     }else if(isMap(url)){
       track('map_click',common);
-    }else if(anchor.matches('.reel-origin')||anchor.closest('.hux-reel-pip-head')){
+    }else if(anchor.matches('.reel-origin,.reel-external')||anchor.closest('.hux-reel-pip-head')){
       track('reel_open',{...common,platform:platform(url),reel_title:cleanText(anchor.closest('figure')?.querySelector('figcaption')),reel_action:'original_link'});
     }else if(platform(url)){
       track('social_click',{...common,platform:platform(url)});
@@ -2433,15 +2442,15 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
       track('outbound_click',common);
     }
   },true);
-  // EP.01 place funnel v1. Capture canonical names before the language controller runs.
-  const places=new Map([...document.querySelectorAll('details.card[id^="spot-"]')].map(card=>[
-    card.id,{card,parameters:Object.freeze({place_id:card.id,place_name:cleanText(card.querySelector('.head h3')),episode:'EP.01',position:Number(card.id.slice(5))}),
-      paragraphs:[...card.querySelectorAll('.body p')].filter(p=>cleanText(p).length>=30),since:null,viewed:false}
+  // Capture canonical names before a language controller can change headings.
+  const places=new Map([...document.querySelectorAll(cardSelector)].map(card=>[
+    card.id,{card,parameters:Object.freeze({place_id:card.id,place_name:cleanText(card.dataset.analyticsPlaceName||card.querySelector('.head h3')),episode,position:Number(card.dataset.analyticsPosition||card.id.slice(5))}),
+      paragraphs:[...card.querySelectorAll(card.dataset.analyticsPosition?'.story-copy p':'.body p')].filter(p=>cleanText(p).length>=30),since:null,viewed:false}
   ]));
   document.addEventListener('click',event=>{
     const target=event.target instanceof Element?event.target:event.target?.parentElement;
     if(!target)return;
-    const toc=target.closest('.toc a[href^="#spot-"]');
+    const toc=target.closest('.toc a[href^="#"]');
     if(toc){
       const place=places.get(toc.getAttribute('href').slice(1));
       if(place)track('toc_item_click',place.parameters);
