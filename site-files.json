@@ -1,12 +1,12 @@
 {
   "files": {
     "HUXIAGO_曼谷吃喝玩樂口袋名單_vol01.html": {
-      "bytes": 7096923,
-      "sha256": "73711021af667fbd084d0ba4c9a4f54285e1a11ba52a53908243c130974d603d"
+      "bytes": 7098506,
+      "sha256": "8c33ef2c6469320b9e81b1f128f7035d02650d37f81796318d3111375f3e0e35"
     },
     "index.html": {
-      "bytes": 539687,
-      "sha256": "41dddf5f01eaaa05067bbee9f8ca6f8a27759ee56ca231f2d8ae35b85147a391"
+      "bytes": 543572,
+      "sha256": "7d9ae48f8589475f433fb55da05b5c61b8a4c0104ff44b5ea324733339ec4169"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -705,36 +705,36 @@
       "sha256": "75aa2d26ceb68b8444bbc73af888cd5064130e91a0302a833d9791f1dcfa48a4"
     },
     "HUXIAGO_Bangkok_EP01_zh-Hans.html": {
-      "bytes": 7067216,
-      "sha256": "3c54cddc5df6defa164badb92ccf05103e4ca85fc69595c3c8d632b66898ec20"
+      "bytes": 7068811,
+      "sha256": "2505182ebec4b97429b5edb292344f4f4b8090da7d46de0819812c0dc73b1379"
     },
     "HUXIAGO_Bangkok_EP01_en.html": {
-      "bytes": 7056091,
-      "sha256": "2a56feab232edbd45eba26bb16ff2d17c302e3d49b9aeb19cdd05a34410c1c5f"
+      "bytes": 7057664,
+      "sha256": "6606be8d44149aa39be495a81810617d38673f308d129b7f5338c2c15f3ca7dc"
     },
     "ep02-zh-Hant.html": {
-      "bytes": 322961,
-      "sha256": "c38fb0aa184980163ce6c4eadcf7d82a131b066de3f149a1d1e6184e98d1b9c3"
+      "bytes": 324560,
+      "sha256": "54a218421be0bc665130bf14439b781ee8b183014f366b423bfd0cdefbf41fe9"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hant.html": {
-      "bytes": 20511093,
-      "sha256": "b6f298c41ce45ce619321bca6ea7b6ce3ac1863756b7167b3f1a367bbb981162"
+      "bytes": 20512692,
+      "sha256": "7b0e492fa617e8a49a58858393da71fbb619f557adc7ad00ba4661ae005d2280"
     },
     "ep02-zh-Hans.html": {
-      "bytes": 322990,
-      "sha256": "f9fce39e6f2fefaa452535238ca013af34907b86cbc769c4b697633daef8b6d1"
+      "bytes": 324589,
+      "sha256": "8c04137b3842ab729f152ea161200875e9350c36b1d0bc082bf9cd89410eb785"
     },
     "HUXIAGO_Bangkok_EP02_zh-Hans.html": {
-      "bytes": 20510015,
-      "sha256": "d2712c576407634f78769ed1cf173654430e70ebda385bab9e95d1f5eb0e7009"
+      "bytes": 20511614,
+      "sha256": "4c65ee20a90ee0ae440c09c8974bb598d18c875d62d87b509e1721a29bff437a"
     },
     "ep02-en.html": {
-      "bytes": 322909,
-      "sha256": "34497c6a062da3c8c2333f31df4fe6ae8ffb671e3b373a9a68188c0a853b6860"
+      "bytes": 324508,
+      "sha256": "0765e6d7d9e9ece0899579dbce3266612f1275ac6afd30f8f1f4ba91d47e4f05"
     },
     "HUXIAGO_Bangkok_EP02_en.html": {
-      "bytes": 20499916,
-      "sha256": "5d713e4bbd0d5f802600855e5705618c41d89491766f347f4396884e1aad0299"
+      "bytes": 20501515,
+      "sha256": "98a1d8e57e323813e278f7c32a0a2c84f421c5639f137961be4ce4710fa76139"
     },
     "media/ep02-silq-awards.mp4": {
       "bytes": 433426,
@@ -1157,8 +1157,8 @@
       "sha256": "ad3c4f1b2dfcc7bdcb76e5b52d37a4f2496d5052d843f4f9e23392f28f1d5cc3"
     },
     "bkk-ep02-zh.html": {
-      "bytes": 322451,
-      "sha256": "7467b6f8a74fd82e01feab6902aece775b58ebb595bf069387bc5c35da63c9ec"
+      "bytes": 324050,
+      "sha256": "e2215c155b397b721341379ea8060b223487a02cab6649252fd7451f77610e0b"
     },
     "media/huxiago-share-ep01.jpg": {
       "bytes": 101289,

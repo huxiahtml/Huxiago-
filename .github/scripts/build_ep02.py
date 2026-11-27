@@ -249,7 +249,7 @@ def add_ep01_locations(source, locations, lang, online):
     return updated
 
 
-def deal_content(deals, index, offline):
+def deal_content(deals, index, offline, *, in_ep02):
     cards = []
     for number, (key, offer) in enumerate(deals.items(), 1):
         icon = ticket_icon(offer["category"])
@@ -283,6 +283,22 @@ def deal_content(deals, index, offline):
             text = escape(related["label"][index])
             middle += (f'<a class="ticket-related" href="{link}" target="_blank" rel="noopener noreferrer">'
                        f'{text} {arrow_icon("out")}</a>')
+        heading = f'<h3>{name}</h3>'
+        if station := offer.get("location"):
+            locale = LOCALES[index]
+            if in_ep02:
+                href = f"#{station}"
+                details = ("查看詳情", "查看详情", "View details")[index]
+                direction = "down"
+            else:
+                origin = "https://huxiago.com/" if offline else ""
+                href = f"{origin}{EP02_WEB_PATH[locale]}#{station}"
+                details = ("到 EP.02 看詳情", "到 EP.02 看详情", "Details in EP.02")[index]
+                direction = "out"
+            accessible_name = escape(f"{details} · {offer.get('ticket_name', offer['name'][index])}", quote=True)
+            heading = (f'<div class="ticket-heading">{heading}'
+                       f'<a class="ticket-details" href="{href}" aria-label="{accessible_name}">'
+                       f'{details} {arrow_icon(direction)}</a></div>')
         badge_icon = icon
         code = f'<span class="ticket-code">【{escape(offer["code"])}】</span>' if "code" in offer else ""
         primary = (
@@ -292,7 +308,7 @@ def deal_content(deals, index, offline):
         )
         cards.append(
             f'<article class="deal-ticket ticket-feature" data-shared-deal="{key}" translate="no">'
-            f'<div class="ticket-top">{badge_icon}<span class="ticket-eyebrow">{label}</span></div><h3>{name}</h3>'
+            f'<div class="ticket-top">{badge_icon}<span class="ticket-eyebrow">{label}</span></div>{heading}'
             f'<div class="ticket-discount"><div class="ticket-value">{badge}</div>{code}</div>'
             f'{middle}<div class="ticket-stub">{primary}</div></article>'
         )
@@ -300,13 +316,13 @@ def deal_content(deals, index, offline):
             f'<p class="deal-swipe">{SWIPE_LABELS[index].rstrip(" →")} {arrow_icon("right")}</p>')
 
 
-def deal_section(deals, titles, lang, offline, switch_language=False, heading_id="esim-title"):
+def deal_section(deals, titles, lang, offline, switch_language=False, heading_id="esim-title", *, in_ep02=False):
     def body(index):
         return (
             '<p class="deal-kicker">HUXIAGO POCKET DEALS</p>'
             f'<h2 id="{heading_id}">{escape(titles[index])}</h2>'
             f'<p class="deal-intro">{escape(DEAL_INTRO[index])}</p>'
-            + deal_content(deals, index, offline)
+            + deal_content(deals, index, offline, in_ep02=in_ep02)
         )
 
     content = body(LOCALES.index(lang))
@@ -735,7 +751,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
         for n, label in enumerate(filter_names)
     )
     section_head = extract(localized, r'<div class="section-head"><span.*?id="spots".*?</div>')
-    deals_section = deal_section(deals, data["labels"]["deal_line"], lang, offline, heading_id="ep02-deals-title")
+    deals_section = deal_section(deals, data["labels"]["deal_line"], lang, offline, heading_id="ep02-deals-title", in_ep02=True)
     toc_section = f"""
 <nav aria-label="{escape(data["labels"]["toc"][ix], quote=True)}" class="toc" id="toc">
 <h2 class="sec-title">{escape(data["labels"]["toc"][ix])}</h2>

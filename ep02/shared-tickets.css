@@ -291,3 +291,31 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   .visual-v7 .ticket-feature .ticket-cta { transition: none; }
   .visual-v7 .ticket-feature .ticket-cta:active { transform: none; }
 }
+
+/* Keep the secondary reading link next to the merchant name when space allows. */
+.visual-v7 .ticket-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px 8px;
+  margin: 14px 0 4px;
+}
+.visual-v7 .ticket-heading h3 { margin: 0; }
+.visual-v7 .ticket-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 3px 9px;
+  color: #453121;
+  background: #fff2cc;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 750;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.visual-v7 .ticket-details:hover { background: #fff9e6; }
+.visual-v7 .ticket-details:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }

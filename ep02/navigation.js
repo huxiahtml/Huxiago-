@@ -21,7 +21,8 @@
     });
   }));
 
-  rows.forEach(link => link.addEventListener('click', event => {
+  const stationLinks = [...rows, ...document.querySelectorAll('.ticket-details[href^="#"]')];
+  stationLinks.forEach(link => link.addEventListener('click', event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const station = document.getElementById(link.hash.slice(1));
     if (!station) return;
