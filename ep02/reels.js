@@ -3,11 +3,7 @@
   const canalFrames = new WeakMap();
   const manuallyPaused = new WeakSet();
 
-  function moveFrame(frame, target) {
-    const playing = !frame.paused;
-    target.append(frame);
-    if (playing) frame.play().catch(() => {});
-  }
+  const controls = window.huxVideoControls;
 
   function syncClip(figure, frame) {
     const pause = figure.querySelector('.clip-pause');
@@ -15,6 +11,8 @@
     if (!pause || !sound) return;
     const playing = frame?.paused === false;
     const audible = frame?.muted === false;
+    pause.innerHTML = playing ? controls.icons.pause : controls.icons.play;
+    sound.innerHTML = audible ? controls.icons.sound : controls.icons.mute;
     for (const [button, on] of [[pause, playing], [sound, audible]]) {
       button.setAttribute('aria-pressed', String(on));
       button.setAttribute('aria-label', on ? button.dataset.onLabel : button.dataset.offLabel);
@@ -22,33 +20,7 @@
   }
 
   function closeFloating() {
-    if (!player?.shell) return;
-    const { figure, frame, shell, button } = player;
-    if (figure.matches('.canal-clip')) frame.controls = false;
-    moveFrame(frame, figure.querySelector('.reel-viewport'));
-    shell.remove();
-    player.shell = null;
-    button.setAttribute('aria-pressed', 'false');
-    const station = figure.closest('details.stop');
-    if (station && !station.open) frame.pause();
-    else button.focus({ preventScroll: true });
-  }
-
-  function makeDraggable(head, shell) {
-    let drag = null;
-    head.addEventListener('pointerdown', event => {
-      if (event.button !== 0 || event.target.closest('a, button')) return;
-      const bounds = shell.getBoundingClientRect();
-      drag = { pointer: event.pointerId, x: event.clientX - bounds.left, y: event.clientY - bounds.top };
-      head.setPointerCapture(event.pointerId);
-    });
-    head.addEventListener('pointermove', event => {
-      if (drag?.pointer !== event.pointerId) return;
-      const x = Math.max(0, Math.min(innerWidth - shell.offsetWidth, event.clientX - drag.x));
-      const y = Math.max(0, Math.min(innerHeight - shell.offsetHeight, event.clientY - drag.y));
-      Object.assign(shell.style, { left: x + 'px', top: y + 'px', right: 'auto', bottom: 'auto' });
-    });
-    head.addEventListener('lostpointercapture', () => { drag = null; });
+    player?.shell?.close();
   }
 
   function play(figure) {
@@ -58,12 +30,12 @@
       player = null;
     }
     if (player) {
-      const { frame, figure: previous, shell, button } = player;
+      closeFloating();
+      const { frame, figure: previous, button } = player;
       frame.pause();
       frame.removeAttribute('src');
       frame.load();
       frame.remove();
-      shell?.remove();
       button.setAttribute('aria-pressed', 'false');
       previous.classList.remove('is-loaded');
       syncClip(previous);
@@ -110,40 +82,35 @@
     }
     const firstPlay = player?.figure !== figure;
     const frame = play(figure);
-    const shell = document.createElement('aside');
-    shell.className = 'hux-reel-pip';
-    shell.dataset.kind = figure.dataset.kind;
-    shell.setAttribute('aria-label', player.button.getAttribute('aria-label'));
-    const head = document.createElement('div');
-    head.className = 'hux-reel-pip-head';
-    const title = document.createElement('span');
-    title.textContent = frame.title;
-    const original = figure.querySelector('.reel-origin')?.cloneNode(true);
-    const exit = document.createElement('button');
-    exit.type = 'button';
-    exit.textContent = '×';
-    exit.setAttribute('aria-label', figure.dataset.close);
-    exit.addEventListener('click', () => closeFloating());
-    head.append(title);
-    if (original) {
-      original.removeAttribute('class');
-      head.append(original);
-    }
-    head.append(exit);
-    const screen = document.createElement('div');
-    screen.className = 'hux-reel-pip-screen';
-    shell.append(head, screen);
-    document.body.append(shell);
-    moveFrame(frame, screen);
-    if (figure.matches('.canal-clip')) {
-      frame.controls = true;
-      if (firstPlay) frame.play().catch(() => {});
-    }
-    player.shell = shell;
-    player.button.setAttribute('aria-pressed', 'true');
-    makeDraggable(head, shell);
-    exit.focus({ preventScroll: true });
+    const state = player;
+    state.shell = controls.open({
+      media: frame,
+      kind: 'video',
+      title: frame.title,
+      focusControls: state.button.matches(':focus-visible'),
+      original: figure.querySelector('.reel-origin')?.href,
+      playbackChanged(paused) {
+        if (!figure.matches('.canal-clip')) return;
+        if (paused) manuallyPaused.add(figure);
+        else manuallyPaused.delete(figure);
+      },
+      close() {
+        controls.move(frame, figure.querySelector('.reel-viewport'));
+        state.shell = null;
+        state.button.setAttribute('aria-pressed', 'false');
+        const station = figure.closest('details.stop');
+        if (station && !station.open) frame.pause();
+        else state.button.focus({ preventScroll: true });
+      },
+    });
+    if (firstPlay) frame.play().catch(() => {});
+    state.button.setAttribute('aria-pressed', 'true');
   }
+
+  document.querySelectorAll('.ep02-reel .reel-pip-launch').forEach(button => {
+    button.innerHTML = controls.icons.pip;
+  });
+  document.querySelectorAll('.canal-clip').forEach(figure => syncClip(figure));
 
   document.addEventListener('click', event => {
     const button = event.target.closest('.ep02-reel button');
@@ -208,10 +175,5 @@
         player.frame.pause();
       }
     });
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && player?.shell && !document.querySelector('dialog[open]')) {
-      closeFloating();
-    }
   });
 })();

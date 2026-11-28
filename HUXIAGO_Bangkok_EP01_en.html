@@ -1257,6 +1257,94 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
     letter-spacing: 0;
   }
 }
+
+/* Video controls shared by portrait Reels and horizontal short-video strips. */
+.visual-v7 .clip-actions button,
+.visual-v7 .reel-pip-launch {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  box-sizing: border-box;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+.visual-v7 .clip-actions button svg,
+.visual-v7 .reel-pip-launch svg,
+.hux-pip-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  filter: drop-shadow(0 0 1px #000) drop-shadow(0 1px 2px #000c);
+}
+.visual-v7 .clip-actions { gap: 2px; }
+.visual-v7 .clip-media .video-play-gate > span {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  filter: drop-shadow(0 1px 3px #000);
+}
+
+.hux-reel-pip.hux-video-pip {
+  width: min(44vw, 188px, calc((100dvh - 110px) * var(--hux-video-ratio-number, .5625)));
+  max-width: none;
+  border: 0;
+  border-radius: 12px;
+  background: #191919;
+  overflow: hidden;
+}
+.hux-video-pip[data-kind="video"] .hux-reel-pip-screen {
+  aspect-ratio: var(--hux-video-ratio, 9 / 16);
+}
+.hux-video-pip .hux-reel-pip-screen > video,
+.hux-reel-pip.hux-video-pip .hux-reel-pip-screen > iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+.hux-pip-controls {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+.hux-pip-icon,
+.hux-pip-surface {
+  position: absolute;
+  display: grid;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.hux-pip-icon {
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.hux-pip-ready .hux-pip-icon,
+.hux-pip-controls:focus-within .hux-pip-icon {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hux-pip-original { inset: 1px auto auto 1px; place-items: start; padding: 5px 0 0 5px; }
+.hux-pip-return { inset: 1px 1px auto auto; place-items: start end; padding: 5px 5px 0 0; }
+.hux-pip-sound { inset: auto 1px 1px auto; place-items: end; padding: 0 5px 5px 0; }
+.hux-pip-surface { inset: 0; place-items: center; pointer-events: auto; touch-action: none; color: #dededc; }
+.hux-pip-surface svg { width: 52px; height: 52px; filter: drop-shadow(0 1px 2px #000) drop-shadow(0 2px 7px #0009); }
+.hux-pip-controls :focus-visible { outline: 2px solid #ffe435; outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) {
+  .hux-pip-icon { transition: none; }
+}
 </style></head><body class="visual-v7"><aside class="desktop-rail" aria-label="HUXIAGO chapter navigation">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>Bangkok Pocket Guide · Ep.01</small></span></a>
   <p class="rail-note">Taiwanese husband × Thai wife<br>Explore local Bangkok with Zev and Kik.</p>

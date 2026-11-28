@@ -374,6 +374,11 @@ def update_ep01(source, deals, locations, titles, online, lang):
     source = source.replace("Use it offline when you land in Bangkok", "Use it offline anywhere in Bangkok")
     if online:
         source = update_ep01_picker(source)
+        old_player = script(source, "hux-reel-pip-v21")
+        player = (ROOT / "ep02/embed-pip.js").read_text(encoding="utf-8")
+        source = source.replace(old_player, f'<script id="hux-reel-pip-v21">{player}</script>', 1)
+        source = re.sub(r'<script id="hux-video-controls">.*?</script>', "", source, flags=re.S)
+        source = source.replace("</head>", shared_video_controls() + "</head>", 1)
     ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
     source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
     media_css = (ROOT / "ep02/shared-media.css").read_text(encoding="utf-8")
@@ -398,6 +403,11 @@ def extract(source, pattern):
 
 def script(source, id):
     return extract(source, rf'<script id="{id}">.*?</script>')
+
+
+def shared_video_controls():
+    code = (ROOT / "ep02/video-controls.js").read_text(encoding="utf-8")
+    return f'<script id="hux-video-controls">{code}</script>'
 
 
 def issue_analytics(donor, lang):
@@ -794,6 +804,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <script>const huxMobileStations = matchMedia('(max-width: 979px)');</script>
 {scripts}
 <script>{navigation}</script>
+{shared_video_controls()}
 {bonus_reels(donor, data["bonus_reels"], reel_sources, ix, offline)}
 <script>{reel_script}</script>
 </body>

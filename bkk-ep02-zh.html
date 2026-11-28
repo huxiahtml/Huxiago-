@@ -1611,6 +1611,94 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   }
 }
 
+/* Video controls shared by portrait Reels and horizontal short-video strips. */
+.visual-v7 .clip-actions button,
+.visual-v7 .reel-pip-launch {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  box-sizing: border-box;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+.visual-v7 .clip-actions button svg,
+.visual-v7 .reel-pip-launch svg,
+.hux-pip-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  filter: drop-shadow(0 0 1px #000) drop-shadow(0 1px 2px #000c);
+}
+.visual-v7 .clip-actions { gap: 2px; }
+.visual-v7 .clip-media .video-play-gate > span {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  filter: drop-shadow(0 1px 3px #000);
+}
+
+.hux-reel-pip.hux-video-pip {
+  width: min(44vw, 188px, calc((100dvh - 110px) * var(--hux-video-ratio-number, .5625)));
+  max-width: none;
+  border: 0;
+  border-radius: 12px;
+  background: #191919;
+  overflow: hidden;
+}
+.hux-video-pip[data-kind="video"] .hux-reel-pip-screen {
+  aspect-ratio: var(--hux-video-ratio, 9 / 16);
+}
+.hux-video-pip .hux-reel-pip-screen > video,
+.hux-reel-pip.hux-video-pip .hux-reel-pip-screen > iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+.hux-pip-controls {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+}
+.hux-pip-icon,
+.hux-pip-surface {
+  position: absolute;
+  display: grid;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.hux-pip-icon {
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.hux-pip-ready .hux-pip-icon,
+.hux-pip-controls:focus-within .hux-pip-icon {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hux-pip-original { inset: 1px auto auto 1px; place-items: start; padding: 5px 0 0 5px; }
+.hux-pip-return { inset: 1px 1px auto auto; place-items: start end; padding: 5px 5px 0 0; }
+.hux-pip-sound { inset: auto 1px 1px auto; place-items: end; padding: 0 5px 5px 0; }
+.hux-pip-surface { inset: 0; place-items: center; pointer-events: auto; touch-action: none; color: #dededc; }
+.hux-pip-surface svg { width: 52px; height: 52px; filter: drop-shadow(0 1px 2px #000) drop-shadow(0 2px 7px #0009); }
+.hux-pip-controls :focus-visible { outline: 2px solid #ffe435; outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) {
+  .hux-pip-icon { transition: none; }
+}
+
 /* EP.02 content exceptions layered over the production EP.01 stylesheet. */
 .visual-v7 .ep02-text-thumb{display:grid;place-items:center;flex:none;background:#d5eff5;color:#233945;font-weight:800;font-size:1.2rem}
 .ep02-deal-photo{margin:8px 0 10px}
@@ -3071,6 +3159,169 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   }));
 })();
 </script>
+<script id="hux-video-controls">(() => {
+  const glyph = inner => '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + inner + '</svg>';
+  const speaker = '<path d="M4 9h3l4.5-3.5v13L7 15H4Z"/>';
+  const icons = {
+    pip: glyph('<rect x="2.5" y="4.5" width="19" height="15" rx="2.6"/><rect x="12.3" y="11.9" width="6.5" height="4.7" rx="1.15" fill="currentColor" stroke="none"/>'),
+    return: glyph('<path d="M9 5H6a1.5 1.5 0 0 0-1.5 1.5V9M15 5h3a1.5 1.5 0 0 1 1.5 1.5V9M4.5 15v2.5A1.5 1.5 0 0 0 6 19h3m10.5-4v2.5A1.5 1.5 0 0 1 18 19h-3"/><rect x="9" y="9.5" width="6" height="5" rx="1"/>'),
+    instagram: glyph('<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.75"/><circle cx="17.25" cy="6.85" r=".9" fill="currentColor" stroke="none"/>'),
+    original: glyph('<path d="M8 12a4 4 0 0 1 4-4h4a4 4 0 0 1 0 8h-2m2-4a4 4 0 0 1-4 4H8a4 4 0 1 1 0-8h2"/>'),
+    play: glyph('<path d="M9 5.9a.75.75 0 0 0-1.15.63v10.94c0 .6.67.96 1.15.64l8.6-5.47a.75.75 0 0 0 0-1.28Z" fill="currentColor" stroke="none"/>'),
+    pause: glyph('<rect x="7" y="6" width="3.6" height="12" rx="1.2" fill="currentColor" stroke="none"/><rect x="13.4" y="6" width="3.6" height="12" rx="1.2" fill="currentColor" stroke="none"/>'),
+    sound: glyph(speaker + '<path d="M15 9.3a3.7 3.7 0 0 1 0 5.4m2.4-7.7a7.2 7.2 0 0 1 0 10"/>'),
+    mute: glyph(speaker + '<path d="m15.6 9.8 4.4 4.4m0-4.4-4.4 4.4"/>'),
+  };
+  const labels = {
+    'zh-Hant': ['返回頁面影片', '開啟原片', '播放影片', '暫停影片', '開啟聲音', '關閉聲音'],
+    'zh-Hans': ['返回页面视频', '打开原片', '播放视频', '暂停视频', '开启声音', '关闭声音'],
+    en: ['Return to inline video', 'Open original video', 'Play video', 'Pause video', 'Unmute', 'Mute'],
+  };
+  let active;
+  function button(className, label, icon) {
+    const element = document.createElement('button');
+    element.type = 'button';
+    element.className = className;
+    element.setAttribute('aria-label', label);
+    element.innerHTML = icon;
+    return element;
+  }
+
+  function move(video, target) {
+    const playing = !video.paused;
+    target.append(video);
+    if (playing) video.play().catch(() => {});
+  }
+
+  function enableDrag(surface, shell) {
+    let press;
+    let suppressClick = false;
+    surface.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || event.button !== 0) return;
+      const rect = shell.getBoundingClientRect();
+      press = { id: event.pointerId, x: event.clientX, y: event.clientY, left: rect.left, top: rect.top };
+      suppressClick = false;
+      surface.setPointerCapture(event.pointerId);
+    });
+    surface.addEventListener('pointermove', event => {
+      if (press?.id !== event.pointerId) return;
+      const dx = event.clientX - press.x;
+      const dy = event.clientY - press.y;
+      if (!suppressClick && Math.hypot(dx, dy) < 8) return;
+      suppressClick = true;
+      const left = Math.max(0, Math.min(innerWidth - shell.offsetWidth, press.left + dx));
+      const top = Math.max(0, Math.min(innerHeight - shell.offsetHeight, press.top + dy));
+      Object.assign(shell.style, { left: left + 'px', top: top + 'px', right: 'auto', bottom: 'auto' });
+    });
+    surface.addEventListener('lostpointercapture', () => { press = null; });
+    surface.addEventListener('click', event => {
+      if (!suppressClick || event.detail === 0) return;
+      suppressClick = false;
+      event.stopImmediatePropagation();
+    }, true);
+  }
+
+  function open({ media, kind, title, original, close: onClose, playbackChanged, focusControls = false }) {
+    active?.close();
+    const [returnLabel, originalLabel, playLabel, pauseLabel, unmuteLabel, muteLabel] =
+      labels[document.documentElement.lang] || labels['zh-Hant'];
+    const shell = document.createElement('aside');
+    shell.className = 'hux-reel-pip hux-video-pip';
+    shell.dataset.kind = kind;
+    shell.setAttribute('aria-label', title);
+    const screen = document.createElement('div');
+    screen.className = 'hux-reel-pip-screen';
+    const controls = document.createElement('div');
+    controls.className = 'hux-pip-controls';
+    const back = button('hux-pip-icon hux-pip-return', returnLabel, icons.return);
+    const loud = button('hux-pip-icon hux-pip-sound', muteLabel, icons.sound);
+    const surface = button('hux-pip-surface', pauseLabel, '');
+    const video = media instanceof HTMLVideoElement ? media : null;
+    const previousControls = video?.controls;
+    let timer;
+    const events = ['play', 'pause', 'ended', 'volumechange', 'loadedmetadata'];
+    const session = { media, shell, close };
+    if (original) {
+      const link = document.createElement('a');
+      link.className = 'hux-pip-icon hux-pip-original';
+      link.href = original;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', originalLabel);
+      link.innerHTML = /(^|\.)instagram\.com$/i.test(new URL(link.href).hostname) ? icons.instagram : icons.original;
+      controls.append(link);
+    }
+    controls.append(back);
+    if (video) {
+      controls.prepend(surface);
+      enableDrag(surface, shell);
+      shell.addEventListener('pointermove', event => {
+        if (event.pointerType === 'mouse' && !event.buttons) showControls();
+      });
+      controls.append(loud);
+      surface.addEventListener('click', () => {
+        if (video.paused) video.play().catch(() => {});
+        else video.pause();
+        playbackChanged?.(video.paused);
+      });
+      loud.addEventListener('click', () => { video.muted = !video.muted; });
+      video.controls = false;
+      events.forEach(name => video.addEventListener(name, sync));
+    }
+    back.addEventListener('click', close);
+    screen.append(controls);
+    shell.append(screen);
+    document.body.append(shell);
+    active = session;
+    if (video) move(video, screen);
+    else screen.append(media);
+    screen.append(controls);
+    sync();
+    if (focusControls) back.focus({preventScroll:true});
+    return session;
+
+    function showControls() {
+      clearTimeout(timer);
+      shell.classList.add('hux-pip-ready');
+      if (video && !video.paused) timer = setTimeout(() => shell.classList.remove('hux-pip-ready'), 3200);
+    }
+
+    function sync() {
+      showControls();
+      if (!video) return;
+      if (video.videoWidth && video.videoHeight) {
+        shell.style.setProperty('--hux-video-ratio', video.videoWidth + ' / ' + video.videoHeight);
+        shell.style.setProperty('--hux-video-ratio-number', String(video.videoWidth / video.videoHeight));
+      }
+      surface.innerHTML = video.paused ? icons.play : '';
+      surface.setAttribute('aria-label', video.paused ? playLabel : pauseLabel);
+      loud.innerHTML = video.muted ? icons.mute : icons.sound;
+      loud.setAttribute('aria-label', video.muted ? unmuteLabel : muteLabel);
+      loud.setAttribute('aria-pressed', String(video.muted));
+    }
+    function close() {
+      if (active !== session) return;
+      active = null;
+      clearTimeout(timer);
+      if (video) {
+        events.forEach(name => video.removeEventListener(name, sync));
+        video.controls = previousControls;
+      }
+      onClose();
+      shell.remove();
+    }
+  }
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !document.querySelector('dialog[open]')) active?.close();
+  });
+  window.huxVideoControls = {
+    icons, open, move,
+    isFloating: media => active?.media === media,
+    close(media) { if (active?.media === media) active.close(); },
+  };
+})();
+</script>
 <script id="hux-reels-script">
 (()=>{
 const bonus=[["曼谷文青社區——嵩越路完全攻略", "reel", "DZrnpYpp0XG"], ["大挑戰！10 小時玩爆曼谷老城區", "p", "DZ90zA0Rwgb"], ["沒畢業，完蛋了？小胡的奮鬥故事", "p", "DfarWfKn7Ek"]];
@@ -3083,7 +3334,7 @@ function card(title,kind,id){
  const viewport=document.createElement('div');viewport.className='reel-viewport';
  const placeholder=document.createElement('div');placeholder.className='reel-placeholder';placeholder.textContent='滑到這裡，看看小胡的現場影片';viewport.append(placeholder);
  const link=document.createElement('a');link.className='reel-origin';link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.innerHTML=(kind==='youtube'?ytIcon:igIcon)+'<span>看原片 <svg class="hux-arrow hux-arrow-out" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none"><path d="M4 12 12 4m-6 0h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';link.setAttribute('aria-label','開啟原片：'+title);viewport.append(link);
- const pip=document.createElement('button');pip.type='button';pip.className='reel-pip-launch';pip.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><rect x="2.5" y="3.5" width="16" height="12.5" rx="1.8" stroke="currentColor" stroke-width="1.7"/><path d="M5.2 6.2h4.3L8 7.7l2.5 2.5-1.4 1.4-2.5-2.5-1.4 1.4V6.2Z" fill="currentColor"/><rect x="10.5" y="10" width="11.5" height="10" rx="2" fill="currentColor" stroke="#252532" stroke-width="1.4"/></svg>';pip.setAttribute('aria-label','浮動播放：'+title);viewport.append(pip);
+ const pip=document.createElement('button');pip.type='button';pip.className='reel-pip-launch';pip.innerHTML=window.huxVideoControls.icons.pip;pip.setAttribute('aria-label','浮動播放：'+title);viewport.append(pip);
  figure.append(viewport);const caption=document.createElement('figcaption');caption.textContent=title;figure.append(caption);
  figure.dataset.embed=embed;figure.dataset.kind=kind;return figure;
 }
@@ -3105,17 +3356,58 @@ function load(figure){if(figure.classList.contains('is-loaded'))return;
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){load(entry.target);observer.unobserve(entry.target)}},{rootMargin:'150px'});bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(el=>observer.observe(el))}
 else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load);
 })();
-</script><script id="hux-reel-pip-v21">(()=>{let active=null;const close=()=>{if(!active)return;const {shell,figure,wasLoaded}=active;shell.remove();if(wasLoaded){const viewport=figure.querySelector('.reel-viewport');const iframe=document.createElement('iframe');iframe.title=figure.querySelector('figcaption').textContent;iframe.src=figure.dataset.embed;iframe.loading='lazy';iframe.allow='autoplay; encrypted-media; picture-in-picture';viewport.append(iframe);figure.classList.add('is-loaded')}active=null};document.addEventListener('click',event=>{const button=event.target.closest('#bonus-reels .reel-figure:not(.ep02-reel) .reel-pip-launch');if(!button)return;event.preventDefault();const figure=button.closest('.reel-figure');if(active?.figure===figure){close();return}close();const wasLoaded=figure.classList.contains('is-loaded');figure.querySelector('.reel-viewport iframe')?.remove();figure.classList.remove('is-loaded');const link=figure.querySelector('.reel-origin');const shell=document.createElement('aside');shell.className='hux-reel-pip';shell.dataset.kind=figure.dataset.kind;shell.setAttribute('aria-label','浮動影片播放器');const head=document.createElement('div');head.className='hux-reel-pip-head';const title=document.createElement('span');title.textContent=figure.querySelector('figcaption').textContent;const original=document.createElement('a');original.href=link.href;original.target='_blank';original.rel='noopener noreferrer';original.innerHTML='原片 <svg class="hux-arrow hux-arrow-out" viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="none"><path d="M4 12 12 4m-6 0h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';original.setAttribute('aria-label','開啟原片');const exit=document.createElement('button');exit.type='button';exit.textContent='×';exit.setAttribute('aria-label','關閉浮動影片');exit.addEventListener('click',close);head.append(title,original,exit);const screen=document.createElement('div');screen.className='hux-reel-pip-screen';const frame=document.createElement('iframe');frame.title=title.textContent;frame.src=figure.dataset.embed;frame.allow='autoplay; encrypted-media; picture-in-picture';screen.append(frame);shell.append(head,screen);document.body.append(shell);active={shell,figure,wasLoaded};let drag=null;head.addEventListener('pointerdown',e=>{if(e.target.closest('a,button'))return;drag={x:e.clientX,y:e.clientY,left:shell.getBoundingClientRect().left,top:shell.getBoundingClientRect().top};head.setPointerCapture(e.pointerId)});head.addEventListener('pointermove',e=>{if(!drag)return;const x=Math.max(0,Math.min(innerWidth-shell.offsetWidth,drag.left+e.clientX-drag.x));const y=Math.max(0,Math.min(innerHeight-shell.offsetHeight,drag.top+e.clientY-drag.y));shell.style.left=x+'px';shell.style.top=y+'px';shell.style.right='auto';shell.style.bottom='auto'});head.addEventListener('pointerup',()=>drag=null);head.addEventListener('pointercancel',()=>drag=null)});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})})();</script>
+</script><script id="hux-reel-pip-v21">(() => {
+  let active;
+  function makeFrame(figure) {
+    const frame = document.createElement('iframe');
+    frame.title = figure.querySelector('figcaption').textContent;
+    frame.src = figure.dataset.embed;
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+    return frame;
+  }
+  document.addEventListener('click', event => {
+    const button = event.target.closest('#bonus-reels .reel-figure:not(.ep02-reel) .reel-pip-launch');
+    if (!button) return;
+    const figure = button.closest('.reel-figure');
+    if (!figure?.dataset.embed) return;
+    event.preventDefault();
+    if (active?.figure === figure) {
+      active.session.close();
+      return;
+    }
+    active?.session.close();
+    const viewport = figure.querySelector('.reel-viewport');
+    const wasLoaded = figure.classList.contains('is-loaded');
+    viewport.querySelector('iframe')?.remove();
+    figure.classList.remove('is-loaded');
+    const frame = makeFrame(figure);
+    const session = window.huxVideoControls.open({
+      media: frame,
+      kind: figure.dataset.kind,
+      title: frame.title,
+      focusControls: button.matches(':focus-visible'),
+      original: figure.querySelector('.reel-origin')?.href,
+      close() {
+        button.setAttribute('aria-pressed', 'false');
+        if (wasLoaded) {
+          viewport.append(makeFrame(figure));
+          figure.classList.add('is-loaded');
+        }
+        active = null;
+        button.focus({preventScroll:true});
+      },
+    });
+    active = { figure, session };
+    button.setAttribute('aria-pressed', 'true');
+  });
+})();
+</script>
 <script>(() => {
   let player = null;
   const canalFrames = new WeakMap();
   const manuallyPaused = new WeakSet();
 
-  function moveFrame(frame, target) {
-    const playing = !frame.paused;
-    target.append(frame);
-    if (playing) frame.play().catch(() => {});
-  }
+  const controls = window.huxVideoControls;
 
   function syncClip(figure, frame) {
     const pause = figure.querySelector('.clip-pause');
@@ -3123,6 +3415,8 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
     if (!pause || !sound) return;
     const playing = frame?.paused === false;
     const audible = frame?.muted === false;
+    pause.innerHTML = playing ? controls.icons.pause : controls.icons.play;
+    sound.innerHTML = audible ? controls.icons.sound : controls.icons.mute;
     for (const [button, on] of [[pause, playing], [sound, audible]]) {
       button.setAttribute('aria-pressed', String(on));
       button.setAttribute('aria-label', on ? button.dataset.onLabel : button.dataset.offLabel);
@@ -3130,33 +3424,7 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
   }
 
   function closeFloating() {
-    if (!player?.shell) return;
-    const { figure, frame, shell, button } = player;
-    if (figure.matches('.canal-clip')) frame.controls = false;
-    moveFrame(frame, figure.querySelector('.reel-viewport'));
-    shell.remove();
-    player.shell = null;
-    button.setAttribute('aria-pressed', 'false');
-    const station = figure.closest('details.stop');
-    if (station && !station.open) frame.pause();
-    else button.focus({ preventScroll: true });
-  }
-
-  function makeDraggable(head, shell) {
-    let drag = null;
-    head.addEventListener('pointerdown', event => {
-      if (event.button !== 0 || event.target.closest('a, button')) return;
-      const bounds = shell.getBoundingClientRect();
-      drag = { pointer: event.pointerId, x: event.clientX - bounds.left, y: event.clientY - bounds.top };
-      head.setPointerCapture(event.pointerId);
-    });
-    head.addEventListener('pointermove', event => {
-      if (drag?.pointer !== event.pointerId) return;
-      const x = Math.max(0, Math.min(innerWidth - shell.offsetWidth, event.clientX - drag.x));
-      const y = Math.max(0, Math.min(innerHeight - shell.offsetHeight, event.clientY - drag.y));
-      Object.assign(shell.style, { left: x + 'px', top: y + 'px', right: 'auto', bottom: 'auto' });
-    });
-    head.addEventListener('lostpointercapture', () => { drag = null; });
+    player?.shell?.close();
   }
 
   function play(figure) {
@@ -3166,12 +3434,12 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
       player = null;
     }
     if (player) {
-      const { frame, figure: previous, shell, button } = player;
+      closeFloating();
+      const { frame, figure: previous, button } = player;
       frame.pause();
       frame.removeAttribute('src');
       frame.load();
       frame.remove();
-      shell?.remove();
       button.setAttribute('aria-pressed', 'false');
       previous.classList.remove('is-loaded');
       syncClip(previous);
@@ -3218,40 +3486,35 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
     }
     const firstPlay = player?.figure !== figure;
     const frame = play(figure);
-    const shell = document.createElement('aside');
-    shell.className = 'hux-reel-pip';
-    shell.dataset.kind = figure.dataset.kind;
-    shell.setAttribute('aria-label', player.button.getAttribute('aria-label'));
-    const head = document.createElement('div');
-    head.className = 'hux-reel-pip-head';
-    const title = document.createElement('span');
-    title.textContent = frame.title;
-    const original = figure.querySelector('.reel-origin')?.cloneNode(true);
-    const exit = document.createElement('button');
-    exit.type = 'button';
-    exit.textContent = '×';
-    exit.setAttribute('aria-label', figure.dataset.close);
-    exit.addEventListener('click', () => closeFloating());
-    head.append(title);
-    if (original) {
-      original.removeAttribute('class');
-      head.append(original);
-    }
-    head.append(exit);
-    const screen = document.createElement('div');
-    screen.className = 'hux-reel-pip-screen';
-    shell.append(head, screen);
-    document.body.append(shell);
-    moveFrame(frame, screen);
-    if (figure.matches('.canal-clip')) {
-      frame.controls = true;
-      if (firstPlay) frame.play().catch(() => {});
-    }
-    player.shell = shell;
-    player.button.setAttribute('aria-pressed', 'true');
-    makeDraggable(head, shell);
-    exit.focus({ preventScroll: true });
+    const state = player;
+    state.shell = controls.open({
+      media: frame,
+      kind: 'video',
+      title: frame.title,
+      focusControls: state.button.matches(':focus-visible'),
+      original: figure.querySelector('.reel-origin')?.href,
+      playbackChanged(paused) {
+        if (!figure.matches('.canal-clip')) return;
+        if (paused) manuallyPaused.add(figure);
+        else manuallyPaused.delete(figure);
+      },
+      close() {
+        controls.move(frame, figure.querySelector('.reel-viewport'));
+        state.shell = null;
+        state.button.setAttribute('aria-pressed', 'false');
+        const station = figure.closest('details.stop');
+        if (station && !station.open) frame.pause();
+        else state.button.focus({ preventScroll: true });
+      },
+    });
+    if (firstPlay) frame.play().catch(() => {});
+    state.button.setAttribute('aria-pressed', 'true');
   }
+
+  document.querySelectorAll('.ep02-reel .reel-pip-launch').forEach(button => {
+    button.innerHTML = controls.icons.pip;
+  });
+  document.querySelectorAll('.canal-clip').forEach(figure => syncClip(figure));
 
   document.addEventListener('click', event => {
     const button = event.target.closest('.ep02-reel button');
@@ -3316,11 +3579,6 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
         player.frame.pause();
       }
     });
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && player?.shell && !document.querySelector('dialog[open]')) {
-      closeFloating();
-    }
   });
 })();
 </script>
