@@ -1355,6 +1355,11 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   height: 100%;
   object-fit: contain;
 }
+
+/* A mounted player owns its control surface, including native iOS controls. */
+.visual-v7 .reel-figure > .reel-viewport:has(> video[controls], > iframe) > :is(.reel-origin, .reel-pip-launch) {
+  display: none !important;
+}
 </style></head><body class="visual-v7"><aside class="desktop-rail" aria-label="HUXIAGO 章節導覽">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>曼谷口袋名單 · Ep.01</small></span></a>
   <p class="rail-note">台灣丈夫 x 泰國妻子<br>跟著小胡跟 Kik，探索最在地的曼谷風景。</p>

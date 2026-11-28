@@ -100,7 +100,7 @@
         state.button.setAttribute('aria-pressed', 'false');
         const station = figure.closest('details');
         if (station && !station.open) frame.pause();
-        else state.button.focus({ preventScroll: true });
+        else (frame.controls ? frame : state.button).focus({ preventScroll: true });
       },
     });
     if (firstPlay) frame.play().catch(() => {});

@@ -1407,6 +1407,11 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   object-fit: contain;
 }
 
+/* A mounted player owns its control surface, including native iOS controls. */
+.visual-v7 .reel-figure > .reel-viewport:has(> video[controls], > iframe) > :is(.reel-origin, .reel-pip-launch) {
+  display: none !important;
+}
+
 /* EP.02 content exceptions layered over the production EP.01 stylesheet. */
 .visual-v7 .ep02-text-thumb{display:grid;place-items:center;flex:none;background:#d5eff5;color:#233945;font-weight:800;font-size:1.2rem}
 .ep02-deal-photo{margin:8px 0 10px}
@@ -2818,7 +2823,7 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
         state.button.setAttribute('aria-pressed', 'false');
         const station = figure.closest('details');
         if (station && !station.open) frame.pause();
-        else state.button.focus({ preventScroll: true });
+        else (frame.controls ? frame : state.button).focus({ preventScroll: true });
       },
     });
     if (firstPlay) frame.play().catch(() => {});

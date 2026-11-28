@@ -1355,6 +1355,11 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   height: 100%;
   object-fit: contain;
 }
+
+/* A mounted player owns its control surface, including native iOS controls. */
+.visual-v7 .reel-figure > .reel-viewport:has(> video[controls], > iframe) > :is(.reel-origin, .reel-pip-launch) {
+  display: none !important;
+}
 </style></head><body class="visual-v7"><aside class="desktop-rail" aria-label="HUXIAGO chapter navigation">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>Bangkok Pocket Guide · Ep.01</small></span></a>
   <p class="rail-note">Taiwanese husband × Thai wife<br>Explore local Bangkok with Zev and Kik.</p>

@@ -1807,6 +1807,11 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   height: 100%;
   object-fit: contain;
 }
+
+/* A mounted player owns its control surface, including native iOS controls. */
+.visual-v7 .reel-figure > .reel-viewport:has(> video[controls], > iframe) > :is(.reel-origin, .reel-pip-launch) {
+  display: none !important;
+}
 </style></head><body class="visual-v7"><div id="hux-loading" role="status" aria-live="polite"><div class="loading-wordmark" role="img" aria-label="HUXIAGO"><span class="logo-letter" aria-hidden="true">H</span><span class="logo-letter" aria-hidden="true">U</span><span class="logo-letter" aria-hidden="true">X</span><span class="logo-letter" aria-hidden="true">I</span><span class="logo-letter" aria-hidden="true">A</span><span class="logo-letter" aria-hidden="true">G</span><span class="logo-letter" aria-hidden="true">O</span></div><small>曼谷口袋名單，準備出發</small><span class="loading-bar" aria-hidden="true"></span></div><aside class="desktop-rail" aria-label="HUXIAGO 章節導覽">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>曼谷口袋名單 · Ep.01</small></span></a>
   <p class="rail-note">台灣丈夫 x 泰國妻子<br>跟著小胡跟 Kik，探索最在地的曼谷風景。</p>
@@ -2649,12 +2654,14 @@ else document.querySelectorAll('.reel-figure:not(:has(.ep01-reel-play))').forEac
       original: figure.querySelector('.reel-origin')?.href,
       close() {
         button.setAttribute('aria-pressed', 'false');
+        let focusTarget = button;
         if (wasLoaded) {
-          viewport.append(makeFrame(figure));
+          focusTarget = makeFrame(figure);
+          viewport.append(focusTarget);
           figure.classList.add('is-loaded');
         }
         active = null;
-        button.focus({preventScroll:true});
+        focusTarget.focus({ preventScroll: true });
       },
     });
     active = { figure, session };
@@ -3170,7 +3177,7 @@ sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:
         state.button.setAttribute('aria-pressed', 'false');
         const station = figure.closest('details');
         if (station && !station.open) frame.pause();
-        else state.button.focus({ preventScroll: true });
+        else (frame.controls ? frame : state.button).focus({ preventScroll: true });
       },
     });
     if (firstPlay) frame.play().catch(() => {});

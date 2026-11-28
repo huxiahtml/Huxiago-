@@ -31,12 +31,14 @@
       original: figure.querySelector('.reel-origin')?.href,
       close() {
         button.setAttribute('aria-pressed', 'false');
+        let focusTarget = button;
         if (wasLoaded) {
-          viewport.append(makeFrame(figure));
+          focusTarget = makeFrame(figure);
+          viewport.append(focusTarget);
           figure.classList.add('is-loaded');
         }
         active = null;
-        button.focus({preventScroll:true});
+        focusTarget.focus({ preventScroll: true });
       },
     });
     active = { figure, session };

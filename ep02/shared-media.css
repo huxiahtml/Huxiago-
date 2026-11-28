@@ -163,3 +163,8 @@
   height: 100%;
   object-fit: contain;
 }
+
+/* A mounted player owns its control surface, including native iOS controls. */
+.visual-v7 .reel-figure > .reel-viewport:has(> video[controls], > iframe) > :is(.reel-origin, .reel-pip-launch) {
+  display: none !important;
+}
