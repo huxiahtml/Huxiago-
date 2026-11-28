@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CSS = ROOT / "ep02/guide.css"
+EP02_SHARE_IMAGE = "media/huxiago-share-ep02-cover.png"
 LOCALES = ("zh-Hant", "zh-Hans", "en")
 EP02_WEB_PATH = {"zh-Hant": "bkk-ep02-zh", "zh-Hans": "ep02-zh-Hans.html", "en": "ep02-en.html"}
 TITLE_ART = {"zh-Hant": "zh-tw", "zh-Hans": "zh-cn", "en": "en"}
@@ -656,14 +657,14 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     )
     canonical = f"https://huxiago.com/{EP02_WEB_PATH[lang]}"
     canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline else ""
-    share_image = f"https://huxiago.com/media/hux-share-ep02-compact-{lang.lower()}.jpg"
+    share_image = f"https://huxiago.com/{EP02_SHARE_IMAGE}"
     share_title = escape(t[0] + " EP.02 | HUXIAGO", quote=True)
     share_description = escape(t[1], quote=True)
     social_meta = "" if offline else (f'<meta name="description" content="{share_description}">'
         f'<meta property="og:type" content="website"><meta property="og:url" content="{canonical}">'
         f'<meta property="og:title" content="{share_title}"><meta property="og:description" content="{share_description}">'
-        f'<meta property="og:image" content="{share_image}"><meta property="og:image:width" content="1200">'
-        f'<meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">'
+        f'<meta property="og:image" content="{share_image}"><meta property="og:image:width" content="870">'
+        f'<meta property="og:image:height" content="611"><meta name="twitter:card" content="summary_large_image">'
         f'<meta name="twitter:title" content="{share_title}"><meta name="twitter:description" content="{share_description}">'
         f'<meta name="twitter:image" content="{share_image}">')
     share = re.sub(r"const getPageUrl=.*?;", f"const getPageUrl=()=> {json.dumps(canonical)};", share, count=1)
@@ -856,6 +857,8 @@ def build():
         name = f"media/{filename}"
         raw = (ROOT / name).read_bytes()
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    raw = (ROOT / EP02_SHARE_IMAGE).read_bytes()
+    manifest["files"][EP02_SHARE_IMAGE] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():
         name = f"media/huxiago-title-{suffix}.svg"
         raw = (ROOT / name).read_bytes().replace(b"\r\n", b"\n")
