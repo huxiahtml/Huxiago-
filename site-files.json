@@ -5,8 +5,8 @@
       "sha256": "8c33ef2c6469320b9e81b1f128f7035d02650d37f81796318d3111375f3e0e35"
     },
     "index.html": {
-      "bytes": 553140,
-      "sha256": "d24a09fc790e90ef09309616aea3dd95147c6fe511676418dca2dd35e16e9d1c"
+      "bytes": 553146,
+      "sha256": "a0000f185a4bf76ead9824a06c35dac6d1e8701fd4a2277738ff0c81db9160cc"
     },
     "media/06500c46b31b0262.webp": {
       "bytes": 92598,
@@ -1223,6 +1223,10 @@
     "media/huxiago-share-ep01-cover.png": {
       "bytes": 230311,
       "sha256": "944e32f2524952ac638f36d134d0db5ed279debb42f6c98194db676582ae6966"
+    },
+    "media/huxiago-share-ep01-cover-v2.png": {
+      "bytes": 233420,
+      "sha256": "f619c94705e5a52ec119dd4ce6cb42a2539ca3c1b4a8bcf5ae4f35b74f352232"
     }
   }
 }

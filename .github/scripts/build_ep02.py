@@ -853,7 +853,7 @@ def build():
             name = f"{folder}/{filename}"
             raw = (ROOT / name).read_bytes()
             manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
-    for filename in ("huxiago-share-ep01.jpg", "huxiago-share-ep01-cover.png", "huxiago-share-ep02-zh-hant.jpg", "huxiago-share-ep02-zh-hans.jpg", "huxiago-share-ep02-en.jpg", "hux-share-ep02-compact-zh-hant.jpg", "hux-share-ep02-compact-zh-hans.jpg", "hux-share-ep02-compact-en.jpg"):
+    for filename in ("huxiago-share-ep01.jpg", "huxiago-share-ep01-cover.png", "huxiago-share-ep01-cover-v2.png", "huxiago-share-ep02-zh-hant.jpg", "huxiago-share-ep02-zh-hans.jpg", "huxiago-share-ep02-en.jpg", "hux-share-ep02-compact-zh-hant.jpg", "hux-share-ep02-compact-zh-hans.jpg", "hux-share-ep02-compact-en.jpg"):
         name = f"media/{filename}"
         raw = (ROOT / name).read_bytes()
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
