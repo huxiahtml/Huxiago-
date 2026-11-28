@@ -658,7 +658,12 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
     canonical = f"https://huxiago.com/{EP02_WEB_PATH[lang]}"
     canonical_link = f'<link rel="canonical" href="{canonical}">' if not offline else ""
     share_image = f"https://huxiago.com/{EP02_SHARE_IMAGE}"
-    share_title = escape(t[0] + " EP.02 | HUXIAGO", quote=True)
+    share_titles = {
+        "zh-Hant": "曼谷口袋名單 Ep.02｜泰國指南PLAY+",
+        "zh-Hans": "曼谷口袋名单 Ep.02｜泰国指南PLAY+",
+        "en": "Bangkok Pocket Guide Ep.02 | Thailand Guide PLAY+",
+    }
+    share_title = escape(share_titles[lang], quote=True)
     share_description = escape(t[1], quote=True)
     social_meta = "" if offline else (f'<meta name="description" content="{share_description}">'
         f'<meta property="og:type" content="website"><meta property="og:url" content="{canonical}">'
@@ -768,7 +773,7 @@ def render(data, deals, stories, galleries, locations, lang, offline, donor, loc
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{escape(t[0])} EP.02 | HUXIAGO</title>
+<title>{escape(t[0]) + ' EP.02 | HUXIAGO' if offline else share_title}</title>
 {canonical_link}
 {social_meta}
 <style>{css}</style>
