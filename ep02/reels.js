@@ -98,7 +98,7 @@
         controls.move(frame, figure.querySelector('.reel-viewport'));
         state.shell = null;
         state.button.setAttribute('aria-pressed', 'false');
-        const station = figure.closest('details.stop');
+        const station = figure.closest('details');
         if (station && !station.open) frame.pause();
         else state.button.focus({ preventScroll: true });
       },
@@ -113,9 +113,9 @@
   document.querySelectorAll('.canal-clip').forEach(figure => syncClip(figure));
 
   document.addEventListener('click', event => {
-    const button = event.target.closest('.ep02-reel button');
+    const button = event.target.closest(':is(.ep02-reel, .hux-native-reel) button');
     if (!button) return;
-    const figure = button.closest('.ep02-reel');
+    const figure = button.closest('.ep02-reel, .hux-native-reel');
     if (button.matches('.ep01-reel-play, .clip-pause')) {
       const canal = figure.matches('.canal-clip');
       const frame = canal ? canalFrame(figure) : play(figure);
@@ -164,7 +164,7 @@
     });
   }
 
-  document.querySelectorAll('details.stop').forEach(station => {
+  document.querySelectorAll('details.stop, details:has(.hux-native-reel)').forEach(station => {
     station.addEventListener('toggle', () => {
       if (!station.open) {
         station.querySelectorAll('.canal-clip').forEach(figure => {

@@ -153,3 +153,13 @@
 @media (prefers-reduced-motion: reduce) {
   .hux-pip-icon { transition: none; }
 }
+
+/* EP.01 native replacements keep the existing portrait gallery cards. */
+.visual-v7 .hux-native-reel .reel-viewport > video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

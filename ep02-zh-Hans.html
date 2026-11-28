@@ -1699,6 +1699,16 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
   .hux-pip-icon { transition: none; }
 }
 
+/* EP.01 native replacements keep the existing portrait gallery cards. */
+.visual-v7 .hux-native-reel .reel-viewport > video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* EP.02 content exceptions layered over the production EP.01 stylesheet. */
 .visual-v7 .ep02-text-thumb{display:grid;place-items:center;flex:none;background:#d5eff5;color:#233945;font-weight:800;font-size:1.2rem}
 .ep02-deal-photo{margin:8px 0 10px}
@@ -3502,7 +3512,7 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
         controls.move(frame, figure.querySelector('.reel-viewport'));
         state.shell = null;
         state.button.setAttribute('aria-pressed', 'false');
-        const station = figure.closest('details.stop');
+        const station = figure.closest('details');
         if (station && !station.open) frame.pause();
         else state.button.focus({ preventScroll: true });
       },
@@ -3517,9 +3527,9 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
   document.querySelectorAll('.canal-clip').forEach(figure => syncClip(figure));
 
   document.addEventListener('click', event => {
-    const button = event.target.closest('.ep02-reel button');
+    const button = event.target.closest(':is(.ep02-reel, .hux-native-reel) button');
     if (!button) return;
-    const figure = button.closest('.ep02-reel');
+    const figure = button.closest('.ep02-reel, .hux-native-reel');
     if (button.matches('.ep01-reel-play, .clip-pause')) {
       const canal = figure.matches('.canal-clip');
       const frame = canal ? canalFrame(figure) : play(figure);
@@ -3568,7 +3578,7 @@ else bonusGallery.querySelectorAll('.reel-figure:not(.ep02-reel)').forEach(load)
     });
   }
 
-  document.querySelectorAll('details.stop').forEach(station => {
+  document.querySelectorAll('details.stop, details:has(.hux-native-reel)').forEach(station => {
     station.addEventListener('toggle', () => {
       if (!station.open) {
         station.querySelectorAll('.canal-clip').forEach(figure => {

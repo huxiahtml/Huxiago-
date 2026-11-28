@@ -1797,6 +1797,16 @@ html[lang="en"] .location-label[lang="en"] { display: inline; }
 @media (prefers-reduced-motion: reduce) {
   .hux-pip-icon { transition: none; }
 }
+
+/* EP.01 native replacements keep the existing portrait gallery cards. */
+.visual-v7 .hux-native-reel .reel-viewport > video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 </style></head><body class="visual-v7"><div id="hux-loading" role="status" aria-live="polite"><div class="loading-wordmark" role="img" aria-label="HUXIAGO"><span class="logo-letter" aria-hidden="true">H</span><span class="logo-letter" aria-hidden="true">U</span><span class="logo-letter" aria-hidden="true">X</span><span class="logo-letter" aria-hidden="true">I</span><span class="logo-letter" aria-hidden="true">A</span><span class="logo-letter" aria-hidden="true">G</span><span class="logo-letter" aria-hidden="true">O</span></div><small>曼谷口袋名單，準備出發</small><span class="loading-bar" aria-hidden="true"></span></div><aside class="desktop-rail" aria-label="HUXIAGO 章節導覽">
   <a class="rail-brand" href="#top"><span><strong><span class="logo-letter">H</span><span class="logo-letter">U</span><span class="logo-letter">X</span><span class="logo-letter">I</span><span class="logo-letter">A</span><span class="logo-letter">G</span><span class="logo-letter">O</span></strong><small>曼谷口袋名單 · Ep.01</small></span></a>
   <p class="rail-note">台灣丈夫 x 泰國妻子<br>跟著小胡跟 Kik，探索最在地的曼谷風景。</p>
@@ -1825,7 +1835,7 @@ sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:
 <figure><img alt="網美打卡電扶梯" loading="lazy" decoding="async" width="960" height="960" src="media/ep01-01-01.webp"><figcaption>網美打卡電扶梯</figcaption></figure>
 <figure><img alt="空中花園遠眺天際線" loading="lazy" decoding="async" width="960" height="960" src="media/ep01-01-02.webp"><figcaption>空中花園遠眺天際線</figcaption></figure>
 <figure><img alt="進門右轉電梯上4樓空中花園" loading="lazy" decoding="async" width="960" height="960" src="media/ep01-01-03.webp"><figcaption>進門右轉電梯上4樓空中花園</figcaption></figure>
-<figure data-gallery-reel="DROUbrUif2m"><img alt="在 LG 美食街考考琳妲" loading="lazy" decoding="async" width="694" height="694" src="media/ep01-01-04.webp"><figcaption>在 LG 美食街考考琳妲</figcaption></figure>
+<figure data-gallery-reel="DROUbrUif2m" data-gallery-video="media/ep01-central-park-linda.mp4"><img alt="在 LG 美食街考考琳妲" loading="lazy" decoding="async" width="540" height="960" src="media/ep01-central-park-linda-poster.webp"><figcaption>在 LG 美食街考考琳妲</figcaption></figure>
 <figure><img alt="帶樂天女孩吃爆美食街" loading="lazy" decoding="async" width="960" height="960" src="media/ep01-01-05.webp"><figcaption>帶樂天女孩吃爆美食街</figcaption></figure>
 </div><p class="gallery-hint">左右滑動看更多畫面 →</p><h4 class="story-heading">台港朋友來曼谷，我都帶他們來這裡</h4>
 <p>這一年來，我的朋友來曼谷玩，只要行程排得進去，我都會想帶他們來 Central Park Bangkok。台灣的老朋友、以前在香港讀書時認識的朋友，都被我帶來過；琳妲第二次來找我們時，我們也帶她和同行的樂天女孩和朋友來這裡逛。</p>
@@ -2549,7 +2559,7 @@ function useInlinePlay(figure,poster){
  const label=document.createElement('span');label.textContent='播放影片';play.append(label);
  if(poster){poster.alt='';placeholder.before(poster);figure.classList.add('ep01-gallery-reel')}
  placeholder.replaceWith(play);
- play.addEventListener('click',()=>load(figure).focus(),{once:true});
+ if(!figure.dataset.video)play.addEventListener('click',()=>load(figure).focus(),{once:true});
 }
 for(const gallery of document.querySelectorAll('[data-ep01-gallery]')){
  const body=gallery.parentElement;
@@ -2558,6 +2568,11 @@ for(const gallery of document.querySelectorAll('[data-ep01-gallery]')){
  for(const item of gallery.querySelectorAll('[data-gallery-reel]')){
    const id=item.dataset.galleryReel;
    const figure=card(item.querySelector('figcaption').textContent,'reel',id);
+   if(item.dataset.galleryVideo){
+     figure.classList.add('hux-native-reel');
+     figure.dataset.video=item.dataset.galleryVideo;
+     delete figure.dataset.embed;
+   }
    useInlinePlay(figure,item.querySelector('img'));item.replaceWith(figure);orderedIds.add(id);
  }
  const related=[];
@@ -3053,7 +3068,186 @@ function sync(){
   link.href=location.protocol==='file:'?'ep02-'+locale+'.html':paths[locale];
 }
 sync();new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['lang']});
-})();</script></body></html>
+})();</script><script id="hux-ep01-native-reel-player">(() => {
+  let player = null;
+  const canalFrames = new WeakMap();
+  const manuallyPaused = new WeakSet();
+
+  const controls = window.huxVideoControls;
+
+  function syncClip(figure, frame) {
+    const pause = figure.querySelector('.clip-pause');
+    const sound = figure.querySelector('.clip-sound');
+    if (!pause || !sound) return;
+    const playing = frame?.paused === false;
+    const audible = frame?.muted === false;
+    pause.innerHTML = playing ? controls.icons.pause : controls.icons.play;
+    sound.innerHTML = audible ? controls.icons.sound : controls.icons.mute;
+    for (const [button, on] of [[pause, playing], [sound, audible]]) {
+      button.setAttribute('aria-pressed', String(on));
+      button.setAttribute('aria-label', on ? button.dataset.onLabel : button.dataset.offLabel);
+    }
+  }
+
+  function closeFloating() {
+    player?.shell?.close();
+  }
+
+  function play(figure) {
+    if (player?.figure === figure) return player.frame;
+    if (player?.figure.matches('.canal-clip')) {
+      closeFloating();
+      player = null;
+    }
+    if (player) {
+      closeFloating();
+      const { frame, figure: previous, button } = player;
+      frame.pause();
+      frame.removeAttribute('src');
+      frame.load();
+      frame.remove();
+      button.setAttribute('aria-pressed', 'false');
+      previous.classList.remove('is-loaded');
+      syncClip(previous);
+    }
+    const frame = figure.matches('.canal-clip') ? canalFrame(figure) : createFrame(figure);
+    player = { figure, frame, shell: null, button: figure.querySelector('.reel-pip-launch') };
+    return frame;
+  }
+
+  function canalFrame(figure) {
+    if (!canalFrames.has(figure)) canalFrames.set(figure, createFrame(figure));
+    return canalFrames.get(figure);
+  }
+
+  function createFrame(figure) {
+    const frame = document.createElement('video');
+    const standalone = figure.matches('.canal-clip');
+    frame.title = figure.querySelector('figcaption').textContent;
+    frame.src = figure.dataset.video;
+    frame.controls = !standalone;
+    frame.muted = standalone;
+    frame.defaultMuted = standalone;
+    if (figure.closest('#kushiro')) frame.volume = 0.45;
+    frame.playsInline = true;
+    frame.preload = 'none';
+    frame.tabIndex = 0;
+    frame.setAttribute('aria-label', frame.title);
+    if (standalone) {
+      for (const event of ['play', 'pause', 'volumechange', 'ended']) {
+        frame.addEventListener(event, () => {
+          syncClip(figure, frame);
+        });
+      }
+    }
+    figure.querySelector('.reel-viewport').append(frame);
+    figure.classList.add('is-loaded');
+    return frame;
+  }
+
+  function float(figure) {
+    if (player?.figure === figure && player.shell) {
+      closeFloating();
+      return;
+    }
+    const firstPlay = player?.figure !== figure;
+    const frame = play(figure);
+    const state = player;
+    state.shell = controls.open({
+      media: frame,
+      kind: 'video',
+      title: frame.title,
+      focusControls: state.button.matches(':focus-visible'),
+      original: figure.querySelector('.reel-origin')?.href,
+      playbackChanged(paused) {
+        if (!figure.matches('.canal-clip')) return;
+        if (paused) manuallyPaused.add(figure);
+        else manuallyPaused.delete(figure);
+      },
+      close() {
+        controls.move(frame, figure.querySelector('.reel-viewport'));
+        state.shell = null;
+        state.button.setAttribute('aria-pressed', 'false');
+        const station = figure.closest('details');
+        if (station && !station.open) frame.pause();
+        else state.button.focus({ preventScroll: true });
+      },
+    });
+    if (firstPlay) frame.play().catch(() => {});
+    state.button.setAttribute('aria-pressed', 'true');
+  }
+
+  document.querySelectorAll('.ep02-reel .reel-pip-launch').forEach(button => {
+    button.innerHTML = controls.icons.pip;
+  });
+  document.querySelectorAll('.canal-clip').forEach(figure => syncClip(figure));
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest(':is(.ep02-reel, .hux-native-reel) button');
+    if (!button) return;
+    const figure = button.closest('.ep02-reel, .hux-native-reel');
+    if (button.matches('.ep01-reel-play, .clip-pause')) {
+      const canal = figure.matches('.canal-clip');
+      const frame = canal ? canalFrame(figure) : play(figure);
+      if (frame.paused) {
+        manuallyPaused.delete(figure);
+        frame.play().catch(() => {});
+      } else {
+        if (canal) manuallyPaused.add(figure);
+        frame.pause();
+      }
+      if (button.matches('.ep01-reel-play')) frame.focus({ preventScroll: true });
+    }
+    if (button.matches('.clip-sound')) {
+      const frame = canalFrame(figure);
+      manuallyPaused.delete(figure);
+      frame.muted = !frame.muted;
+      if (frame.paused) frame.play().catch(() => {});
+    }
+    if (button.matches('.reel-pip-launch')) float(figure);
+  });
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        for (const figure of entry.target.querySelectorAll('.canal-clip')) {
+          if (player?.figure === figure && player.shell) continue;
+          const frame = canalFrames.get(figure);
+          if (!entry.isIntersecting) {
+            frame?.pause();
+          } else if (!reducedMotion.matches && !manuallyPaused.has(figure) && frame?.muted !== false) {
+            canalFrame(figure).play().catch(() => {});
+          }
+        }
+      }
+    }, { threshold: 0.25 });
+    document.querySelectorAll('.canal-clips').forEach(section => {
+      const clip = section.querySelector('.canal-clip');
+      if (clip && !clip.dataset.video.startsWith('data:')) observer.observe(section);
+    });
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) {
+        document.querySelectorAll('.canal-clip').forEach(figure => {
+          if (player?.figure !== figure || !player.shell) canalFrames.get(figure)?.pause();
+        });
+      }
+    });
+  }
+
+  document.querySelectorAll('details.stop, details:has(.hux-native-reel)').forEach(station => {
+    station.addEventListener('toggle', () => {
+      if (!station.open) {
+        station.querySelectorAll('.canal-clip').forEach(figure => {
+          if (player?.figure !== figure || !player.shell) canalFrames.get(figure)?.pause();
+        });
+      }
+      if (!station.open && player && !player.shell && station.contains(player.figure)) {
+        player.frame.pause();
+      }
+    });
+  });
+})();
+</script></body></html>
 
 
 

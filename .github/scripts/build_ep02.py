@@ -379,6 +379,9 @@ def update_ep01(source, deals, locations, titles, online, lang):
         source = source.replace(old_player, f'<script id="hux-reel-pip-v21">{player}</script>', 1)
         source = re.sub(r'<script id="hux-video-controls">.*?</script>', "", source, flags=re.S)
         source = source.replace("</head>", shared_video_controls() + "</head>", 1)
+        source = re.sub(r'<script id="hux-ep01-native-reel-player">.*?</script>', "", source, flags=re.S)
+        reel_script = (ROOT / "ep02/reels.js").read_text(encoding="utf-8")
+        source = source.replace("</body>", f'<script id="hux-ep01-native-reel-player">{reel_script}</script></body>', 1)
     ticket_css = (ROOT / "ep02/shared-tickets.css").read_text(encoding="utf-8")
     source = re.sub(r'<style id="hux-shared-ticket-icons">.*?</style>', "", source, flags=re.S)
     media_css = (ROOT / "ep02/shared-media.css").read_text(encoding="utf-8")
@@ -875,6 +878,9 @@ def build():
         manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     raw = (ROOT / EP02_SHARE_IMAGE).read_bytes()
     manifest["files"][EP02_SHARE_IMAGE] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    for name in ("media/ep01-central-park-linda.mp4", "media/ep01-central-park-linda-poster.webp"):
+        raw = (ROOT / name).read_bytes()
+        manifest["files"][name] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
     for suffix in TITLE_ART.values():
         name = f"media/huxiago-title-{suffix}.svg"
         raw = (ROOT / name).read_bytes().replace(b"\r\n", b"\n")
